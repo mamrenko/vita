@@ -6,11 +6,12 @@ class Controller_Index_Main extends Controller_Index {
 
     public function action_index() {
         $block_center = View::factory('index/main/v_main_index');
-        //$search = Widget::load('search');
+        $search = Widget::load('search');
         $topproducts = Widget::load('topproducts');
 
         // Вывод в шаблон
         $this->template->page_title = 'О магазине';
-        $this->template->block_center = array($block_center, $topproducts);
+        $this->template->block_center = array($block_center,$search,);
+        $this->template->block_right = array($topproducts);;
     }
 }

@@ -1,26 +1,15 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 
-class Controller_Catalog extends Controller_Index
+class Controller_Index_Catalog extends Controller_Index
 {
-     public function before() {
-        parent::before();
-        
-        $menu = Request::factory('widgets/menu')->execute();
-        $top = Request::factory('widgets/topproducts')->execute();
-        
-        $this->template->block_left = array($menu);
-        $this->template->block_right = array($top);
-        
-    }
-    
-
+   
     public function action_index()
 	{
-        
+             $topproducts = Widget::load('topproducts');
              $products = Model::factory('catalog')->all_products();
             
            
-             $content = View::factory('v_catalog', array(
+             $content = View::factory('index/catalog/v_catalog', array(
                  'products' => $products,
             )
             ); 
@@ -28,6 +17,7 @@ class Controller_Catalog extends Controller_Index
              $this->template->block_center = array(
                 $content, 
              );
+             $this->template->block_right = array($topproducts);;
 	}
          
         

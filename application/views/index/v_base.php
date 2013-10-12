@@ -25,6 +25,11 @@
 	<header id="header">
             <a href="/vita/"><h1><?=$site_name?></h1></a>
             <h3><?=$site_description?></h3>
+            <ul>
+                <li><?=$topmenu?></li>
+            </ul>
+                
+           
 	</header><!-- #header-->
 
 	<section id="middle">
