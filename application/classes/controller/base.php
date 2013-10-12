@@ -1,27 +1,27 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
-
+<?php defined('SYSPATH') or die('No direct script access.');
+/*
+ * Общий базовый класс
+ */
 class Controller_Base extends Controller_Template {
-    
-    public $template = 'v_base';
+
+
     public function before() {
         parent::before();
-        $site_name = 'Аплодисменты' ;
-        $site_description = 'Заказ и доставка билетов в театр, на концерт, цирк';
-        
-        $this->template->site_name = $site_name;
-        $this->template->site_description = $site_description;
+        $settings = Kohana::config('settings');
+
+        // Вывод в шаблон
+        $this->template->site_name = $settings->site_name;
+        $this->template->site_description = $settings->site_description;
         $this->template->page_title = null;
-        
-        
-        $this->template->styles = array('media/css/common.css');
+
+        // Подключаем стили и скрипты
+        $this->template->styles = array();
         $this->template->scripts = array();
-        
+
+        // Подключаем блоки
         $this->template->block_left = null;
         $this->template->block_center = null;
         $this->template->block_right = null;
-        
-        
     }
+}
 
-    
-} 

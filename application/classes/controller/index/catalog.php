@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 
-class Controller_Catalog extends Controller_Base
+class Controller_Catalog extends Controller_Index
 {
      public function before() {
         parent::before();

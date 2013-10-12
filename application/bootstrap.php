@@ -116,16 +116,37 @@ Kohana::modules(array(
  * defaults for the URI.
  */
 
-
-Route::set('widgets', 'widgets(/<controller>(/<action>(/<id>)))')
+//if ( ! Route::cache()) {
+Route::set('widgets', 'widgets(/<controller>(/<param>))', array('param' => '.+'))
 	->defaults(array(
             'directory'  => 'widgets',
+            'action'     => 'index',
+	));
+
+Route::set('auth', '<action>', array('action' => 'login|logout|register'))
+	->defaults(array(
+                'directory'  => 'index',
+		'controller' => 'auth',
+	));
+
+Route::set('search', 'search')
+	->defaults(array(
+                'directory'  => 'index',
+		'controller' => 'search',
+	));
+
+Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
+	->defaults(array(
+            'directory'  => 'admin',
+            'controller' => 'main',
             'action'     => 'index',
 	));
 
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'index',
+                'directory'  => 'index',
+		'controller' => 'main',
 		'action'     => 'index',
 	));
+//Route::cache(TRUE);
