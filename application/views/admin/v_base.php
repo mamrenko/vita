@@ -38,6 +38,8 @@
                      <? if (isset($block_center)):?>
 			<div id="content">
 				<?foreach($block_center as $cblock):?>
+                            <h1><?=$page_title?></h1>
+                            
                         <?=$cblock?>
                     <?endforeach?> 
 			</div><!-- #content-->
