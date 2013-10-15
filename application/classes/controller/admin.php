@@ -11,7 +11,7 @@ class Controller_Admin extends Controller_Base {
         $this->template->menu_admin = $menu_admin;
         
         
-        $this->template->styles = array('media/css/common.css');
+        $this->template->styles = array('media/css/admin/admincommon.css');
         $this->template->scripts = array();
         
         $this->template->block_left = null;

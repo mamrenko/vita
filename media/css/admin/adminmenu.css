@@ -1,0 +1,64 @@
+@charset 'UTF-8';
+/* Starter CSS for Flyout Menu */
+#adminmenu,
+#adminmenu ul,
+#adminmenu li #adminmenu a {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  font-family: Helvetica;
+  line-height: 1;
+}
+#adminmenu {
+  width: auto;
+  padding-top: 30px;
+}
+#adminmenu ul {
+  zoom: 1;
+  background: #a7bc7a url(pattern.png) top left repeat;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #839b4e;
+  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+#adminmenu ul:before {
+  content: '';
+  display: block;
+}
+#adminmenu ul:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+#adminmenu a,
+#adminmenu a:link,
+#adminmenu a:visited {
+  padding: 15px 20px;
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  text-shadow: 0 -1px 1px #586835;
+  border-right: 1px solid #839b4e;
+}
+#adminmenu a:hover {
+  color: #586835;
+  text-shadow: 0 1px 1px #bdcd9c;
+}
+#adminmenu li {
+  float: left;
+  border-right: 1px solid #b2c58b;
+}
+#adminmenu li:hover {
+  background: #9cb369 url(images/admin/pattern.png) top left repeat;
+}
+#adminmenu li:first-child {
+  border-left: none;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
