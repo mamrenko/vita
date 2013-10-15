@@ -117,6 +117,7 @@ Kohana::modules(array(
  */
 
 //if ( ! Route::cache()) {
+
 Route::set('widgets', 'widgets(/<controller>(/<param>))', array('param' => '.+'))
 	->defaults(array(
             'directory'  => 'widgets',

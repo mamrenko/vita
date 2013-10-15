@@ -5,11 +5,10 @@ class Controller_Admin extends Controller_Base {
     public $template = 'admin/v_base';
     public function before() {
         parent::before();
-        $menu_admin = Widget::load('menuadmin');
+        $menu_admin = Widget::load('adminmenu');
         
-        $this->template->site_name = $site_name;
-        $this->template->site_description = $site_description;
-        $this->template->page_title = null;
+        
+        $this->template->menu_admin = $menu_admin;
         
         
         $this->template->styles = array('media/css/common.css');
