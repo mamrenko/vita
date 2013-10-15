@@ -10,6 +10,8 @@ class Controller_Admin extends Controller_Base {
         
         $this->template->menu_admin = $menu_admin;
         
+        $this->template->site_name = 'Администрирование сайта Аплодисменты';
+        $this->template->site_description = 'Администрирование сайта Аплодисменты';
         
         $this->template->styles = array('media/css/admin/admincommon.css');
         $this->template->scripts = array();

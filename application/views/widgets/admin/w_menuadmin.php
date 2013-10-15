@@ -7,5 +7,8 @@
         <li><a href="<?=URL::base()?>admin/products">Товары</a></li>
         <li><a href="<?=URL::base()?>admin/users">Пользователи</a></li>
         <li><a href="<?=URL::base()?>admin/settings">Настройки</a></li>
+        <li><a href="<?=URL::base()?>">На сайт</a></li>
+              
+            
     </ul>
 </div>

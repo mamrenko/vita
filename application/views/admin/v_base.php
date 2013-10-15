@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	
+	<title><?=$site_name?> | <?=$page_title?></title>
 	
         
         <?foreach($styles as $style) :?>
@@ -22,10 +22,8 @@
 <div id="wrapper">
 
 	<header id="header">
-            <a href="/vita/">
-                <h1>Вернуться на внешнюю часть <?=$site_name?></h1>
-            </a>
-            <h3><?=$site_description?></h3>
+           
+            <h2><?=$site_description?></h2>
            
           <?=$menu_admin?>
            

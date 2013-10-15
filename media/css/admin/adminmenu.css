@@ -17,6 +17,7 @@
 }
 #adminmenu ul {
   zoom: 1;
+  
   background: #a7bc7a url(pattern.png) top left repeat;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
