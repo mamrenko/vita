@@ -1,10 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Lato);
 
 /* Base Styles */
-#menuorders,
-#menuorders ul,
-#menuorders li,
-#menuorders a {
+#cssmenu,
+#cssmenu ul,
+#cssmenu li,
+#cssmenu a {
   margin: 0;
   padding: 0;
   border: 0;
@@ -16,22 +16,22 @@
   font-size: 14px;
   position: relative;
 }
-#menuorders a {
+#cssmenu a {
   line-height: 1.3;
   padding: 6px 15px;
 }
-#menuorders {
+#cssmenu {
   width: 200px;
 }
-#menuorders > ul > li {
+#cssmenu > ul > li {
   cursor: pointer;
   background: #000;
   border-bottom: 1px solid #797a80;
 }
-#menuorders > ul > li:last-child {
+#cssmenu > ul > li:last-child {
   border-bottom: 1px solid #3e3d3c;
 }
-#menuorders > ul > li > a {
+#cssmenu > ul > li > a {
   font-size: 13px;
   display: block;
   color: #ffffff;
@@ -42,13 +42,13 @@
   background: -webkit-linear-gradient(#6a6b72 0%, #4c4e53 100%);
   background: linear-gradient(#6a6b72 0%, #4c4e53 100%);
 }
-#menuorders > ul > li > a:hover {
+#cssmenu > ul > li > a:hover {
   text-decoration: none;
 }
-#menuorders > ul > li.active {
+#cssmenu > ul > li.active {
   border-bottom: none;
 }
-#menuorders > ul > li.active > a {
+#cssmenu > ul > li.active > a {
   background: #a5ce27;
   background: -moz-linear-gradient(#a5ce27 0%, #709400 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a5ce27), color-stop(100%, #709400));
@@ -57,7 +57,7 @@
   color: #4e5800;
   text-shadow: 0 1px 1px #a5ce27;
 }
-#menuorders > ul > li.has-sub > a:after {
+#cssmenu > ul > li.has-sub > a:after {
   content: '';
   position: absolute;
   top: 10px;
@@ -65,29 +65,29 @@
   border: 5px solid transparent;
   border-left: 5px solid #ffffff;
 }
-#menuorders > ul > li.has-sub.active > a:after {
+#cssmenu > ul > li.has-sub.active > a:after {
   right: 14px;
   top: 12px;
   border: 5px solid transparent;
   border-top: 5px solid #4e5800;
 }
 /* Sub menu */
-#menuorders ul ul {
+#cssmenu ul ul {
   padding: 0;
   display: none;
 }
-#menuorders ul ul a {
+#cssmenu ul ul a {
   background: #efefef;
   display: block;
   color: #797979;
   font-size: 13px;
 }
-#menuorders ul ul li {
+#cssmenu ul ul li {
   border-bottom: 1px solid #c9c9c9;
 }
-#menuorders ul ul li.odd a {
+#cssmenu ul ul li.odd a {
   background: #e5e5e5;
 }
-#menuorders ul ul li:last-child {
+#cssmenu ul ul li:last-child {
   border: none;
 }

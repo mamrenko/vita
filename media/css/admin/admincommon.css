@@ -1,5 +1,5 @@
 @import url("adminmenu.css");
-@import url("menuorders.css");
+@import url("menuleft.css");
 @import url("may.css");
 @import url("topbk.css");
 
@@ -129,18 +129,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	margin-left: -100%;
 	position: relative;
 	background: #FFFFFF;
-	border-top-width: thin;
-	border-right-width: thin;
-	border-bottom-width: thin;
-	border-left-width: thin;
-	border-top-style: none;
-	border-right-style: solid;
-	border-bottom-style: none;
-	border-left-style: none;
-	border-top-color: #CCC;
-	border-right-color: #CCC;
-	border-bottom-color: #CCC;
-	border-left-color: #CCC;
+	
+	
+	
 }
 
 
