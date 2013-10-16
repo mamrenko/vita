@@ -9,3 +9,11 @@
         
 	
 }
+#footer h2{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #97B066;
+	font-weight: bold;
+	text-align: center;
+	font-size: 18px;
+	padding-top: 5px;
+}

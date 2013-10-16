@@ -1,13 +1,13 @@
 
 <div id='adminmenu'>
     <ul>
-        <li><a href="<?=URL::base()?>admin">Главная</a></li>
-        <li><a href="<?=URL::base()?>admin/orders">Заказы</a></li>
-        <li><a href="<?=URL::base()?>admin/pages">Страницы</a></li>
-        <li><a href="<?=URL::base()?>admin/products">Товары</a></li>
-        <li><a href="<?=URL::base()?>admin/users">Пользователи</a></li>
-        <li><a href="<?=URL::base()?>admin/settings">Настройки</a></li>
-        <li><a href="<?=URL::base()?>">На сайт</a></li>
+        <li class='active'><a href="<?=URL::base()?>admin"><span>Главная</span></a></li>
+        <li><a href="<?=URL::base()?>admin/orders"><span>Заказы</span></a></li>
+        <li><a href="<?=URL::base()?>admin/pages"><span>Страницы</span></a></li>
+        <li><a href="<?=URL::base()?>admin/products"><span>Товары</span></a></li>
+        <li><a href="<?=URL::base()?>admin/users"><span>Пользователи</span></a></li>
+        <li><a href="<?=URL::base()?>admin/settings"><span>Настройки</span></a></li>
+        <li class='last'><a href="<?=URL::base()?>"><span>На сайт</span></a></li>
               
             
     </ul>
