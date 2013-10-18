@@ -1,17 +1,36 @@
-<div id="form">
-    
-    <form class="form-container">
-    <div class="form-title"><h2>Контакты</h2></div>
-    <div class="form-title">Имя</div>
-    <input class="form-field" type="text" name="firstname" /><br />
-    <div class="form-title">Email</div>
-    <input class="form-field" type="text" name="email" /><br />
-    <div class="form-title">Сообщение</div>
-    <textarea class="form-field" type="text" name="text" cols="10" rows="10" /></textarea>
-    <br />
-    <div class="submit-container">
-    <input class="submit-button" type="submit" value="Submit" />
-    </div>
-    </form>
-    
+<div class="TTWForm-container">
+      
+      
+     <form style="width: 400px;" action="process_form.php" class="TTWForm"
+     method="post" novalidate="">
+           
+           
+          <div id="field1-container" class="field f_100">
+               <label for="field1">
+                    Ваше Имя
+               </label>
+               <input name="name" id="field1" required="required" type="text">
+          </div>
+           
+           
+          <div id="field2-container" class="field f_100">
+               <label for="field2">
+                    Ваш Емейл
+               </label>
+               <input name="email" id="field2" required="required" type="text">
+          </div>
+           
+           
+          <div id="field3-container" class="field f_100">
+               <label for="field3">
+                    Ваше Сообщение
+               </label>
+               <textarea rows="5" cols="20" name="message" id="field3" required="required"></textarea>
+          </div>
+           
+           
+          <div id="form-submit" class="field f_100 clearfix submit">
+               <input value="Отправить !" type="submit">
+          </div>
+     </form>
 </div>
