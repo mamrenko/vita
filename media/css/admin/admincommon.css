@@ -115,9 +115,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	width: 100%;
 	float: left;
 	overflow: hidden;
+	
+	
 }
 #content {
-	padding: 0 270px 0 270px;
+	padding: 0 220px 0 220px;
+	
+	
 }
 
 
@@ -125,11 +129,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 -----------------------------------------------------------------------------*/
 #sideLeft {
 	float: left;
-	width: 250px;
+	width: 210px;
 	margin-left: -100%;
 	position: relative;
 	background: #FFFFFF;
-	
+	border: thin solid #666;
 	
 	
 }
@@ -140,10 +144,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 #sideRight {
 	float: left;
 	margin-right: -3px;
-	width: 250px;
-	margin-left: -250px;
+	width: 210px;
+	margin-left: -210px;
 	position: relative;
 	background: #FFACAA;
+	border: thin solid #666;
 }
 
 
