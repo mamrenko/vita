@@ -33,7 +33,7 @@ table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: so
     <th>Площадка</th>
     <th>Название</th>
     <th>Начало</th>
-    <th>Категория</th>
+    
     <th>Функции</th>
     
 </tr>
@@ -44,7 +44,7 @@ table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: so
     <td><?=$playbill->place_id?></td>
     <td><?=HTML::anchor('admin/playbill/edit/'.$playbill->id, $playbill->title)?></td>
     <td><?=$playbill->start?> ч.</td>
-    <td><?=$playbill->cat_id?></td>
+   
     <td>
             <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, HTML::image('media/images/edit.png'))?>
         &nbsp;&nbsp;

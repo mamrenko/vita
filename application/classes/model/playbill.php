@@ -4,7 +4,24 @@
 
 class Model_Playbill extends ORM {
     
-   public function rules(){
+    protected $belongs_to = array(
+           'place' => array(
+           'model' => 'place',
+           'foreign_key' => 'place_id',
+        ),
+    );
+
+     protected $has_many = array(
+           'categories' => array(
+           'model' => 'category',
+           'foreign_key' => 'playbill_id',
+           'through' => 'playbill_categories',
+           'far_key' => 'categories_id'
+        ),
+        
+    );
+
+    public function rules(){
       return array(
           
            TRUE => array(
