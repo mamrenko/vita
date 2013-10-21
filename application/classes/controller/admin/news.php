@@ -54,18 +54,7 @@ class Controller_Admin_News extends Controller_Admin {
             
             $post = Validation::factory($_POST);
             
-            $post->rule('title', 'not_empty')
-             ->rule('title', 'min_lenght', array(':value', 3))
-             ->rule('content', 'not_empty')
-             ->rule('content', 'min_lenght', array(':value', 3))
-             ->rule('date', 'not_empty')
-             ->rule('date', 'date')
-              ->labels(array(
-                  'title' => 'Название новости',
-                  'content' => 'Текст н овости',
-                  'date' => 'Дата Ввода новости',
-              ))      
-                    ;
+            
             
             if ($post->check())
             {

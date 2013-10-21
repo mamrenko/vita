@@ -25,4 +25,25 @@ class Controller_Admin_Playbill extends Controller_Admin {
        
         
     }
+    
+    public function action_add(){
+        
+        $content = View::factory('admin/playbill/v_playbill_add');
+        $this->template->page_title = 'Мероприятия  :: Добавить';
+        $this->template->block_center = array($content);
+        
+    }
+    public function action_edit(){
+        
+        $content = View::factory('admin/playbill/v_playbill_edit');
+        $this->template->page_title = 'Мероприятия  :: Редактировать';
+        $this->template->block_center = array($content);
+        
+    }
+    
+    public function action_delete(){
+        
+        
+        
+    }
 }
