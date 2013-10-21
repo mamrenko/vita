@@ -8,4 +8,11 @@
          
     protected $_table_name = 'categories';
     
+     protected $_has_many = array(
+        'events' => array(
+        'model'   => 'event',
+        'through' => 'events_categories',
+    ),
+);
+
     }
