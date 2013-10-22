@@ -1,12 +1,15 @@
 
 <div id='adminmenu'>
     <ul>
-        <li class='active'><a href="<?=URL::base()?>admin"><span>Главная</span></a></li>
-        <li><a href="<?=URL::base()?>admin/orders"><span>Заказы</span></a></li>
-        <li><a href="<?=URL::base()?>admin/pages"><span>Страницы</span></a></li>
-        <li><a href="<?=URL::base()?>admin/playbill"><span>Мероприятия</span></a></li>
-        <li><a href="<?=URL::base()?>admin/users"><span>Пользователи</span></a></li>
-        <li><a href="<?=URL::base()?>admin/settings"><span>Настройки</span></a></li>
+        <?foreach($menu as $name => $menu ):?>
+        <?if(in_array($select, $menu)):?>
+        <li> <?=HTML::anchor('admin/'.$menu[0], $name, array('class' => 'select',
+            ))?> </li>
+        <?  else:?>
+        <li> <?=HTML::anchor('admin/'.$menu[0], $name)?> </li>
+        <?endif;?>
+        <?endforeach?>
+       
         <li class='last'><a href="<?=URL::base()?>"><span>На сайт</span></a></li>
               
             

@@ -63,3 +63,7 @@
   -moz-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
 }
+#adminmenu .select {
+       background: #8EB0B3 url(images/admin/pattern.png) top left repeat;
+       
+}
