@@ -29,6 +29,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
     public function action_add(){
         //Получение  Площадок
         $places = ORM::factory('place')->find_all()->as_array();
+        
 
         
         

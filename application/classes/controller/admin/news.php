@@ -12,7 +12,7 @@ class Controller_Admin_News extends Controller_Admin {
 
     public function action_index() {
         
-        $all_news = Model::factory('news')->get_news();
+        $all_news = ORM::factory('new');
         $content = View::factory('admin/news/v_news_index', array(
             'all_news' => $all_news,
         ));
@@ -27,7 +27,7 @@ class Controller_Admin_News extends Controller_Admin {
 
         $id = (int) $this->request->param('id');
 
-        $news = Model::factory('news')->get_one_news($id);
+        $news = ORM::factory('new', $id);
         $content = View::factory('admin/news/v_news_edit', array(
             'news' => $news,
         ));

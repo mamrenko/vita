@@ -8,11 +8,8 @@
      
 <div class="TTWForm-container">
       
-      <?=Form::open('admin/playbill/add', array('enctype' => 'multipart/form-data',
-          'style' => 'width: 400px',
-          'class' => 'TTWForm',
-          ))?>
-   
+       <form style="width: 400px;" action="admin/playbill/add" class="TTWForm"
+     method="multipart/form-data" novalidate="">
            
            
           <div id="field1-container" class="field f_100">
@@ -163,8 +160,8 @@
            
           <div id="form-submit" class="field f_100 clearfix submit">
                <input value="Добавить !" type="submit">
-          </div>
-     
+             </div>
+     </form>
 </div>
 
-<?=Form::close()?>
+
