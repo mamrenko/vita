@@ -1,47 +1,49 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 
 class Model_New extends ORM {
-  
 
-
-    public function rules(){
-      return array(
-           'title' => 'not_empty',
-           'title' =>  'min_lenght', array(':value', 3),
-           'content' => 'not_empty',
-           'content' =>'min_lenght', array(':value', 3),
-           'date' =>  'not_empty',
-           'date' => 'date',
-      );
-          
-           
-     }
-
-    public function labels(){
-       return array(
-                      'title' => 'Название новости',
-                      'content' => 'Текст н овости',
-                      'date' => 'Дата Ввода новости',
-                  );
-    }
-    
-    public function filters(){
+   public function rules()
+    {
         return array(
-           
-           TRUE =>  array(
-               
-               array('trim'),
-               ),
+            'title' => array(
+                array('not_empty'),
+                array('min_length', array(':value', 3)),
+                
+            ),
+             
             
-           'date' => array(
-             array(Format::date, array(':value', 'Y-m-d H:i:s')),  
-           ),
-           );
+            'content' => array(
+                array('not_empty'),
+                array('min_length', array(':value', 20)),
+            ),
+            'date' => array(
+                array('not_empty'),
+                array('date', array(':value', 'Y-m-d')),
+            )
+        );
+
+
     }
 
-    
+    public function labels()
+    {
+        return array(
+            'title' => 'Название',
+            'date' => 'Дата',
+            
+            'content' => 'Основной текст',
+        );
+    }
 
-
-
-    
+    public function filters()
+    {
+        return array(
+            TRUE => array(
+                array('trim'),
+            ),
+            'title' => array(
+                array('strip_tags'),
+            ),
+        );
+    }
 } 

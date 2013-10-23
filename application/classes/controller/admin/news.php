@@ -30,16 +30,32 @@ class Controller_Admin_News extends Controller_Admin {
         $id = (int) $this->request->param('id');
 
         $news = ORM::factory('new', $id);
-        $content = View::factory('admin/news/v_news_edit', array(
-            'news' => $news,
-        ));
-
+        if(!$news->loaded()){
+            $this->request->redirect('admin/news');
+        }
+          $data = $news->as_array();   
+       
         if (isset($_POST['submit'])) {
 
-            $news = Arr::extract($_POST, array('title', 'intro', 'content', 'date'));
-            Model::factory('news')->update_news($id, $news['title'], $news['intro'], $news['content'], $news['date']);
-            $this->request->redirect('admin/news/');
+            $data = Arr::extract($_POST, array('title', 'content', 'date'));
+            
+            $news->values($data);
+            
+            try {
+            $news->save(); 
+            $this->request->redirect('admin/news');
+            }  
+          catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('validation');
+            } 
+           
         }
+        
+        $content = View::factory('admin/news/v_news_edit')
+                ->bind('id', $id)
+                ->bind('errors', $errors)
+                ->bind('data', $data)
+                ;
 
         // Вывод в шаблон
         $this->template->block_center = array($content);
