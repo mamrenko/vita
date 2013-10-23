@@ -8,6 +8,17 @@ class Controller_Widgets_Adminmenupages extends Controller_Widgets {
     
     public function action_index()
     {
+        $select = Request::initial()->controller();
+        
+        $menu = array(
+             'Страницы' =>  array('pages'),
+             'Новости' =>  array('news'),
+             'Статьи' =>  array('articals'),
+             
+           
+        );
+        $this->template->menu = $menu;
+        $this->template->select = $select;
     }
 
 }

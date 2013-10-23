@@ -11,8 +11,8 @@
         <?endforeach?>
 	
         
-        <?foreach($scripts as $script) :?>
-            <?=HTML::script($script)?>
+        <?foreach ($scripts as $file_script):?>
+        <?=html::script($file_script)?>
         <?endforeach?>
 	
 </head>

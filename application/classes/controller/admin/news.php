@@ -4,15 +4,16 @@ class Controller_Admin_News extends Controller_Admin {
 
     public function before() {
         parent::before();
-
+      $submenu = Widget::load('adminmenupages');
         // Вывод в шаблон
-        $this->template->submenu = Widget::load('menupages');
+        $this->template->submenu = Widget::load('adminmenupages');
         $this->template->page_title = 'Новости';
+        $this->template->block_left = array($submenu);
     }
 
     public function action_index() {
-        
-        $all_news = ORM::factory('new');
+       
+        $all_news = ORM::factory('new')->find_all();
         $content = View::factory('admin/news/v_news_index', array(
             'all_news' => $all_news,
         ));
@@ -20,6 +21,7 @@ class Controller_Admin_News extends Controller_Admin {
 
         // Вывод в шаблон
         $this->template->block_center = array($content);
+         
     }
 
 
