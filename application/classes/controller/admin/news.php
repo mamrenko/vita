@@ -88,8 +88,13 @@ class Controller_Admin_News extends Controller_Admin {
 
     public function action_delete() {
         $id = (int) $this->request->param('id');
+        $pages = ORM::factory('new', $id);
 
-        Model::factory('news')->delete_news($id);
+        if(!$pages->loaded()) {
+            $this->request->redirect('admin/news');
+        }
+
+        $pages->delete();
         $this->request->redirect('admin/news');
     }
 }
