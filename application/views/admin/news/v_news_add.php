@@ -1,31 +1,37 @@
 <br/>
-
 <?if($errors):?>
+<?foreach ($errors as $error):?>
+<div class="error"><?=$error?></div>
+<?endforeach?>
+<?endif?>
 
-    <?foreach ($errors as $error):?>
-        <div><?=$error?></div>
-    <?endforeach;?>
-
-<?  endif;?>
-        
-<?=Form::open('admin/news/add')?>
-<table width="100%" cellspacing="10">
-    <tr>
-        <td ><?=Form::label('title', 'Название')?>:</td>
-        <td><?=Form::input('title', $post['title'], array('size' => 100))?></td>
-    </tr>
-    <tr>
-        <td ><?=Form::label('date', 'Дата')?>:</td>
-        <td><?=Form::input('date', date('d.m.Y'), array('size' => 100))?></td>
-    </tr>
+<div class="TTWForm-container">
+      
+     <?=Form::open('admin/news/add', array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 400px'));?>
     
-    <tr>
-        <td valign="top"><?=Form::label('content', 'Основной текст')?>: </td>
-        <td><?=Form::textarea('content', $post['content'], array('cols' => 100, 'rows' => 20))?></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center"><?=Form::submit('submit', 'Добавить')?></td>
-    </tr>
-</table>
-<?=Form::close()?>
-
+           
+           
+          <div id="field1-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+               <?=Form::label('title', 'Название')?>
+               <?=Form::input('title', $data['title'], array('size' => 100))?>
+          </div>
+           
+           
+          <div id="field2-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+              <?=Form::label('date', 'Дата')?>
+               <?=Form::input('date', date('Y-m-d'), array('size' => 100))?>
+          </div>
+           
+           
+          <div id="field3-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+               <?=Form::label('content', 'Основной текст')?>
+              <?=Form::textarea('content', $data['content'], array('cols' => 20, 'rows' => 5))?>
+               
+          </div>
+           
+           
+          <div id="form-submit" class="field f_100 clearfix submit">
+              <?=Form::submit('submit', 'Сохранить')?>
+          </div>
+   <?=Form::close()?>
+</div> 

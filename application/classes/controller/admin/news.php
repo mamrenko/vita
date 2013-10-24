@@ -63,33 +63,27 @@ class Controller_Admin_News extends Controller_Admin {
     }
 
     public function action_add() {
-       
-        
+       if (isset($_POST['submit'])) {
+            $data = Arr::extract($_POST, array('title',  'content', 'date'));
+            $news = ORM::factory('new');
+            $news->values($data);
 
-        $news = Arr::extract($_POST, array('title', 'content', 'date'));
-        
-        if (isset($_POST['submit'])) {
-            
-            $post = Validation::factory($_POST);
-            
-            
-            
-            if ($post->check())
-            {
-            
-            Model::factory('news')->add_news($news['title'],  $news['content'], $news['date']);
-            $this->request->redirect('admin/news');
+            try {
+                $news->save();
+                $this->request->redirect('admin/news');
             }
-            
-            $errors = $post->errors('validation');
+            catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('validation');
+            }
         }
+
         $content = View::factory('admin/news/v_news_add')
                 ->bind('errors', $errors)
-                ->bind('post', $post);
-        
+                ->bind('data', $data);
+
         // Вывод в шаблон
+        $this->template->page_title .= ':: Добавить';
         $this->template->block_center = array($content);
-        $this->template->page_title .= ' :: Добавить';
     }
 
     public function action_delete() {
