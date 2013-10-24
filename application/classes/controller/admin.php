@@ -18,7 +18,7 @@ class Controller_Admin extends Controller_Base {
         $this->template->scripts = array('media/js/jquery-ui-1.10.3.custom.js',
             'media/js/adminmenuleft.js',
             'media/js/tablett.js');
-        
+        $this->template->scripts[] = 'media/ckeditor/ckeditor.js';
         
         $this->template->block_left = null;
         $this->template->block_center = null;
