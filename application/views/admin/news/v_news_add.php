@@ -25,12 +25,12 @@
            
           <div id="field3-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
                <?=Form::label('content', 'Основной текст')?>
-              <?=Form::textarea('content', $data['content'], array('cols' => 20, 'rows' => 5))?>
-<!--              <script type="text/javascript">
-	CKEDITOR.replace( 'content' );
-</script>-->
-              
-             
+              <?=Form::textarea('content', $data['content'], array('cols' => 20, 'rows' => 5, 'id' => 'editor'))?>
+
+            
+             <script type="text/javascript">
+	CKEDITOR.replace( 'editor' );
+</script>
           </div>
            
            
@@ -39,6 +39,4 @@
           </div>
    <?=Form::close()?>
 </div> 
-
-
 

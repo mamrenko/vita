@@ -20,6 +20,7 @@ class Controller_Index_News extends Controller_Index {
         
         // Выводим в шаблон
         $this->template->page_title = 'Новости';
+         $this->template->title_content ='Новости';
         $this->template->block_center = array($content);
     }
 
@@ -34,7 +35,8 @@ class Controller_Index_News extends Controller_Index {
 
 
         // Выводим в шаблон
-        $this->template->page_title = HTML::anchor('news', 'Новости') . " &rarr; ".  $news->title;
+        $this->template->page_title ='Новости'.' | ' . $news->title;
+        $this->template->title_content = HTML::anchor('news', 'Новости') . " &rarr; ".  $news->title;
         $this->template->block_center = array($content);
     }
 }

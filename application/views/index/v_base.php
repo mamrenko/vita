@@ -41,6 +41,7 @@
                      <? if (isset($block_center)):?>
 			<div id="content">
 				<?foreach($block_center as $cblock):?>
+                            <h1> <?=$title_content?></h1>
                         <?=$cblock?>
                     <?endforeach?> 
 			</div><!-- #content-->
@@ -51,6 +52,7 @@
                 <? if (isset($block_left)):?>
 		<aside id="sideLeft">
                     <?foreach($block_left as $lblock):?>
+                   
                         <?=$lblock?>
                     <?endforeach?>
 		
