@@ -36,12 +36,14 @@ class Controller_Admin_News extends Controller_Admin {
           $data = $news->as_array();   
        
         if (isset($_POST['submit'])) {
-
+            $_POST['content'] = Security::xss_clean( $_POST['content']);
+            $_POST['title'] = Security::xss_clean( $_POST['title']);
             $data = Arr::extract($_POST, array('title', 'content', 'date'));
             
             $news->values($data);
             
             try {
+           
             $news->save(); 
             $this->request->redirect('admin/news');
             }  
@@ -64,6 +66,8 @@ class Controller_Admin_News extends Controller_Admin {
 
     public function action_add() {
        if (isset($_POST['submit'])) {
+            $_POST['content'] = Security::xss_clean( $_POST['content']);
+            $_POST['title'] = Security::xss_clean( $_POST['title']);
             $data = Arr::extract($_POST, array('title',  'content', 'date'));
             $news = ORM::factory('new');
             $news->values($data);
