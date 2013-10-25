@@ -14,6 +14,7 @@ class Controller_Index_Auth extends Controller_Index {
         
         // Выводим в шаблон
         $this->template->page_title = 'Вход';
+        $this->template->content_title ='Вход';
         $this->template->block_center = array($content);
     }
 
@@ -23,6 +24,7 @@ class Controller_Index_Auth extends Controller_Index {
 
         // Выводим в шаблон
         $this->template->page_title = 'Регистрация';
+        $this->template->content_title ='Регистрация';
         $this->template->block_center = array($content);
     }
 

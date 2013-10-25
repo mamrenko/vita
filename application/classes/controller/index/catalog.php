@@ -14,6 +14,7 @@ class Controller_Index_Catalog extends Controller_Index
             )
             ); 
              $this->template->page_title = 'Каталог';
+             $this->template->content_title ='Каталог';
              $this->template->block_center = array(
                 $content, 
              );

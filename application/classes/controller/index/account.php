@@ -20,6 +20,7 @@ class Controller_Index_Account extends Controller_Index {
 
         // Выводим в шаблон
         $this->template->page_title = 'Личный кабинет';
+        $this->template->content_title ='Личный кабинет';
         $this->template->block_center = array($content);
     }
 
@@ -29,6 +30,7 @@ class Controller_Index_Account extends Controller_Index {
         
         // Выводим в шаблон
         $this->template->page_title = 'Заказы';
+        $this->template->content_title ='Заказы';
         $this->template->block_center = array($content);
     }
 
@@ -38,6 +40,7 @@ class Controller_Index_Account extends Controller_Index {
 
         // Выводим в шаблон
         $this->template->page_title = 'Профиль';
+        $this->template->content_title ='Профиль';
         $this->template->block_center = array($content);
     }
 

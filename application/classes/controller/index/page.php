@@ -15,6 +15,7 @@ class Controller_Index_Page extends Controller_Index {
         
         // Выводим в шаблон
         $this->template->page_title = 'Страница';
+        $this->template->content_title ='Страница';
         $this->template->block_center = array($content);
     }
 
@@ -25,6 +26,7 @@ class Controller_Index_Page extends Controller_Index {
 
         // Выводим в шаблон
         $this->template->page_title = 'Контакты';
+        $this->template->content_title ='Контакты';
         $this->template->block_center = array($content);
     }
 

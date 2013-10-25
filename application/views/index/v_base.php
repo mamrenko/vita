@@ -41,7 +41,7 @@
                      <? if (isset($block_center)):?>
 			<div id="content">
 				<?foreach($block_center as $cblock):?>
-                            <h1> <?=$title_content?></h1>
+                            <h1> <?=$content_title?></h1>
                         <?=$cblock?>
                     <?endforeach?> 
 			</div><!-- #content-->

@@ -10,6 +10,7 @@ class Controller_Index_Cart extends Controller_Index {
         
         // Выводим в шаблон
         $this->template->page_title = 'Ваша корзина';
+        $this->template->content_title ='Корзина';
         $this->template->block_center = array($content);
         $this->template->block_left = null;
         $this->template->block_right = null;

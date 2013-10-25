@@ -19,6 +19,7 @@ class Controller_Admin_Articals extends Controller_Admin {
 
         // Вывод в шаблон
         $this->template->page_title = 'Статьи';
+        $this->template->content_title ='Статьи';
         $this->template->block_center = array($content);
         
     }
