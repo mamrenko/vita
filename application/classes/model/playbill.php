@@ -4,62 +4,73 @@
 
 class Model_Playbill extends ORM {
     
-    protected $belongs_to = array(
-           'place' => array(
-           'model' => 'place',
-           'foreign_key' => 'place_id',
+    
+    protected $_belongs_to = array(
+        'place' => array(
+            'model' => 'place',
+            'foreign_key' => 'place_id',
         ),
     );
-
      
    
-    public function rules(){
-      return array(
-          
-           TRUE => array(
-              array('not_empty',) 
-           ),
-          
-           'title' =>  array(
-               'min_lenght', 
-               array(':value', 3),),
-           
-           'description' =>array(
-               'min_lenght',
-               array(':value', 3),),
-           
-           'meta keywords' => array(
-               'min_lenght',
-               array(':value', 3),),
-           
-           'meta description' => array(
-               'min_lenght', 
-               array(':value', 3),) ,
-          
-      );
-          
-           
-     }
+ public function rules()
+    {
+        return array(
+            'title' => array(
+                array('not_empty'),
+                array('min_length', array(':value', 3)),
+                
+            ),
+             
+            'description' => array(
+                array('not_empty'),
+                array('min_length', array(':value', 20)),
+            ),
+            'meta_keywords' => array(
+                array('not_empty'),
+                array('min_length', array(':value', 10)),
+                
+            ),
+            'meta_description' => array(
+                array('not_empty'),
+                array('min_length', array(':value', 10)),
+                
+            ),
+            
+        );
+
+
+    }
 
     public function labels(){
        return array(
                       'title' => 'Название Мероприятия',
                       'description' => 'Описание мероприятия',
-                      'meta keywords' => 'Ключевые слова',
-                      'meta description' => 'Описание страницы для сео оптимизации',
+                      'meta_keywords' => 'Ключевые слова',
+                      'meta_description' => 'Описание страницы для сео оптимизации',
            
                   );
     }
     
-    public function filters(){
-        
-       return array(
-           
-           TRUE =>  array(
-               
-               array('trim'),
-               ),
-           );
+    public function filters()
+    {
+        return array(
+            TRUE => array(
+                array('trim'),
+            ),
+            'title' => array(
+                array('strip_tags'),
+            ),
+            'description' => array(
+                array('strip_tags'),
+            ),
+            'meta_keywords' => array(
+                array('strip_tags'),
+            ),
+            'meta_description' => array(
+                array('strip_tags'),
+            ),
+        );
     }
 } 
 

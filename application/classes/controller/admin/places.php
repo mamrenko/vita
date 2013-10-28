@@ -29,10 +29,6 @@ class Controller_Admin_Places extends Controller_Admin {
     }
     
     public function action_add(){
-        //Получение  Площадок
-        $places = ORM::factory('place')->find_all()->as_array();
-        
-
         
         
         if (isset($_POST['submit']))

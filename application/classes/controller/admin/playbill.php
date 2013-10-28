@@ -8,11 +8,12 @@ class Controller_Admin_Playbill extends Controller_Admin {
         
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
+            $this->template->page_title = 'Мероприятия';
            
     }
 
     public function action_index() {
-        $playbills = ORM::factory('playbill')->find_all();
+        $playbills = ORM::factory('playbill')->order_by('place_id')->find_all();
         
         $content = View::factory('admin/playbill/v_playbill_index',
                 array(
@@ -20,33 +21,37 @@ class Controller_Admin_Playbill extends Controller_Admin {
                 ));
 
         // Вывод в шаблон
-        $this->template->page_title = 'Мероприятия';
+        
         $this->template->block_center = array($content);
        
         
     }
     
     public function action_add(){
-        //Получение  Площадок
-        $places = ORM::factory('place')->find_all()->as_array();
-        
-
-        
+       $places = ORM::factory('place')->find_all()->as_array();
+       $pl = array();
+       foreach($places as $pl){
+           $pls[$pl->id] = $pl->title;
+       }
+       
         
         if (isset($_POST['submit']))
         {
-            // Работа с товаром
-            $data = Arr::extract($_POST, array('title', 'description', 'meta keywords', 
-                'meta description', 'place_id', 'start'));
+            $_POST['title'] = Security::xss_clean( $_POST['title']);
+            $_POST['description'] = Security::xss_clean( $_POST['description']);
+            $_POST['meta_keywords'] = Security::xss_clean( $_POST['meta_keywords']);
+            $_POST['meta_description'] = Security::xss_clean( $_POST['meta_description']);
+            
+            
+            $data = Arr::extract($_POST, array('title', 'description', 'meta_keywords', 
+                'meta_description', 'place_id', 'start'));
             $playbill = ORM::factory('playbill');
             $playbill->values($data);
         
 
          try {
                 $playbill->save();
-               
-           
-             $this->request->redirect('admin/playbill/edit/' . $playbill->pk());
+                $this->request->redirect('admin/playbill');
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -59,23 +64,76 @@ class Controller_Admin_Playbill extends Controller_Admin {
         $content = View::factory('admin/playbill/v_playbill_add')
                  ->bind('errors', $errors)
                  ->bind('data', $data)
-                 ->bind('places', $places);
+                 ->bind('pls', $pls)
+                 ;
 
-        $this->template->page_title = 'Мероприятия  :: Добавить';
+        $this->template->page_title .= ' :: Добавить';
         $this->template->block_center = array($content);
         
     }
     public function action_edit(){
         
-        $content = View::factory('admin/playbill/v_playbill_edit');
-        $this->template->page_title = 'Мероприятия  :: Редактировать';
+          $places = ORM::factory('place')->find_all()->as_array();
+            $pl = array();
+            foreach($places as $pl){
+                $pls[$pl->id] = $pl->title;
+            }
+       
+         $id = (int) $this->request->param('id');
+
+        $playbill = ORM::factory('playbill', $id);
+        if(!$playbill->loaded()){
+            $this->request->redirect('admin/playbill');
+        }
+          $data = $playbill->as_array();   
+       
+        if (isset($_POST['submit'])) {
+            $_POST['title'] = Security::xss_clean( $_POST['title']);
+            $_POST['description'] = Security::xss_clean( $_POST['description']);
+            $_POST['meta_keywords'] = Security::xss_clean( $_POST['meta_keywords']);
+            $_POST['meta_description'] = Security::xss_clean( $_POST['meta_description']);
+            
+            
+            $data = Arr::extract($_POST, array('title', 'description', 'meta_keywords', 
+                'meta_description', 'place_id', 'start'));
+            
+            $playbill->values($data);
+            
+            try {
+           
+            $playbill->save(); 
+            $this->request->redirect('admin/playbill');
+            }  
+          catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('validation');
+            } 
+           
+        }
+        
+        $content = View::factory('admin/playbill/v_playbill_edit')
+                ->bind('id', $id)
+                ->bind('errors', $errors)
+                ->bind('data', $data)
+                ->bind('pls', $pls)
+                ;
+
+        // Вывод в шаблон
         $this->template->block_center = array($content);
+        $this->template->page_title .= ' :: Редактировать';
         
     }
     
     public function action_delete(){
         
-        
+        $id = (int) $this->request->param('id');
+        $playbill = ORM::factory('playbill', $id);
+
+        if(!$playbill->loaded()) {
+            $this->request->redirect('admin/playbill');
+        }
+
+        $playbill->delete();
+        $this->request->redirect('admin/playbill');  
         
     }
 }

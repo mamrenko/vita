@@ -7,40 +7,35 @@
 
      
 <div class="TTWForm-container">
-      
-       <form style="width: 400px;" action="admin/playbill/add" class="TTWForm"
-     method="multipart/form-data" novalidate="">
+       <?=Form::open('admin/playbill/add', array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
+       
            
            
           <div id="field1-container" class="field f_100">
-               <label for="field1">
-                    Название
-               </label>
-               <input name="title" id="field1" required="required" type="text">
+                <?=Form::label('title', 'Название')?>
+               <?=Form::input('title', $data['title'], array('size' => 100, 'required' => 'required'))?>
           </div>
            
            
           <div id="field3-container" class="field f_100">
-               <label for="field3">
-                    Описание
-               </label>
-               <textarea rows="5" cols="20" name="description" id="field3" required="required"></textarea>
+                <?=Form::label('description', 'Описание')?>
+              <?=Form::textarea('description', $data['description'], array('cols' => 20, 'rows' => 5, 'id' => 'editor', 'required' => 'required'))?>
+           <script type="text/javascript">
+                    CKEDITOR.replace( 'editor' );
+               </script>
           </div>
            
            
           <div id="field4-container" class="field f_100">
-               <label for="field4">
-                    Ключевые слова
-               </label>
-               <input name="meta keywords" id="field4" required="required" type="text">
+                <?=Form::label('meta_keywords', 'Ключевые слова для Сео оптимизации')?>
+               <?=Form::input('meta_keywords', $data['meta_keywords'], array('size' => 100, 'required' => 'required'))?>
           </div>
            
            
           <div id="field5-container" class="field f_100">
-               <label for="field5">
-                    Описание страницы
-               </label>
-               <input name="meta description" id="field5" required="required" type="text">
+               <?=Form::label('meta_description', 'Описание страницы')?>
+               <?=Form::input('meta_description', $data['meta_description'], array('size' => 100, 'required' => 'required'))?>
+               
           </div>
            
            
@@ -51,6 +46,9 @@
                <select name="start" id="field6" required="required">
                     <option id="field6-1" value="09.00">
                          09.00
+                    </option>
+                    <option id="field6-2" value="10.00">
+                         09.30
                     </option>
                     <option id="field6-2" value="10.00">
                          10.00
@@ -106,7 +104,7 @@
                     <option name="start" id="start-19" value="18.30">
                          18.30
                     </option>
-                    <option name="start" id="start-20" value="19.00">
+                    <option name="start" id="start-20" selected value="19.00">
                          19.00
                     </option>
                     <option name="start" id="start-21" value="19.30">
@@ -144,24 +142,17 @@
            
            
           <div id="field8-container" class="field f_100">
-               <label for="field8">
-                    Площадка
-               </label>
-               <select name="place_id" id="field8" required="required">
-                   <?foreach ($places as $place):?>
-                    <option id="field8-1" value="<?=$place->id?>">
-                         <?=$place->title?>
-                    </option>
-                    <?endforeach;?>
-                    
-               </select>
+              <?=Form::label('pl', 'Площадка')?>
+              <br />
+              <?=Form::select('place_id', $pls, $data['place_id'],array())?>
+               
           </div>
            
            
           <div id="form-submit" class="field f_100 clearfix submit">
-               <input value="Добавить !" type="submit">
-             </div>
-     </form>
+              <?=Form::submit('submit', 'Сохранить')?>
+          </div>
+     <?=Form::close()?>
 </div>
 
 
