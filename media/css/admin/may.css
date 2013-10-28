@@ -1,5 +1,5 @@
 
-#header h2 {
+.header h2 {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color: #97B066;
 	font-weight: bold;
@@ -9,7 +9,7 @@
         
 	
 }
-#footer h2{
+.footer h2{
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color: #97B066;
 	font-weight: bold;
@@ -17,7 +17,7 @@
 	font-size: 18px;
 	padding-top: 5px;
 }
-#content h1 {
+.content h1 {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color: #5E3F1E;
 	font-weight: bold;
@@ -27,7 +27,7 @@
 	line-height: 20px;
 	padding-bottom: 10px;
 }
-#content h2 {
+.content h2 {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color: #97B066;
 	font-weight: bold;

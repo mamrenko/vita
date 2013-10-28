@@ -8,7 +8,7 @@
 
   <div class="TTWForm-container">
       
-      <?=Form::open('admin/news/edit/'. $id, array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 400px'));?>
+      <?=Form::open('admin/news/edit/'. $id, array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
     
            
            
