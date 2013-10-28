@@ -19,6 +19,7 @@ class Model_Playbill extends ORM {
             'title' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 3)),
+                array('max_length', array(':value', 150)),
                 
             ),
              
