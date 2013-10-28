@@ -8,6 +8,17 @@ class Controller_Widgets_Adminmenuproducts extends Controller_Widgets {
      
     public function action_index()
     {
+         $select = Request::initial()->controller();
+        
+        $menu = array(
+             'Мероприятия' =>  array('playbill'),
+             'Площадки' =>  array('places'),
+             'События' =>  array('events'),
+             
+           
+        );
+        $this->template->menu = $menu;
+        $this->template->select = $select;
     }
 
 }
