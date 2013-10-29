@@ -15,7 +15,7 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     public function action_index() {
        $places = ORM::factory('place')
                ->find_all();
-               
+             
         
         $content = View::factory('admin/playplaces/v_playplaces_index', array(
                     'places' => $places,
@@ -26,6 +26,30 @@ class Controller_Admin_Playplaces extends Controller_Admin {
        
         $this->template->block_center = array($content);
        
+        
+    }
+     public function action_list() {
+      $id = (int) $this->request->param('id');
+
+      
+      $place = ORM::factory('place', $id);
+      $playbills = $place->playbills->find_all();
+       
+//      if(!$playbills->loaded()){
+//         $this->request->redirect('admin/playplaces');
+//       }
+           
+        
+        $content = View::factory('admin/playplaces/v_playplaces_list', array(
+                    'playbills' => $playbills,
+                    'place' => $place,
+                )
+                );
+
+        // Вывод в шаблон
+       
+        $this->template->block_center = array($content);
+         
         
     }
     

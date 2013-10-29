@@ -6,8 +6,7 @@
 <br />
 <p>
   
-   <?=HTML::anchor('admin/playbill/add', HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/playbill/add', 'Добавить')?>
+   
 </p>
 <br />
 <table id="tfhover" class="tftable" border="1">
@@ -15,7 +14,7 @@
     <th>Площадка</th>
     
     
-    <th>Функции</th>
+    <th>Добавить мероприятие</th>
     
 </tr>
 <tr>
@@ -23,13 +22,12 @@
 <p></p>
 
    
-    <td><?=HTML::anchor('admin/playbill/edit/'.$place->id, $place->title)?></td>
+    <td><?=HTML::anchor('admin/playplaces/list/'.$place->id, $place->title)?></td>
    
    
     <td>
-            <?=HTML::anchor('admin/playbill/edit/'.$place->id, HTML::image('media/images/edit.png'))?>
-        &nbsp;&nbsp;
-            <?=HTML::anchor('admin/playbill/delete/'.$place->id, HTML::image('media/images/delete.png'))?>
+          <?=HTML::anchor('admin/playbill/add', HTML::image('media/images/add.png'))?>
+          <?=HTML::anchor('admin/playbill/add', 'Добавить Мероприятие')?>
     </td>
  
 </tr>
@@ -37,11 +35,7 @@
 </table>
 
 <br />
-<p>
-  
-   <?=HTML::anchor('admin/playbill/add', HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/playbill/add', 'Добавить')?>
-</p>
+
 
 <br />
 <p><small>Created with <a href="http://html-generator.weebly.com/css-table-generator.html" target="_blank">HTML Generator</a></small></p>

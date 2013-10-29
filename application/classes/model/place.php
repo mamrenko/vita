@@ -2,13 +2,13 @@
 
 class Model_Place extends ORM {
     
-    protected $has_many = array(
-           'playbills' => array(
-           'model' => 'playbill',
-           'foreign_key' => 'place_id',
-        ),
-        
-    );
+        protected $_has_many = array(
+		'playbills' => array(
+			'model' => 'playbill',
+			'foreign_key' => 'place_id',
+		),
+	);
+   
     
     
     public function rules()
