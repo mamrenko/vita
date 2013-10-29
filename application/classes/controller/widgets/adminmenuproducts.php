@@ -12,8 +12,10 @@ class Controller_Widgets_Adminmenuproducts extends Controller_Widgets {
         
         $menu = array(
              'Мероприятия' =>  array('playbill'),
+             'Мероприятия по Площадкам' =>  array('playplaces'),
              'Площадки' =>  array('places'),
              'События' =>  array('events'),
+            
              
            
         );
