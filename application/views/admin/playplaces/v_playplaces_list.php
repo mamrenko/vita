@@ -6,8 +6,8 @@
 <br />
 <p>
   
-   <?=HTML::anchor('admin/playbill/add', HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/playbill/add', 'Добавить')?>
+   <?=HTML::anchor('admin/playplaces/add/'.$place->id, HTML::image('media/images/add.png'))?>
+      <?=HTML::anchor('admin/playplaces/add/'.$place->id, 'Добавить')?>
 </p>
 <br />
 <table id="tfhover" class="tftable" border="1">
@@ -39,8 +39,8 @@
 <br />
 <p>
   
-   <?=HTML::anchor('admin/playbill/add', HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/playbill/add', 'Добавить')?>
+   <?=HTML::anchor('admin/playplaces/add/'.$place->id, HTML::image('media/images/add.png'))?>
+      <?=HTML::anchor('admin/playplaces/add/'.$place->id, 'Добавить')?>
 </p>
 
 <br />

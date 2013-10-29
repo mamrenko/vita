@@ -26,8 +26,8 @@
    
    
     <td>
-          <?=HTML::anchor('admin/playbill/add', HTML::image('media/images/add.png'))?>
-          <?=HTML::anchor('admin/playbill/add', 'Добавить Мероприятие')?>
+          <?=HTML::anchor('admin/playplaces/add/'. $place->id, HTML::image('media/images/add.png'))?>
+          <?=HTML::anchor('admin/playplaces/add/'. $place->id, 'Добавить Мероприятие')?>
     </td>
  
 </tr>

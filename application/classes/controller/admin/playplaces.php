@@ -54,23 +54,25 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     }
     
     public function action_add(){
-        
-        
+        $id = (int) $this->request->param('id');
+        $place = ORM::factory('place', $id);
         if (isset($_POST['submit']))
         {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
             $_POST['description'] = Security::xss_clean( $_POST['description']);
-            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
+            $_POST['meta_keywords'] = Security::xss_clean( $_POST['meta_keywords']);
+            $_POST['meta_description'] = Security::xss_clean( $_POST['meta_description']);
             
-            $data = Arr::extract($_POST, array('title', 'description', 'adress', 
-               ));
-            $place = ORM::factory('place');
-            $place->values($data);
+            
+            $data = Arr::extract($_POST, array('title', 'description', 'meta_keywords', 
+                'meta_description', 'place_id', 'start'));
+            $playbill = ORM::factory('playbill');
+            $playbill->values($data);
         
 
          try {
-                $place->save();
-                $this->request->redirect('admin/places');
+                $playbill->save();
+                $this->request->redirect('admin/playplaces/list/'.$id);
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -80,12 +82,13 @@ class Controller_Admin_Playplaces extends Controller_Admin {
         
 
 
-        $content = View::factory('admin/places/v_place_add')
+        $content = View::factory('admin/playplaces/v_playplaces_add')
                  ->bind('errors', $errors)
                  ->bind('data', $data)
+                 ->bind('place', $place)
                  ;
 
-         $this->template->page_title .= ' :: Добавить';
+        $this->template->page_title .= ' :: Добавить';
         $this->template->block_center = array($content);
         
     }
