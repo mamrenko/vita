@@ -30,11 +30,13 @@ class Model_Playbill extends ORM {
             'meta_keywords' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 10)),
+                array('max_length', array(':value', 150)),
                 
             ),
             'meta_description' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 10)),
+                array('max_length', array(':value', 150)),
                 
             ),
             
