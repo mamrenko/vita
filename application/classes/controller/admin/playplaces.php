@@ -56,9 +56,9 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     public function action_add(){
         $id = (int) $this->request->param('id');
         $place = ORM::factory('place', $id);
-//        if(!$id){
-//            $this->request->redirect('admin/playplaces');
-//        }
+        if(!$id){
+                 $this->request->redirect('admin/playplaces');
+             }
         $starts = ORM::factory('start')->find_all()->as_array();
         $str = array();
        foreach($starts as $str){
@@ -106,25 +106,35 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     public function action_edit(){
         
         $id = (int) $this->request->param('id');
-
-        $place = ORM::factory('place', $id);
-        if(!$place->loaded()){
-            $this->request->redirect('admin/places');
+        
+         $starts = ORM::factory('start')->find_all()->as_array();
+        $str = array();
+       foreach($starts as $str){
+           $start[$str->id] = $str->start;
+       }
+       
+        $playbill = ORM::factory('playbill', $id);
+        if(!$playbill->loaded()){
+            $this->request->redirect('admin/playplaces');
         }
-          $data = $place->as_array();   
+          $data = $playbill->as_array();   
        
         if (isset($_POST['submit'])) {
-            $_POST['title'] = Security::xss_clean( $_POST['title']);
+             $_POST['title'] = Security::xss_clean( $_POST['title']);
             $_POST['description'] = Security::xss_clean( $_POST['description']);
-            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
-            $data = Arr::extract($_POST, array('title', 'description', 'adress'));
+            $_POST['meta_keywords'] = Security::xss_clean( $_POST['meta_keywords']);
+            $_POST['meta_description'] = Security::xss_clean( $_POST['meta_description']);
             
-            $place->values($data);
+            
+            $data = Arr::extract($_POST, array('title', 'description', 'meta_keywords', 
+                'meta_description', 'place_id', 'start'));
+           
+            $playbill->values($data);
             
             try {
            
-            $place->save(); 
-            $this->request->redirect('admin/places');
+           $playbill->save(); 
+            $this->request->redirect('admin/playplaces/list'.$playbill->place_id);
             }  
           catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -132,10 +142,13 @@ class Controller_Admin_Playplaces extends Controller_Admin {
            
         }
         
-        $content = View::factory('admin/places/v_place_edit')
+        $content = View::factory('admin/playplaces/v_playplaces_edit')
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
+                ->bind('playbill', $playbill)
+                ->bind('start', $start)
+                        
                 ;
 
         // Вывод в шаблон

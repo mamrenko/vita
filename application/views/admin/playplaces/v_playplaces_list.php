@@ -23,7 +23,7 @@
 <p></p>
 
    
-    <td><?=HTML::anchor('admin/playplaces/list/'.$playbill->id, $playbill->title)?></td>
+    <td><?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, $playbill->title)?></td>
    
    
     <td>
