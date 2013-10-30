@@ -7,7 +7,7 @@
 <h2>Вернуться в <?=HTML::anchor('admin/playplaces/list/'.$place->id, $place->title)?></h2>
      
 <div class="TTWForm-container">
-       <?=Form::open('admin/playplaces/add/', array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
+       <?=Form::open('admin/playplaces/add/'.$id, array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
        
            
            

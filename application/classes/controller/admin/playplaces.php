@@ -56,7 +56,9 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     public function action_add(){
         $id = (int) $this->request->param('id');
         $place = ORM::factory('place', $id);
-        
+//        if(!$id){
+//            $this->request->redirect('admin/playplaces');
+//        }
         $starts = ORM::factory('start')->find_all()->as_array();
         $str = array();
        foreach($starts as $str){
@@ -79,7 +81,7 @@ class Controller_Admin_Playplaces extends Controller_Admin {
 
          try {
                 $playbill->save();
-                $this->request->redirect('admin/playplaces/list/'.$place->id);
+                $this->request->redirect('admin/playplaces/list/' . $id);
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -92,6 +94,7 @@ class Controller_Admin_Playplaces extends Controller_Admin {
         $content = View::factory('admin/playplaces/v_playplaces_add')
                  ->bind('errors', $errors)
                  ->bind('data', $data)
+                ->bind('id', $id)
                  ->bind('place', $place)
                 ->bind('start', $start)
                  ;
