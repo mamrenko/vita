@@ -6,7 +6,7 @@
 <br />
 <p>
   
-   <?=HTML::anchor('admin/playplaces/add/'.$place->id, HTML::image('media/images/add.png'))?>
+      <?=HTML::anchor('admin/playplaces/add/'.$place->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/playplaces/add/'.$place->id, 'Добавить')?>
 </p>
 <br />
@@ -27,9 +27,9 @@
    
    
     <td>
-            <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, HTML::image('media/images/edit.png'))?>
+            <?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, HTML::image('media/images/edit.png'))?>
         &nbsp;&nbsp;
-            <?=HTML::anchor('admin/playbill/delete/'.$playbill->id, HTML::image('media/images/delete.png'))?>
+            <?=HTML::anchor('admin/playplaces/delete/'.$playbill->id, HTML::image('media/images/delete.png'))?>
     </td>
  
 </tr>

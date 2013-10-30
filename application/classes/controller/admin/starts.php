@@ -2,67 +2,39 @@
 /*
  * Продукты
  */
-class Controller_Admin_Playplaces extends Controller_Admin {
+class Controller_Admin_Starts extends Controller_Admin {
     public function before() {
         parent::before();
         
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
-            $this->template->page_title = 'Мероприятия по Площадкам ';
+            $this->template->page_title = 'Начала Мероприятий';
            
     }
 
     public function action_index() {
-       $places = ORM::factory('place')
-               ->find_all();
-             
+        $starts = ORM::factory('start')->find_all();
         
-        $content = View::factory('admin/playplaces/v_playplaces_index', array(
-                    'places' => $places,
-                )
-                );
+        $content = View::factory('admin/starts/v_start_index',
+                array(
+                    'starts' => $starts,
+                ));
 
         // Вывод в шаблон
-       
+        
         $this->template->block_center = array($content);
        
-        
-    }
-     public function action_list() {
-      $id = (int) $this->request->param('id');
-
-      
-      $place = ORM::factory('place', $id);
-      $playbills = $place->playbills->find_all();
-       
-//      if(!$playbills->loaded()){
-//         $this->request->redirect('admin/playplaces');
-//       }
-           
-        
-        $content = View::factory('admin/playplaces/v_playplaces_list', array(
-                    'playbills' => $playbills,
-                    'place' => $place,
-                )
-                );
-
-        // Вывод в шаблон
-       
-        $this->template->block_center = array($content);
-         
         
     }
     
     public function action_add(){
-        $id = (int) $this->request->param('id');
-        $place = ORM::factory('place', $id);
-        
-        $starts = ORM::factory('start')->find_all()->as_array();
-        $str = array();
-       foreach($starts as $str){
-           $start[$str->id] = $str->start;
+       $places = ORM::factory('place')->find_all()->as_array();
+       $pl = array();
+       foreach($places as $pl){
+           $pls[$pl->id] = $pl->title;
        }
        
+        
         if (isset($_POST['submit']))
         {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
@@ -75,11 +47,11 @@ class Controller_Admin_Playplaces extends Controller_Admin {
                 'meta_description', 'place_id', 'start'));
             $playbill = ORM::factory('playbill');
             $playbill->values($data);
-          
+        
 
          try {
                 $playbill->save();
-                $this->request->redirect('admin/playplaces/list/'.$place->id);
+                $this->request->redirect('admin/playbill');
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -89,11 +61,10 @@ class Controller_Admin_Playplaces extends Controller_Admin {
         
 
 
-        $content = View::factory('admin/playplaces/v_playplaces_add')
+        $content = View::factory('admin/playbill/v_playbill_add')
                  ->bind('errors', $errors)
                  ->bind('data', $data)
-                 ->bind('place', $place)
-                ->bind('start', $start)
+                 ->bind('pls', $pls)
                  ;
 
         $this->template->page_title .= ' :: Добавить';
@@ -102,26 +73,36 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     }
     public function action_edit(){
         
-        $id = (int) $this->request->param('id');
+          $places = ORM::factory('place')->find_all()->as_array();
+            $pl = array();
+            foreach($places as $pl){
+                $pls[$pl->id] = $pl->title;
+            }
+       
+         $id = (int) $this->request->param('id');
 
-        $place = ORM::factory('place', $id);
-        if(!$place->loaded()){
-            $this->request->redirect('admin/places');
+        $playbill = ORM::factory('playbill', $id);
+        if(!$playbill->loaded()){
+            $this->request->redirect('admin/playbill');
         }
-          $data = $place->as_array();   
+          $data = $playbill->as_array();   
        
         if (isset($_POST['submit'])) {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
             $_POST['description'] = Security::xss_clean( $_POST['description']);
-            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
-            $data = Arr::extract($_POST, array('title', 'description', 'adress'));
+            $_POST['meta_keywords'] = Security::xss_clean( $_POST['meta_keywords']);
+            $_POST['meta_description'] = Security::xss_clean( $_POST['meta_description']);
             
-            $place->values($data);
+            
+            $data = Arr::extract($_POST, array('title', 'description', 'meta_keywords', 
+                'meta_description', 'place_id', 'start'));
+            
+            $playbill->values($data);
             
             try {
            
-            $place->save(); 
-            $this->request->redirect('admin/places');
+            $playbill->save(); 
+            $this->request->redirect('admin/playbill');
             }  
           catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -129,10 +110,11 @@ class Controller_Admin_Playplaces extends Controller_Admin {
            
         }
         
-        $content = View::factory('admin/places/v_place_edit')
+        $content = View::factory('admin/playbill/v_playbill_edit')
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
+                ->bind('pls', $pls)
                 ;
 
         // Вывод в шаблон
@@ -142,16 +124,16 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     }
     
     public function action_delete(){
+        
         $id = (int) $this->request->param('id');
-        $place = ORM::factory('place', $id);
+        $playbill = ORM::factory('playbill', $id);
 
-        if(!$place->loaded()) {
-            $this->request->redirect('admin/places');
+        if(!$playbill->loaded()) {
+            $this->request->redirect('admin/playbill');
         }
 
-        $place->delete();
-        $this->request->redirect('admin/places');
-    }
+        $playbill->delete();
+        $this->request->redirect('admin/playbill');  
         
-   
+    }
 }

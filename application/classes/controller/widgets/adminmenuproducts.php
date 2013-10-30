@@ -15,6 +15,7 @@ class Controller_Widgets_Adminmenuproducts extends Controller_Widgets {
              'Мероприятия по Площадкам' =>  array('playplaces'),
              'Площадки' =>  array('places'),
              'События' =>  array('events'),
+             'Начало мероприятий' =>  array('starts'),
             
              
            
