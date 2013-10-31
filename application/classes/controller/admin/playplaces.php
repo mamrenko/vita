@@ -107,7 +107,7 @@ class Controller_Admin_Playplaces extends Controller_Admin {
         
         $id = (int) $this->request->param('id');
         
-         $starts = ORM::factory('start')->find_all()->as_array();
+        $starts = ORM::factory('start')->find_all()->as_array();
         $str = array();
        foreach($starts as $str){
            $start[$str->id] = $str->start;
@@ -115,8 +115,8 @@ class Controller_Admin_Playplaces extends Controller_Admin {
        
         $playbill = ORM::factory('playbill', $id);
         if(!$playbill->loaded()){
-            $this->request->redirect('admin/playplaces');
-        }
+         $this->request->redirect('admin/playplaces');
+      }
           $data = $playbill->as_array();   
        
         if (isset($_POST['submit'])) {
@@ -134,7 +134,7 @@ class Controller_Admin_Playplaces extends Controller_Admin {
             try {
            
            $playbill->save(); 
-            $this->request->redirect('admin/playplaces/list'.$playbill->place_id);
+            $this->request->redirect('admin/playplaces/list/'.$playbill->place_id);
             }  
           catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
