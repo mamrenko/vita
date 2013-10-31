@@ -1,17 +1,13 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 
-class Model_Place extends ORM {
+class Model_Scene extends ORM {
     
-        protected $_has_many = array(
-		'playbills' => array(
-			'model' => 'playbill',
-			'foreign_key' => 'place_id',
-		),
-            'scenes' => array(
-			'model' => 'scene',
-			'foreign_key' => 'place_id',
-		),
-	);
+        protected $_belongs_to = array(
+        'place' => array(
+            'model' => 'place',
+            'foreign_key' => 'place_id',
+        ),
+    );
    
     
     
