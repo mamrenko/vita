@@ -159,14 +159,14 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     
     public function action_delete(){
         $id = (int) $this->request->param('id');
-        $place = ORM::factory('place', $id);
-
-        if(!$place->loaded()) {
-            $this->request->redirect('admin/places');
+        $playbill = ORM::factory('playbill', $id);
+        $place = $playbill->place;
+        if(!$playbill->loaded()) {
+            $this->request->redirect('admin/playplaces/list/'. $place->id);
         }
 
-        $place->delete();
-        $this->request->redirect('admin/places');
+        $playbill->delete();
+        $this->request->redirect('admin/playplaces/list/'. $place->id);
     }
         
    
