@@ -45,7 +45,7 @@
          <?endif?>
 <br />
 <p>
-  
+   
    <?=HTML::anchor('admin/scenes/add/'.$place->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/scenes/add/'.$place->id, 'Добавить')?>
 </p>

@@ -17,17 +17,9 @@ class Model_Scene extends ORM {
             'title' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 3)),
-                
+                array('max_length', array(':value', 100)),
             ),
-             'adress' => array(
-                array('not_empty'),
-                
-            ),
-            
-            'description' => array(
-                array('not_empty'),
-                array('min_length', array(':value', 20)),
-            ),
+             
             
         );
 
@@ -37,10 +29,8 @@ class Model_Scene extends ORM {
     public function labels()
     {
         return array(
-            'title' => 'Название Площадки',
-            'adress' => 'Адрес Площадки',
+            'title' => 'Название  Сцены',
             
-            'description' => 'Описание  Площадки',
         );
     }
 

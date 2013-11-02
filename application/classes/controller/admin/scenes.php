@@ -56,7 +56,7 @@ class Controller_Admin_Scenes extends Controller_Admin {
 
          try {
                 $scene->save();
-                $this->request->redirect('scenes/list'. $id);
+                $this->request->redirect('admin/scenes/list/'. $id);
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -98,7 +98,7 @@ class Controller_Admin_Scenes extends Controller_Admin {
             try {
            
             $scene->save(); 
-            $this->request->redirect('admin//scenes/list/'. $id);
+            $this->request->redirect('admin/scenes/list/'. $scene->place_id);
             }  
           catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -121,14 +121,15 @@ class Controller_Admin_Scenes extends Controller_Admin {
     
     public function action_delete(){
         $id = (int) $this->request->param('id');
-        $place = ORM::factory('place', $id);
-
-        if(!$place->loaded()) {
-            $this->request->redirect('admin/places');
+        $scene = ORM::factory('scene', $id);
+        $place = $scene->place;
+        if(!$scene->loaded()) {
+            $this->request->redirect('admin/scenes/list/'. $place->id);
         }
 
-        $place->delete();
-        $this->request->redirect('admin/places');
+        $scene->delete();
+        $this->request->redirect('admin/scenes/list/'. $place->id);
+    
     }
         
    
