@@ -37,23 +37,26 @@ class Controller_Admin_Scenes extends Controller_Admin {
     }
     
     public function action_add(){
-        
+        $id = (int) $this->request->param('id');
+        $place = ORM::factory('place', $id);
+        if(!$id){
+                 $this->request->redirect('admin/places');
+             }
         
         if (isset($_POST['submit']))
         {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
-            $_POST['description'] = Security::xss_clean( $_POST['description']);
-            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
             
-            $data = Arr::extract($_POST, array('title', 'description', 'adress', 
+            
+            $data = Arr::extract($_POST, array('title',  'place_id', 
                ));
-            $place = ORM::factory('place');
-            $place->values($data);
+            $scene = ORM::factory('scene');
+            $scene->values($data);
         
 
          try {
-                $place->save();
-                $this->request->redirect('admin/places');
+                $scene->save();
+                $this->request->redirect('scenes/list'. $id);
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -63,9 +66,11 @@ class Controller_Admin_Scenes extends Controller_Admin {
         
 
 
-        $content = View::factory('admin/places/v_place_add')
+        $content = View::factory('admin/scenes/v_scene_add')
                  ->bind('errors', $errors)
                  ->bind('data', $data)
+                ->bind('id', $id)
+                ->bind('place', $place)
                  ;
 
          $this->template->page_title .= ' :: Добавить';
@@ -76,24 +81,24 @@ class Controller_Admin_Scenes extends Controller_Admin {
         
         $id = (int) $this->request->param('id');
 
-        $place = ORM::factory('place', $id);
-        if(!$place->loaded()){
+        $scene = ORM::factory('scene', $id);
+        $place = $scene->place;
+        if(!$scene->loaded()){
             $this->request->redirect('admin/places');
         }
-          $data = $place->as_array();   
+          $data = $scene->as_array();   
        
         if (isset($_POST['submit'])) {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
-            $_POST['description'] = Security::xss_clean( $_POST['description']);
-            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
-            $data = Arr::extract($_POST, array('title', 'description', 'adress'));
             
-            $place->values($data);
+            $data = Arr::extract($_POST, array('title', 'place_id'));
+            
+            $scene->values($data);
             
             try {
            
-            $place->save(); 
-            $this->request->redirect('admin/places');
+            $scene->save(); 
+            $this->request->redirect('admin//scenes/list/'. $id);
             }  
           catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -101,10 +106,11 @@ class Controller_Admin_Scenes extends Controller_Admin {
            
         }
         
-        $content = View::factory('admin/places/v_place_edit')
+        $content = View::factory('admin/scenes/v_scene_edit')
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
+                ->bind('scene', $scene)
                 ;
 
         // Вывод в шаблон
