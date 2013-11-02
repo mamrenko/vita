@@ -19,14 +19,15 @@ class Controller_Admin_Scenes extends Controller_Admin {
         if(!$place->loaded()){
             $this->request->redirect('admin/places');
         }
-      $scenes = $place->scenes;
+      $scenes = $place->scenes->find_all();
+      
         
-        $content = View::factory('admin/scenes/v_scenes_list', array(
-                    'scenes' => $scenes,
-                    'id' => $id,
-                    'place' => $place,
-                )
-                );
+        $content = View::factory('admin/scenes/v_scenes_list')
+                   
+                    ->bind('place', $place) 
+                    ->bind('scenes', $scenes)
+                    
+                ;
 
         // Вывод в шаблон
         
