@@ -11,15 +11,22 @@
     <th>Название</th>
     <th>Начало</th>
      <th>Сцена</th>
-    <th>Функции</th>
-    
+    <th>Цены</th>
+   
 </tr>
 <tr>
     <?foreach ($playbills as $playbill):?>
 <p></p>
 
     <td><?=$playbill->place->title?></td>
-    <td><?=HTML::anchor('admin/playbill/edit/'.$playbill->id, $playbill->title)?></td>
+    <td>
+        <?if(count($playbill->costs->find_all()) > 0):?> 
+        <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, $playbill->title)?>
+        <p>Можно добавить событие</p>
+         <?else:?>
+        <?=$playbill->title?>
+        <?endif?>
+    </td>
     <td><?=$playbill->starts->start?></td>
     <td><?=$playbill->scene->title?></td>
     <td>
