@@ -3,7 +3,7 @@
 
  
 
-    class Model_Start extends ORM{
+    class Model_Cost extends ORM{
             
  
 

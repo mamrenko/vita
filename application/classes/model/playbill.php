@@ -10,9 +10,27 @@ class Model_Playbill extends ORM {
             'model' => 'place',
             'foreign_key' => 'place_id',
         ),
+        'starts' => array(
+            'model' => 'start',
+            'foreign_key' => 'start',
+        ),
+        'scene' => array(
+            'model' => 'scene',
+            'foreign_key' => 'scene_id',
+        ),
+        
     );
      
    
+    
+    protected $_has_many = array(
+		'costs' => array(
+			'model' => 'cost',
+			'foreign_key' => 'playbill_id',
+		),
+                
+	);
+    
  public function rules()
     {
         return array(

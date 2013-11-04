@@ -7,7 +7,7 @@ class Model_Place extends ORM {
 			'model' => 'playbill',
 			'foreign_key' => 'place_id',
 		),
-            'scenes' => array(
+                'scenes' => array(
 			'model' => 'scene',
 			'foreign_key' => 'place_id',
 		),

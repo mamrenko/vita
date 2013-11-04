@@ -15,6 +15,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
     public function action_index() {
         $playbills = ORM::factory('playbill')->order_by('place_id')->find_all();
         
+        
         $content = View::factory('admin/playbill/v_playbill_index',
                 array(
                     'playbills' => $playbills,
