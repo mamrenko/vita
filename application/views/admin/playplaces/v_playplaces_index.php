@@ -11,7 +11,7 @@
 <br />
 <table id="tfhover" class="tftable" border="1">
 <tr>
-    <th>Площадка</th>
+    <th>Список мероприятий Площадки</th>
     
     
     <th>Добавить мероприятие</th>
@@ -26,8 +26,14 @@
    
    
     <td>
+        <?if(count($place->scenes->find_all()) > 0):?>
           <?=HTML::anchor('admin/playplaces/add/'. $place->id, HTML::image('media/images/add.png'))?>
           <?=HTML::anchor('admin/playplaces/add/'. $place->id, 'Добавить Мероприятие')?>
+        <?else:?>
+        <h3>Здесь нет сцен</h3>
+        <?=HTML::anchor('admin/scenes/add/'.$place->id, HTML::image('media/images/add.png'))?>
+        <?=HTML::anchor('admin/scenes/add/'.$place->id, 'Добавить Сцену')?>
+         <?endif?>
     </td>
  
 </tr>

@@ -4,7 +4,7 @@
 
 
 </h2>
-<p><?=HTML::anchor('admin/places','Вернуться')?></p>
+<p><?=HTML::anchor('admin/places','Вернуться на Список Площадок')?></p>
 <br />
 <p>
   

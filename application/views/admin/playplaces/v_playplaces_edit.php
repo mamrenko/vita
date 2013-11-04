@@ -57,6 +57,14 @@
 
           </div>
            
+               <div id="field9-container" class="field f_100">
+               
+               <?=Form::label('scene_id', 'Сцена')?>:
+               <br />
+               <?=Form::select('scene_id', 
+                  $scene, $data['scene_id'],
+                  array())?>
+               </div>
            
           <div id="form-submit" class="field f_100 clearfix submit">
               <?=Form::submit('submit', 'Сохранить')?>

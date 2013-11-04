@@ -56,9 +56,18 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     public function action_add(){
         $id = (int) $this->request->param('id');
         $place = ORM::factory('place', $id);
+        
         if(!$id){
                  $this->request->redirect('admin/playplaces');
              }
+
+        $scenes = $place->scenes->find_all()->as_array();
+        
+        $scn = array();
+        foreach ($scenes as $scn){
+            $scene[$scn->id] = $scn->title;
+        }
+   
         $starts = ORM::factory('start')->find_all()->as_array();
         $str = array();
        foreach($starts as $str){
@@ -74,7 +83,7 @@ class Controller_Admin_Playplaces extends Controller_Admin {
             
             
             $data = Arr::extract($_POST, array('title', 'description', 'meta_keywords', 
-                'meta_description', 'place_id', 'start'));
+                'meta_description', 'place_id', 'scene_id', 'start'));
             $playbill = ORM::factory('playbill');
             $playbill->values($data);
           
@@ -94,9 +103,10 @@ class Controller_Admin_Playplaces extends Controller_Admin {
         $content = View::factory('admin/playplaces/v_playplaces_add')
                  ->bind('errors', $errors)
                  ->bind('data', $data)
-                ->bind('id', $id)
+                 ->bind('id', $id)
                  ->bind('place', $place)
-                ->bind('start', $start)
+                 ->bind('start', $start)
+                 ->bind('scene', $scene)
                  ;
 
         $this->template->page_title .= ' :: Добавить';
@@ -117,17 +127,26 @@ class Controller_Admin_Playplaces extends Controller_Admin {
         if(!$playbill->loaded()){
          $this->request->redirect('admin/playplaces');
       }
+                $scenes = ORM::factory('scene')
+                ->where('place_id', '=', $playbill->place_id)
+                ->find_all()
+                ->as_array();
+        
+        $scn = array();
+        foreach ($scenes as $scn){
+            $scene[$scn->id] = $scn->title;
+        }
           $data = $playbill->as_array();   
        
         if (isset($_POST['submit'])) {
-             $_POST['title'] = Security::xss_clean( $_POST['title']);
+            $_POST['title'] = Security::xss_clean( $_POST['title']);
             $_POST['description'] = Security::xss_clean( $_POST['description']);
             $_POST['meta_keywords'] = Security::xss_clean( $_POST['meta_keywords']);
             $_POST['meta_description'] = Security::xss_clean( $_POST['meta_description']);
             
             
             $data = Arr::extract($_POST, array('title', 'description', 'meta_keywords', 
-                'meta_description', 'place_id', 'start'));
+                'meta_description', 'place_id','scene_id', 'start'));
            
             $playbill->values($data);
             
@@ -148,7 +167,7 @@ class Controller_Admin_Playplaces extends Controller_Admin {
                 ->bind('data', $data)
                 ->bind('playbill', $playbill)
                 ->bind('start', $start)
-                        
+                ->bind('scene', $scene)        
                 ;
 
         // Вывод в шаблон
