@@ -13,12 +13,15 @@ class Controller_Admin_Playbill extends Controller_Admin {
     }
 
     public function action_index() {
-        $playbills = ORM::factory('playbill')->order_by('place_id')->find_all();
-        
+        $playbills = ORM::factory('playbill')
+                ->group_by('place_id')
+                ->order_by('place_id')
+                ->find_all();
         
         $content = View::factory('admin/playbill/v_playbill_index',
                 array(
                     'playbills' => $playbills,
+                    
                 ));
 
         // Вывод в шаблон
@@ -28,6 +31,32 @@ class Controller_Admin_Playbill extends Controller_Admin {
         
     }
     
+    
+    public function action_list() {
+        
+        $id = (int) $this->request->param('id');
+
+      
+      $place = ORM::factory('place', $id);
+      $playbills = $place->playbills->find_all();
+       
+//      if(!$playbills->loaded()){
+//         $this->request->redirect('admin/playplaces');
+//       }
+           
+        
+        $content = View::factory('admin/playbill/v_playbill_list', array(
+                    'playbills' => $playbills,
+                    'place' => $place,
+                )
+                );
+
+        // Вывод в шаблон
+       
+        $this->template->block_center = array($content);
+         
+        
+    }
     public function action_add(){
        $places = ORM::factory('place')->find_all()->as_array();
        $pl = array();
