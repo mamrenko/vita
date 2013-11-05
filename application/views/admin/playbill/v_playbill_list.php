@@ -37,8 +37,8 @@
         <?endforeach?>
         <?else:?>
         <p>Здесь нет Цен</p>
-      <?=HTML::anchor('admin/playbill/add', HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/playbill/add', 'Цены')?>
+      <?=HTML::anchor('admin/costs/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
+      <?=HTML::anchor('admin/costs/add/'.$playbill->id, 'Цены')?>
         <?endif?>
     </td>
     <td>

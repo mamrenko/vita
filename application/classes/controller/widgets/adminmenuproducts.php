@@ -11,7 +11,7 @@ class Controller_Widgets_Adminmenuproducts extends Controller_Widgets {
          $select = Request::initial()->controller();
         
         $menu = array(
-             'Мероприятия' =>  array('playbill'),
+             'Мероприятия' =>  array('playbill', 'costs'),
              'Мероприятия по Площадкам' =>  array('playplaces'),
              'Площадки' =>  array('places'),
              'События' =>  array('events'),
