@@ -16,7 +16,7 @@ class Controller_Widgets_Adminmenuproducts extends Controller_Widgets {
              'Площадки' =>  array('places'),
              'События' =>  array('events'),
              'Начало мероприятий' =>  array('starts'),
-            
+             'Сектора' =>  array('areas'),
              
            
         );
