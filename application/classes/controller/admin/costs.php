@@ -100,7 +100,7 @@ class Controller_Admin_Costs extends Controller_Admin {
             
             
             $data = Arr::extract($_POST, array('sector', 'price', 'playbill_id'));
-            $cost = ORM::factory('cost');
+           
             $cost->values($data);
         
             

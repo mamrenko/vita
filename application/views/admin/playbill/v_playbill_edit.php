@@ -1,4 +1,14 @@
-<h2>Начало мероприятия <?=$playbill->starts->start?></h2>
+
+
+<br />
+<p>
+  
+      <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, HTML::image('media/images/goback.png'))?>
+      <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, 'Вернуться')?>
+</p>
+<h2>
+    
+    Начало мероприятия <?=$playbill->starts->start?></h2>
 <h2>Сцена: <?=$playbill->scene->title?></h2>
  <?=HTML::anchor('admin/costs/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/costs/add/'.$playbill->id, 'Цены')?>
