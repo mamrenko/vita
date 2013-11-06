@@ -3,22 +3,17 @@
 <div class="error"><?=$error?></div>
 <?endforeach?>
 <?endif?>
-<?if(count($costs) > 0):?> 
   <br />
 <p>
   
       <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, HTML::image('media/images/goback.png'))?>
       <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, 'Вернуться')?>
 </p>
-<?else:?>
-   <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, 'Вернуться')?>
-         <?endif?>
  <h2><?=$playbill->title?></h2>
  <h2><?=$playbill->place->title?></h2>
   <div class="TTWForm-container">
       
-      <?=Form::open('admin/costs/add/'.$id, array(
+      <?=Form::open('admin/costs/edit/'.$id, array(
           'class' => 'TTWForm ui-sortable-disabled',
           'style' => 'width: 700px'));?>
     
@@ -61,31 +56,3 @@
 
 </div> 
  
-<?if(count($costs) > 0):?> 
-<table id="tfhover" class="tftable" border="1">
-<tr>
-  
-    
-    <th>Сектор</th>
-    <th>Цены</th>
-    
-</tr> 
- <?foreach ($costs as $cost):?>
-<tr>
-    <td>
-          <?=$cost->area->title?>
-    </td>
-
-
-    
-    <td>
-       <?=$cost->price?>
-    </td>
-     
-</tr>
-   <? endforeach; ?> 
-
-</table>
-<?else:?>
-   
-         <?endif?>

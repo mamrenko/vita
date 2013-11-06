@@ -82,25 +82,32 @@ class Controller_Admin_Costs extends Controller_Admin {
        
          $id = (int) $this->request->param('id');
 
-        $area = ORM::factory('area', $id);
-        if(!$area->loaded()){
-            $this->request->redirect('admin/areas');
+        $cost = ORM::factory('cost', $id);
+        if(!$cost->loaded()){
+            $this->request->redirect('admin/playbill');
         }
-          $data = $area->as_array();   
+          $playbill = $cost->playbill;
+           $areas = ORM::factory('area')->find_all()->as_array();
+        
+       $area = array();
+       foreach($areas as $area){
+           $aarea[$area->id] = $area->title;
+       }
+          $data = $cost->as_array();   
        
         if (isset($_POST['submit'])) {
-            $_POST['title'] = Security::xss_clean( $_POST['title']);
+            $_POST['price'] = Security::xss_clean( $_POST['price']);
             
             
-            
-            $data = Arr::extract($_POST, array('title'));
-            
-            $area->values($data);
+            $data = Arr::extract($_POST, array('sector', 'price', 'playbill_id'));
+            $cost = ORM::factory('cost');
+            $cost->values($data);
+        
             
             try {
            
-            $area->save(); 
-            $this->request->redirect('admin/areas');
+            $cost->save(); 
+            $this->request->redirect('admin/playbill/edit/'.$playbill->id);
             }  
           catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -108,10 +115,12 @@ class Controller_Admin_Costs extends Controller_Admin {
            
         }
         
-        $content = View::factory('admin/areas/v_area_edit')
+        $content = View::factory('admin/costs/v_cost_edit')
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
+                ->bind('playbill', $playbill)
+                ->bind('aarea', $aarea)
                 
                 ;
 
@@ -124,14 +133,15 @@ class Controller_Admin_Costs extends Controller_Admin {
     public function action_delete(){
         
         $id = (int) $this->request->param('id');
-        $area = ORM::factory('area', $id);
+        $cost = ORM::factory('cost', $id);
+       
+        $playbill=$cost->playbill;
+      if(!$cost->loaded()) {
+        $this->request->redirect('admin/playbill');
+      }
 
-        if(!$area->loaded()) {
-            $this->request->redirect('admin/areas');
-        }
-
-        $area->delete();
-        $this->request->redirect('admin/areas');  
+        $cost->delete();
+        $this->request->redirect('admin/playbill/edit/'.$playbill->id);  
         
     }
 }

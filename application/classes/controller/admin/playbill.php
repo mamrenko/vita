@@ -103,11 +103,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
     }
     public function action_edit(){
         
-          $places = ORM::factory('place')->find_all()->as_array();
-            $pl = array();
-            foreach($places as $pl){
-                $pls[$pl->id] = $pl->title;
-            }
+         
        
          $id = (int) $this->request->param('id');
 
@@ -115,41 +111,19 @@ class Controller_Admin_Playbill extends Controller_Admin {
         if(!$playbill->loaded()){
             $this->request->redirect('admin/playbill');
         }
-          $data = $playbill->as_array();   
+          
        
-        if (isset($_POST['submit'])) {
-            $_POST['title'] = Security::xss_clean( $_POST['title']);
-            $_POST['description'] = Security::xss_clean( $_POST['description']);
-            $_POST['meta_keywords'] = Security::xss_clean( $_POST['meta_keywords']);
-            $_POST['meta_description'] = Security::xss_clean( $_POST['meta_description']);
-            
-            
-            $data = Arr::extract($_POST, array('title', 'description', 'meta_keywords', 
-                'meta_description', 'place_id', 'start'));
-            
-            $playbill->values($data);
-            
-            try {
-           
-            $playbill->save(); 
-            $this->request->redirect('admin/playbill');
-            }  
-          catch (ORM_Validation_Exception $e) {
-                $errors = $e->errors('validation');
-            } 
-           
-        }
+        
         
         $content = View::factory('admin/playbill/v_playbill_edit')
                 ->bind('id', $id)
-                ->bind('errors', $errors)
-                ->bind('data', $data)
-                ->bind('pls', $pls)
+                ->bind('playbill', $playbill)
+                
                 ;
 
         // Вывод в шаблон
         $this->template->block_center = array($content);
-        $this->template->page_title .= ' :: Редактировать';
+        $this->template->page_title = $playbill->title . '<br /> Площадка: '.$playbill->place->title;
         
     }
     
