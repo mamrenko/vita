@@ -28,6 +28,10 @@ class Model_Playbill extends ORM {
 			'model' => 'cost',
 			'foreign_key' => 'playbill_id',
 		),
+                'events' => array(
+			'model' => 'event',
+			'foreign_key' => 'playbill_id',
+		),
                 
 	);
     

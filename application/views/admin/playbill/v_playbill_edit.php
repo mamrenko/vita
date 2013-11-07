@@ -52,3 +52,59 @@
       <?=HTML::anchor('admin/costs/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/costs/add/'.$playbill->id, 'Цены')?>
         <?endif?>
+ 
+        
+         
+        <?if(count($playbill->events->find_all()) > 0):?> 
+         <?$events = $playbill->events->find_all()?>
+       
+        <br /> 
+        <br /> 
+      
+        
+      <?=HTML::anchor('admin/events/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
+      <?=HTML::anchor('admin/events/add/'.$playbill->id, 'События')?>
+        
+<table id="tfhover" class="tftable" border="1">
+<tr>
+    
+    <th>Дата</th>
+    <th>Жанры</th>
+    <th>На Главной</th>
+    <th>Функции</th>
+    
+</tr>
+
+    
+    
+    
+    
+        <?foreach($events as $event):?>
+ <tr>   
+     <td>    
+           <?=$event->day?>
+     </td>
+     <td>
+         <?=$event->playbill_id?> руб.
+     </td> 
+     <td>
+          На Главной
+     </td>
+   
+    <td>
+      
+            <?=HTML::anchor('admin/events/edit/'.$event->id, HTML::image('media/images/edit.png'))?>
+       
+            <?=HTML::anchor('admin/events/delete/'.$event->id, HTML::image('media/images/delete.png'))?>
+     
+    </td>
+</tr>
+    <?endforeach?>
+    
+</table> 
+    <?else:?>
+        <br />
+        <p>Здесь нет Событий</p>
+      <?=HTML::anchor('admin/events/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
+      <?=HTML::anchor('admin/events/add/'.$playbill->id, 'События')?>
+        <?endif?>

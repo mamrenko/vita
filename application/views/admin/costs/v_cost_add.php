@@ -50,14 +50,7 @@
               <?=Form::submit('submit', 'Сохранить')?>
           </div>
    <?=Form::close()?>
-       
-    <h2>
-       
-    </h2>
-    <h2>
-    
-    </h2>
-
+   
 
 </div> 
  

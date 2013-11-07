@@ -108,6 +108,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
          $id = (int) $this->request->param('id');
 
         $playbill = ORM::factory('playbill', $id);
+        $events = $playbill->events;
         if(!$playbill->loaded()){
             $this->request->redirect('admin/playbill');
         }
@@ -118,6 +119,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
         $content = View::factory('admin/playbill/v_playbill_edit')
                 ->bind('id', $id)
                 ->bind('playbill', $playbill)
+                ->bind('events', $events)
                 
                 ;
 

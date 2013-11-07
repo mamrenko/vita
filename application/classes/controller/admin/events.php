@@ -5,7 +5,11 @@
 class Controller_Admin_Events extends Controller_Admin {
     public function before() {
         parent::before();
-        
+            $this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
+            $this->template->scripts[] = 'media/js/datepicker.js';
+            $this->template->scripts[] = 'media/js/datap.js';
+            $this->template->styles[] = 'media/css/datepicker.css';
+            
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
             $this->template->page_title = 'События ';
@@ -30,23 +34,33 @@ class Controller_Admin_Events extends Controller_Admin {
     }
     
     public function action_add(){
-        
-        
+        $id = (int) $this->request->param('id');
+        $playbill = ORM::factory('playbill', $id);
+        $events = $playbill->events->find_all();
+        if(!$id){
+                 $this->request->redirect('admin/playbill');
+             }
+        $categories = ORM::factory('category')->find_all()->as_array();
+
+        $cats = array();
+        foreach ($categories as $cat){
+            $cats[$cat->id] = $cat->title;
+        }
         if (isset($_POST['submit']))
         {
-            $_POST['title'] = Security::xss_clean( $_POST['title']);
-            $_POST['description'] = Security::xss_clean( $_POST['description']);
-            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
+            $_POST['day'] = Security::xss_clean( $_POST['day']);
             
-            $data = Arr::extract($_POST, array('title', 'description', 'adress', 
+            
+            $data = Arr::extract($_POST, array('day', 'status',  'playbill_id','place_id','scene_id', 'cat', 
                ));
-            $place = ORM::factory('place');
-            $place->values($data);
+            $event = ORM::factory('event');
+            $event->values($data);
         
 
          try {
-                $place->save();
-                $this->request->redirect('admin/places');
+                $event->save();
+                $event->add('categories', $data['cat']);
+                $this->request->redirect('admin/events/add/'. $playbill->id);
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -56,9 +70,13 @@ class Controller_Admin_Events extends Controller_Admin {
         
 
 
-        $content = View::factory('admin/places/v_place_add')
+        $content = View::factory('admin/events/v_event_add')
                  ->bind('errors', $errors)
                  ->bind('data', $data)
+                 ->bind('playbill', $playbill)
+                 ->bind('cats', $cats)
+                 ->bind('id', $id)
+                 ->bind('events', $events)
                  ;
 
          $this->template->page_title .= ' :: Добавить';
@@ -108,14 +126,20 @@ class Controller_Admin_Events extends Controller_Admin {
     
     public function action_delete(){
         $id = (int) $this->request->param('id');
-        $place = ORM::factory('place', $id);
+        $event = ORM::factory('event', $id);
+        $playbill = $event->playbill;
+        $categories = ORM::factory('category')->find_all()->as_array();
 
-        if(!$place->loaded()) {
-            $this->request->redirect('admin/places');
+        
+        
+        if(!$event->loaded()) {
+            $this->request->redirect('admin/playbill');
         }
 
-        $place->delete();
-        $this->request->redirect('admin/places');
+        
+        $event->remove('categories');
+        $event->delete();
+        $this->request->redirect('admin/playbill/edit/'.$playbill->id);
     }
         
    
