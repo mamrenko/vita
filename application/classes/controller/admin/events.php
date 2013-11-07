@@ -50,8 +50,16 @@ class Controller_Admin_Events extends Controller_Admin {
         {
             $_POST['day'] = Security::xss_clean( $_POST['day']);
             
-            
-            $data = Arr::extract($_POST, array('day', 'status',  'playbill_id','place_id','scene_id', 'cat', 
+            if(!isset($_POST['cat'])){
+                $_POST['cat'] = 6;
+            }
+            $data = Arr::extract($_POST, array(
+                'day',
+                'status', 
+                'playbill_id',
+                'place_id',
+                'scene_id', 
+                'cat', 
                ));
             $event = ORM::factory('event');
             $event->values($data);

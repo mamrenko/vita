@@ -32,15 +32,15 @@
           <div id="field6-container" class="field f_100">
               <?=Form::label('cat', 'Выбрать Категории')?>: 
               <br />
-              <?=Form::select('cat[]', $cats,1, $data['cat'], array('multiple' => 'multiple', 'size' => 10))?>
+              <?=Form::label('cat', 'Категории')?>: <br/><br/><?=Form::select('cat[]', $cats, $data['cat'], array('multiple' => 'multiple', 'size' => 10))?><br/><br/>
               
                
           </div>
            
            
           <div id="field2-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
-              <?=Form::label('status', 'Показывать на Главной')?>:
-                  <?=Form::checkbox('status', 1, true)?> Да
+              <?=Form::label('status', 'Показывать на главной')?>:
+              <br/><br/><?=Form::checkbox('status', 1, (bool) $data['status'])?> Активен
           </div>
       
             <div id="field8-container" class="field f_100">
