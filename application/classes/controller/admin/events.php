@@ -36,7 +36,7 @@ class Controller_Admin_Events extends Controller_Admin {
     public function action_add(){
         $id = (int) $this->request->param('id');
         $playbill = ORM::factory('playbill', $id);
-        $events = $playbill->events->find_all();
+        $events = $playbill->events->order_by('day')->find_all();
         if(!$id){
                  $this->request->redirect('admin/playbill');
              }
@@ -95,24 +95,42 @@ class Controller_Admin_Events extends Controller_Admin {
         
         $id = (int) $this->request->param('id');
 
-        $place = ORM::factory('place', $id);
-        if(!$place->loaded()){
-            $this->request->redirect('admin/places');
+        $event = ORM::factory('event', $id);
+        if(!$event->loaded()){
+            $this->request->redirect('admin/playbill');
         }
-          $data = $place->as_array();   
+            $categories = ORM::factory('category')->find_all()->as_array();
+
+            $cats = array();
+            foreach ($categories as $cat){
+                $cats[$cat->id] = $cat->title;
+            }
+          $playbill = $event->playbill;
+          $data = $event->as_array();
+          $data['cat'] = $event->categories->find_all()->as_array();
        
         if (isset($_POST['submit'])) {
-            $_POST['title'] = Security::xss_clean( $_POST['title']);
-            $_POST['description'] = Security::xss_clean( $_POST['description']);
-            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
-            $data = Arr::extract($_POST, array('title', 'description', 'adress'));
+             $_POST['day'] = Security::xss_clean( $_POST['day']);
             
-            $place->values($data);
+            if(!isset($_POST['cat'])){
+                $_POST['cat'] = 6;
+            }
+            $data = Arr::extract($_POST, array(
+                'day',
+                'status', 
+                'playbill_id',
+                'place_id',
+                'scene_id', 
+                'cat', 
+               ));
+            $event->values($data);
             
             try {
            
-            $place->save(); 
-            $this->request->redirect('admin/places');
+            $event->save(); 
+            $event->remove('categories');
+            $event->add('categories', $data['cat']);
+            $this->request->redirect('admin/playbill/edit/'.$playbill->id);
             }  
           catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -120,10 +138,13 @@ class Controller_Admin_Events extends Controller_Admin {
            
         }
         
-        $content = View::factory('admin/places/v_place_edit')
+        $content = View::factory('admin/events/v_event_edit')
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
+                ->bind('playbill', $playbill)
+                ->bind('cats', $cats)
+                ->bind('event', $event)
                 ;
 
         // Вывод в шаблон
@@ -134,7 +155,7 @@ class Controller_Admin_Events extends Controller_Admin {
     
     public function action_delete(){
         $id = (int) $this->request->param('id');
-        $event = ORM::factory('event', $id);
+        $event = ORM::factory('event', $id)->order_by('day');
         $playbill = $event->playbill;
         $categories = ORM::factory('category')->find_all()->as_array();
 

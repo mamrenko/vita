@@ -69,8 +69,9 @@
 <tr>
     
     <th>Дата</th>
-    <th>Жанры</th>
     <th>На Главной</th>
+    <th>Жанры</th>
+    
     <th>Функции</th>
     
 </tr>
@@ -85,10 +86,18 @@
            <?=$event->day?>
      </td>
      <td>
-         <?=$event->playbill_id?> руб.
+         <?if($event->status > 0):?> 
+На Главной
+<?else:?>
+    Не показано на главной
+         <?endif?>
      </td> 
      <td>
-          На Главной
+      <?$categories = $event->categories->find_all();?> 
+        <?foreach($categories as $cat):?>
+         <p><?=$cat->title?></p>
+         <?endforeach;?>
+
      </td>
    
     <td>

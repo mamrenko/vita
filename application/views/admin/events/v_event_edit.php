@@ -17,7 +17,7 @@
  
  <div class="TTWForm-container">
       
-      <?=Form::open('admin/events/add/'.$playbill->id, array(
+      <?=Form::open('admin/events/edit/'.$event->id, array(
           'class' => 'TTWForm ui-sortable-disabled',
           'style' => 'width: 700px'));?>
     
@@ -63,49 +63,4 @@
    <?=Form::close()?>
    
 
-</div> 
-
- <?if(count($events) > 0):?> 
-<table id="tfhover" class="tftable" border="1">
-<tr>
-  
-    
-    <th>Дата</th>
-    <th>На Главной</th>
-    <th>Жанры </th>
-    
-</tr> 
- <?foreach ($events as $event):?>
-<tr>
-    <td>
-          <?=$event->day?>
-    </td>
-
-
-    
-    <td>
-       
-       <?if($event->status > 0):?> 
-На Главной
-<?else:?>
-    Не показано на главной
-         <?endif?>
-     
-    </td>
-    <td>
-        <?$categories = $event->categories->find_all();?> 
-        <?foreach($categories as $cat):?>
-         <p><?=$cat->title?></p>
-         <?endforeach;?>
-        
-        
-    </td>
-</tr>
-   <? endforeach; ?> 
-
-</table>
-<?else:?>
-   
-         <?endif?>
-<br />
-<br />
+</div>
