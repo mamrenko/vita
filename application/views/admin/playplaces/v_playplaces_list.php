@@ -28,8 +28,12 @@
    
     <td>
             <?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, HTML::image('media/images/edit.png'))?>
-        &nbsp;&nbsp;
+         <?if(count($playbill->event->playbill_id) > 0):?>
+     
+        <p>Удалить нельзя,есть события</p>
+          <?else:?>
             <?=HTML::anchor('admin/playplaces/delete/'.$playbill->id, HTML::image('media/images/delete.png'))?>
+        <?endif?>
     </td>
  
 </tr>

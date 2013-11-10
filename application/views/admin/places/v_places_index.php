@@ -18,9 +18,14 @@
    <td><?=$place->adress?></td>
    <td><?=HTML::anchor('admin/scenes/list/'. $place->id, 'Сцены')?></td>
     <td>
+        
            <?=HTML::anchor('admin/places/edit/'. $place->id, HTML::image('media/images/edit.png'))?>
-
-           <?=HTML::anchor('admin/places/delete/'. $place->id, HTML::image('media/images/delete.png'))?>
+        <?if(count($place->event->place_id) > 0):?>
+     
+        <p>Удалить нельзя,есть события</p>
+          <?else:?>
+         <?=HTML::anchor('admin/places/delete/'. $place->id, HTML::image('media/images/delete.png'))?>
+        <?endif?>
     </td>
 </tr>
  <? endforeach; ?>  

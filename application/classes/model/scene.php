@@ -8,7 +8,14 @@ class Model_Scene extends ORM {
             'foreign_key' => 'place_id',
         ),
     );
-   
+   protected $_has_one = array(
+        'event' => array(
+            'model' => 'event',
+            'foreign_key' => 'scene_id',
+            ),
+        
+       
+        );
     
     
     public function rules()

@@ -39,6 +39,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
       
       $place = ORM::factory('place', $id);
       $playbills = $place->playbills->find_all();
+      
        
 //      if(!$playbills->loaded()){
 //         $this->request->redirect('admin/playplaces');
@@ -48,6 +49,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
         $content = View::factory('admin/playbill/v_playbill_list', array(
                     'playbills' => $playbills,
                     'place' => $place,
+                    
                 )
                 );
 

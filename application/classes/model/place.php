@@ -13,7 +13,16 @@ class Model_Place extends ORM {
 		),
 	);
    
-    
+   
+    protected $_has_one = array(
+        'event' => array(
+            'model' => 'event',
+            'foreign_key' => 'place_id',
+            ),
+        
+       
+        );
+
     
     public function rules()
     {

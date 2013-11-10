@@ -3,7 +3,12 @@
 <div class="error"><?=$error?></div>
 <?endforeach?>
 <?endif?>
-
+<br />
+<p>
+  
+      <?=HTML::anchor('admin/places/', HTML::image('media/images/goback.png'))?>
+      <?=HTML::anchor('admin/places/', 'Вернуться')?>
+</p>
 
   <div class="TTWForm-container">
       

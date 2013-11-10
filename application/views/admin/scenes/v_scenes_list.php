@@ -1,10 +1,13 @@
-<h1></h1>
+
 <h2>
     <?=$place->title?>
 
-
 </h2>
-<p><?=HTML::anchor('admin/places','Вернуться на Список Площадок')?></p>
+<p>
+  
+      <?=HTML::anchor('admin/places', HTML::image('media/images/goback.png'))?>
+      <?=HTML::anchor('admin/places', 'Вернуться')?>
+</p>
 <br />
 <p>
   
@@ -31,8 +34,12 @@
    
     <td>
             <?=HTML::anchor('admin/scenes/edit/'.$scene->id, HTML::image('media/images/edit.png'))?>
-        &nbsp;&nbsp;
+       <?if(count($scene->event->scene_id) > 0):?>
+     
+        <p>Удалить нельзя,есть события</p>
+          <?else:?>
             <?=HTML::anchor('admin/scenes/delete/'.$scene->id, HTML::image('media/images/delete.png'))?>
+         <?endif?>
     </td>
  
 </tr>

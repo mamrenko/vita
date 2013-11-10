@@ -10,7 +10,6 @@
     <th>Площадка</th>
    
     
-   
 </tr>
 <tr>
     <?foreach ($playbills as $playbill):?>

@@ -11,13 +11,13 @@ class Controller_Widgets_Adminmenuproducts extends Controller_Widgets {
          $select = Request::initial()->controller();
         
         $menu = array(
-             'Мероприятия' =>  array('playbill', 'costs'),
+             'События по Площадкам' =>  array('playbill', 'costs'),
              'Мероприятия по Площадкам' =>  array('playplaces'),
              'Площадки' =>  array('places'),
              'События' =>  array('events'),
              'Начало мероприятий' =>  array('starts'),
              'Сектора' =>  array('areas'),
-             
+             'Категории' =>  array('categories'),
            
         );
         $this->template->menu = $menu;

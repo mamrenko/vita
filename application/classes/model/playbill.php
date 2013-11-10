@@ -34,6 +34,14 @@ class Model_Playbill extends ORM {
 		),
                 
 	);
+    protected $_has_one = array(
+        'event' => array(
+            'model' => 'event',
+            'foreign_key' => 'playbill_id',
+            ),
+        
+       
+        );
     
  public function rules()
     {

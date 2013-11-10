@@ -108,11 +108,11 @@ class Controller_Admin_Places extends Controller_Admin {
     public function action_delete(){
         $id = (int) $this->request->param('id');
         $place = ORM::factory('place', $id);
-
+      
         if(!$place->loaded()) {
             $this->request->redirect('admin/places');
         }
-
+        
         $place->delete();
         $this->request->redirect('admin/places');
     }
