@@ -3,6 +3,13 @@
 
 </h2>
 <h3>(На сайте показываются только События).</h3>
+
+
+<p>
+  
+      <?=HTML::anchor('admin/playplaces', HTML::image('media/images/goback.png'))?>
+      <?=HTML::anchor('admin/playplaces', 'Вернуться')?>
+</p>
 <br />
 <p>
   
@@ -28,7 +35,7 @@
    
     <td>
             <?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, HTML::image('media/images/edit.png'))?>
-         <?if(count($playbill->event->playbill_id) > 0):?>
+         <?if(count($playbill->events->find_all()) > 0):?>
      
         <p>Удалить нельзя,есть события</p>
           <?else:?>

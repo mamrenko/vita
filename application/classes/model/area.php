@@ -4,6 +4,14 @@
  
 
     class Model_Area extends ORM{
+        
+         protected $_has_many = array(
+		'costs' => array(
+			'model' => 'cost',
+			'foreign_key' => 'sector',
+		),
+                
+	);
           public function rules()
     {
         return array(

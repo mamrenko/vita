@@ -23,8 +23,12 @@
    
     <td>
             <?=HTML::anchor('admin/categories/edit/'.$cat->id, HTML::image('media/images/edit.png'))?>
-        &nbsp;&nbsp;
+        <?if(count($cat->events->find_all()) > 0):?>
+      
+        <p>Удалить нельзя,есть события</p>
+          <?else:?>
             <?=HTML::anchor('admin/categories/delete/'.$cat->id, HTML::image('media/images/delete.png'))?>
+         <?endif?>
     </td>
  
 </tr>

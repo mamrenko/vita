@@ -23,8 +23,12 @@
    
     <td>
             <?=HTML::anchor('admin/areas/edit/'.$area->id, HTML::image('media/images/edit.png'))?>
-        &nbsp;&nbsp;
+        <?if(count($area->costs->find_all()) > 0):?>
+      
+        <p>Удалить нельзя</p>
+          <?else:?>
             <?=HTML::anchor('admin/areas/delete/'.$area->id, HTML::image('media/images/delete.png'))?>
+         <?endif?>
     </td>
  
 </tr>

@@ -24,7 +24,7 @@ class Model_Scene extends ORM {
             'title' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 3)),
-                array('max_length', array(':value', 100)),
+                array('max_length', array(':value', 40)),
             ),
              
             
