@@ -20,7 +20,7 @@
 <table id="tfhover" class="tftable" border="1">
 <tr>
     <th>Площадка <?=$place->title?></th>
-    
+     <th>Сцена</th>
     
     <th>Функции</th>
     
@@ -31,7 +31,9 @@
 
    
     <td><?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, $playbill->title)?></td>
-   
+    <td>
+        <?=$playbill->scene->title?>
+    </td>
    
     <td>
             <?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, HTML::image('media/images/edit.png'))?>

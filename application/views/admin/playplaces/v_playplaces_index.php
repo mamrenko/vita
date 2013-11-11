@@ -20,6 +20,7 @@
    <?if(count($place->scenes->find_all()) > 0):?>
     <td>
         <?=HTML::anchor('admin/playplaces/list/'.$place->id, $place->title)?>
+        <p>Список мероприятий</p>
     </td>
    
    

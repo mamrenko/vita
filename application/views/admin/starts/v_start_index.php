@@ -1,6 +1,10 @@
-<h2>
 
-</h2>
+<p>
+<?=HTML::anchor('admin/starts/add', HTML::image('media/images/add.png'))?>
+    
+<?=HTML::anchor('admin/starts/add', 'Добавить')?>
+</p>
+<br/>
 <table id="tfhover" class="tftable" border="1">
 <tr>
     <th>Начало Мероприятий</th>
@@ -19,8 +23,12 @@
    
     <td>
             <?=HTML::anchor('admin/starts/edit/'.$start->id, HTML::image('media/images/edit.png'))?>
-        &nbsp;&nbsp;
+       <?if(count($start->playbills->find_all()) > 0):?>
+     
+        <p>Удалить нельзя</p>
+          <?else:?>
             <?=HTML::anchor('admin/starts/delete/'.$start->id, HTML::image('media/images/delete.png'))?>
+        <?endif?>
     </td>
  
 </tr>
