@@ -38,13 +38,13 @@ class Controller_Admin_Categories extends Controller_Admin {
             
             
             $data = Arr::extract($_POST, array('title'));
-            $area = ORM::factory('area');
-            $area->values($data);
+            $categories = ORM::factory('category');
+            $categories->values($data);
         
 
          try {
-                $area->save();
-                $this->request->redirect('admin/areas');
+                $categories->save();
+                $this->request->redirect('admin/categories');
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -54,7 +54,7 @@ class Controller_Admin_Categories extends Controller_Admin {
         
 
 
-        $content = View::factory('admin/areas/v_area_add')
+        $content = View::factory('admin/categories/v_cat_add')
                  ->bind('errors', $errors)
                  ->bind('data', $data)
                  
@@ -70,11 +70,11 @@ class Controller_Admin_Categories extends Controller_Admin {
        
          $id = (int) $this->request->param('id');
 
-        $area = ORM::factory('area', $id);
-        if(!$area->loaded()){
-            $this->request->redirect('admin/areas');
+        $categories = ORM::factory('category', $id);
+        if(!$categories->loaded()){
+            $this->request->redirect('admin/categories');
         }
-          $data = $area->as_array();   
+          $data = $categories->as_array();   
        
         if (isset($_POST['submit'])) {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
@@ -83,12 +83,12 @@ class Controller_Admin_Categories extends Controller_Admin {
             
             $data = Arr::extract($_POST, array('title'));
             
-            $area->values($data);
+            $categories->values($data);
             
             try {
            
-            $area->save(); 
-            $this->request->redirect('admin/areas');
+            $categories->save(); 
+            $this->request->redirect('admin/categories');
             }  
           catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -96,7 +96,7 @@ class Controller_Admin_Categories extends Controller_Admin {
            
         }
         
-        $content = View::factory('admin/areas/v_area_edit')
+        $content = View::factory('admin/categories/v_cat_edit')
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
@@ -112,14 +112,14 @@ class Controller_Admin_Categories extends Controller_Admin {
     public function action_delete(){
         
         $id = (int) $this->request->param('id');
-        $area = ORM::factory('area', $id);
+        $categories = ORM::factory('category', $id);
 
-        if(!$area->loaded()) {
-            $this->request->redirect('admin/areas');
+        if(!$categories->loaded()) {
+            $this->request->redirect('admin/categories');
         }
 
-        $area->delete();
-        $this->request->redirect('admin/areas');  
+        $categories->delete();
+        $this->request->redirect('admin/categories');  
         
     }
 }

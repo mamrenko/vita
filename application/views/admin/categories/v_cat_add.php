@@ -6,13 +6,13 @@
 <br />
 <p>
   
-      <?=HTML::anchor('admin/areas', HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/areas', 'Вернуться')?>
+      <?=HTML::anchor('admin/categories', HTML::image('media/images/goback.png'))?>
+      <?=HTML::anchor('admin/categories', 'Вернуться')?>
 </p>
 
   <div class="TTWForm-container">
       
-      <?=Form::open('admin/areas/add', array('
+      <?=Form::open('admin/categories/add', array('
           class' => 'TTWForm ui-sortable-disabled',
           'style' => 'width: 700px'));?>
     
@@ -29,3 +29,4 @@
           </div>
    <?=Form::close()?>
 </div> 
+
