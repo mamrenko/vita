@@ -18,6 +18,7 @@ class Controller_Admin_Events extends Controller_Admin {
 
     public function action_index() {
        $events = ORM::factory('event')
+               ->order_by('day')
                ->find_all();
                
         

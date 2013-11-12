@@ -3,8 +3,13 @@
 <div class="error"><?=$error?></div>
 <?endforeach?>
 <?endif?>
-
-<h2>Вернуться в <?=HTML::anchor('admin/scenes/list/'.$place->id, $place->title)?></h2>
+<br />
+<p>
+  
+      <?=HTML::anchor('admin/scenes/list/'.$place->id, HTML::image('media/images/goback.png'))?>
+      <?=HTML::anchor('admin/scenes/list/'.$place->id, 'Вернуться '  . $place->title)?>
+</p>
+<h2><?=$place->title?></h2>
      
 <div class="TTWForm-container">
        <?=Form::open('admin/scenes/add/'.$id, array(
@@ -25,7 +30,7 @@
           <div id="field8-container" class="field f_100">
              
               
-              <h2>Площадка: <?=$place->title?></h2>
+              
               <?=Form::hidden('place_id', $place->id)?>
 
           </div>

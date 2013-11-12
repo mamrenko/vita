@@ -49,7 +49,8 @@
          <?foreach($events as $event):?>
         <p><?=$event->day?></p>
         <?  endforeach;?>
-        
+         <?=HTML::anchor('admin/events/add/'.$playbill->id, HTML::image('media/images/add.png'))?> 
+        <?=HTML::anchor('admin/events/add/'.$playbill->id, 'Событие')?> 
          <?else:?>
         <br />
         <?=HTML::anchor('admin/events/add/'.$playbill->id, HTML::image('media/images/add.png'))?> 

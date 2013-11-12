@@ -8,7 +8,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
         
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
-            $this->template->page_title = 'Мероприятия';
+            $this->template->page_title = 'События';
            
     }
 
