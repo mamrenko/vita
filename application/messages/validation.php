@@ -24,4 +24,11 @@ return array(
 	'range'         => ':field must be within the range of :param2 to :param3',
 	'regex'         => ':field does not match the required format',
 	'url'           => ':field must be a url',
+       'image' => array(
+	'Upload::valid'    	=> ':field Ошибка загрузки',
+    	'Upload::not_empty'    	=> ':field Ничего не загруженно!!!!',
+    	'Upload::type'    	=> ':field Загружен файл неподходящего типа',
+    	'Upload::size'    	=> ':field Файл слишком большой',
+    	'default'  		=> ':field Ошибка',
+    )
 );

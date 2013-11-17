@@ -4,10 +4,16 @@
 <?endforeach?>
 <?endif?>
 
-<h2>Вернуться в <?=HTML::anchor('admin/playplaces/list/'.$place->id, $place->title)?></h2>
+<h2>
+  <?=HTML::anchor('admin/playplaces/list/'. $place->id, HTML::image('media/images/goback.png'))?>
+  <?=HTML::anchor('admin/playplaces/list/'.$place->id, $place->title)?>
+</h2>
      
 <div class="TTWForm-container">
-       <?=Form::open('admin/playplaces/add/'.$id, array('enctype' => 'multipart/form-data','class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
+       <?=Form::open('admin/playplaces/add/'.$id, array(
+           'enctype' => 'multipart/form-data',
+           'class' => 'TTWForm ui-sortable-disabled', 
+           'style' => 'width: 700px'));?>
        
            
            
@@ -26,23 +32,28 @@
           </div>
            
            
-          <div id="field4-container" class="field f_100">
+           <div id="field4-container" class="field f_100">
+                <?=Form::label('meta_title', 'meta_title для Сео оптимизации')?>
+               <?=Form::input('meta_title', $data['meta_title'], array('size' => 100, 'required' => 'required'))?>
+          </div>
+           
+          <div id="field5-container" class="field f_100">
                 <?=Form::label('meta_keywords', 'Ключевые слова для Сео оптимизации')?>
                <?=Form::input('meta_keywords', $data['meta_keywords'], array('size' => 100, 'required' => 'required'))?>
           </div>
            
            
-          <div id="field5-container" class="field f_100">
-               <?=Form::label('meta_description', 'Описание страницы')?>
+          <div id="field6-container" class="field f_100">
+               <?=Form::label('meta_description', 'meta_description Описание страницы')?>
                <?=Form::input('meta_description', $data['meta_description'], array('size' => 100, 'required' => 'required'))?>
                
           </div>
            
            
-          <div id="field6-container" class="field f_100">
+          <div id="field7-container" class="field f_100">
                <?=Form::label('start', 'Начало мероприятия')?>
               <br />
-              <?=Form::select('start', $start,21, $data['start'],array())?>
+              <?=Form::select('start', $start,21, $data['start'])?>
               
                
           </div>

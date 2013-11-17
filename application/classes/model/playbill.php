@@ -50,6 +50,12 @@ class Model_Playbill extends ORM {
                 array('not_empty'),
                 array('min_length', array(':value', 20)),
             ),
+            'meta_title' => array(
+                array('not_empty'),
+                array('min_length', array(':value', 10)),
+                array('max_length', array(':value', 150)),
+                
+            ),
             'meta_keywords' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 10)),
@@ -72,6 +78,7 @@ class Model_Playbill extends ORM {
        return array(
                       'title' => 'Название Мероприятия',
                       'description' => 'Описание мероприятия',
+                      'meta_title' => 'Мета тайтл для оптимизации',
                       'meta_keywords' => 'Ключевые слова',
                       'meta_description' => 'Описание страницы для сео оптимизации',
            
@@ -88,6 +95,9 @@ class Model_Playbill extends ORM {
                 array('strip_tags'),
             ),
             'description' => array(
+                array('strip_tags'),
+            ),
+            'meta_title' => array(
                 array('strip_tags'),
             ),
             'meta_keywords' => array(

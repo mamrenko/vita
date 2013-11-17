@@ -4,6 +4,7 @@
 <?endforeach?>
 <?endif?>
 <br />
+
 <p>
   
       <?=HTML::anchor('admin/places', HTML::image('media/images/goback.png'))?>
@@ -12,7 +13,10 @@
 
   <div class="TTWForm-container">
       
-      <?=Form::open('admin/places/add', array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
+      <?=Form::open('admin/places/add', array(
+           'enctype' => 'multipart/form-data',
+           'class' => 'TTWForm ui-sortable-disabled',
+           'style' => 'width: 700px'));?>
     
            
            
@@ -36,6 +40,13 @@
                     CKEDITOR.replace( 'editor' );
                </script>
           </div>
+      
+       
+           
+            <div id="field33-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+                    <?=Form::label('image', 'Загрузить изображение:')?>
+                     <?=Form::file('image')?>
+            </div>
            
            
           <div id="form-submit" class="field f_100 clearfix submit">

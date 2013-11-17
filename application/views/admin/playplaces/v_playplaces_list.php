@@ -21,6 +21,7 @@
 <tr>
     <th>Площадка <?=$place->title?></th>
      <th>Сцена</th>
+     <th>Начало</th>
     
     <th>Функции</th>
     
@@ -33,6 +34,9 @@
     <td><?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, $playbill->title)?></td>
     <td>
         <?=$playbill->scene->title?>
+    </td>
+    <td>
+        <?=$playbill->starts->start?>
     </td>
    
     <td>

@@ -2,6 +2,7 @@
 <tr>
     <th>Название</th>
     <th>Адрес</th>
+    <th>Картинка</th>
     <th>Сцены</th>
     
     
@@ -16,6 +17,7 @@
     <td><?=HTML::anchor('admin/places/edit/'. $place->id, $place->title)?></td>
     
    <td><?=$place->adress?></td>
+   <td><?=HTML::image('media/uploads/places/small_'.$place->image)?></td>
    <td><?=HTML::anchor('admin/scenes/list/'. $place->id, 'Сцены')?></td>
     <td>
         

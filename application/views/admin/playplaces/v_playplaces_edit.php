@@ -5,7 +5,7 @@
 <?endif?>
 
 <h1><?=$playbill->title?></h1>
-<h2>Вернуться на <?=html::anchor('admin/playplaces/list/'. $playbill->place_id, $playbill->place->title)?></h2>
+<h2> <?=HTML::anchor('admin/playplaces/list/'. $playbill->place_id, HTML::image('media/images/goback.png'))?> <?=html::anchor('admin/playplaces/list/'. $playbill->place_id, $playbill->place->title)?></h2>
 
 <div class="TTWForm-container">
        <?=Form::open('admin/playplaces/edit/'.$id, array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
@@ -26,7 +26,11 @@
                </script>
           </div>
            
-           
+           <div id="field4-container" class="field f_100">
+                <?=Form::label('meta_title', 'meta_title для Сео оптимизации')?>
+               <?=Form::input('meta_title', $data['meta_title'], array('size' => 100, 'required' => 'required'))?>
+          </div>
+    
           <div id="field4-container" class="field f_100">
                 <?=Form::label('meta_keywords', 'Ключевые слова для Сео оптимизации')?>
                <?=Form::input('meta_keywords', $data['meta_keywords'], array('size' => 100, 'required' => 'required'))?>
@@ -34,7 +38,7 @@
            
            
           <div id="field5-container" class="field f_100">
-               <?=Form::label('meta_description', 'Описание страницы')?>
+               <?=Form::label('meta_description', 'meta_description Описание страницы')?>
                <?=Form::input('meta_description', $data['meta_description'], array('size' => 100, 'required' => 'required'))?>
                
           </div>
