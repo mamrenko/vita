@@ -130,12 +130,15 @@ class Model_Place extends ORM {
       $filename = strtolower(Text::random('alnum', 20));  //unikalna nazwa pliku
       
          
-      $img->resize('600','800');                        //skalowanie
+      $img->resize('600','800');//skalowanie
+      $mark = image::factory('media/images/watermark10023.png');
+      $img->watermark($mark,100,100);
       $img->save('media/uploads/places/'.$filename.'.jpg',70);     //zapisanie pliku o zmniejszonej jakości
       $this->image=$filename.'.jpg';                    //dodanie nazwy obrazka
  
       
-      $img->resize('200','200');                        //skalowanie
+      $img->resize('200','200'); 
+      $img->watermark($mark,50,50);//skalowanie
       $img->save('media/uploads/places/small_'.$filename.'.jpg',70);     //zapisanie pliku o zmniejszonej jakości
       $this->image=$filename.'.jpg';                    //dodanie nazwy obrazka
       $this->save();  //zapisanie do bazy

@@ -1,3 +1,11 @@
+
+
+<p>
+<?=HTML::image('media/images/add.png', array('valign' => 'top'))?>
+    
+<?=HTML::anchor('admin/places/add', 'Добавить')?>
+</p>
+<br/>
 <table id="tfhover" class="tftable" border="1">
 <tr>
     <th>Название</th>

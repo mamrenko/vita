@@ -115,6 +115,9 @@ class Controller_Admin_Places extends Controller_Admin {
       $errors=array('image'=>__('Image is too big'));
     
     if(isset($_POST['submit'])){
+            $_POST['title'] = Security::xss_clean( $_POST['title']);
+            $_POST['description'] = Security::xss_clean( $_POST['description']);
+            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
       $place=ORM::factory('place');
       $save_errors=$place->save_data($_POST,$_FILES);
       if($save_errors){
