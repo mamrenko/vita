@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="portlet">
             <div class="portlet-header">
 
@@ -14,6 +14,19 @@
 <h3>Площадки</h3>
 </div>
             <div class="portlet-header">
+                
+  <div class="row dt-rt">
+      <div class="col-sm-6">
+          <div id="DataTables_Table_0_length" class="dataTables_length">
+              <label><select name="DataTables_Table_0_length" size="1" aria-controls="DataTables_Table_0">
+                      <option value="10" selected="selected">10</option><option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                  </select></label></div></div>
+      <div class="col-sm-6"><div class="dataTables_filter" id="DataTables_Table_0_filter">
+              <label><input type="text" aria-controls="DataTables_Table_0" placeholder="Search...">
+              </label></div></div></div>              
+                
 <table class="table table-bordered table-highlight" data-paginate="TRUE">
     <thead>
 <tr>
@@ -91,3 +104,6 @@
             </div>
         </div>
     </div>
+
+
+
