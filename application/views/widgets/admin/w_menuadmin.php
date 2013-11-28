@@ -1,6 +1,5 @@
 
-<div id='adminmenu'>
-    <ul>
+
         <?foreach($menu as $name => $menu ):?>
         <?if(in_array($select, $menu)):?>
         <li> <?=HTML::anchor('admin/'.$menu[0], $name, array('class' => 'select',
@@ -10,8 +9,6 @@
         <?endif;?>
         <?endforeach?>
        
-        <li class='last'><a href="<?=URL::base()?>"><span>На сайт</span></a></li>
+        <li><a href="<?=URL::base()?>"><i class="fa fa-home"></i>На сайт</a></li>
               
-            
-    </ul>
-</div>
+    

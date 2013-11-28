@@ -13,14 +13,23 @@ class Controller_Index extends Controller_Base {
         $news = Widget::load('news');
 
         
-        $this->template->styles = array('media/css/common.css');
-        $this->template->scripts = array();
+        $this->template->styles = array(
+            'media/dist/css/bootstrap.min.css',
+            'media/dist/css/amelia-bootstrap-theme.min.css',
+            'media/dist/css/site.css'
+            );
+        $this->template->scripts = array(
+            'media/dist/js/jquery-2.0.3.min.js',
+            'media/dist/js/bootstrap.min.js',
+            'media/dist/js/site.js',
+        );
         
         $this->template->topmenu = $topmenu;
         $this->template->cart = $cart;
-        $this->template->block_left = array($menu, $login,);
+       
+        $this->template->block_header = null;
         $this->template->block_center = null;
-        $this->template->block_right = array($news);
+        $this->template->block_right = null;
         
         
         

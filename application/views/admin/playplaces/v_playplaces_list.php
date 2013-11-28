@@ -1,31 +1,43 @@
-<h2>
-Страница Мероприятий <?=$place->title?>
-
-</h2>
-<h3>(На сайте показываются только События).</h3>
-
-
-<p>
+<div class="row">
+    <div class="col-md-8">
+        <div class="portlet">
+            <div class="portlet-header">
+ <p>
   
-      <?=HTML::anchor('admin/playplaces', HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/playplaces', 'Вернуться')?>
+      <?=HTML::anchor('admin/playplaces', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Вернуться</button>')?>
+     
 </p>
-<br />
+
+
+<h3>Страница Мероприятий <?=$place->title?> </h3>
+<ul class="portlet-tools pull-right">
+								
+<li>
+	<span class="label label-primary">На сайте показываются только События</span>
+</li>
+</ul>
+
+</div>
+<div class="portlet-toolbar">
 <p>
   
       <?=HTML::anchor('admin/playplaces/add/'.$place->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/playplaces/add/'.$place->id, 'Добавить')?>
 </p>
-<br />
-<table id="tfhover" class="tftable" border="1">
-<tr>
-    <th>Площадка <?=$place->title?></th>
-     <th>Сцена</th>
-     <th>Начало</th>
-    
-    <th>Функции</th>
-    
-</tr>
+</div>
+
+             <div class="portlet-content">
+<table class="table table-bordered table-highlight">
+    <thead>
+    <tr>
+        <th>Площадка <?=$place->title?></th>
+         <th>Сцена</th>
+         <th>Начало</th>
+
+        <th>Функции</th>
+
+    </tr>
+  </thead>
 <tr>
     <?foreach ($playbills as $playbill):?>
 <p></p>
@@ -52,14 +64,14 @@
 </tr>
     <? endforeach; ?>  
 </table>
-
-<br />
+<div class="portlet-toolbar">
 <p>
   
    <?=HTML::anchor('admin/playplaces/add/'.$place->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/playplaces/add/'.$place->id, 'Добавить')?>
 </p>
-
-<br />
-<p><small>Created with <a href="http://html-generator.weebly.com/css-table-generator.html" target="_blank">HTML Generator</a></small></p>
-
+</div>
+ </div>
+       </div>
+        </div>
+         </div>

@@ -2,7 +2,7 @@
 
 class Controller_Admin extends Controller_Base {
     
-    public $template = 'admin/v_base';
+    public $template = 'admin/admin_v_base';
     
     public function before() {
         parent::before();
@@ -14,11 +14,37 @@ class Controller_Admin extends Controller_Base {
         $this->template->site_name = 'Администрирование сайта Аплодисменты';
         $this->template->site_description = 'Администрирование сайта Аплодисменты';
         
-        $this->template->styles = array('media/css/admin/admincommon.css');
-        $this->template->scripts = array('media/js/jquery-ui-1.10.3.custom.js',
-            'media/js/adminmenuleft.js',
-            'media/js/tablett.js');
-        $this->template->scripts[] = 'media/ckeditor/ckeditor.js';
+        $this->template->styles = array(
+            'http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,800italic,400,600,800',
+            'canvas/css/font-awesome.min.css',
+            'canvas/css/bootstrap.min.css',
+            'canvas/js/libs/css/ui-lightness/jquery-ui-1.9.2.custom.css',
+            'canvas/js/plugins/icheck/skins/minimal/blue.css',
+            'canvas/js/plugins/fullcalendar/fullcalendar.css',
+            'canvas/css/App.css',
+            'canvas/css/custom.css',
+            );
+       
+        $this->template->scripts = array(
+            'canvas/js/libs/jquery-1.9.1.min.js',
+            'canvas/js/libs/jquery-ui-1.9.2.custom.min.js',
+            'canvas/js/libs/bootstrap.min.js',
+            'canvas/js/plugins/icheck/jquery.icheck.min.js',
+            'canvas/js/plugins/select2/select2.js',
+            'canvas/js/plugins/tableCheckable/jquery.tableCheckable.js',
+            'canvas/js/App.js',
+            'canvas/js/libs/raphael-2.1.2.min.js',
+            'canvas/js/plugins/morris/morris.min.js',
+            'canvas/js/demos/charts/morris/area.js',
+            'canvas/js/demos/charts/morris/donut.js',
+            'canvas/js/plugins/sparkline/jquery.sparkline.min.js',
+            'canvas/js/plugins/fullcalendar/fullcalendar.min.js',
+            'canvas/js/demos/calendar.js',
+            'canvas/js/demos/dashboard.js',
+            'media/ckeditor/ckeditor.js',
+            'https://code.jquery.com/jquery.js',
+            );
+       
         
         $this->template->block_left = null;
         $this->template->block_center = null;

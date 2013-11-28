@@ -7,7 +7,10 @@
 <h2>Вернуться на <?=html::anchor('admin/scenes/list/'. $scene->place->id, $scene->place->title)?></h2>
 
 <div class="TTWForm-container">
-       <?=Form::open('admin/scenes/edit/'.$id, array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
+       <?=Form::open('admin/scenes/edit/'.$id, array(
+           'enctype' => 'multipart/form-data',
+           'class' => 'TTWForm ui-sortable-disabled',
+           'style' => 'width: 700px'));?>
        
            
            
@@ -27,6 +30,13 @@
 
           </div>
            
+     <div id="field33-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+                    <?=HTML::image('media/uploads/scenes/'.'small_'.$scene->image)?>
+            <br/>
+              
+                     <?=Form::label('image', 'Загрузить изображение:')?>
+                     <?=Form::file('image', array('id' => 'multi'))?>
+            </div>
            
           <div id="form-submit" class="field f_100 clearfix submit">
               <?=Form::submit('submit', 'Сохранить')?>

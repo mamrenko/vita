@@ -1,16 +1,17 @@
-<h2>
+<div class='row'>
+     <div class="col-md-6">
 
-На сайте показываются только События
-</h2>
+<h4 class="heading">На сайте показываются только События</h4>
 
 
-<br />
-<table id="tfhover" class="tftable" border="1">
+<table class="table table-bordered table-hover">
+    <thead>
 <tr>
     <th>Площадка</th>
    
     
 </tr>
+    </thead>
 <tr>
     <?foreach ($playbills as $playbill):?>
 
@@ -24,7 +25,34 @@
     <? endforeach; ?>  
 </table>
 
+     </div>
 
 
 
 
+     <div class="col-md-6 border">
+
+<h4 class="heading">Статистика событий</h4>
+   <table class="table table-bordered table-highlight">
+    <thead>
+<tr>
+    <th>Площадки</th>
+   
+    
+</tr>
+    </thead>
+<tr>
+   
+
+
+    <td>
+        <?=count($playbills);?>
+    </td>
+    
+   
+</tr>
+   
+</table>  
+    
+</div>
+</div>

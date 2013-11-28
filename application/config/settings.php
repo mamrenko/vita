@@ -4,9 +4,10 @@
  */
 
 return array(
-    'site_name' => 'Аплодисменты Театральное Агентство',
+    'site_name' => 'www.aplodismenty.ru',
+    'site_title' =>'Агентство Аплодисменты',
     'site_description' => 'Билеты в театр, на концерт, в цирк, на мюзикл. Афиша Москвы.',
-
+    'author' =>'Сайт сделан clapout.ru'
     );
 
 

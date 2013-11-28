@@ -1,18 +1,33 @@
-
-
-<br />
-<p>
+<div class='row'>
+    <div class="col-md-4">
+        <div class="portlet">
+ 
+<div class="portlet-header">
+    <p>
   
-      <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, 'Вернуться')?>
+      
+      <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Вернуться</button>')?>
 </p>
-<h2>
-    
-    Начало мероприятия <?=$playbill->starts->start?></h2>
-<h2>Сцена: <?=$playbill->scene->title?></h2>
+<h3><i class="fa fa-clipboard"></i><?=$playbill->title?></h3>
+</div>
+<div class="portlet-content">
+    <div class="well">
+    <h4><?=$playbill->place->title?></h4>
+   <h4>Начало мероприятия <?=$playbill->starts->start?></h4> 
+   <h4>Сцена: <?=$playbill->scene->title?></h4>
+    </div>
+</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+    <div class="portlet">
+        <div class="portlet-header">
  <?=HTML::anchor('admin/costs/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/costs/add/'.$playbill->id, 'Цены')?>
-<table id="tfhover" class="tftable" border="1">
+         </div>
+        <div class="portlet-content">
+<table class="table table-bordered table-highlight">
+    <thead>
 <tr>
     
     <th>Сектор</th>
@@ -20,7 +35,7 @@
     <th>Функции</th>
     
 </tr>
-
+</thead>
     
     
     
@@ -45,7 +60,8 @@
     </td>
 </tr>
     <?endforeach?>
-    
+
+     
 </table> 
     <?else:?>
         <p>Здесь нет Цен</p>
@@ -58,14 +74,26 @@
         <?if(count($playbill->events->find_all()) > 0):?> 
          <?$events = $playbill->events->find_all()?>
        
-        <br /> 
-        <br /> 
-      
         
+      </div>
+     
+    </div>
+        
+        </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-8">
+        <div class="portlet">
+            <div class="portlet-header">
       <?=HTML::anchor('admin/events/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/events/add/'.$playbill->id, 'События')?>
-        
-<table id="tfhover" class="tftable" border="1">
+            </div>
+            <div class="portlet-content">
+<table class="table table-bordered table-highlight">
+    <thead>
 <tr>
     
     <th>Дата</th>
@@ -75,7 +103,7 @@
     <th>Функции</th>
     
 </tr>
-
+</thead>
     
     
     
@@ -117,3 +145,7 @@
       <?=HTML::anchor('admin/events/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
       <?=HTML::anchor('admin/events/add/'.$playbill->id, 'События')?>
         <?endif?>
+        </div>
+        </div>
+    </div>
+</div>

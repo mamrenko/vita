@@ -45,7 +45,7 @@
            
             <div id="field33-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
                     <?=Form::label('image', 'Загрузить изображение:')?>
-                     <?=Form::file('image')?>
+                    <?=Form::file('image', array('id' => 'multi'))?>
             </div>
            
            
@@ -54,3 +54,4 @@
           </div>
    <?=Form::close()?>
 </div> 
+ 

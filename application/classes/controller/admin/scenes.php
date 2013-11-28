@@ -5,7 +5,10 @@
 class Controller_Admin_Scenes extends Controller_Admin {
     public function before() {
         parent::before();
-        
+            $this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
+            $this->template->scripts[] = 'media/js/jquery.MultiFile.pack.js';
+            $this->template->scripts[] = 'media/js/upload.js';
+            
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
             $this->template->page_title = 'Сцены';
@@ -56,6 +59,24 @@ class Controller_Admin_Scenes extends Controller_Admin {
 
          try {
                 $scene->save();
+                // Работа с изображениями
+            
+                    if (!empty($_FILES['image']['name'][0]))
+                {
+                 $image =   $_FILES['image']['tmp_name'];
+                    
+                        $filename = $this->_upload_img($image);
+         
+                
+                       
+                    // Запись в БД
+                        $im_db = ORM::factory('scene', $scene->pk());
+                        
+                        $im_db->image = $filename;
+                        $im_db->save();
+                      
+                
+            }
                 $this->request->redirect('admin/scenes/list/'. $id);
             }
             catch (ORM_Validation_Exception $e) {
@@ -98,6 +119,29 @@ class Controller_Admin_Scenes extends Controller_Admin {
             try {
            
             $scene->save(); 
+             // Работа с изображениями
+            
+                    if (!empty($_FILES['image']['name'][0]))
+                {
+                 $image =   $_FILES['image']['tmp_name'];
+                    
+                        $filename = $this->_upload_img($image);
+                        
+                        if (file_exists('media/uploads/scenes/'.$scene->image) and file_exists('media/uploads/scenes/'.'small_' .$scene->image))
+                      {
+                      unlink('media/uploads/scenes/'.$scene->image);
+                      unlink('media/uploads/scenes/'.'small_' .$scene->image);
+                      }
+                
+                       
+                    // Запись в БД
+                        $im_db = ORM::factory('scene', $scene->pk());
+                        
+                        $im_db->image = $filename;
+                        $im_db->save();
+                      
+                
+            }
             $this->request->redirect('admin/scenes/list/'. $scene->place_id);
             }  
           catch (ORM_Validation_Exception $e) {
@@ -126,11 +170,54 @@ class Controller_Admin_Scenes extends Controller_Admin {
         if(!$scene->loaded()) {
             $this->request->redirect('admin/scenes/list/'. $place->id);
         }
-
+        if (file_exists('media/uploads/scenes/'.$scene->image) and file_exists('media/uploads/scenes/'.'small_' .$scene->image))
+        {
+        unlink('media/uploads/scenes/'.$scene->image);
+        unlink('media/uploads/scenes/'.'small_' .$scene->image);
+        }
         $scene->delete();
         $this->request->redirect('admin/scenes/list/'. $place->id);
     
     }
-        
+    
+    public function _upload_img($file, $ext = NULL, $directory = NULL){
+
+        if($directory == NULL)
+        {
+            $directory = 'media/uploads/scenes/';
+        }
+
+        if($ext== NULL)
+        {
+            $ext= 'jpg';
+        }
+
+        // Генерируем случайное название
+        $filename = strtolower(Text::random('alnum', 20));
+
+        // Изменение размера и загрузка изображения
+        $im = Image::factory($file);
+        $mark = image::factory('media/images/watermark10023.png');
+        if($im->width > 150)
+        {
+            $im->resize(150, 150, Image::AUTO);
+                    
+            
+        }
+        $im->watermark($mark,TRUE, TRUE);
+        $im->save("$directory/small_$filename.$ext");
+
+        $im = Image::factory($file);
+        $im
+            ->resize(400, 600, Image::AUTO)
+            ->watermark($mark,TRUE, TRUE)
+            ->save("$directory/$filename.$ext");
+       
+           
+            
+            
+
+        return "$filename.$ext";
+    }
    
 }

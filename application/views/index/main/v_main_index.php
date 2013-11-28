@@ -1,2 +1,42 @@
-<h1>Главная страница</h1>
-<p>Pltcm rfrfz nj byajhvfwbz</p>
+<div class="row">
+            
+            <h1>The best мероприятия</h1>
+         <ul class="list-unstyled">
+                <li class="col-md-3">
+                <div class="thumbnail ">
+                <img src="http://placehold.it/300x200" alt="" class="img-responsive">
+                <div class=" caption">
+                <h3>RRRRRRRnnn</h3>
+                <p>Описание и текст…</p>
+                </div>
+                </div>
+                </li>
+                <li class="col-md-3">
+                <div class="thumbnail">
+                <img src="http://placehold.it/300x200" alt="">
+                <div class="caption">
+                <h3>Заголовок</h3>
+                <p>Описание и текст…</p>
+                </div>
+                </div>
+                </li>
+                <li class="col-md-3">
+                <div class="thumbnail">
+                <img src="http://placehold.it/300x200" alt="">
+                <div class="caption">
+                <h3>Заголовок</h3>
+                <p>Описание и текст…</p>
+                </div>
+                </div>
+                </li>
+                <li class="col-md-3">
+                <div class="thumbnail">
+                <img src="http://placehold.it/300x200" alt="">
+                <div class="caption">
+                <h3>Заголовок</h3>
+                <p>Описание и текст…</p>
+                </div>
+                </div>
+                </li>
+            </ul>
+        </div>

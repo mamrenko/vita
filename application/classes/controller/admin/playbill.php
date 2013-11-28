@@ -129,7 +129,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
 
         // Вывод в шаблон
         $this->template->block_center = array($content);
-        $this->template->page_title = $playbill->title . '<br /> Площадка: '.$playbill->place->title;
+        //$this->template->page_title = $playbill->title . '<br /> Площадка: '.$playbill->place->title;
         
     }
     

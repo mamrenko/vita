@@ -19,7 +19,7 @@
 <table id="tfhover" class="tftable" border="1">
 <tr>
     <th>Площадка <?=$place->title?></th>
-    
+     <th>Картинка</th>
     
     <th>Функции</th>
     
@@ -31,7 +31,14 @@
    
     <td><?=HTML::anchor('admin/scenes/edit/'.$scene->id, $scene->title)?></td>
    
-   
+   <td>
+        <?if($scene->image == NULL):?>
+       <?=HTML::image('/media/images/placeoff.jpg')?>
+       
+       <?else:?>
+            <?=HTML::image('media/uploads/scenes/small_'.$scene->image)?>
+       <?endif?>
+   </td>
     <td>
             <?=HTML::anchor('admin/scenes/edit/'.$scene->id, HTML::image('media/images/edit.png'))?>
        <?if(count($scene->event->scene_id) > 0):?>

@@ -1,15 +1,22 @@
-<h2>
-Страница Мероприятий <?=$place->title?>
 
-</h2>
-<h3>(На сайте показываются только События).</h3>
-<p>
+<div class='row'>
+     <div class="col-md-10">
+         <div class="portlet">
+             <div class="portlet-header">
+                <p>
+                <?=HTML::anchor('admin/playbill', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Вернуться</button>')?>
+                </p>
+                
+                 <h3> <?=$place->title?></h3>
+                
   
-      <?=HTML::anchor('admin/playbill', HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/playbill', 'Вернуться')?>
-</p>
-<br />
-<table id="tfhover" class="tftable" border="1">
+      
+     
+
+</div>
+             <div class="portlet-content">
+<table class="table table-bordered table-highlight table-hover">
+    <thead>
 <tr>
     
     <th>Название</th>
@@ -19,6 +26,7 @@
     <th>События</th>
     
 </tr>
+</thead>
 <tr>
     <?foreach ($playbills as $playbill):?>
 <p></p>
@@ -68,6 +76,10 @@
 </tr>
     <? endforeach; ?>  
 </table>
+                 </div>
+       </div>
+     </div>
+</div>
 
 
 

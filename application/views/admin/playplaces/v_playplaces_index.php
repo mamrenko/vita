@@ -1,21 +1,33 @@
-<h2>
+<div class="row">
+    <div class="col-md-8">
+        <div class="portlet">
+            <div class="portlet-header">
+<h3>
 Страница Мероприятий 
-(На сайте показываются только События).
-</h2>
+
+</h3>
+
+                <ul class="portlet-tools pull-right">
+								
+                    <li>
+                            <span class="label label-primary">На сайте показываются только События</span>
+                    </li>
+                    </ul>
+</div>
+            <div class="portlet-content">
+<table class="table table-bordered table-highlight">
+    <thead>
+        <tr>
+            <th>Список мероприятий Площадки</th>
 
 
-<table id="tfhover" class="tftable" border="1">
-<tr>
-    <th>Список мероприятий Площадки</th>
-    
-    
-    <th>Добавить мероприятие</th>
-    <th>Сцены</th>
-    
-</tr>
+            <th>Добавить мероприятие</th>
+            <th>Сцены</th>
+
+        </tr>
+    </thead>
 <tr>
     <?foreach ($places as $place):?>
-<p></p>
 
    <?if(count($place->scenes->find_all()) > 0):?>
     <td>
@@ -52,10 +64,8 @@
 </tr>
     <? endforeach; ?>  
 </table>
-
-<br />
-
-
-<br />
-<p><small>Created with <a href="http://html-generator.weebly.com/css-table-generator.html" target="_blank">HTML Generator</a></small></p>
+    </div>
+       </div>
+        </div>
+         </div>
 

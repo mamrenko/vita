@@ -18,6 +18,7 @@ class Controller_Widgets_Adminmenuproducts extends Controller_Widgets {
              'Начало мероприятий' =>  array('starts'),
              'Сектора' =>  array('areas'),
              'Категории' =>  array('categories'),
+             'Карусель' =>  array('carousels'),
            
         );
         $this->template->menu = $menu;

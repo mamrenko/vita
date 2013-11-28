@@ -11,7 +11,10 @@ class Controller_Base extends Controller_Template {
 
         // Вывод в шаблон
         $this->template->site_name = $settings->site_name;
+        $this->template-> site_title = $settings-> site_title;
+       
         $this->template->site_description = $settings->site_description;
+        $this->template->author = $settings->author;
         $this->template->page_title = null;
 
         // Подключаем стили и скрипты

@@ -1,76 +1,144 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 <head>
-	<meta charset="utf-8" />
-	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	
-	<title><?=$site_name?> | <?=$page_title?></title>
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-        
-        <?foreach($styles as $style) :?>
+<meta charset="UTF-8">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title><?=$site_title?> | <?=$page_title?></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+ <?foreach($styles as $style) :?>
             <?=HTML::style($style)?>
-        <?endforeach?>
-	
-        
-        <?foreach($scripts as $script) :?>
+<?endforeach?>
+
+
+<?foreach($scripts as $script) :?>
             <?=HTML::script($script)?>
         <?endforeach?>
 </head>
 
 <body>
+    
+<div id="page">
+    <header  class="container">
+        <div id="menu" class="navbar navbar-default ">
+            <div class="navbar-header">
+            <button class="btn btn-success navbar-toggle"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse"><span class="glyphicon glyphicon-chevron-down"></span>
+              
+            </button>
+            
+            <div id="logo">
+                <a href=".">
+                    <h3><?=$site_name?></h3>
+                </a>
+           </div>
+           </div>
+            
+            
+           
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+            
+            
+            
+           
+            
+        </div>
+        
+    </header>
+    
+    
+    
+    <section id="body"  class="container">
+        
+        <div class="page-header">
+            <div class="row">
+          <div class="col-lg-5">
+              
+            <h1><?=$site_title?></h1>
+            <p class="lead"><?=$site_description?></p>
+            
+             
+            
+            
+          </div>
+            
+                 <div class="col-lg-7">
+                     
+                     <div class="navbar-collapse">
+               
+            <ul class="nav navbar-nav navbar-right">
 
-<div id="wrapper">
+                         <?=$topmenu?> 
+                          <?=$cart?>
 
-	<header id="header">
-		  <a href="/vita/">
-                <h1><?=$site_name?></h1>
-            </a>
-            <h3><?=$site_description?></h3>
-            <ul>
-                <li><?=$topmenu?></li>
             </ul>
-            <p><?=$cart?></p>
-	</header><!-- #header-->
-
-	<section id="middle">
-
-		<div id="container">
-                    
-                     <? if (isset($block_center)):?>
-			<div id="content">
+            
+            </div>
+                     
+                     
+               </div>
+            
+            </div>
+        </div>
+      
+    	<section id="main" class="col-md-9">
+             <? if (isset($block_header)):?>
+			
+				<?foreach($block_header as $hblock):?>
+                            
+                        <?=$hblock?>
+                    <?endforeach?> 
+			
+       <?endif?>
+            
+           <? if (isset($block_center)):?>
+			
 				<?foreach($block_center as $cblock):?>
-                            <h1> <?=$content_title?></h1>
+                            
                         <?=$cblock?>
                     <?endforeach?> 
-			</div><!-- #content-->
+			
                       <?endif?>
-                        
-                </div><!-- #container-->
 
-		<? if (isset($block_left)):?>
-		<aside id="sideLeft">
-                    <?foreach($block_left as $lblock):?>
-                   
-                        <?=$lblock?>
-                    <?endforeach?>
+
+       </section>
+        <section id="sidebar" class="col-md-3">
+             <? if (isset($block_right)):?>
 		
-		</aside><!-- #sideLeft -->
-                <?endif?>
-
-		  <aside id="sideRight">
-			 <?foreach($block_right as $rblock):?>
-                   
+			<?foreach($block_right as $rblock):?>
                         <?=$rblock?>
                     <?endforeach?>
-		</aside><!-- #sideRight -->
-	</section><!-- #middle-->
+		
+                <?endif?>
+        </section>
+    </section>
+    <hr/>
+    <footer  class="container">
+    <p class="text-info">
+        <?=$author?>
+    </p>
+    </footer>
 
-</div><!-- #wrapper -->
 
-<footer id="footer">
-    <h2>copiright Aplodismenty.ru</h2>
-</footer><!-- #footer -->
-</div><!-- #wrapper -->
+
+
+</div>
+   
 </body>
 </html>
