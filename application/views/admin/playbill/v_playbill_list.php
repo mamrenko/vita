@@ -15,7 +15,7 @@
 
 </div>
              <div class="portlet-content">
-<table class="table table-bordered table-highlight table-hover">
+<table id="placetb" class="table table-bordered table-highlight table-hover">
     <thead>
 <tr>
     
@@ -46,7 +46,7 @@
        <?if(count($playbill->costs->find_all()) > 0):?> 
          <?$costs = $playbill->costs->find_all()?>
         <?foreach($costs as $cost):?>
-        <p><?=$cost->sector?>-<?=$cost->price?> руб.</p>
+        <p><?=$cost->area->title?>  <?=$cost->price?> руб.</p>
         <?endforeach?>
         
     </td>
@@ -55,21 +55,38 @@
        <?if(count($playbill->events->find_all()) > 0):?>
         <?$events = $playbill->events->find_all();?>
          <?foreach($events as $event):?>
-        <p><?=$event->day?></p>
+        <p> <?=date('d-m-Y',strtotime($event->day));?></p>
         <?  endforeach;?>
-         <?=HTML::anchor('admin/events/add/'.$playbill->id, HTML::image('media/images/add.png'))?> 
-        <?=HTML::anchor('admin/events/add/'.$playbill->id, 'Событие')?> 
+         <?=HTML::anchor('admin/events/add/'.$playbill->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i>Добавить Событие</button>')?> 
+       
          <?else:?>
-        <br />
-        <?=HTML::anchor('admin/events/add/'.$playbill->id, HTML::image('media/images/add.png'))?> 
-        <?=HTML::anchor('admin/events/add/'.$playbill->id, 'Событие')?> 
+       
+        <?=HTML::anchor('admin/events/add/'.$playbill->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i>Добавить Событие</button>')?> 
+        
         <?endif?> 
         <?else:?>
-        <p>Здесь нет Цен</p>
-      <?=HTML::anchor('admin/costs/add/'.$playbill->id, HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/costs/add/'.$playbill->id, 'Цены')?>
+        
+        <ul class="portlet-tools pull-right">
+								
+                <li>
+	     <span class="label label-info">Здесь нет Цен</span>
+             
+                </li>
+                </ul>
+        
+        
+      <?=HTML::anchor('admin/costs/add/'.$playbill->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i>Добавить Цены</button>')?>
+     
     <td>
-        <p>Нет событий пока нет цен</p>
+        
+               <ul class="portlet-tools pull-right">
+								
+                <li>
+	     <span class="label label-danger">Нет событий, пока нет цен</span>
+             
+                </li>
+                </ul>
+        
     </td>
         <?endif?>
     </td>

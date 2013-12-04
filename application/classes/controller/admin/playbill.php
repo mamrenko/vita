@@ -5,7 +5,12 @@
 class Controller_Admin_Playbill extends Controller_Admin {
     public function before() {
         parent::before();
+           
         
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
+            
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
             $this->template->page_title = 'События';
@@ -17,10 +22,12 @@ class Controller_Admin_Playbill extends Controller_Admin {
                 ->group_by('place_id')
                 ->order_by('place_id')
                 ->find_all();
+        $playbillsis= ORM::factory('playbill')->find_all();
         
         $content = View::factory('admin/playbill/v_playbill_index',
                 array(
                     'playbills' => $playbills,
+                    'playbillsis' => $playbillsis,
                     
                 ));
 
@@ -85,6 +92,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
 
          try {
                 $playbill->save();
+                 
                 $this->request->redirect('admin/playbill');
             }
             catch (ORM_Validation_Exception $e) {
@@ -146,4 +154,6 @@ class Controller_Admin_Playbill extends Controller_Admin {
         $this->request->redirect('admin/playbill');  
         
     }
+    
+    
 }

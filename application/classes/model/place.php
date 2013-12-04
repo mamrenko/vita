@@ -83,10 +83,10 @@ class Model_Place extends ORM {
                 array('strip_tags'),
                 array('trim'),
             ),
-            'description' => array(
-                array('strip_tags'),
-                array('trim'),
-            ),
+//            'description' => array(
+//                array('strip_tags'),
+//                array('trim'),
+//            ),
             
         );
     }

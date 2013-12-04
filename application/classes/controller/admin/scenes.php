@@ -5,9 +5,23 @@
 class Controller_Admin_Scenes extends Controller_Admin {
     public function before() {
         parent::before();
-            $this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
+            $this->template->styles[]= 'canvas/js/plugins/fileupload/bootstrap-fileupload.css';
+               
+            
+        
+      
+            //$this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
             $this->template->scripts[] = 'media/js/jquery.MultiFile.pack.js';
             $this->template->scripts[] = 'media/js/upload.js';
+            
+             
+                     
+            $this->template->scripts[] = 'canvas/js/plugins/magnific/jquery.magnific-popup.min.js';
+            $this->template->scripts[] = 'canvas/js/demos/popups.js';
+            $this->template->scripts[] = 'canvas/js/plugins/howl/howl.js';
+               
+            
+            $this->template->scripts[] = 'canvas/js/plugins/fileupload/fileinput.js'; 
             
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);

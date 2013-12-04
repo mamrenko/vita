@@ -1,46 +1,104 @@
-<?if($errors):?>
-<?foreach ($errors as $error):?>
-<div class="error"><?=$error?></div>
-<?endforeach?>
-<?endif?>
-<br />
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-1">
+        <h2>Добавление сцены <?=$place->title?></h2>
+        <div class="portlet">
+            <div class="portlet-header">
+
+            <?if($errors):?>
+            <?foreach ($errors as $error):?>
+                
+                 <ul class="portlet-tools pull-right">
+								
+                  <li>
+                      <span style="font-size: 18px"><span class="label label-primary"><?=$error?></span>
+                        </span>
+		  </li>
+		</ul>
+             
+            <?endforeach?>
+            <?endif?>    
+                
+           
+               
+
 <p>
   
-      <?=HTML::anchor('admin/scenes/list/'.$place->id, HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/scenes/list/'.$place->id, 'Вернуться '  . $place->title)?>
+      <?=HTML::anchor('admin/scenes/list/'.$place->id, '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Вернуться ' . $place->title .'</button>')?>
+      
 </p>
-<h2><?=$place->title?></h2>
-     
-<div class="TTWForm-container">
+
+    </div> 
+            <div class="portlet-content">
+
+                
+                
+
+                
+                 
        <?=Form::open('admin/scenes/add/'.$id, array(
            'enctype' => 'multipart/form-data',
-           'class' => 'TTWForm ui-sortable-disabled',
-           'style' => 'width: 700px'));?>
+           'id' => 'validate-basic',
+           'class' => 'form parsley-form',
+           'data-validate' => 'parsley',
+           ));?>
        
+          
+
+    
+    
+    
            
-           
-          <div id="field1-container" class="field f_100">
+          <div class="form-group">
                 <?=Form::label('title', 'Название')?>
-               <?=Form::input('title', $data['title'], array('size' => 100, 'required' => 'required'))?>
+                <?=Form::input('title', $data['title'], array(
+                   'type' =>'text',
+                   'placeholder' => 'Минимум 3 буквы, максимум 40',
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '3',
+                    'data-maxlength' => '40',
+                   
+                    
+                   ))?>
           </div>
            
            
+        
            
            
-          <div id="field8-container" class="field f_100">
+          <div>
              
-              
-              
               <?=Form::hidden('place_id', $place->id)?>
 
           </div>
-           <div id="field33-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+                   <div class="form-group">
+             
                     <?=Form::label('image', 'Загрузить изображение:')?>
                     <?=Form::file('image', array('id' => 'multi'))?>
             </div>
            
-          <div id="form-submit" class="field f_100 clearfix submit">
-              <?=Form::submit('submit', 'Сохранить')?>
-          </div>
+                
+         
+                
+                
+          <div class="form-group">
+                    
+                      <?=Form::button('submit', 'Сохранить', array(
+                          'type' => 'submit',
+                          'class' => 'btn btn-primary',
+                          ));?>
+                    
+                  </div>
      <?=Form::close()?>
+
+
+                
+                </div>
 </div>
+</div>
+    </div>
+
+
+
+

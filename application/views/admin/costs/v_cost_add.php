@@ -1,44 +1,81 @@
-<?if($errors):?>
+<div class="row">
+    <div class="col-md-6">
+        <div class="portlet">
+
+
+
+<div class="portlet-header">
+    
+   <?if($errors):?>
+
 <?foreach ($errors as $error):?>
-<div class="error"><?=$error?></div>
+<ul class="portlet-tools pull-right">
+								
+                  <li>
+                      <span style="font-size: 18px"><span class="label label-primary"><?=$error?></span>
+                        </span>
+		  </li>
+		</ul>
 <?endforeach?>
-<?endif?>
+<?endif?> 
+    
+    
+    
 <?if(count($costs) > 0):?> 
-  <br />
+ 
 <p>
-  
-      <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, 'Вернуться')?>
+   
+      <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Вернуться</button>')?>
 </p>
 <?else:?>
-   <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, 'Вернуться')?>
+   
+      <?=HTML::anchor('admin/playbill/list/'.$playbill->place_id, '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Вернуться</button>')?>
          <?endif?>
- <h2><?=$playbill->title?></h2>
- <h2><?=$playbill->place->title?></h2>
-  <div class="TTWForm-container">
+  <h3>Добавление цен</h3>
+ <h3><?=$playbill->title?></h3>
+ <h3><?=$playbill->place->title?></h3>
+ </div>
+<div class="portlet-content">
+  
       
       <?=Form::open('admin/costs/add/'.$id, array(
-          'class' => 'TTWForm ui-sortable-disabled',
-          'style' => 'width: 700px'));?>
+          'id' => 'validate-basic',
+           'class' => 'form parsley-form',
+           'data-validate' => 'parsley',
+          ));?>
     
            
            
-          <div id="field6-container" class="field f_100">
+  
+    
+    
+          <div class="form-group"> 
                <?=Form::label('sector', 'Сектора')?>
               <br />
-              <?=Form::select('sector', $aarea, $data['sector'],array())?>
+              <?=Form::select('sector', $aarea, $data['sector'],array(
+                  
+                  'class' => 'form-control select2-input',
+                  'data-required' => 'true',
+                
+                  
+              ))?>
               
                
           </div>
            
            
-          <div id="field2-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+          <div class="form-group"> 
               <?=Form::label('price', 'Цена')?>
-               <?=Form::input('price', $data['price'], array('size' => 100))?>
+               <?=Form::input('price', $data['price'], array(
+                   'placeholder' => 'Минимум 4 символа, максимум 25',
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '4',
+                   'data-maxlength' => '25',
+                   ))?>
           </div>
       
-            <div id="field8-container" class="field f_100">
+           <div class="form-group"> 
               
               <?=Form::hidden(' playbill_id', $playbill->id)?>
             </div>
@@ -46,23 +83,42 @@
           
            
            
-          <div id="form-submit" class="field f_100 clearfix submit">
-              <?=Form::submit('submit', 'Сохранить')?>
-          </div>
+          <div class="form-group">
+                    
+                      <?=Form::button('submit', 'Сохранить', array(
+                          'type' => 'submit',
+                          'class' => 'btn btn-primary',
+                          ));?>
+                    
+                  </div>
    <?=Form::close()?>
    
 
 </div> 
+       </div>
+</div>
+    
  
 <?if(count($costs) > 0):?> 
-<table id="tfhover" class="tftable" border="1">
-<tr>
-  
-    
-    <th>Сектор</th>
-    <th>Цены</th>
-    
-</tr> 
+    <div class="col-md-6">
+    <div class="portlet">
+        <div class="portlet-header">
+            <h3>Список цен</h3>
+            <h3><?=$playbill->title?></h3>
+            <h3><?=$playbill->place->title?></h3>
+            
+        </div>
+        <div class="portlet-content">
+<table class="table table-bordered table-highlight">
+    <thead>
+    <tr>
+
+
+        <th>Сектор</th>
+        <th>Цены</th>
+
+    </tr> 
+    </thead>
  <?foreach ($costs as $cost):?>
 <tr>
     <td>
@@ -79,6 +135,10 @@
    <? endforeach; ?> 
 
 </table>
+        </div></div>
+        </div>
 <?else:?>
    
          <?endif?>
+ 
+    </div>

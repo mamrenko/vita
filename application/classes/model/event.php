@@ -30,6 +30,7 @@ class Model_Event extends ORM {
                'day' => array(
                 array('not_empty'),
                 
+                
             ),
             
         );

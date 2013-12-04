@@ -1,25 +1,37 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="portlet">
+            <div class="portlet-header">
+                <h2>
+                 Все события
+                </h2>
+                <ul class="portlet-tools pull-right">
+								
+                <li>
+                        <span class="label label-primary">Всего событий : <?=count($events);?></span>
+                </li>
+                </ul>
 
-<h2>
- Все события
-</h2>
-
-
-<br />
-<table id="tfhover" class="tftable" border="1">
-<tr>
-    <th>Дата</th>
-    <th>Площадка</th>
-    <th>Мероприятие</th>
-    <th>Начало</th>
-    <th>Сцена</th>
-    <th>Функции</th>
-   
+            </div>
+            <div class="portlet-content">
+<table id="placetb" class="table table-bordered table-highlight">
     
-</tr>
+    <thead>
+    <tr>
+        <th>Дата</th>
+        <th>Площадка</th>
+        <th>Мероприятие</th>
+        <th>Начало</th>
+        <th>Сцена</th>
+        <th>Функции</th>
+
+    </tr>
+    </thead>
 <tr>
     <?foreach ($events as $event):?>
     <td>
-        <?=$event->day?>
+        <?=date('d-m-Y',strtotime($event->day));?>
+       
     </td>
 
     <td>
@@ -35,11 +47,16 @@
         <?=$event->playbill->scene->title?>
     </td> 
     <td>
-        <?=HTML::anchor('admin/events/edit/'.$event->id, HTML::image('media/images/edit.png'))?>
-         <?=HTML::anchor('admin/events/delete/'.$event->id, HTML::image('media/images/delete.png'))?>
+        <?=HTML::anchor('admin/events/edit/'.$event->id, '<button class="btn btn-secondary" type="button">
+								<i class="fa fa-pencil"></i></button>')?>
+         <?=HTML::anchor('admin/events/delete/'.$event->id, '<button class="btn btn-danger" type="button">
+								<i class="fa fa-times"></i></button>')?>
     </td>
    
 </tr>
     <? endforeach; ?>  
 </table>
-
+</div>
+        </div>
+</div>
+    </div>

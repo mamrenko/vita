@@ -37,7 +37,7 @@
     <thead>
 <tr>
     <th>Площадки</th>
-   
+    <th>Мероприятий</th>
     
 </tr>
     </thead>
@@ -48,7 +48,10 @@
     <td>
         <?=count($playbills);?>
     </td>
-    
+    <td>
+        <?=count($playbillsis);?>
+        
+    </td>
    
 </tr>
    

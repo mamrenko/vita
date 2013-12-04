@@ -5,11 +5,16 @@
 class Controller_Admin_Places extends Controller_Admin {
     public function before() {
         parent::before();
-            $this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
+           
             $this->template->scripts[] = 'media/js/jquery.MultiFile.pack.js';
             $this->template->scripts[] = 'media/js/upload.js';
         
-        
+             
+           
+            
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
             $this->template->page_title = 'Площадка';
@@ -68,7 +73,7 @@ class Controller_Admin_Places extends Controller_Admin {
                       
                 
             }
-              $this->request->redirect('admin/places');  $this->request->redirect('admin/places');
+              $this->request->redirect('admin/places'); 
          }
             catch (ORM_Validation_Exception $e) {
                

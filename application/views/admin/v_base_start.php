@@ -32,6 +32,7 @@
                        <? if (isset($block_center)):?>
 			<main class="content">
 				<?foreach($block_center as $cblock):?>
+                            
                             <h1><?=$page_title?></h1>
                             
                         <?=$cblock?>

@@ -1,51 +1,77 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="portlet">
+            <div class="portlet-header">
 
-<h2>
-    <?=$place->title?>
+<p>
+      <?=HTML::anchor('admin/places', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Вернуться</button>')?>
+</p>
 
-</h2>
 <p>
-  
-      <?=HTML::anchor('admin/places', HTML::image('media/images/goback.png'))?>
-      <?=HTML::anchor('admin/places', 'Вернуться')?>
+      <?=HTML::anchor('admin/scenes/add/'.$place->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить Сцену</button>')?>
 </p>
-<br />
-<p>
-  
-      <?=HTML::anchor('admin/scenes/add/'.$place->id, HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/scenes/add/'.$place->id, 'Добавить')?>
-</p>
-<br />
+<h3>
+    Сцены <?=$place->title?>
+
+
+    
+    
+    
+    
+            </div>
+            <div class="portlet-content">
 <?if(count($scenes) > 0):?>
-<table id="tfhover" class="tftable" border="1">
-<tr>
-    <th>Площадка <?=$place->title?></th>
-     <th>Картинка</th>
-    
-    <th>Функции</th>
-    
-</tr>
+<table class="table table-bordered table-highlight">
+    <thead>
+    <tr>
+
+        <th>Площадка <?=$place->title?></th>
+         <th>Картинка</th>
+
+        <th>Функции</th>
+
+    </tr>
+</thead>
 <tr>
     <?foreach ($scenes as $scene):?>
-<p></p>
+
 
    
     <td><?=HTML::anchor('admin/scenes/edit/'.$scene->id, $scene->title)?></td>
    
    <td>
         <?if($scene->image == NULL):?>
-       <?=HTML::image('/media/images/placeoff.jpg')?>
+       <ul class="portlet-tools pull-right">
+								
+                <li>
+	     <span class="label label-danger">Нет Схемы Зала</span>
+             
+                </li>
+                </ul> 
        
        <?else:?>
-            <?=HTML::image('media/uploads/scenes/small_'.$scene->image)?>
+        <?=HTML::image('media/uploads/scenes/small_'.$scene->image,array(
+            'class' => 'img-thumbnail',
+                'width' => 100,
+        ))?>
        <?endif?>
    </td>
     <td>
-            <?=HTML::anchor('admin/scenes/edit/'.$scene->id, HTML::image('media/images/edit.png'))?>
+            <?=HTML::anchor('admin/scenes/edit/'.$scene->id, '<button class="btn btn-secondary" type="button">
+								<i class="fa fa-pencil"></i></button>')?>
        <?if(count($scene->event->scene_id) > 0):?>
      
-        <p>Удалить нельзя,есть события</p>
+        
+         <ul class="portlet-tools pull-right">
+								
+                    <li>
+                            <span class="label label-primary">Удалить нельзя,есть события</span>
+                    </li>
+                    </ul>
+        
           <?else:?>
-            <?=HTML::anchor('admin/scenes/delete/'.$scene->id, HTML::image('media/images/delete.png'))?>
+            <?=HTML::anchor('admin/scenes/delete/'.$scene->id, '<button class="btn btn-danger" type="button">
+								<i class="fa fa-times"></i></button>')?>
          <?endif?>
     </td>
  
@@ -53,17 +79,26 @@
     <? endforeach; ?>  
 </table>
  <?else:?>
-        
-<p> здесь нет сцен</p>
+     <ul class="portlet-tools pull-right">
+								
+                    <li>
+                            <span class="label label-danger">Здесь нет сцен</span>
+                    </li>
+                    </ul>    
+
         
          <?endif?>
 <br />
 <p>
    
-   <?=HTML::anchor('admin/scenes/add/'.$place->id, HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/scenes/add/'.$place->id, 'Добавить')?>
+  
+      <?=HTML::anchor('admin/scenes/add/'.$place->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить Сцену</button>')?>
 </p>
 
-<br />
-<p><small>Created with <a href="http://html-generator.weebly.com/css-table-generator.html" target="_blank">HTML Generator</a></small></p>
+
+</div>
+            </div>
+        </div>
+    </div>
+
 

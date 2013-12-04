@@ -5,10 +5,24 @@
 class Controller_Admin_Events extends Controller_Admin {
     public function before() {
         parent::before();
-            $this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
-            $this->template->scripts[] = 'media/js/datepicker.js';
-            $this->template->scripts[] = 'media/js/datap.js';
-            $this->template->styles[] = 'media/css/datepicker.css';
+            //$this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
+            //$this->template->scripts[] = 'media/js/datepicker.js';
+           // $this->template->scripts[] = 'media/js/datap.js';
+            //$this->template->styles[] = 'media/css/datepicker.css';
+             $this->template->styles[] = 'canvas/js/plugins/select2/select2.css';
+             $this->template->styles[] = 'canvas/js/plugins/datepicker/datepicker.css';
+             
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
+           
+            $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.ru.js';
+            $this->template->scripts[] = 'canvas/js/plugins/select2/select2.js';
+            $this->template->scripts[] = 'canvas/js/demos/form-extended.js';
+            
+            
+            
             
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
@@ -50,6 +64,7 @@ class Controller_Admin_Events extends Controller_Admin {
         if (isset($_POST['submit']))
         {
             $_POST['day'] = Security::xss_clean( $_POST['day']);
+            $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
             
             if(!isset($_POST['cat'])){
                 $_POST['cat'] = 6;
@@ -109,10 +124,12 @@ class Controller_Admin_Events extends Controller_Admin {
           $playbill = $event->playbill;
           $data = $event->as_array();
           $data['cat'] = $event->categories->find_all()->as_array();
+          $data['day'] = date('d-m-Y', strtotime($data['day']));
        
         if (isset($_POST['submit'])) {
              $_POST['day'] = Security::xss_clean( $_POST['day']);
-            
+             $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
+             
             if(!isset($_POST['cat'])){
                 $_POST['cat'] = 6;
             }

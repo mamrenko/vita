@@ -6,6 +6,10 @@ class Controller_Admin_Categories extends Controller_Admin {
     public function before() {
         parent::before();
         
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
+            
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
             $this->template->page_title = 'Категории';

@@ -5,6 +5,12 @@
 class Controller_Admin_Playplaces extends Controller_Admin {
     public function before() {
         parent::before();
+            $this->template->scripts[] = 'media/js/jquery.MultiFile.pack.js';
+            $this->template->scripts[] = 'media/js/upload.js';
+            
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
         
             $submenu = Widget::load('adminmenuproducts');
             $this->template->block_left = array($submenu);
@@ -91,6 +97,21 @@ class Controller_Admin_Playplaces extends Controller_Admin {
 
          try {
                 $playbill->save();
+                 if (!empty($_FILES['image']['name'][0]))
+                {
+                 $image =   $_FILES['image']['tmp_name'];
+                    
+                        $filename = $this->_upload_img($image);
+         
+                
+                       
+                    // Запись в БД
+                        $im_db = ORM::factory('playbill', $playbill->pk());
+                        
+                        $im_db->image = $filename;
+                        $im_db->save();
+                }
+                
                 $this->request->redirect('admin/playplaces/list/' . $id);
             }
             catch (ORM_Validation_Exception $e) {
@@ -155,6 +176,31 @@ class Controller_Admin_Playplaces extends Controller_Admin {
             try {
            
            $playbill->save(); 
+           
+           // Работа с изображениями
+            
+                    if (!empty($_FILES['image']['name'][0]))
+                {
+                 $image =   $_FILES['image']['tmp_name'];
+                    
+                        $filename = $this->_upload_img($image);
+                        
+                        if (file_exists('media/uploads/playplaces/'.$playbill->image) and file_exists('media/uploads/playplaces/'.'small_' .$playbill->image))
+                      {
+                      unlink('media/uploads/playplaces/'.$playbill->image);
+                      unlink('media/uploads/playplaces/'.'small_' .$playbill->image);
+                      }
+                
+                       
+                    // Запись в БД
+                        $im_db = ORM::factory('playbill', $playbill->pk());
+                        
+                        $im_db->image = $filename;
+                        $im_db->save();
+                      
+                
+            }
+           
             $this->request->redirect('admin/playplaces/list/'.$playbill->place_id);
             }  
           catch (ORM_Validation_Exception $e) {
@@ -185,10 +231,52 @@ class Controller_Admin_Playplaces extends Controller_Admin {
         if(!$playbill->loaded()) {
             $this->request->redirect('admin/playplaces/list/'. $place->id);
         }
-
+        if (file_exists('media/uploads/playplaces/'.$playbill->image) and file_exists('media/uploads/playplaces/'.'small_' .$playbill->image))
+        {
+        unlink('media/uploads/playplaces/'.$playbill->image);
+        unlink('media/uploads/playplaces/'.'small_' .$playbill->image);
+        }
         $playbill->delete();
         $this->request->redirect('admin/playplaces/list/'. $place->id);
     }
         
-   
+   public function _upload_img($file, $ext = NULL, $directory = NULL){
+
+        if($directory == NULL)
+        {
+            $directory = 'media/uploads/playplaces/';
+        }
+
+        if($ext== NULL)
+        {
+            $ext= 'jpg';
+        }
+
+        // Генерируем случайное название
+        $filename = strtolower(Text::random('alnum', 20));
+
+        // Изменение размера и загрузка изображения
+        $im = Image::factory($file);
+        $mark = image::factory('media/images/watermark10023.png');
+        if($im->width > 150)
+        {
+            $im->resize(150, 150, Image::AUTO);
+                    
+            
+        }
+        $im->watermark($mark,TRUE, TRUE);
+        $im->save("$directory/small_$filename.$ext");
+
+        $im = Image::factory($file);
+        $im
+            ->resize(400, 600, Image::AUTO)
+            ->watermark($mark,TRUE, TRUE)
+            ->save("$directory/$filename.$ext");
+       
+           
+            
+            
+
+        return "$filename.$ext";
+    }
 }

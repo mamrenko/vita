@@ -94,9 +94,9 @@ class Model_Playbill extends ORM {
             'title' => array(
                 array('strip_tags'),
             ),
-            'description' => array(
-                array('strip_tags'),
-            ),
+//            'description' => array(
+//                array('strip_tags'),
+            //),
             'meta_title' => array(
                 array('strip_tags'),
             ),

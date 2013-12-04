@@ -15,7 +15,9 @@ class Controller_Index extends Controller_Base {
         
         $this->template->styles = array(
             'media/dist/css/bootstrap.min.css',
-            'media/dist/css/amelia-bootstrap-theme.min.css',
+           // 'media/dist/css/flatly-bootstrap-theme.min.css',
+            'media/dist/css/spacelab-bootstrap-theme.min.css',
+            //'media/dist/css/flatly-bootstrap-theme.min.css',
             'media/dist/css/site.css'
             );
         $this->template->scripts = array(

@@ -15,7 +15,7 @@
                     </ul>
 </div>
             <div class="portlet-content">
-<table class="table table-bordered table-highlight">
+<table id="placetb" class="table table-bordered table-highlight">
     <thead>
         <tr>
             <th>Список мероприятий Площадки</th>
@@ -38,8 +38,8 @@
    
     <td>
         
-          <?=HTML::anchor('admin/playplaces/add/'. $place->id, HTML::image('media/images/add.png'))?>
-          <?=HTML::anchor('admin/playplaces/add/'. $place->id, 'Добавить Мероприятие')?>
+         
+          <?=HTML::anchor('admin/playplaces/add/'. $place->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить Мероприятие</button>')?>
     </td>
     <td>
         <?$scenes = $place->scenes->find_all()?>
@@ -52,11 +52,29 @@
     <td>
         <?=$place->title?>
     </td>
-    <td><p>Нужны сцены  </p></td>
+    <td>
+        <ul class="portlet-tools pull-right">
+								
+                <li>
+	     <span class="label label-danger">Нужны сцены</span>
+             
+                </li>
+                </ul>
+        
+       </td>
        <td>
-        <h3>Здесь нет сцен</h3>
-        <?=HTML::anchor('admin/scenes/add/'.$place->id, HTML::image('media/images/add.png'))?>
-        <?=HTML::anchor('admin/scenes/add/'.$place->id, 'Добавить Сцену')?>
+           
+           <ul class="portlet-tools pull-right">
+								
+                <li>
+	     <span class="label label-info">Здесь нет сцен</span>
+             
+                </li>
+                </ul>
+           
+        
+        <?=HTML::anchor('admin/scenes/add/'.$place->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i>Добавить Сцену</button>')?>
+        
         </td>
          <?endif?>
     

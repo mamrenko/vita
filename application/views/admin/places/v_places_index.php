@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
         <div class="portlet">
             <div class="portlet-header">
 
@@ -13,21 +13,10 @@
 </p>
 <h3>Площадки</h3>
 </div>
-            <div class="portlet-header">
+            <div class="portlet-content">
                 
-  <div class="row dt-rt">
-      <div class="col-sm-6">
-          <div id="DataTables_Table_0_length" class="dataTables_length">
-              <label><select name="DataTables_Table_0_length" size="1" aria-controls="DataTables_Table_0">
-                      <option value="10" selected="selected">10</option><option value="25">25</option>
-                      <option value="50">50</option>
-                      <option value="100">100</option>
-                  </select></label></div></div>
-      <div class="col-sm-6"><div class="dataTables_filter" id="DataTables_Table_0_filter">
-              <label><input type="text" aria-controls="DataTables_Table_0" placeholder="Search...">
-              </label></div></div></div>              
-                
-<table class="table table-bordered table-highlight" data-paginate="TRUE">
+           
+<table id="placetb" class="table table-bordered table-highlight" data-paginate="TRUE">
     <thead>
 <tr>
     <th>Название</th>
@@ -50,21 +39,37 @@
    <td><?=$place->adress?></td>
    <td>
         <?if($place->image == NULL):?>
-       <?=HTML::image('/media/images/placeoff.jpg')?>
+       <?=HTML::image('/media/images/placeoff.jpg', array(
+               'class' => 'img-thumbnail',
+                'width' => 100,
+       ))?>
        
        <?else:?>
-            <?=HTML::image('media/uploads/places/small_'.$place->image)?>
+            <?=HTML::image('media/uploads/places/small_'.$place->image,array(
+                'class' => 'img-thumbnail',
+                'width' => 100,
+            ))?>
+       
+       
        <?endif?>
    </td>
    <td><?=HTML::anchor('admin/scenes/list/'. $place->id, 'Сцены')?></td>
     <td>
         
-           <?=HTML::anchor('admin/places/edit/'. $place->id, HTML::image('media/images/edit.png'))?>
+           <?=HTML::anchor('admin/places/edit/'. $place->id, '<button class="btn btn-secondary" type="button">
+								<i class="fa fa-pencil"></i></button>')?>
         <?if(count($place->event->place_id) > 0):?>
      
-        <p>Удалить нельзя,есть события</p>
+        <ul class="portlet-tools pull-right">
+								
+                <li>
+	     <span class="label label-info">Удалить нельзя, есть события</span>
+             
+                </li>
+                </ul>
           <?else:?>
-         <?=HTML::anchor('admin/places/delete/'. $place->id, HTML::image('media/images/delete.png'))?>
+         <?=HTML::anchor('admin/places/delete/'. $place->id, '<button class="btn btn-danger" type="button">
+								<i class="fa fa-times"></i></button>')?>
         <?endif?>
     </td>
 </tr>
@@ -77,33 +82,11 @@
 <?=HTML::anchor('admin/places/add', '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить</button>')?>
    
 </p>             
-<div class="row dt-rb">
-    <div class="col-sm-6">
-        <div class="dataTables_info" id="DataTables_Table_0_info">Showing 1 to 10 of 20 entries</div>
-        
-    </div>
-    <div class="col-sm-6">
-        <div class="dataTables_paginate paging_bootstrap">
-            <ul class="pagination">
-                <li class="prev disabled">
-                    <a href="#">← Previous</a>
-                </li>
-                <li class="active"><a href="#">1</a>
-                </li>
-                <li><a href="#">2</a>
-                </li>
-                <li class="next"><a href="#">Next → </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+
 
 
 </div>
             </div>
         </div>
     </div>
-
-
 

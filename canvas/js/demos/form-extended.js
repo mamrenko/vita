@@ -2,7 +2,15 @@ $(function () {
 
 	$('#dp-ex-1').datepicker ()
 	$('#dp-ex-2').datepicker ()
-	$('#dp-ex-3').datepicker ()
+        
+     
+	$('#dp-ex-3').datepicker (
+           {
+              todayBtn: "linked",
+               language: "ru",
+               daysOfWeekDisabled: "1"
+            }
+        )
 	$('#dp-ex-4').datepicker ()
 	$('#dp-ex-5').datepicker ()
 
@@ -45,7 +53,7 @@ $(function () {
 		placeholder: "Select..."
 	})
 
-	$('#s2_multi_value').select2 ({
+	$('#multi_value').select2 ({
 		placeholder: "Select..."
 	})
 
@@ -59,3 +67,6 @@ $(function () {
 	$('#as-ex-2').autosize ().addClass ('autosize-animate')
 			
 })
+$("#e1").select2({
+placeholder: "Выберите категорию. Можно выбрать несколько"
+});

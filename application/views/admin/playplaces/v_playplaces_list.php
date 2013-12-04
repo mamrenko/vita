@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
         <div class="portlet">
             <div class="portlet-header">
  <p>
@@ -21,20 +21,28 @@
 <div class="portlet-toolbar">
 <p>
   
-      <?=HTML::anchor('admin/playplaces/add/'.$place->id, HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/playplaces/add/'.$place->id, 'Добавить')?>
+      
+      <?=HTML::anchor('admin/playplaces/add/'.$place->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить Мероприятие</button>')?>
 </p>
 </div>
 
              <div class="portlet-content">
-<table class="table table-bordered table-highlight">
+<table 
+    id="placetb"
+    class="table table-bordered table-highlight"
+    data-provide="datatable"
+    data-paginate="true"
+    data-search="true"
+    data-info="true"
+   data-length-change="true"
+    data-display-rows="10">
     <thead>
     <tr>
-        <th>Площадка <?=$place->title?></th>
-         <th>Сцена</th>
-         <th>Начало</th>
+        <th data-sortable="true">Площадка <?=$place->title?></th>
+         <th data-sortable="true">Сцена </th>
+         <th data-sortable="true">Начало </th>
 
-        <th>Функции</th>
+        <th data-sortable="false" >Функции </th>
 
     </tr>
   </thead>
@@ -52,12 +60,20 @@
     </td>
    
     <td>
-            <?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, HTML::image('media/images/edit.png'))?>
+            <?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, '<button class="btn btn-secondary" type="button">
+								<i class="fa fa-pencil"></i></button>')?>
          <?if(count($playbill->events->find_all()) > 0):?>
      
-        <p>Удалить нельзя,есть события</p>
+        <ul class="portlet-tools pull-right">
+								
+                <li>
+	     <span class="label label-info">Удалить нельзя, есть события</span>
+             
+                </li>
+                </ul>
           <?else:?>
-            <?=HTML::anchor('admin/playplaces/delete/'.$playbill->id, HTML::image('media/images/delete.png'))?>
+            <?=HTML::anchor('admin/playplaces/delete/'.$playbill->id, '<button class="btn btn-danger" type="button">
+								<i class="fa fa-times"></i></button>')?>
         <?endif?>
     </td>
  
@@ -67,8 +83,8 @@
 <div class="portlet-toolbar">
 <p>
   
-   <?=HTML::anchor('admin/playplaces/add/'.$place->id, HTML::image('media/images/add.png'))?>
-      <?=HTML::anchor('admin/playplaces/add/'.$place->id, 'Добавить')?>
+   
+      <?=HTML::anchor('admin/playplaces/add/'.$place->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить Мероприятие</button>')?>
 </p>
 </div>
  </div>

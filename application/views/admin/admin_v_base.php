@@ -145,8 +145,15 @@
             <? if (isset($block_center)):?>
 			
 				<?foreach($block_center as $cblock):?>
-                            
-                            
+                           <div class="row">
+                               <div class="col-md-6">
+                                   <span style="font-size: 20px">
+                                   <span class="label label-default">
+                             <?=$page_title?>
+                                    </span>
+                                   </span>
+                               </div>
+                            </div>
                         <?=$cblock?>
                             <?endforeach?> 
 			

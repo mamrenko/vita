@@ -1,86 +1,148 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="portlet">
+            <div class="portlet-header">
+
 <?if($errors):?>
 <?foreach ($errors as $error):?>
-<div class="error"><?=$error?></div>
+<ul class="portlet-tools pull-right">
+								
+                  <li>
+                      <span style="font-size: 18px"><span class="label label-primary"><?=$error?></span>
+                        </span>
+		  </li>
+		</ul>
 <?endforeach?>
 <?endif?>
 
-<h2>
-  <?=HTML::anchor('admin/playplaces/list/'. $place->id, HTML::image('media/images/goback.png'))?>
-  <?=HTML::anchor('admin/playplaces/list/'.$place->id, $place->title)?>
-</h2>
-     
-<div class="TTWForm-container">
+
+<p>  <?=HTML::anchor('admin/playplaces/list/'. $place->id, '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Вернуться  '.$place->title.'</button>')?>
+ 
+</p>
+<h1><?=$place->title?></h1>
+</div>
+            <div class="portlet-content">
+
        <?=Form::open('admin/playplaces/add/'.$id, array(
-           'enctype' => 'multipart/form-data',
-           'class' => 'TTWForm ui-sortable-disabled', 
-           'style' => 'width: 700px'));?>
+            'enctype' => 'multipart/form-data',
+            'id' => 'validate-basic',
+           'class' => 'form parsley-form',
+           'data-validate' => 'parsley',
+           ));?>
        
            
            
-          <div id="field1-container" class="field f_100">
+          <div class="form-group"> 
                 <?=Form::label('title', 'Название')?>
-               <?=Form::input('title', $data['title'], array('size' => 100, 'required' => 'required'))?>
+               <?=Form::input('title', $data['title'], array(
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '3',
+                   'data-maxlength' => '150',
+                   ))?>
           </div>
            
            
-          <div id="field3-container" class="field f_100">
+          <div class="form-group"> 
                 <?=Form::label('description', 'Описание')?>
-              <?=Form::textarea('description', $data['description'], array('cols' => 20, 'rows' => 5, 'id' => 'editor', 'required' => 'required'))?>
+              <?=Form::textarea('description', $data['description'], array(
+                  'cols' => 20, 
+                  'rows' => 5, 
+                  'class' => 'form-control ckeditor',
+                  'data-required' => 'true',
+                  'data-minlength' => '3',
+                  'data-maxlength' => '500',
+                  'id' =>'editor',
+                  
+                  ))?>
            <script type="text/javascript">
                     CKEDITOR.replace( 'editor' );
                </script>
           </div>
            
-           
-           <div id="field4-container" class="field f_100">
+          <div class="form-group"> 
                 <?=Form::label('meta_title', 'meta_title для Сео оптимизации')?>
-               <?=Form::input('meta_title', $data['meta_title'], array('size' => 100, 'required' => 'required'))?>
+               <?=Form::input('meta_title', $data['meta_title'], array(
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '10',
+                   'data-maxlength' => '150',
+                   ))?>
           </div>
-           
-          <div id="field5-container" class="field f_100">
+    
+          <div class="form-group"> 
                 <?=Form::label('meta_keywords', 'Ключевые слова для Сео оптимизации')?>
-               <?=Form::input('meta_keywords', $data['meta_keywords'], array('size' => 100, 'required' => 'required'))?>
+               <?=Form::input('meta_keywords', $data['meta_keywords'], array(
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '10',
+                   'data-maxlength' => '150',
+                   ))?>
           </div>
            
            
-          <div id="field6-container" class="field f_100">
+        <div class="form-group"> 
                <?=Form::label('meta_description', 'meta_description Описание страницы')?>
-               <?=Form::input('meta_description', $data['meta_description'], array('size' => 100, 'required' => 'required'))?>
+               <?=Form::input('meta_description', $data['meta_description'], array(
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '10',
+                   'data-maxlength' => '150',
+                   ))?>
                
           </div>
            
-           
-          <div id="field7-container" class="field f_100">
-               <?=Form::label('start', 'Начало мероприятия')?>
-              <br />
-              <?=Form::select('start', $start,21, $data['start'])?>
-              
-               
-          </div>
-           
-           
-          <div id="field8-container" class="field f_100">
+                <div class="row">
+                    <div class="col-md-2">
+                    <div class="form-group"> 
+                         <?=Form::label('start', 'Начало мероприятия')?>
+                        <br />
+                        <?=Form::select('start', $start,21, $data['start'],array(
+                            'class' => 'form-control select2-input',
+                          
+                        ))?>
+
+                        
+                    </div>
+                    </div>
+           </div>
+                
+          <div class="form-group"> 
               <?=Form::label('pl', 'Площадка')?>
               <br />
               <h2><?=$place->title?></h2>
               <?=Form::hidden('place_id', $place->id)?>
-            </div>
-             
-              <div id="field9-container" class="field f_100">
+
+          </div>
+            <div class="row">
+                    <div class="col-md-4">
+               <div class="form-group"> 
                
                <?=Form::label('scene_id', 'Сцена')?>:
                <br />
                <?=Form::select('scene_id', 
                   $scene, $data['scene_id'],
-                  array())?>
+                  array(
+                     'class' => 'form-control select2-input', 
+                  ))?>
                </div>
-          
+                    </div>
+            </div>
            
-          
-          <div id="form-submit" class="field f_100 clearfix submit">
-              <?=Form::submit('submit', 'Сохранить')?>
+                 <div class="form-group">
+                    <?=Form::label('image', 'Загрузить изображение:')?>
+            
+                    <?=Form::file('image', array('id' => 'multi'))?>
+                 </div>
+                
+         <div class="form-group"> 
+              <?=Form::button('submit', 'Сохранить', array(
+                          'type' => 'submit',
+                          'class' => 'btn btn-primary',
+                          ));?>
           </div>
      <?=Form::close()?>
 </div>
-
-
+                </div>
+         </div>
+     </div>
