@@ -141,7 +141,7 @@
  <?foreach ($events as $event):?>
 <tr>
     <td>
-          <?=$event->day?>
+          <?=date('d-m-Y',strtotime($event->day));?>
     </td>
 
 

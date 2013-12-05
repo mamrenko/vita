@@ -13,6 +13,10 @@ class Model_Event extends ORM {
             'through' => 'events_categories',
             'far_key' => 'category_id',
         ),
+         'tickets' => array(
+			'model' => 'ticket',
+			'foreign_key' => 'event_id',
+		),
     );
      protected $_belongs_to = array(
         'playbill' => array(

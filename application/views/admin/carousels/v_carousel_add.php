@@ -1,6 +1,7 @@
 <div class="row">
-<div class="col-lg-12">
-            <div class="well">
+    <div class="col-md-8">
+        <div class="portlet">
+            <div class="portlet-header">
              
                 
                 <?if($errors):?>
@@ -8,54 +9,111 @@
 <div class="error"><?=$error?></div>
 <?endforeach?>
 <?endif?>
-<br />
+<p> <?=HTML::anchor('admin/carousels/', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Вернуться</button>')?>
+<h3>Карусель на Главной </h3>
+            </div>
+            <div class="portlet-content">
                   
-                   <?=Form::open('admin/carousels/add/', array(
+             <?=Form::open('admin/carousels/add/', array(
            'enctype' => 'multipart/form-data',
-           'class' => 'bs-example form-horizontal',
+           'id' => 'validate-basic',
+           'class' => 'form parsley-form',
+           'data-validate' => 'parsley',
            ));?> 
                   
                 <fieldset>
                   <legend>Форма добавления</legend>
-                  <div class="form-group">
+                    <div class="form-group">
                       
-                    <?=Form::label('title', 'Название',array('class' =>'col-lg-2 control-label' ))?>
-                   
-                    <div class="col-lg-10">
+                <?=Form::label('title', 'Название',array())?>
                        
                <?=Form::input('title', $data['title'], array(
-                  'type' => 'text',
+                   'type' => 'text',
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '3',
+                   'data-maxlength' => '50',
                    'placeholder' => 'Название не длинее 50 символов',
-                   'id' => 'inputEmail',
-                   'class' => 'form-control', 
+                   
                    ))?> 
                     <span class="help-block">
                            Название не должно быть длинее 50 символов.
                       </span>  
-                    </div>
+                    
                   </div>
+                 
                  
                   <div class="form-group">
                      <?=Form::label('description', 'Описание',array(
-                         'class' =>'col-lg-2 control-label',
-                         'for' =>'editor',))?>  
-                    <div class="col-lg-10">
+                         ))?>  
+                    
                     
                          
               <?=Form::textarea('description', $data['description'], array(
-                 'class' => 'form-control',
-                  'rows' => 3,
-                  'id' => 'editor',
+                   'type' => 'text',
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '3',
+                   'data-maxlength' => '100',
+                   'placeholder' => 'Название не длинее 100 символов',
+                   'rows' => 3,
                   ))?>
                       
                       <span class="help-block">
                            Описание не должно быть длинее 100 символов.
                       </span>
-                    </div>
+                    
+                  </div>
+                    <div class="row">
+         <div class="col-md-4">
+     <h4>Выберите дату окончания показа баннера</h4>
+                            <div id="dp-ex-3"
+                                 class="input-group date" 
+                                 data-auto-close="true" 
+                                 data-date=<?=date('d-m-Y');?>
+                                 data-date-format="dd-mm-yyyy" 
+                                 data-date-autoclose="true"
+                                 >
+                                <?=Form::input('day', $data['day'], array(
+                                    'class' => 'form-control',
+                                    'type' => 'text',
+                                     'data-required' => 'true',
+                                    
+                                    
+                  ))?>
+                               
+				<span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                            <span class="help-block">dd-mm-yyyy</span>
+     
+ 
+     
+     </div>
+         </div>
+                  
+                  <div class="form-group">
+                      
+                <?=Form::label('link', 'Ссылка',array())?>
+                       
+               <?=Form::input('link', $data['link'], array(
+                   'type' => 'text',
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '3',
+                   'data-maxlength' => '50',
+                   'placeholder' => 'Название не длинее 50 символов',
+                   
+                   ))?> 
+                    <span class="help-block">
+                           Ссылка ведет на событие, вводите только 
+                      </span>  
+                    
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label">Показывать или нет</label>
-                    <div class="col-lg-10">
+                    <label>Показывать или нет</label>
+                   
                       <div class="radio">
                         <label>
                           <input type="radio" checked="" value="1" id="optionsRadios1" name="label">
@@ -68,46 +126,33 @@
                           Не показывать
                         </label>
                       </div>
-                    </div>
+                   
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label" for="select">Загрузка файла</label>
-                    <div class="col-lg-10">
+                    <label>Загрузка файла</label>
+                    
                        <?=Form::label('image', 'Загрузить изображение:')?>
-                    <?=Form::file('image', array('id' => 'multi'))?>
+                    <?=Form::file('image', array(
+                        'id' => 'multi'
+                        ))?>
                         <span class="help-block">
                             Файл размером 800 на 600 пикселей
                       </span>
-                    </div>
+                    
                   </div>
-                  
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-    <img data-src="holder.js/100%x100%" alt="...">
-  </div>
-  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-  <div>
-    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
-    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-  </div>
-</div>
-
-                  
                   
                   
                   <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2">
-                     
-                      
                      
                       <?=Form::button('submit', 'Сохранить', array(
                           'type' => 'submit',
                           'class' => 'btn btn-primary',
                           ));?>
-                    </div>
+                  
                   </div>
                 </fieldset>
               <?=Form::close()?>
             </div>
           </div>
+</div>
 </div>

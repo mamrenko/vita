@@ -4,10 +4,13 @@
       <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
     <div class="carousel slide" id="theCarousel" data-interval="2000">
        <ol class="carousel-indicators">
+          
               <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
               <li data-target="#theCarousel" data-slide-to="1"></li>
               <li data-target="#theCarousel" data-slide-to="2"></li>
               <li data-target="#theCarousel" data-slide-to="3"></li>
+              
+             
             </ol>
         
         <div class="carousel-inner">
@@ -42,10 +45,19 @@
       <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
     <div class="carousel slide" id="theCarousel" data-interval="2000">
        <ol class="carousel-indicators">
-              <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#theCarousel" data-slide-to="1"></li>
-              <li data-target="#theCarousel" data-slide-to="2"></li>
-              <li data-target="#theCarousel" data-slide-to="3"></li>
+          
+           <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+             <? $i = 1;
+          
+   while ($i <= count($carousels)) {?>
+              
+              <li data-target="#theCarousel" data-slide-to="<?=$i++;?>"></li>
+         <?    }
+   ?>
+
+        
+          
+               
             </ol>
         
         <div class="carousel-inner">

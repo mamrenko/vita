@@ -5,10 +5,21 @@
 class Controller_Admin_carousels extends Controller_Admin {
     public function before() {
         parent::before();
-            $this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
+             $this->template->styles[] = 'canvas/js/plugins/select2/select2.css';
+             $this->template->styles[] = 'canvas/js/plugins/datepicker/datepicker.css';
+             
+            //$this->template->scripts[] = 'media/js/jquery-1.6.2.min.js';
             $this->template->scripts[] = 'media/js/jquery.MultiFile.pack.js';
             $this->template->scripts[] = 'media/js/upload.js';
             
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
+           
+            $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.ru.js';
+            $this->template->scripts[] = 'canvas/js/plugins/select2/select2.js';
+            $this->template->scripts[] = 'canvas/js/demos/form-extended.js';
             
             
              
@@ -43,9 +54,17 @@ class Controller_Admin_carousels extends Controller_Admin {
         {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
             $_POST['description'] = Security::xss_clean( $_POST['description']);
+            $_POST['link'] = Security::xss_clean( $_POST['link']);
+            $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
             
             
-            $data = Arr::extract($_POST, array('title', 'description','label'));
+            $data = Arr::extract($_POST, array(
+                'title', 
+                'description',
+                'label',
+                'day',
+                'link',
+                ));
             $carousel = ORM::factory('carousel');
             $carousel->values($data);
         
@@ -102,13 +121,20 @@ class Controller_Admin_carousels extends Controller_Admin {
             $this->request->redirect('admin/carousels');
         }
           $data = $carousel->as_array();   
-       
+          $data['day'] = date('d-m-Y', strtotime($data['day']));
         if (isset($_POST['submit'])) {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
             $_POST['description'] = Security::xss_clean( $_POST['description']);
+             $_POST['day'] = Security::xss_clean( $_POST['day']);
+             $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
             
-            
-            $data = Arr::extract($_POST, array('title','description','label'));
+            $data = Arr::extract($_POST, array(
+                'title',
+                'description',
+                'label',
+                'day',
+                'link',
+                ));
             
             $carousel->values($data);
             
@@ -151,7 +177,7 @@ class Controller_Admin_carousels extends Controller_Admin {
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
-                
+                ->bind('carousel', $carousel)
                 ;
 
         // Вывод в шаблон
@@ -206,7 +232,7 @@ class Controller_Admin_carousels extends Controller_Admin {
 
         $im = Image::factory($file);
         $im
-            ->resize(600, 300, Image::AUTO)
+            ->resize(600, 300, IMAGE::NONE)
             ->watermark($mark,TRUE, TRUE)
             ->save("$directory/$filename.$ext");
        

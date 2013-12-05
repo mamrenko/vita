@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
         <div class="portlet">
             <div class="portlet-header">
                 <p>
@@ -10,7 +10,13 @@
 								
                 <li>
 	     <span class="label label-info">Должно быть не менее 3х баннеров</span>
-             <span class="label label-primary">Картинки размером 600 на 300 пикселей</span>
+            
+                </li>
+                <li>
+                     <span class="label label-primary">Картинки размером 600 на 300 пикселей</span>
+                </li>
+                <li>
+                    <span class="label label-primary">Больше 4 баннеров не показывается</span>
                 </li>
                 </ul>
 
@@ -20,13 +26,16 @@
        <?if(count($carousels)>0):?>    
 
            
-              <table class="table table-bordered table-highlight">
+              <table id="placetb" class="table table-bordered table-highlight">
                 <thead>
                   <tr>
                     
-                    <th> Название</th>
+                    <th>Название</th>
                     <th>Описание</th>
                     <th>Картинка</th>
+                    <th>Показана </th>
+                    <th>Окончание Показа</th>
+                    <th>Ссылка</th>
                     <th>Функции</th>
                   </tr>
                 </thead>
@@ -39,8 +48,36 @@
                     <td><?=HTML::anchor('admin/carousels/edit/'.$carousel->id, $carousel->title)?></td>
                     <td><?=$carousel->description?></td>
                     <td>
-                        <?=HTML::image('media/uploads/carousels/'.'small_'.$carousel->image)?>
+                        
+                         <?if($carousel->image == NULL):?>
+                            <?=HTML::image('/media/images/placeoff.jpg', array(
+                                    'class' => 'img-thumbnail',
+                                     'width' => 100,
+                            ))?>
+
+                            <?else:?>
+                             <?=HTML::image('media/uploads/carousels/'.'small_'.$carousel->image, array(
+                            'class' => 'img-thumbnail',
+                            'width' => 100,
+                        ))?>
+                         <?endif?>
+                        
+                       
   
+                    </td>
+                    <td>
+                        <?if($carousel->label > 0):?>
+                        <p>Показана</p>
+                        <?else:?>
+                         <p>Не Показана</p>
+                           <? endif;?>     
+  
+                    </td>
+                    <td>
+                        <?=date('d-m-Y',strtotime($carousel->day));?>
+                    </td>
+                    <td>
+                       <?=$carousel->link?> 
                     </td>
                     <td>
                          <?=HTML::anchor('admin/carousels/edit/'. $carousel->id, '<button class="btn btn-secondary" type="button">

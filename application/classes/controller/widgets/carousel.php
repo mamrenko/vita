@@ -8,7 +8,7 @@ class Controller_Widgets_Carousel extends Controller_Widgets
     public function action_index()
 	{
           // Получаем список категорий
-        $carousels = ORM::factory('carousel')->where('image' ,'!=',  '' )->limit(3)->find_all();
+        $carousels = ORM::factory('carousel')->where('image' ,'!=',  '' )->where('label', '=', '1')->limit(4)->find_all();
         $this->template->carousels = $carousels;
 	}
          
