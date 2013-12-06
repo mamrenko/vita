@@ -62,29 +62,19 @@ class Controller_Admin_Tickets extends Controller_Admin {
         if(!$id){
                  $this->request->redirect('admin/tickets');
              }
-       $sectors = array(
-           'Партер',
-           'Амфитеатр',
-           'Бельэтаж',
-           'Балкон',
-           'Ложа',
-       );
+       $sectors = ORM::factory('area')->order_by('title')->find_all()->as_array();
+         
+       $sect = array();
+        foreach ($sectors as $sector){
+            $sect[$sector->title]= $sector->title;
+        }
        
-       
-        $row = array(
-            '1',
-            '2',
-            '3'
-      
-        );
-         $seat = array(
-            '1',
-            '2',
-            '3',
-            '4',
-            '5'
-      
-        );
+        $rows = ORM::factory('row')->find_all()->as_array();
+         $rws = array();
+         
+       foreach($rows as $row){
+           $rws[$row->number]= $row->number;
+       }
         if (isset($_POST['submit']))
         {
             $_POST['cost'] = Security::xss_clean( $_POST['cost']);
@@ -118,10 +108,9 @@ class Controller_Admin_Tickets extends Controller_Admin {
                  ->bind('errors', $errors)
                  ->bind('data', $data)
                  ->bind('id', $id)
-                ->bind('event', $event)
-                ->bind('row', $row)
-                 ->bind('seat', $seat)
-                 ->bind('sectors', $sectors)
+                 ->bind('event', $event)
+                 ->bind('rws', $rws)
+                 ->bind('sect', $sect)
                 
                  
                  ;
@@ -140,30 +129,20 @@ class Controller_Admin_Tickets extends Controller_Admin {
         if(!$ticket->loaded()){
             $this->request->redirect('admin/tickets');
         }
-         $sectors = array(
-           'Партер',
-           'Амфитеатр',
-           'Бельэтаж',
-           'Балкон',
-           'Ложа',
-       );
+        $sectors = ORM::factory('area')->order_by('title')->find_all()->as_array();
+         
+       $sect = array();
+        foreach ($sectors as $sector){
+            $sect[$sector->title]= $sector->title;
+        }
        
-       
-        $row = array(
-            '1',
-            '2',
-            '3'
-      
-        );
-        $row = array_values($row);
-         $seat = array(
-            '1',
-            '2',
-            '3',
-            '4',
-            '5'
-      
-        );
+        $rows = ORM::factory('row')->find_all()->as_array();
+         $rws = array();
+         
+       foreach($rows as $row){
+           $rws[$row->number]= $row->number;
+       }
+        
           $data = $ticket->as_array();   
        
         if (isset($_POST['submit'])) {
@@ -196,10 +175,9 @@ class Controller_Admin_Tickets extends Controller_Admin {
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
-                 ->bind('row', $row)
-                 ->bind('seat', $seat)
-                 ->bind('sectors', $sectors)
-                 ->bind('ticket', $ticket)
+                ->bind('sect', $sect)
+                ->bind('ticket', $ticket)
+                ->bind('rws', $rws)
                 
                 ;
 

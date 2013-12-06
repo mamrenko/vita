@@ -41,10 +41,12 @@
                <div class="form-group"> 
                
                <?=Form::label('sector', 'Сектор')?>:
-                <select name="sector" class="form-control select2-selected">
-              <?foreach($sectors as $sector):?>
-              <option><?=$sector;?></option>
-              <?endforeach;?>
+                 <?=Form::select('sector', 
+                  $sect, $data['sector'],
+                  array(
+                     'class' => 'form-control select2-input', 
+                  ))?>
+              
 
              </select>
                </div>
@@ -53,12 +55,11 @@
                
                <?=Form::label('row', 'Ряд')?>:
               
-              <select name="row" class="form-control select2-selected">
-              <?foreach($row as $rows):?>
-              <option><?=$rows?></option>
-              <?endforeach;?>
-
-             </select>
+                <?=Form::select('row', 
+                  $rws, $data['row'],
+                  array(
+                     'class' => 'form-control select2-input', 
+                  ))?>
                </div>
                     
            
@@ -67,13 +68,11 @@
                <div class="form-group"> 
                
                <?=Form::label('seat', 'Место')?>:
-               <br />
-               <select name="seat" class="form-control select2-selected">
-              <?foreach($seat as $sea):?>
-              <option><?=$sea?></option>
-              <?endforeach;?>
-
-             </select>
+               <?=Form::select('seat', 
+                  $rws, $data['seat'],
+                  array(
+                     'class' => 'form-control select2-input', 
+                  ))?>
                </div>
                 
                       
