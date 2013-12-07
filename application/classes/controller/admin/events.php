@@ -188,6 +188,20 @@ class Controller_Admin_Events extends Controller_Admin {
         $event->delete();
         $this->request->redirect('admin/playbill/edit/'.$playbill->id);
     }
+    public function action_old(){
+       $events = ORM::factory('event')
+               ->where('day', '<', date("Y-m-d"))
+               ->find_all();
+               
         
+        $content = View::factory('admin/events/v_event_old', array(
+                    'events' => $events,
+                )
+                );
+
+        // Вывод в шаблон
+       
+        $this->template->block_center = array($content); 
+    }
    
 }

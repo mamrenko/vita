@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="portlet">
             <div class="portlet-header">
 
@@ -60,62 +60,78 @@
                </script>
           </div>
            
-          <div class="form-group"> 
+         
+              <div class="row">
+                        <div class="col-sm-6">
+                            
+                            <div class="form-group"> 
                 <?=Form::label('meta_title', 'meta_title для Сео оптимизации')?>
-               <?=Form::input('meta_title', $data['meta_title'], array(
+                  <span class="help-block">
+                      От 10 до 150 символов можно ввести
+                  </span>
+               <?=Form::textarea('meta_title', $data['meta_title'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
+                   'id' => 'testTextarea2',
+                   'rows' => '1',
                    ))?>
-          </div>
-    
-          <div class="form-group"> 
+               </div>
+                            
+                        </div>
+                  
+                        <div class="col-sm-6">
+                            
+                            
+                             <div class="form-group"> 
                 <?=Form::label('meta_keywords', 'Ключевые слова для Сео оптимизации')?>
-               <?=Form::input('meta_keywords', $data['meta_keywords'], array(
+                                   <span class="help-block">
+                      От 10 до 150 символов можно ввести
+                  </span>
+               <?=Form::textarea('meta_keywords', $data['meta_keywords'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
+                   'id' => 'testTextarea22',
+                   'rows' => '1',
                    ))?>
           </div>
+                             
+                        </div>
+                    </div>
+              
+         
+    
+         
            
            
-        <div class="form-group"> 
+        
+           
+                <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group"> 
                <?=Form::label('meta_description', 'meta_description Описание страницы')?>
-               <?=Form::input('meta_description', $data['meta_description'], array(
+                          <span class="help-block">
+                      От 10 до 150 символов можно ввести
+                  </span>
+               <?=Form::textarea('meta_description', $data['meta_description'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
+                   'id' => 'testTextarea222',
+                   'rows' => '1',
                    ))?>
                
           </div>
-           
-                <div class="row">
-                    <div class="col-md-2">
-                    <div class="form-group"> 
-                         <?=Form::label('start', 'Начало мероприятия')?>
-                        <br />
-                        <?=Form::select('start', $start,21, $data['start'],array(
-                            'class' => 'form-control select2-input',
-                          
-                        ))?>
-
-                        
-                    </div>
                     </div>
            </div>
                 
-          <div class="form-group"> 
-              <?=Form::label('pl', 'Площадка')?>
-              <br />
-              <h2><?=$place->title?></h2>
-              <?=Form::hidden('place_id', $place->id)?>
-
-          </div>
+          
             <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                <div class="form-group"> 
                
                <?=Form::label('scene_id', 'Сцена')?>:
@@ -127,14 +143,49 @@
                   ))?>
                </div>
                     </div>
+                <div class="col-sm-2">
+                    <div class="form-group"> 
+                         <?=Form::label('start', 'Начало мероприятия')?>
+                        <br />
+                        <?=Form::select('start', $start,21,array(
+                            'class' => 'form-control select2-input',
+                          
+                        )
+                           , $data['start']     )?>
+
+                        
+                    </div>
+                    
+                    
+                </div>
+                
+                    
+                <div class="col-sm-6">
+                    <div class="form-group"> 
+              <?=Form::label('pl', 'Площадка')?>
+              <br />
+              <h2><?=$place->title?></h2>
+              <?=Form::hidden('place_id', $place->id)?>
+
+          </div>
+                    
+                    
+                </div>
             </div>
            
                  <div class="form-group">
                     <?=Form::label('image', 'Загрузить изображение:')?>
-            
-                    <?=Form::file('image', array('id' => 'multi'))?>
+             <span class="help-block">Файл размером 300 на 200 пикселей</span>
+                    <?//=Form::file('image', array('id' => 'multi'))?>
+             
+             
+             <?=Form::file('image', array(
+                          
+                          'class' => 'btn btn-success',
+                          'id' =>'multi',
+                          ));?>
                  </div>
-                
+                 
          <div class="form-group"> 
               <?=Form::button('submit', 'Сохранить', array(
                           'type' => 'submit',
@@ -142,7 +193,12 @@
                           ));?>
           </div>
      <?=Form::close()?>
+                
+        
+                
 </div>
+            
+            
                 </div>
          </div>
      </div>

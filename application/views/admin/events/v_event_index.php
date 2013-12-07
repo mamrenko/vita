@@ -11,7 +11,8 @@
                         <span class="label label-primary">Всего событий : <?=count($events);?></span>
                 </li>
                 </ul>
-
+<?=HTML::anchor('admin/events/old/', '<button type="button" 
+                            class="btn btn-success">Прошедшие события</button>')?>
             </div>
             <div class="portlet-content">
 <table id="placetb" class="table table-bordered table-highlight">

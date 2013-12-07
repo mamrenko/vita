@@ -41,7 +41,7 @@
         <th data-sortable="true">Площадка <?=$place->title?></th>
          <th data-sortable="true">Сцена </th>
          <th data-sortable="true">Начало </th>
-
+       <th data-sortable="false">Картика</th>
         <th data-sortable="false" >Функции </th>
 
     </tr>
@@ -57,6 +57,20 @@
     </td>
     <td>
         <?=$playbill->starts->start?>
+    </td>
+    <td>
+        <?if($playbill->image == NULL):?>
+                            <?=HTML::image('/media/images/placeoff.jpg', array(
+                                    'class' => 'img-thumbnail',
+                                     'width' => 100,
+                            ))?>
+
+                            <?else:?>
+                             <?=HTML::image('media/uploads/playplaces/'.'small_'.$playbill->image, array(
+                            'class' => 'img-thumbnail',
+                            'width' => 100,
+                        ))?>
+                         <?endif?>
     </td>
    
     <td>

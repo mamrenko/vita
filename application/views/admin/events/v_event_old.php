@@ -1,9 +1,9 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
         <div class="portlet">
             <div class="portlet-header">
                 <h2>
-                 Все события
+                 Прошедшие события
                 </h2>
                 <ul class="portlet-tools pull-right">
 								
@@ -11,7 +11,8 @@
                         <span class="label label-primary">Всего событий : <?=count($events);?></span>
                 </li>
                 </ul>
-
+<?=HTML::anchor('admin/events/', '<button type="button" 
+                            class="btn btn-success"> Все события</button>')?>
             </div>
             <div class="portlet-content">
 <table id="placetb" class="table table-bordered table-highlight">
@@ -23,9 +24,8 @@
         <th>Мероприятие</th>
         <th>Начало</th>
         <th>Сцена</th>
-        <th>Список Билетов</th>
-        <th>Билеты</th>
-        
+        <th>Функции</th>
+
     </tr>
     </thead>
 <tr>
@@ -48,32 +48,11 @@
         <?=$event->playbill->scene->title?>
     </td> 
     <td>
-        <?$tickets = $event->tickets->find_all();?> 
-                <?if(count($tickets)> 0):?>
-        <?foreach($tickets as $ticket):?>
-        <p> <?=$ticket->sector?>
-            Ряд: <?=$ticket->row?>
-            Место:  <?=$ticket->seat?> 
-            Цена: <?=$ticket->cost?> 
-          </p>                  
-                               
-        <?endforeach?>
-        <?else:?>
-                
-                <ul class="portlet-tools pull-left">
-								
-                <li>
-                        <span class="label label-primary">Нет Билетов</span>
-                </li>
-                </ul>
-                <?endif?>
+        <?=HTML::anchor('admin/events/edit/'.$event->id, '<button class="btn btn-secondary" type="button">
+								<i class="fa fa-pencil"></i></button>')?>
+         <?=HTML::anchor('admin/events/delete/'.$event->id, '<button class="btn btn-danger" type="button">
+								<i class="fa fa-times"></i></button>')?>
     </td>
-    <td>
-        <?=HTML::anchor('admin/tickets/list/'. $event->id, '<button type="button" 
-                            class="btn btn-success">Билеты</button>')?>
-      
-    </td>
-    
    
 </tr>
     <? endforeach; ?>  

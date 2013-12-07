@@ -59,8 +59,9 @@
                     CKEDITOR.replace( 'editor' );
                </script>
           </div>
-           
-          <div class="form-group"> 
+           <div class="row">
+               <div class="col-md-6">
+                   <div class="form-group"> 
                 <?=Form::label('meta_title', 'meta_title для Сео оптимизации')?>
                <?=Form::input('meta_title', $data['meta_title'], array(
                    'class' => 'form-control',
@@ -69,8 +70,9 @@
                    'data-maxlength' => '150',
                    ))?>
           </div>
-    
-          <div class="form-group"> 
+               </div>
+               <div class="col-md-6">
+                    <div class="form-group"> 
                 <?=Form::label('meta_keywords', 'Ключевые слова для Сео оптимизации')?>
                <?=Form::input('meta_keywords', $data['meta_keywords'], array(
                    'class' => 'form-control',
@@ -79,8 +81,14 @@
                    'data-maxlength' => '150',
                    ))?>
           </div>
+               </div>
+            </div>
+          
+    
+          
            
-           
+                <div class="row">
+                    <div class="col-md-6">
         <div class="form-group"> 
                <?=Form::label('meta_description', 'meta_description Описание страницы')?>
                <?=Form::input('meta_description', $data['meta_description'], array(
@@ -89,33 +97,14 @@
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
                    ))?>
-               
+               </div>
           </div>
+                </div>
            
                 <div class="row">
-                    <div class="col-md-2">
-                    <div class="form-group"> 
-                         <?=Form::label('start', 'Начало мероприятия')?>
-                        <br />
-                        <?=Form::select('start', $start, $data['start'],array(
-                            'class' => 'form-control select2-input',
-                            //'data-select' => '21'
-                        ))?>
-
-
-                    </div>
-                    </div>
-           </div>
-           
-          <div class="form-group"> 
-              <?=Form::label('pl', 'Площадка')?>
-              <br />
-              <h2><?=$playbill->place->title?></h2>
-              <?=Form::hidden('place_id', $playbill->place->id)?>
-
-          </div>
-            <div class="row">
-                    <div class="col-md-4">
+                    
+                    
+                     <div class="col-md-4">
                <div class="form-group"> 
                
                <?=Form::label('scene_id', 'Сцена')?>:
@@ -127,7 +116,34 @@
                   ))?>
                </div>
                     </div>
-            </div>
+                    
+                    <div class="col-md-2">
+                    <div class="form-group"> 
+                         <?=Form::label('start', 'Начало мероприятия')?>
+                        <br />
+                        <?=Form::select('start', $start, $data['start'],array(
+                            'class' => 'form-control select2-input',
+                           
+                        ))?>
+
+
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                        
+                        
+                        <div class="form-group"> 
+              <?=Form::label('pl', 'Площадка')?>
+              <br />
+              <h2><?=$playbill->place->title?></h2>
+              <?=Form::hidden('place_id', $playbill->place->id)?>
+
+          </div>
+                    </div>
+           </div>
+           
+          
+            
            <div class="form-group">
                     <?=HTML::image('media/uploads/playplaces/'.'small_'.$playbill->image,array(
                         'class' => 'img-circle',
@@ -135,6 +151,7 @@
             </div>
                 <div class="form-group">
                      <?=Form::label('image', 'Загрузить изображение:')?>
+                     <span class="help-block">Файл размером 300 на 200 пикселей</span>
                      <?=Form::file('image', array('id' => 'multi'))?>
               </div>
          <div class="form-group"> 
