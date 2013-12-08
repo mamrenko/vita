@@ -32,6 +32,9 @@
        
            
            
+           <div class="row">
+                    <div class="col-md-6">
+                    
           <div class="form-group"> 
                 <?=Form::label('title', 'Название')?>
                <?=Form::input('title', $data['title'], array(
@@ -41,7 +44,19 @@
                    'data-maxlength' => '150',
                    ))?>
           </div>
-           
+                    </div>
+                    <div class="col-md-6">
+                        <?=Form::label('subtitle', 'ПОД_Название')?>
+               <?=Form::input('subtitle', $data['subtitle'], array(
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '3',
+                   'data-maxlength' => '150',
+                   ))?>
+                        
+                        
+                    </div>
+                </div>
            
           <div class="form-group"> 
                 <?=Form::label('description', 'Описание')?>

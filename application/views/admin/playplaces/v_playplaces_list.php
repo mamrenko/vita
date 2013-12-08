@@ -38,7 +38,8 @@
     data-display-rows="10">
     <thead>
     <tr>
-        <th data-sortable="true">Площадка <?=$place->title?></th>
+        <th data-sortable="true">Мероприятия: Площадка <?=$place->title?></th>
+        <th data-sortable="true">Под_Название</th>
          <th data-sortable="true">Сцена </th>
          <th data-sortable="true">Начало </th>
        <th data-sortable="false">Картика</th>
@@ -53,8 +54,12 @@
    
     <td><?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, $playbill->title)?></td>
     <td>
+        <?=$playbill->subtitle?>
+    </td>
+    <td>
         <?=$playbill->scene->title?>
     </td>
+    
     <td>
         <?=$playbill->starts->start?>
     </td>

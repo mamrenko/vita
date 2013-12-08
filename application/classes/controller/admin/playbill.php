@@ -77,6 +77,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
         if (isset($_POST['submit']))
         {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
+            $_POST['subtitle'] = Security::xss_clean( $_POST['subtitle']);
             $_POST['description'] = Security::xss_clean( $_POST['description']);
             
             $_POST['meta_title'] = Security::xss_clean( $_POST['meta_title']);
@@ -84,7 +85,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
             $_POST['meta_description'] = Security::xss_clean( $_POST['meta_description']);
             
             
-            $data = Arr::extract($_POST, array('title', 'description','meta_title', 'meta_keywords', 
+            $data = Arr::extract($_POST, array('title', 'subtitle', 'description','meta_title', 'meta_keywords', 
                 'meta_description', 'place_id', 'start'));
             $playbill = ORM::factory('playbill');
             $playbill->values($data);

@@ -4,6 +4,18 @@ class Controller_Admin_News extends Controller_Admin {
 
     public function before() {
         parent::before();
+            $this->template->styles[] = 'canvas/js/plugins/datepicker/datepicker.css';
+            
+            
+            
+            
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
+             $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.ru.js';
+             $this->template->scripts[] = 'canvas/js/demos/form-extended.js';
+            
       $submenu = Widget::load('adminmenupages');
         // Вывод в шаблон
         $this->template->submenu = Widget::load('adminmenupages');
@@ -34,11 +46,12 @@ class Controller_Admin_News extends Controller_Admin {
             $this->request->redirect('admin/news');
         }
           $data = $news->as_array();   
-       
+          $data['day'] = date('d-m-Y', strtotime($data['day']));
         if (isset($_POST['submit'])) {
             $_POST['content'] = Security::xss_clean( $_POST['content']);
             $_POST['title'] = Security::xss_clean( $_POST['title']);
-            $data = Arr::extract($_POST, array('title', 'content', 'date'));
+            $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
+            $data = Arr::extract($_POST, array('title', 'content', 'day'));
             
             $news->values($data);
             
@@ -68,7 +81,8 @@ class Controller_Admin_News extends Controller_Admin {
        if (isset($_POST['submit'])) {
             $_POST['content'] = Security::xss_clean( $_POST['content']);
             $_POST['title'] = Security::xss_clean( $_POST['title']);
-            $data = Arr::extract($_POST, array('title',  'content', 'date'));
+            $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
+            $data = Arr::extract($_POST, array('title',  'content', 'day'));
             $news = ORM::factory('new');
             $news->values($data);
 

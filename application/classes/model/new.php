@@ -16,7 +16,7 @@ class Model_New extends ORM {
                 array('not_empty'),
                 array('min_length', array(':value', 20)),
             ),
-            'date' => array(
+            'day' => array(
                 array('not_empty'),
                 array('date', array(':value', 'Y-m-d')),
             )
@@ -29,7 +29,7 @@ class Model_New extends ORM {
     {
         return array(
             'title' => 'Название',
-            'date' => 'Дата',
+            'day' => 'Дата',
             
             'content' => 'Основной текст',
         );

@@ -1,41 +1,108 @@
-<br/>
+<div class="row">
+    <div class="col-md-6">
+        <div class="portlet">
+            <div class="portlet-header">
+                
 <?if($errors):?>
 <?foreach ($errors as $error):?>
-<div class="error"><?=$error?></div>
+<ul class="portlet-tools pull-right">
+								
+                  <li>
+                      <span style="font-size: 18px"><span class="label label-primary"><?=$error?></span>
+                        </span>
+		  </li>
+		</ul>
 <?endforeach?>
 <?endif?>
 
 
-  <div class="TTWForm-container">
-      
-      <?=Form::open('admin/news/edit/'. $id, array('class' => 'TTWForm ui-sortable-disabled', 'style' => 'width: 700px'));?>
+  
+        <p>
+            <i class="icon-li fa fa-cloud"></i>
+          Редактируем Новости
+        </p>
+        
     
+<p>  
+<?=HTML::anchor('admin/news/', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Вернуться</button>')?>
+ 
+</p>
+            </div>
            
-           
-          <div id="field1-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+<div class="portlet-content">
+      
+      <?=Form::open('admin/news/edit/'. $id, array(
+          'enctype' => 'multipart/form-data',
+            'id' => 'validate-basic',
+           'class' => 'form parsley-form',
+           'data-validate' => 'parsley',
+          ));?>
+    
+           <div class="form-group">
                <?=Form::label('title', 'Название')?>
-               <?=Form::input('title', $data['title'], array('size' => 100))?>
+               <?=Form::input('title', $data['title'], array(
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '3',
+                   'data-maxlength' => '150',
+                   ))?>
           </div>
            
            
-          <div id="field2-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
-              <?=Form::label('date', 'Дата')?>
-               <?=Form::input('date', $data['date'], array('size' => 100))?>
-          </div>
+          <div class="row">
+         <div class="col-md-4">
+     <h4>Выберите дату</h4>
+                            <div id="dp-ex-3"
+                                 class="input-group date" 
+                                 data-auto-close="true" 
+                                 data-date=<?=date('d-m-Y');?>
+                                 data-date-format="dd-mm-yyyy" 
+                                 data-date-autoclose="true"
+                                 >
+                                <?=Form::input('day', $data['day'], array(
+                                    'class' => 'form-control',
+                                    'type' => 'text',
+                                     'data-required' => 'true',
+                                    
+                                    
+                  ))?>
+                               
+				<span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                            <span class="help-block">dd-mm-yyyy</span>
+     
+ 
+     
+     </div>
+         </div>
            
            
-          <div id="field3-container" class="field f_100 ui-resizable-disabled ui-state-disabled">
+          <div class="form-group">
                <?=Form::label('content', 'Основной текст')?>
-              <?=Form::textarea('content', $data['content'], array('cols' => 20, 'rows' => 5, 'id' => 'editor'))?>
-              
-                <script type="text/javascript">
-                    CKEDITOR.replace( 'editor' );
-               </script>
+              <?=Form::textarea('content', $data['content'], array(
+                  'cols' => 20, 
+                  'rows' => 5, 
+                  'class' => 'form-control ckeditor',
+                  'data-required' => 'true',
+                  'data-minlength' => '3',
+                  'data-maxlength' => '1500',
+                  ))?>
+
+            
+             
           </div>
            
            
-          <div id="form-submit" class="field f_100 clearfix submit">
-              <?=Form::submit('submit', 'Сохранить')?>
+          <div class="form-group">
+                <?=Form::button('submit', 'Сохранить', array(
+                          'type' => 'submit',
+                          'class' => 'btn btn-primary',
+                          ));?>
           </div>
    <?=Form::close()?>
+</div>
 </div> 
+</div>
+    </div>

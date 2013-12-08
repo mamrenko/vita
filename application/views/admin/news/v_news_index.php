@@ -1,8 +1,19 @@
-<!-- Generated from http://html-generator.weebly.com -->
-
-
-
-<table id="tfhover" class="tftable" border="1">
+<div class="row">
+    <div class="col-md-6">
+        <div class="portlet">
+            <div class="portlet-header">
+                <p>
+  
+   
+      <?=HTML::anchor('admin/news/add/', '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить</button>')?>
+</p>
+                
+                
+            </div>
+            <div class="portlet-content">
+        <?if(count($all_news)>0):?>        
+<table  id ="placetb" class="table table-bordered table-highlight">
+    <thead>
 <tr>
     <th>Дата</th>
     <th>Название</th>
@@ -11,33 +22,35 @@
     <th>Функции</th>
     
 </tr>
-
+</thead>
     <? foreach ($all_news as $news):?>
 
 <tr>
-    <td><?=$news->date?></td>
+    <td> <?=date('d-m-Y',strtotime($news->day));?></td>
     <td><?=HTML::anchor('admin/news/edit/'. $news->id, $news->title)?></td>
     
    
     <td>
-           <?=HTML::anchor('admin/news/edit/'. $news->id, HTML::image('media/images/edit.png'))?>
+          <?=HTML::anchor('admin/news/edit/'. $news->id, '<button class="btn btn-secondary" type="button">
+								<i class="fa fa-pencil"></i></button>')?>
+         <?=HTML::anchor('admin/news/delete/'. $news->id, '<button class="btn btn-danger" type="button">
+								<i class="fa fa-times"></i></button>')?> 
 
-           <?=HTML::anchor('admin/news/delete/'. $news->id, HTML::image('media/images/delete.png'))?>
+ 
     </td>
 </tr>
  <? endforeach; ?>  
 
 </table>
-
-
-
-
-
-
-
-<br/>
-<p>
-<?=HTML::image('media/images/add.png', array('valign' => 'top'))?>
-    
-<?=HTML::anchor('admin/news/add', 'Добавить')?>
-</p>
+<?else:?>
+                
+                <ul class="portlet-tools pull-right">
+								
+                <li>
+	     <span class="label label-danger">Нет  Новостей</span>
+             
+                </li>
+                </ul>
+                <?endif?>
+</div></div></div>
+    </div>

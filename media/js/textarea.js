@@ -15,6 +15,7 @@ var info;
 						'warningNumber': 40,
 						'displayFormat' : '#input/#max | #words words'
 				};
+                                
 				$('#testTextarea2').textareaCount(options2);
 
 				var options3 = {
