@@ -62,7 +62,7 @@
                                 <?=Form::input('day', $data['day'], array(
                                     'class' => 'form-control',
                                     'type' => 'text',
-                                     'data-required' => 'true',
+                                    'data-required' => 'true',
                                     
                                     
                   ))?>
@@ -86,14 +86,22 @@
                   'rows' => 5, 
                   'class' => 'form-control ckeditor',
                   'data-required' => 'true',
-                  'data-minlength' => '3',
+                  'data-minlength' => '20',
                   'data-maxlength' => '1500',
                   ))?>
 
-            
-             
           </div>
            
+    <div class="form-group">
+                    <?=HTML::image('media/uploads/news/'.'small_'.$news->image,array(
+                        'class' => 'img-circle',
+                    ))?>
+            </div>
+                <div class="form-group">
+                     <?=Form::label('image', 'Загрузить изображение:')?>
+                     <span class="help-block">Файл размером 300 на 200 пикселей</span>
+                     <?=Form::file('image', array('id' => 'multi'))?>
+              </div>
            
           <div class="form-group">
                 <?=Form::button('submit', 'Сохранить', array(

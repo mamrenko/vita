@@ -75,9 +75,9 @@
                   //'class' => 'form-control parsley-validated',
                   'cols' => 10, 
                   'rows' => 5,
-                  'placeholder' => 'Минимум 50 буквы, максимум 500',
+                  
                   'data-minlength' => '50',
-                  'data-maxlength' => '500',
+                  'data-maxlength' => '1500',
                   'data-required' => 'true',
                   'name' => 'description',
                   'id' => 'description'

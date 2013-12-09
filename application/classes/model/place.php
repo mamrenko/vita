@@ -44,7 +44,7 @@ class Model_Place extends ORM {
             'description' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 50)),
-                array('max_length', array(':value', 500)),
+                array('max_length', array(':value', 1500)),
                 
             ),
 //           'image',array(

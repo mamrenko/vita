@@ -8,13 +8,14 @@ class Controller_Admin_News extends Controller_Admin {
             
             
             
-            
+            $this->template->scripts[] = 'media/js/jquery.MultiFile.pack.js';
+            $this->template->scripts[] = 'media/js/upload.js';
             $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
             $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
             $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
-             $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.js';
+            $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.js';
             $this->template->scripts[] = 'canvas/js/plugins/datepicker/bootstrap-datepicker.ru.js';
-             $this->template->scripts[] = 'canvas/js/demos/form-extended.js';
+            $this->template->scripts[] = 'canvas/js/demos/form-extended.js';
             
       $submenu = Widget::load('adminmenupages');
         // Вывод в шаблон
@@ -58,6 +59,29 @@ class Controller_Admin_News extends Controller_Admin {
             try {
            
             $news->save(); 
+            // Работа с изображениями
+            
+                    if (!empty($_FILES['image']['name'][0]))
+                {
+                 $image =   $_FILES['image']['tmp_name'];
+                    
+                        $filename = $this->_upload_img($image);
+                        
+                        if (file_exists('media/uploads/news/'.$news->image) and file_exists('media/uploads/news/'.'small_' .$news->image))
+                      {
+                      unlink('media/uploads/news/'.$news->image);
+                      unlink('media/uploads/news/'.'small_' .$news->image);
+                      }
+                
+                       
+                    // Запись в БД
+                        $im_db = ORM::factory('new', $news->pk());
+                        
+                        $im_db->image = $filename;
+                        $im_db->save();
+                      
+                
+            }
             $this->request->redirect('admin/news');
             }  
           catch (ORM_Validation_Exception $e) {
@@ -70,6 +94,7 @@ class Controller_Admin_News extends Controller_Admin {
                 ->bind('id', $id)
                 ->bind('errors', $errors)
                 ->bind('data', $data)
+                ->bind('news', $news)
                 ;
 
         // Вывод в шаблон
@@ -88,6 +113,20 @@ class Controller_Admin_News extends Controller_Admin {
 
             try {
                 $news->save();
+                 if (!empty($_FILES['image']['name'][0]))
+                {
+                 $image =   $_FILES['image']['tmp_name'];
+                    
+                        $filename = $this->_upload_img($image);
+         
+                
+                       
+                    // Запись в БД
+                        $im_db = ORM::factory('new', $news->pk());
+                        
+                        $im_db->image = $filename;
+                        $im_db->save();
+                }
                 $this->request->redirect('admin/news');
             }
             catch (ORM_Validation_Exception $e) {
@@ -111,8 +150,54 @@ class Controller_Admin_News extends Controller_Admin {
         if(!$pages->loaded()) {
             $this->request->redirect('admin/news');
         }
-
+         if (file_exists('media/uploads/news/'.$pages->image)
+                 and file_exists('media/uploads/news/'.'small_' .$pages->image))
+        {
+        unlink('media/uploads/news/'.$pages->image);
+        unlink('media/uploads/news/'.'small_' .$pages->image);
+        }
         $pages->delete();
         $this->request->redirect('admin/news');
     }
+    
+    public function _upload_img($file, $ext = NULL, $directory = NULL){
+
+        if($directory == NULL)
+        {
+            $directory = 'media/uploads/news/';
+        }
+
+        if($ext== NULL)
+        {
+            $ext= 'jpg';
+        }
+
+        // Генерируем случайное название
+        $filename = strtolower(Text::random('alnum', 20));
+
+        // Изменение размера и загрузка изображения
+        $im = Image::factory($file);
+        $mark = image::factory('media/images/watermark10023.png');
+        if($im->width > 150)
+        {
+            $im->resize(150, 150, Image::AUTO);
+                    
+            
+        }
+        $im->watermark($mark,TRUE, TRUE);
+        $im->save("$directory/small_$filename.$ext");
+
+        $im = Image::factory($file);
+        $im
+            ->resize(300, 200, Image::AUTO)
+            ->watermark($mark,TRUE, TRUE)
+            ->save("$directory/$filename.$ext");
+       
+           
+            
+            
+
+        return "$filename.$ext";
+    }
+    
 }

@@ -42,7 +42,7 @@
         <th data-sortable="true">Под_Название</th>
          <th data-sortable="true">Сцена </th>
          <th data-sortable="true">Начало </th>
-       <th data-sortable="false">Картика</th>
+         <th data-sortable="false">Картика</th>
         <th data-sortable="false" >Функции </th>
 
     </tr>
@@ -65,7 +65,7 @@
     </td>
     <td>
         <?if($playbill->image == NULL):?>
-                            <?=HTML::image('/media/images/placeoff.jpg', array(
+                            <?=HTML::image('media/images/placeoff.jpg', array(
                                     'class' => 'img-thumbnail',
                                      'width' => 100,
                             ))?>

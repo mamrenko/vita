@@ -15,6 +15,7 @@ class Model_New extends ORM {
             'content' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 20)),
+                 array('max_length', array(':value', 1500)),
             ),
             'day' => array(
                 array('not_empty'),

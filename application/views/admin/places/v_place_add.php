@@ -69,13 +69,15 @@
                   'class' => 'form-control ckeditor',
                   'cols' => 10, 
                   'rows' => 5,
+                  
+                  'data-minlength' => '50',
+                  'data-maxlength' => '1500',
+                  'data-required' => 'true',
                   'name' => 'description',
-                  'id' => 'editor'
+                 
                   ))?>
               
-                <script type="text/javascript">
-                    CKEDITOR.replace( 'editor' );
-               </script>
+                
           </div>
       
        

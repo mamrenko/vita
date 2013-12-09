@@ -17,7 +17,7 @@
 <tr>
     <th>Дата</th>
     <th>Название</th>
-    
+    <th data-sortable="false">Картика</th>
     
     <th>Функции</th>
     
@@ -26,10 +26,28 @@
     <? foreach ($all_news as $news):?>
 
 <tr>
-    <td> <?=date('d-m-Y',strtotime($news->day));?></td>
-    <td><?=HTML::anchor('admin/news/edit/'. $news->id, $news->title)?></td>
-    
+    <td>
+ <?=date('d-m-Y',strtotime($news->day));?>
+    </td>
+    <td>
+    <?=HTML::anchor('admin/news/edit/'. $news->id, $news->title)?>
+    </td>
    
+    
+    <td>
+        <?if($news->image == NULL):?>
+                            <?=HTML::image('media/images/placeoff.jpg', array(
+                                    'class' => 'img-thumbnail',
+                                     'width' => 100,
+                            ))?>
+
+                            <?else:?>
+                             <?=HTML::image('media/uploads/news/'.'small_'.$news->image, array(
+                            'class' => 'img-thumbnail',
+                            'width' => 100,
+                        ))?>
+                         <?endif?>
+    </td>
     <td>
           <?=HTML::anchor('admin/news/edit/'. $news->id, '<button class="btn btn-secondary" type="button">
 								<i class="fa fa-pencil"></i></button>')?>
