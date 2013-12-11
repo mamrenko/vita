@@ -1,6 +1,16 @@
 
-<li class="nav"><a href="<?=URL::base()?>">Главная</a></li>
-<li class="nav"><a href="<?=URL::base()?>page">Каталог</a></li>
-<li class="nav"><a href="<?=URL::base()?>page">Способы оплаты</a></li>
-<li class="nav"><a href="<?=URL::base()?>page">Доставка</a></li>
-<li class="nav"><a href="<?=URL::base()?>page/contacts">Контакты</a></li>
+<?foreach($menu as $name => $menu ):?>
+             <?if(in_array($select, $menu)):?>
+        <li class="active"> <?=HTML::anchor(''.$menu[0], $name)?> 
+          
+        </li>
+        <?  else:?>
+        <li>
+           <?=HTML::anchor(''.$menu[0], $name)?> 
+        </li>
+        
+            <?endif;?>
+        <?endforeach?>
+
+
+

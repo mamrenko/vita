@@ -19,11 +19,11 @@
         </tr>
     </thead>
     <tbody>
-        <?foreach($products as $product => $cost):?>
+        <?foreach($events as $event):?>
         
         <tr>
-            <td><?=$product?></td>
-            <td><?=$cost?></td>
+            <td><?=$event->day?></td>
+            <td><?=$event->id?></td>
         </tr>
         
             <?endforeach;?>

@@ -1,6 +1,7 @@
+
 <div class="row">
             
-            <h1>The best мероприятия</h1>
+            <br />
          <ul class="list-unstyled">
                 <li class="col-md-3">
                 <div class="thumbnail ">

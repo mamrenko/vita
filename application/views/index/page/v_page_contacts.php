@@ -1,3 +1,14 @@
+<div class="row">
+    
+    <div class="col-md-9"> 
+        <h1>Контакты</h1>
+<div class="jumbotron">
+    
+ 
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+
 <div class="TTWForm-container">
       
       
@@ -34,3 +45,14 @@
           </div>
      </form>
 </div>
+        </div>
+    <div class="col-md-3">
+        <h1>Адрес</h1>
+        <div class="jumbotron">
+    
+ 
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+    </div>
+    </div>

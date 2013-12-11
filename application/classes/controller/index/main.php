@@ -15,8 +15,8 @@ class Controller_Index_Main extends Controller_Index {
         // Вывод в шаблон
         $this->template->page_title = 'О магазине';
         $this->template->content_title = 'Главная страница';
-        $this->template->block_center = array($block_center);
-        $this->template->block_right = array($login,$menu,$news,);
-        $this->template->block_header = array($carousel);
+        $this->template->block_center = array($carousel,$block_center);
+        $this->template->block_right = array($menu,$news,);
+        $this->template->block_header = array();
     }
 }

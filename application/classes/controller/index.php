@@ -2,7 +2,7 @@
 
 class Controller_Index extends Controller_Base {
     
-    public $template = 'index/v_base';
+    public $template = 'index/v_assets';
     public function before() {
         parent::before();
         
@@ -12,20 +12,40 @@ class Controller_Index extends Controller_Base {
         $cart = Widget::load('cart');
         $news = Widget::load('news');
 
-        
+//CSS Global Compulsory
         $this->template->styles = array(
-            'media/dist/css/bootstrap.min.css',
-           // 'media/dist/css/flatly-bootstrap-theme.min.css',
-            'media/dist/css/spacelab-bootstrap-theme.min.css',
-            //'media/dist/css/flatly-bootstrap-theme.min.css',
-            'media/dist/css/site.css'
+            'assets/plugins/bootstrap/css/bootstrap.css',
+            'assets/css/style.css',
+            'assets/css/headers/header1.css',
+            'assets/css/responsive.css', 
+            'assets/plugins/font-awesome/css/font-awesome.css',
+            'assets/plugins/flexslider/flexslider.css',
+            'assets/plugins/parallax-slider/css/parallax-slider.css',  
+            'assets/css/themes/default.css',
+            'assets/css/themes/headers/default.css',
+            
+           
             );
+            
+//JS Global Compulsory       
         $this->template->scripts = array(
-            'media/dist/js/jquery-2.0.3.min.js',
-            'media/dist/js/bootstrap.min.js',
-            'media/dist/js/site.js',
-        );
+            'assets/plugins/jquery-1.10.2.min.js',
+            'assets/plugins/jquery-migrate-1.2.1.min.js',
+            'assets/plugins/bootstrap/js/bootstrap.min.js',
+            'assets/plugins/hover-dropdown.min.js',
+            'assets/plugins/back-to-top.js',
+            'assets/plugins/flexslider/jquery.flexslider-min.js',
+            'assets/plugins/parallax-slider/js/modernizr.js',
+            'assets/plugins/parallax-slider/js/jquery.cslider.js',
+            'assets/js/app.js',
+            'assets/js/pages/index.js',
+            'assets/js/slider.js',
+            'canvas/js/plugins/parsley/messages.ru.js',
+            'canvas/js/plugins/parsley/parsley.js',
+     
+        );   
         
+      
         $this->template->topmenu = $topmenu;
         $this->template->cart = $cart;
        

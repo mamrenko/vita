@@ -34,7 +34,9 @@ class Controller_Admin extends Controller_Base {
             //'canvas/js/plugins/textarea-counter/jquery.textarea-counter.js',
             //'canvas/js/plugins/select2/select2.js',
             //'canvas/js/plugins/tableCheckable/jquery.tableCheckable.js',
+             'canvas/js/plugins/parsley/messages.ru.js',
              'canvas/js/plugins/parsley/parsley.js',
+            
            // 'canvas/js/plugins/fileupload/bootstrap-fileupload.js',
             //'canvas/js/plugins/icheck/jquery.icheck.min.js',
             'canvas/js/App.js',

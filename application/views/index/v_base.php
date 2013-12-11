@@ -96,38 +96,50 @@
             
             </div>
         </div>
-      
-    	<section id="main" class="col-md-9">
+        <div class="row">
+        
+           
+           
+    	<section id="main">
              <? if (isset($block_header)):?>
-			
+			<div class="col-lg-12" >
 				<?foreach($block_header as $hblock):?>
-                            
-                        <?=$hblock?>
-                    <?endforeach?> 
-			
-       <?endif?>
             
+                        <?=$hblock?>
+           
+                    <?endforeach?>
+                            <hr />
+		 </div>	
+       <?endif?>
+          
            <? if (isset($block_center)):?>
-			
+			<div class="col-lg-9" >
 				<?foreach($block_center as $cblock):?>
-                            
+            
                         <?=$cblock?>
+            
                     <?endforeach?> 
-			
+			</div>
                       <?endif?>
 
-
+         
        </section>
-        <section id="sidebar" class="col-md-3">
+           
+        <section id="sidebar">
              <? if (isset($block_right)):?>
-		
+		<div class="col-lg-3" >
 			<?foreach($block_right as $rblock):?>
+            
                         <?=$rblock?>
+            
                     <?endforeach?>
-		
+		</div>
                 <?endif?>
+            
         </section>
-    </section>
+            </div>
+     </section>  
+
     <hr/>
     <footer  class="container">
     <p class="text-info">

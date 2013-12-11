@@ -5,12 +5,12 @@ class Controller_Index_Catalog extends Controller_Index
    
     public function action_index()
 	{
-             $topproducts = Widget::load('topproducts');
-             $products = Model::factory('catalog')->all_products();
+             //$topproducts = Widget::load('topproducts');
+             $events = ORM::factory('event')->find_all();
             
            
              $content = View::factory('index/catalog/v_catalog', array(
-                 'products' => $products,
+                 'events' => $events,
             )
             ); 
              $this->template->page_title = 'Каталог';
@@ -18,7 +18,7 @@ class Controller_Index_Catalog extends Controller_Index
              $this->template->block_center = array(
                 $content, 
              );
-             $this->template->block_right = array($topproducts);;
+             //$this->template->block_right = array($topproducts);
 	}
          
         
