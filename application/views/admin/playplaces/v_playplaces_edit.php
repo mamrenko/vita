@@ -66,7 +66,7 @@
                   'class' => 'form-control ckeditor',
                   'data-required' => 'true',
                   'data-minlength' => '3',
-                  'data-maxlength' => '500',
+                  'data-maxlength' => '1500',
                   'id' =>'editor',
                   
                   ))?>
@@ -78,22 +78,28 @@
                <div class="col-md-6">
                    <div class="form-group"> 
                 <?=Form::label('meta_title', 'meta_title для Сео оптимизации')?>
-               <?=Form::input('meta_title', $data['meta_title'], array(
+               <?=Form::textarea('meta_title', $data['meta_title'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
+                   'cols' => 10, 
+                   'rows' => 3, 
+                    'id' => 'testTextarea2',
                    ))?>
           </div>
                </div>
                <div class="col-md-6">
                     <div class="form-group"> 
                 <?=Form::label('meta_keywords', 'Ключевые слова для Сео оптимизации')?>
-               <?=Form::input('meta_keywords', $data['meta_keywords'], array(
+               <?=Form::textarea('meta_keywords', $data['meta_keywords'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
+                   'cols' => 10, 
+                   'rows' => 3,
+                   'id' => 'testTextarea22',
                    ))?>
           </div>
                </div>
@@ -106,11 +112,14 @@
                     <div class="col-md-6">
         <div class="form-group"> 
                <?=Form::label('meta_description', 'meta_description Описание страницы')?>
-               <?=Form::input('meta_description', $data['meta_description'], array(
+               <?=Form::textarea('meta_description', $data['meta_description'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
-                   'data-maxlength' => '150',
+                   'data-maxlength' => '250',
+                   'cols' => 10, 
+                   'rows' => 3,
+                    'id' => 'testTextarea222',
                    ))?>
                </div>
           </div>

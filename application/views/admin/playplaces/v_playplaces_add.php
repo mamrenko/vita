@@ -62,17 +62,15 @@
                 <?=Form::label('description', 'Описание')?>
               <?=Form::textarea('description', $data['description'], array(
                   'cols' => 20, 
-                  'rows' => 5, 
+                  'rows' => 5,           
                   'class' => 'form-control ckeditor',
                   'data-required' => 'true',
                   'data-minlength' => '3',
                   'data-maxlength' => '1500',
-                  //'id' =>'editor',
+                 
                   
                   ))?>
-           <script type="text/javascript">
-                    CKEDITOR.replace( 'editor' );
-               </script>
+           
           </div>
            
          
@@ -90,7 +88,7 @@
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
                    'id' => 'testTextarea2',
-                   'rows' => '1',
+                   'rows' => '3',
                    ))?>
                </div>
                             
@@ -110,7 +108,7 @@
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
                    'id' => 'testTextarea22',
-                   'rows' => '1',
+                   'rows' => '3',
                    ))?>
           </div>
                              
@@ -129,7 +127,7 @@
                     <div class="form-group"> 
                <?=Form::label('meta_description', 'meta_description Описание страницы')?>
                           <span class="help-block">
-                      От 10 до 150 символов можно ввести
+                      От 10 до 250 символов можно ввести
                   </span>
                <?=Form::textarea('meta_description', $data['meta_description'], array(
                    'class' => 'form-control',
@@ -137,7 +135,7 @@
                    'data-minlength' => '10',
                    'data-maxlength' => '150',
                    'id' => 'testTextarea222',
-                   'rows' => '1',
+                   'rows' => '3',
                    ))?>
                
           </div>

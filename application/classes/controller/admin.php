@@ -31,6 +31,7 @@ class Controller_Admin extends Controller_Base {
             'canvas/js/libs/jquery-ui-1.9.2.custom.min.js',
             'canvas/js/libs/bootstrap.min.js',
             'canvas/js/plugins/icheck/jquery.icheck.min.js',
+             
             //'canvas/js/plugins/textarea-counter/jquery.textarea-counter.js',
             //'canvas/js/plugins/select2/select2.js',
             //'canvas/js/plugins/tableCheckable/jquery.tableCheckable.js',

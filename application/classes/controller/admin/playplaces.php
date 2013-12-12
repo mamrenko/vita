@@ -5,17 +5,24 @@
 class Controller_Admin_Playplaces extends Controller_Admin {
     public function before() {
         parent::before();
-            $this->template->scripts[] = 'media/js/jquery.MultiFile.pack.js';
-            $this->template->scripts[] = 'media/js/upload.js';
-            $this->template->scripts[] = 'canvas/js/plugins/textarea-counter/jquery.textarea-counter.js';
+        
+        
             $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
             $this->template->scripts[] = 'canvas/js/plugins/datatables/DT_bootstrap.js';
             $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
-            $this->template->scripts[] = 'canvas/js/demos/form-extended.js'; 
-            $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'; 
-            
-            $this->template->scripts[] = 'media/js/jquery.textareaCounter.plugin.js';
+            $this->template->scripts[] = 'media/js/jquery.MultiFile.pack.js';
+            $this->template->scripts[] = 'media/js/upload.js';
+            //$this->template->scripts[] = 'canvas/js/plugins/textarea-counter/jquery.textarea-counter.js';
+           $this->template->scripts[] = 'media/js/jquery.textareaCounter.plugin.js';
+             //$this->template->scripts[] = 'canvas/js/App.js'; 
+            //$this->template->scripts[] = 'canvas/js/demos/form-extended.js';
+           
+             
+          
+           
             $this->template->scripts[] = 'media/js/textarea.js';
+            
+             
                
                 
             $submenu = Widget::load('adminmenuproducts');
@@ -66,6 +73,7 @@ class Controller_Admin_Playplaces extends Controller_Admin {
     }
     
     public function action_add(){
+       
         $id = (int) $this->request->param('id');
         $place = ORM::factory('place', $id);
         
