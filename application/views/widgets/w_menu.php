@@ -1,19 +1,14 @@
 
-   <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h2 class="panel-title">
-                   Меню
-                    </h2>
-                </div>
-                <div class="panel-body">
-                    <ul>
+   <div class="tab-v3">
+                
+                
+                    <ul class="nav nav-pills nav-stacked">
                             <?foreach($categories as $cat):?>
 
-                               <li><?=$cat->title?></li>
+                        <li><?=HTML::anchor('#', $cat->title)?></li>
                            <? endforeach; ?>
                     </ul>     
   
-                    
-               </div>
-                
+             
         </div>
+<br />

@@ -5,8 +5,8 @@
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs margin-bottom-40">
     <div class="container">
-        <h1 class="pull-left">Наши Контакты</h1>
-        <ul class="pull-right breadcrumb">
+        <h1>Наши Контакты</h1>
+        <ul class="breadcrumb">
             <li><a href=".">Главная</a></li>
  
             <li class="active">Контакты</li>
@@ -20,9 +20,14 @@
 <div class="container">     
     <div class="row margin-bottom-30">
         <div class="col-md-9 mb-margin-bottom-30">
-          
+           <div class="panel panel-blue margin-bottom-40">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="icon-tasks"></i> Для связи с нами заполните форму ниже.</h3>
+                    <span class="label label-success"> Все поля обязательны для заполнения.</span>
+                </div>
+                <div class="panel-body">
 
-            <h3>Для связи с нами запоните форму ниже.<small> Все поля обязательны для заполнения.</small></h3><br />
+            
           <?=Form::open('contact/', array(
                 'id' => 'contactFor',
                 'class' => 'form parsley-form',
@@ -81,13 +86,14 @@
                 <div class="form-group">
                     
                   
-                      <?=Form::button('submit', 'Сохранить', array(
+                      <?=Form::button('submit', 'Отправить!', array(
                           'type' => 'submit',
                           'class' => 'btn btn-primary',
                           ));?>
                 </div>
             <?=FORM::close();?>
-           
+                </div>
+           </div>
         </div><!--/col-md-9-->
         
         <div class="col-md-3">
@@ -123,110 +129,17 @@
 
     <!-- Our Clients -->
     <div id="clients-flexslider" class="flexslider home clients">
-        <div class="headline"><h2>Наши Клиенты</h2></div>    
+        <div class="headline"><h2>Площадки</h2></div>    
         <ul class="slides">
+            <?foreach ($places as $place):?>
+                        
             <li>
                 <a href="#">
-                    <img src="assets/img/clients/hp_grey.png" alt="" /> 
-                    <img src="assets/img/clients/hp.png" class="color-img" alt="" />
+                    <img src="media/uploads/places/small_<?=$place->image?>" alt="" /> 
+                    
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/igneus_grey.png" alt="" /> 
-                    <img src="assets/img/clients/igneus.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/vadafone_grey.png" alt="" /> 
-                    <img src="assets/img/clients/vadafone.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/walmart_grey.png" alt="" /> 
-                    <img src="assets/img/clients/walmart.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/shell_grey.png" alt="" /> 
-                    <img src="assets/img/clients/shell.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/natural_grey.png" alt="" /> 
-                    <img src="assets/img/clients/natural.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/aztec_grey.png" alt="" /> 
-                    <img src="assets/img/clients/aztec.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/gamescast_grey.png" alt="" /> 
-                    <img src="assets/img/clients/gamescast.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/cisco_grey.png" alt="" /> 
-                    <img src="assets/img/clients/cisco.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/everyday_grey.png" alt="" /> 
-                    <img src="assets/img/clients/everyday.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/cocacola_grey.png" alt="" /> 
-                    <img src="assets/img/clients/cocacola.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/spinworkx_grey.png" alt="" /> 
-                    <img src="assets/img/clients/spinworkx.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/shell_grey.png" alt="" /> 
-                    <img src="assets/img/clients/shell.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/natural_grey.png" alt="" /> 
-                    <img src="assets/img/clients/natural.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/gamescast_grey.png" alt="" /> 
-                    <img src="assets/img/clients/gamescast.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/everyday_grey.png" alt="" /> 
-                    <img src="assets/img/clients/everyday.png" class="color-img" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="assets/img/clients/spinworkx_grey.png" alt="" /> 
-                    <img src="assets/img/clients/spinworkx.png" class="color-img" alt="" />
-                </a>
-            </li>
+          <?endforeach?>
         </ul>
     </div><!--/flexslider-->
     <!-- End Our Clients -->

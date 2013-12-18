@@ -8,6 +8,11 @@ class Controller_Index_Contact extends Controller_Index
         
         $this->template->scripts[] = 'assets/js/site.js';
         $this->template->scripts[] = 'canvas/js/plugins/parsley/parsley.js';
+      
+         $this->template->scripts[] = 'canvas/js/plugins/parsley/messages.ru.js';
+         $this->template->scripts[] = 'media/dist/plugins/flexslider/jquery.flexslider-min.js';
+         $this->template->scripts[] = 'media/dist/js/app.js';
+        
     }
 
         public function action_index()
@@ -32,11 +37,12 @@ class Controller_Index_Contact extends Controller_Index
             }
 
       }
-           
+             $places = ORM::factory('place')->find_all();
              $content = View::factory(
                      'index/contact/v_contact')
                       ->bind('errors', $errors)
                       ->bind('data', $data)
+                     ->bind('places', $places)
                      
              ; 
              $this->template->page_title = 'Контакт';

@@ -6,6 +6,10 @@ class Controller_Index_Account extends Controller_Index {
 
     public function before(){
         parent::before();
+         if (!$this->auth->logged_in()) {
+            $this->request->redirect('login');
+        }
+
 
         $account_menu = Widget::load('menuaccount');
 
@@ -22,6 +26,7 @@ class Controller_Index_Account extends Controller_Index {
         $this->template->page_title = 'Личный кабинет';
         $this->template->content_title ='Личный кабинет';
         $this->template->block_center = array($content);
+         
     }
 
     public function action_orders() {
@@ -35,8 +40,27 @@ class Controller_Index_Account extends Controller_Index {
     }
 
     public function action_profile() {
-
-        $content = View::factory('index/account/v_account_profile');
+        if (isset($_POST['submit'])){
+            $users = ORM::factory('user');
+            try {
+            $users
+               ->where('id', '=', $this->user->id)
+               ->find()
+               ->update_user($_POST,array(
+                   'username',
+                   'phonenumber',
+                   'email',
+                    )) ;
+              $this->request->redirect('account/profile');
+        }
+            catch (ORM_Validation_Exception $e){
+                   $errors = $e->errors('auth');
+            }
+        }
+        $content = View::factory('index/account/v_account_profile')
+                ->bind('errors', $errors)
+                ->bind('user', $this->user)
+                ;
 
         // Выводим в шаблон
         $this->template->page_title = 'Профиль';

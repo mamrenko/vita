@@ -6,6 +6,10 @@ class Controller_Admin extends Controller_Base {
     
     public function before() {
         parent::before();
+        if (!$this->auth->logged_in('admin')) {
+            $this->request->redirect('login');
+        }
+
         $menu_admin = Widget::load('adminmenu');
         
         
@@ -23,7 +27,7 @@ class Controller_Admin extends Controller_Base {
             'canvas/js/plugins/fullcalendar/fullcalendar.css',
             'canvas/css/App.css',
             'canvas/css/custom.css',
-           'canvas/js/plugins/select2/select2.css',
+            'canvas/js/plugins/select2/select2.css',
             );
        
         $this->template->scripts = array(
@@ -37,7 +41,7 @@ class Controller_Admin extends Controller_Base {
             //'canvas/js/plugins/tableCheckable/jquery.tableCheckable.js',
              'canvas/js/plugins/parsley/messages.ru.js',
              'canvas/js/plugins/parsley/parsley.js',
-            
+           
            // 'canvas/js/plugins/fileupload/bootstrap-fileupload.js',
             //'canvas/js/plugins/icheck/jquery.icheck.min.js',
             'canvas/js/App.js',

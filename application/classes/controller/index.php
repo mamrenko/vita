@@ -17,12 +17,17 @@ class Controller_Index extends Controller_Base {
             'assets/plugins/bootstrap/css/bootstrap.css',
             'assets/css/style.css',
             'assets/css/headers/header1.css',
-            'assets/css/responsive.css', 
-            'assets/plugins/font-awesome/css/font-awesome.css',
+            //'assets/css/headers/header2.css',
+            'assets/css/responsive.css',
+            'assets/plugins/font-awesome/font-awesome.css',
+            'assets/plugins/font-awesome/css/font-awesome.min.css',
+            //'assets/plugins/font-awesome/css/font-awesome.css',
+            
             'assets/plugins/flexslider/flexslider.css',
             'assets/plugins/parallax-slider/css/parallax-slider.css',  
             'assets/css/themes/default.css',
             'assets/css/themes/headers/default.css',
+            
             
            
             );
@@ -42,13 +47,15 @@ class Controller_Index extends Controller_Base {
             'assets/js/slider.js',
             'canvas/js/plugins/parsley/messages.ru.js',
             'canvas/js/plugins/parsley/parsley.js',
+            //'netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js',
      
         );   
         
       
         $this->template->topmenu = $topmenu;
         $this->template->cart = $cart;
-       
+        $this->template->login = $login;
+        
         $this->template->block_header = null;
         $this->template->block_center = null;
         $this->template->block_right = null;

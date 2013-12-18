@@ -1,18 +1,15 @@
-
-        <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h2 class="panel-title">
-                   Вход
-                    </h2>
-                </div>
-            
-                <div class="panel-body">
-                <form action="<?=URL::base()?>login" method="post">
-                    <input value="" name="login" type="text"><br/>
-                    <input value="" name="pass" type="text"><br/>
-                    <input value="Войти"  type="submit">
-                    <a href="<?=URL::base()?>register">Регистрация</a>
-                </form>
-              </div>
-                
-        </div>
+<?if(!$auth->logged_in('login')):?>
+      <li><a href="<?=URL::base()?>login">Вход / Регистрация</a></li> 
+      <?else:?>
+      <li><?=$user->email?> <i class="fa fa-smile-o"></i></li> 
+      
+    <?if ($auth->logged_in('admin')):?>
+      <li><?=html::anchor('admin', 'Панель администратора')?></li>
+       <li class="devider"></li>   
+    <?else:?>
+      <li><?=html::anchor('account', 'Личный кабинет')?></li>
+       <li class="devider"></li>   
+    <?endif?>
+    
+      <li><?=html::anchor('logout', 'Выйти')?></li>
+      <? endif; ?>

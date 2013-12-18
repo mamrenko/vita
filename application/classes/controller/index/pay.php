@@ -15,7 +15,7 @@ class Controller_Index_Pay extends Controller_Index
             ); 
              $this->template->page_title = 'Оплата';
              $this->template->content_title ='Оплата';
-             $this->template->block_center = array(
+             $this->template->block_header = array(
                 $content, 
              );
             

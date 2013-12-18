@@ -2,7 +2,7 @@
 
 <div class="row hidden-xs">
       <div class="col-md-12 ">
-    <div class="carousel slide" id="theCarousel" data-interval="900">
+    <div class="carousel slide" id="theCarousel" data-interval="2000">
        <ol class="carousel-indicators">
           
               <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
@@ -42,7 +42,7 @@
 
 
 <div class="row hidden-xs">
-      <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+      <div class="col-md-12 ">
     <div class="carousel slide" id="theCarousel" data-interval="2000">
        <ol class="carousel-indicators">
           

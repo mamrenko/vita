@@ -1,3 +1,8 @@
-<p>
+<br />
+<div class="breadcrumbs">
+    <div class="container">
+<h3 class="pull-right">
 Список всех заказов
-</p>
+</h3>
+</div></div>
+

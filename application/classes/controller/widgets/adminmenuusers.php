@@ -8,6 +8,15 @@ class Controller_Widgets_Adminmenuusers extends Controller_Widgets {
     
     public function action_index()
     {
+        $select = Request::initial()->controller();
+        $menu = array(
+             'Пользователи' =>  array('users'),
+             'Покупатели' =>  array('bayers'),
+             'Рассылка' =>  array('subscribe'),
+             
+        );
+        $this->template->menu = $menu;
+        $this->template->select = $select;
     }
 
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="ru"> <!--<![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
     <head>
    <title><?=$site_title?> | <?=$page_title?></title>
@@ -38,7 +38,9 @@
             <li class="devider"></li>   
             <li><a href="page_faq.html">Помощь</a></li>  
             <li class="devider"></li>   
-            <li><a href="login">Войти</a></li>   
+            <?=$login?>
+            
+            
         </ul>
         </div><!--/container-->
     </div><!--/top-->
@@ -57,8 +59,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href=".">
-                <img id="logo-header" src="assets/img/logo1-default.png" alt="Logo">
+                <a class="navbar-brand" href="<?=URL::base()?>">
+                    <img id="logo-header" src="<?=URL::base()?>assets/img/logo1-default.png" alt="Logo">
                 </a>
             </div>
             
@@ -101,6 +103,18 @@
                             
 		 </div>	
        <?endif?>
+    
+    <? if (isset($block_left)):?>
+		<div class="col-lg-3" >
+			<?foreach($block_left as $lblock):?>
+            
+                        <?=$lblock?>
+            
+                    <?endforeach?>
+		</div>
+                <?endif?>
+    
+    
     <? if (isset($block_center)):?>
     <div class="col-lg-9" >
 				<?foreach($block_center as $cblock):?>
@@ -160,7 +174,9 @@
                 <!-- About -->
                 <div class="headline"><h2>О нас</h2></div>  
                 <p class="margin-bottom-25 md-margin-bottom-40">
-                   Билеты на концерты, в театры, в цирки, мюзиклы. Все зрелищные мероприятия Москвы.</p>  
+                   
+                    Билеты для VIP  клиентов.
+                   Все зрелищные мероприятия Москвы.</p>  
                 
             </div><!--/col-md-4-->
         </div>

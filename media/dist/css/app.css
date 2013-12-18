@@ -1,0 +1,11 @@
+/*Background light-style*/
+.bg-light { 
+   padding:10px 15px; 
+   margin-bottom:10px; 
+   background:#fcfcfc; 
+   border:solid 1px #e5e5e5;
+}
+.bg-light:hover { 
+   border:solid 1px #bbb;
+}
+
