@@ -84,7 +84,7 @@ class Controller_Index_Auth extends Controller_Index {
 
         $content = View::factory('index/auth/v_auth_register')
                             
-                           ->bind('errors', $errors)
+                            ->bind('errors', $errors)
                             ->bind('data', $data);
                                 
         // Выводим в шаблон

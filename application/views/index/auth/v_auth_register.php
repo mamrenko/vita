@@ -12,14 +12,13 @@
 <!--=== End Breadcrumbs ===-->
 
 <div class="row">
-    
-   
 
 <div class="col-md-6">
   
 <?if($errors):?>
+   
 <?foreach ($errors as $error):?>
-  <p><span class="label label-danger"><?=$error?></span></p>
+    <p><span class="label label-danger"><? print_r($error)?></span></p>
 <?endforeach?>
 <?endif?>
                     <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
@@ -73,7 +72,9 @@
                    'placeholder' => 'Введите пароль из восьми символов',
                    'class' => 'form-control',
                    'data-required' => 'true',
-                   'data-minlength' => '4',
+                    'id' => 'passw',
+                    'data-equalto' =>'#passw',
+                   'data-minlength' => '8',
                    'data-maxlength' => '8',
                    ))?>
                         </div>
@@ -84,7 +85,8 @@
                    'placeholder' => 'Повторите пароль из восьми символов',
                    'class' => 'form-control',
                    'data-required' => 'true',
-                   'data-minlength' => '4',
+                    'data-equalto' =>'#passw',
+                   'data-minlength' => '8',
                    'data-maxlength' => '8',
                    ))?>
                         </div>
