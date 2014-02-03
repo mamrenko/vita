@@ -11,10 +11,10 @@ class Controller_Admin extends Controller_Base {
         }
 
         $menu_admin = Widget::load('adminmenu');
-        
+        $adminlogin = Widget::load('adminlogin');
         
         $this->template->menu_admin = $menu_admin;
-        
+        $this->template->adminlogin = $adminlogin;
         $this->template->site_name = 'Администрирование сайта Аплодисменты';
         $this->template->site_description = 'Администрирование сайта Аплодисменты';
         

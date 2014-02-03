@@ -14,7 +14,7 @@ class Controller_Widgets_Adminmenupages extends Controller_Widgets {
              'Страницы' =>  array('pages'),
              'Новости' =>  array('news'),
              'Статьи' =>  array('articals'),
-              'Сообщения' => array('messages'),
+              //'Сообщения' => array('messages'),
            
         );
         $this->template->menu = $menu;

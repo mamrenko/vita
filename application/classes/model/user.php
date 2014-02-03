@@ -9,7 +9,7 @@ class Model_User extends Model_Auth_User {
                         'username'         => 'Ваше Имя',
                         'email'            => 'Ваш email Адрес',
                         'password'         => 'Пароль',
-                        'phonenumber' => 'Ваш Телефонный номер',
+                       'phonenumber' => 'Ваш Телефонный номер',
                         'password_confirm' => 'Повторить Пароль',
                     );
                 }
@@ -28,7 +28,7 @@ class Model_User extends Model_Auth_User {
 			'password' => array(
 				array('not_empty'),
 			),
-                      'phonenumber' => array(
+                        'phonenumber' => array(
 				array('not_empty'),
                                 
 			),

@@ -8,6 +8,20 @@ class Controller_Widgets_Adminmenusettings extends Controller_Widgets {
     
     public function action_index()
     {
+        $select = Request::initial()->controller();
+        
+        $menu = array(
+             'Общие' =>  array('settings'),
+             'Название сайта' =>  array(''),
+             'Мета теги' =>  array(''),
+             'Оплата' => array(''),
+             'Доставка' => array(''),
+             'Скидки' => array(''),
+           
+        );
+        $this->template->menu = $menu;
+        $this->template->select = $select;
+        
     }
 
 }

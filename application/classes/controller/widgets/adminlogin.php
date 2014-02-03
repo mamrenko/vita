@@ -1,11 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /*
- * Виджет "Вход"
+ * Виджет "Меню заказов"
  */
-class Controller_Widgets_Login extends Controller_Widgets {
-    
-    public $template = 'widgets/w_login';
+class Controller_Widgets_Adminlogin extends Controller_Widgets {
 
+    public $template = 'widgets/admin/w_adminlogin';    // Шаблон виждета
+    
     public function action_index()
     {
         $auth = Auth::instance();

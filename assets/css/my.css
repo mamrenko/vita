@@ -1,0 +1,13 @@
+
+.parsley-error{
+    border-width: medium;
+    border-color: red;
+   
+}
+
+ul.parsley-error-list, .custom-error-message{
+    
+    
+    color: red; 
+    
+}

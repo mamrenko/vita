@@ -1,5 +1,9 @@
-
-
+ <script type="text/javascript">
+        $(function () {
+            $("#TextBoxDate").mask("99/99/9999");
+            $("#TextBoxPhone").mask("(999) 999-9999");
+        });
+    </script>  
 
 
 <!--=== Breadcrumbs ===-->
@@ -33,11 +37,11 @@
                 'class' => 'form parsley-form',
                 'data-validate' => 'parsley',
           ));?>
-
-                <label>Имя <span class="color-red">*</span></label>
+                <div class="form-group">
+                <label for="name">Имя <span class="color-red">*</span></label>
                 <div class="row margin-bottom-20">
                     <div class="col-md-7 col-md-offset-0">
-                        <div class="form-group">
+                     
                         
                <?=Form::input('name', $data['name'], array(
                    'class' => 'form-control',
@@ -47,42 +51,71 @@
                    'data-maxlength' => '150',
                     'placeholder' => 'Введите свое имя',
                    ))?>   
-                        
+                      
                         </div>
-                    </div>                
-                </div>
+                    </div> 
                 
+                </div>
+                <div class="form-group"> 
                 <label>Email <span class="color-red">*</span></label>
                 <div class="row margin-bottom-20">
                     <div class="col-md-7 col-md-offset-0">
-                        <div class="form-group">
-                             <?=Form::input('email', $data['email'], array( 
+                        
+                    <?=Form::input('email', $data['email'], array( 
                     'class' => 'form-control',
                     'type' => 'email',
                     'data-required' => 'true',
                     'placeholder' => 'Введите свой емейл',
                    ))?>  
-                        
+                     
                         </div>
                     </div>                
                 </div>
                 
-                <label>Сообщение <span class="color-red">*</span></label>
-                <div class="row margin-bottom-20">
-                    <div class="col-md-11 col-md-offset-0">
-                        <div class="form-group">
-                            <?=Form::textarea('text', $data['text'], array(
+                    <div class="form-group">
+                         <label> Телефон <span class="color-red">*</span></label>
+                          <div class="row margin-bottom-20">
+                          <div class="col-md-5 col-md-offset-0">
+                     <?=Form::input('phone', $data['phone'], array(
                     'type' => 'text',
+                    'name' => 'phone',
+                    'id' => 'phone',
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '3',
                    'data-maxlength' => '500',
+                    'placeholder' => 'Введите номер телефона',
+                   ))?>  
+                        
+                        </div>
+                    </div> 
+                    </div>
+                    
+                        <div class="form-group">
+                            <label>Сообщение <span class="color-red">*</span></label>
+                             Можно отправить 300 символов: <span id="numCharactersLeft">300</span>
+                           <div class="row margin-bottom-20">
+                          <div class="col-md-11 col-md-offset-0">
+                     <?=Form::textarea('text', $data['text'], array(
+                   'type' => 'text',
+                   'id' => 'Comments',
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   //'data-minlength' => '3',
+                   //'data-maxlength' => '20',
+                    'maxlength' => '300',    
                     'placeholder' => 'Введите сообщение',
                    ))?>  
                         
                         </div>
                     </div>                
-                </div>
+                </div> 
+                    
+                   
+    <?=Form::input('intime', date('Y-m-d H:i:s'), 
+        array(
+    'type' => 'hidden'))?>
+                    
                 <div class="form-group">
                     
                   
@@ -162,12 +195,5 @@
         </div>
     </div>    
 </div>
-<script>
-var $sentDialog = $("#sentDialog");
 
-  $("#contactForm").on("submit", function () {
-    $sentDialog.modal('show');
-    return false;
-  });
-
-   </script> 
+       

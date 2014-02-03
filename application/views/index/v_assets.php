@@ -147,14 +147,15 @@
                 <!-- Monthly Newsletter -->
                 <div class="headline"><h2>Ежемесячная Рассылка</h2></div> 
                 <p>Подпишитесь на нашу ежемесячную рассылку и будете в курсе Лучших событий Москвы!</p>
-                <form class="footer-subsribe">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Email Адрес">                            
-                        <span class="input-group-btn">
-                            <button class="btn-u" type="button">Подписаться!</button>
-                        </span>
-                    </div><!-- /input-group -->                    
-                </form>                         
+                
+               
+                
+                
+                
+                
+                
+                
+                                      
             </div><!--/col-md-4-->  
             <div class="col-md-4 md-margin-bottom-40"><!-- Monthly Newsletter -->
                 <div class="headline"><h2>Контакты</h2></div> 

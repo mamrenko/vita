@@ -1,13 +1,16 @@
-<div id='cssmenu'>
-<ul>
-   <li class='has-sub'><a href='#'><span>Общие</span></a>
-      <ul>
-         <li><a href='#'><span>Название сайта</span></a></li>
-         <li class='last'><a href='#'><span>Мета теги</span></a></li>
-      </ul>
-   </li>
-   <li><a href='#'><span>Оплата</span></a></li>
-   <li><a href='#'><span>Доставка</span></a></li>
-   <li class='last'><a href='#'><span>Скидки</span></a></li>
-</ul>
-</div>
+
+<?foreach($menu as $name => $menu ):?>
+             <?if(in_array($select, $menu)):?>
+        <li class='active'> <?=HTML::anchor('admin/'.$menu[0], $name)?> 
+           
+        </li>
+        <?  else:?>
+        <li>
+            <?=HTML::anchor('admin/'.$menu[0], $name)?> 
+        </li>
+        
+            <?endif;?>
+        <?endforeach?>
+
+
+

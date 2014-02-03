@@ -17,6 +17,7 @@
     <th>Имя</th>
     <th>Телефон</th>
     <th>Емейл</th>
+   
     <th>Роли</th>
     <th>Функции</th>
     
@@ -29,7 +30,7 @@
     
     <td><?=HTML::anchor('admin/users/edit/'. $user->id, $user->username)?></td>
     
-    <td><?=$user->phone?></td>
+    <td><?=$user->phonenumber?></td>
     
    <td><?=$user->email?></td>
    <td>

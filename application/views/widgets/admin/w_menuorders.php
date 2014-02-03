@@ -1,11 +1,13 @@
-<div id='cssmenu'>
-<ul>
-   <li class='has-sub'><a href='#'><span>Новые</span></a>
-      <ul>
-         <li class='last'><a href='#'><span>Один</span></a></li>
-      </ul>
-   </li>
-   <li><a href='#'><span>Выполненные</span></a></li>
-   <li class='last'><a href='#'><span>В обработке</span></a></li>
-</ul>
-</div>
+
+        <?foreach($menu as $name => $menu ):?>
+             <?if(in_array($select, $menu)):?>
+        <li class='active'> <?=HTML::anchor('admin/'.$menu[0], $name)?> 
+           
+        </li>
+        <?  else:?>
+        <li>
+            <?=HTML::anchor('admin/'.$menu[0], $name)?> 
+        </li>
+        
+            <?endif;?>
+        <?endforeach?>

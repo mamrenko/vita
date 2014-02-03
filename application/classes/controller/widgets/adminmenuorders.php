@@ -8,6 +8,17 @@ class Controller_Widgets_Adminmenuorders extends Controller_Widgets {
     
     public function action_index()
     {
+        $select = Request::initial()->controller();
+        
+        $menu = array(
+             'Заказы' =>  array('orders'),
+             'Выполненные Заказы' =>  array(''),
+             'Статистика Заказов' =>  array(''),
+             'Список Емейлов' => array(''),
+           
+        );
+        $this->template->menu = $menu;
+        $this->template->select = $select;
     }
 
 }
