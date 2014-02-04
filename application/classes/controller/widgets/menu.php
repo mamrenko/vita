@@ -7,10 +7,11 @@ class Controller_Widgets_Menu extends Controller_Widgets
 
     public function action_index()
 	{
-          $categories = ORM::factory('category')->find_all();
+          $events = ORM::factory('event')
+                  ->find_all();
         
-    
-          $this->template->categories = $categories;
+           
+          $this->template-> events =  $events;
 	}
          
         

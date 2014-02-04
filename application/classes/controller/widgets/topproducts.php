@@ -6,8 +6,8 @@ class Controller_Widgets_Topproducts extends Controller_Template
 
     public function action_index()
 	{
-          $topproducts = Model::factory('categories')->topproducts();
-          $this->template->topproducts = $topproducts;
+          //$topproducts = Model::factory('categories')->topproducts();
+          //$this->template->topproducts = $topproducts;
 	}
          
         

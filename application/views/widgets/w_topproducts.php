@@ -1,6 +1,6 @@
 <h2> Лучшие продукты</h2>
-<?foreach($topproducts as $top):?>
+//<?//foreach($topproducts as $top):?>
 <u>
-    <li><?=$top?></li>
+    <li>//<?//=$top?></li>
 </u>
-<? endforeach; ?>
+//<? //endforeach; ?>
