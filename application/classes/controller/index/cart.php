@@ -358,6 +358,11 @@ return $den;
                     ->bind('сostom_id', $сostom_id)
                     ->bind('myorders', $myorders)
                     ;
+            
+            $this->template->page_title = 'Уведомление о Заказе';
+            $this->template->content_title ='Уведомление о Заказе';
+            $this->template->block_header = array(
+                $letter, );
                   //  var_dump($myorders);
                     //echo Debug::vars($myorders);
             $email = Email::factory('Сделан Заказ Билетов на сайте Аплодисменты', $letter,'text/html')
