@@ -12,6 +12,7 @@ class Controller_Widgets_Adminmenuorders extends Controller_Widgets {
         
         $menu = array(
              'Заказы' =>  array('orders'),
+            
              'Выполненные Заказы' =>  array(''),
              'Статистика Заказов' =>  array(''),
              'Список Емейлов' => array(''),

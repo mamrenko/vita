@@ -3,7 +3,7 @@
        
         
         <div class="col-md-9">
-               <h3>Незарегистированные покупатели</h3>
+               <h3>Заказы от Незарегистированных покупателей</h3>
            <table id="placetb" class="table table-bordered table-highlight">
                 <thead>
                     <tr>
