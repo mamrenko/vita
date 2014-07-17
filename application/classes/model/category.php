@@ -11,7 +11,9 @@
      protected $_has_many = array(
         'events' => array(
         'model'   => 'event',
+        'foreign_key' => 'category_id',
         'through' => 'events_categories',
+        'far_key' => 'event_id',
     ),
 );
       public function rules()
@@ -51,4 +53,18 @@
         );
     }  
 
+    
+    public function get_cats(){
+            $query = DB::select()
+                    ->from('events')
+                    ->where('day' ,'>', date('Y-m-d'))
+                    ->join('events_categories')
+                    ->on('events_categories.event_id', '=', 'events.id')
+                    ->group_by('category_id')
+                    ->join('categories')
+                    ->on('categories.id', '=', 'events_categories.category_id')
+                    ;
+            return $query->execute();
     }
+    }
+    

@@ -132,7 +132,7 @@ class Controller_Admin_Costs extends Controller_Admin {
     
     public function action_delete(){
         
-        $id = (int) $this->request->param('id');
+        $id = abs((int) $this->request->param('id'));
         $cost = ORM::factory('cost', $id);
        
         $playbill=$cost->playbill;

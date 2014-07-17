@@ -41,17 +41,13 @@ class Controller_Admin_Playbill extends Controller_Admin {
     
     public function action_list() {
         
-        $id = (int) $this->request->param('id');
+        $id = abs((int) $this->request->param('id'));
 
       
       $place = ORM::factory('place', $id);
       $playbills = $place->playbills->find_all();
       
-       
-//      if(!$playbills->loaded()){
-//         $this->request->redirect('admin/playplaces');
-//       }
-           
+  
         
         $content = View::factory('admin/playbill/v_playbill_list', array(
                     'playbills' => $playbills,
@@ -77,6 +73,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
         if (isset($_POST['submit']))
         {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
+            $_POST['title'] = mb_convert_case($_POST['title'], MB_CASE_TITLE);
             $_POST['subtitle'] = Security::xss_clean( $_POST['subtitle']);
             $_POST['description'] = Security::xss_clean( $_POST['description']);
             
@@ -118,7 +115,7 @@ class Controller_Admin_Playbill extends Controller_Admin {
         
          
        
-         $id = (int) $this->request->param('id');
+         $id = abs((int) $this->request->param('id'));
 
         $playbill = ORM::factory('playbill', $id);
         $events = $playbill->events;
@@ -142,19 +139,6 @@ class Controller_Admin_Playbill extends Controller_Admin {
         
     }
     
-    public function action_delete(){
-        
-        $id = (int) $this->request->param('id');
-        $playbill = ORM::factory('playbill', $id);
-
-        if(!$playbill->loaded()) {
-            $this->request->redirect('admin/playbill');
-        }
-
-        $playbill->delete();
-        $this->request->redirect('admin/playbill');  
-        
-    }
     
     
 }

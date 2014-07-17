@@ -9,14 +9,14 @@ var info;
 				$('#testTextarea').textareaCount(options);
 
 				var options2 = {
-						'maxCharacterSize': 150,
+						'maxCharacterSize': 300,
 						'originalStyle': 'originalTextareaInfo',
 						'warningStyle' : 'warningTextareaInfo',
 						'warningNumber': 40,
 						'displayFormat' : '#input/#max | #words words'
 				};
                                 var options22 = {
-						'maxCharacterSize': 250,
+						'maxCharacterSize': 300,
 						'originalStyle': 'originalTextareaInfo',
 						'warningStyle' : 'warningTextareaInfo',
 						'warningNumber': 40,
@@ -25,7 +25,7 @@ var info;
 				$('#testTextarea2').textareaCount(options2);
 
 				var options3 = {
-						'maxCharacterSize': 150,
+						'maxCharacterSize': 300,
 						'originalStyle': 'originalTextareaInfo',
 						'warningStyle' : 'warningTextareaInfo',
 						'warningNumber': 40,
@@ -34,7 +34,7 @@ var info;
                                 $('#testTextarea22').textareaCount(options2);
 
 				var options3 = {
-						'maxCharacterSize': 250,
+						'maxCharacterSize': 300,
 						'originalStyle': 'originalTextareaInfo',
 						'warningStyle' : 'warningTextareaInfo',
 						'warningNumber': 40,
@@ -43,7 +43,7 @@ var info;
                                 $('#testTextarea222').textareaCount(options22);
 
 				var options3 = {
-						'maxCharacterSize': 250,
+						'maxCharacterSize': 300,
 						'originalStyle': 'originalTextareaInfo',
 						'warningStyle' : 'warningTextareaInfo',
 						'warningNumber': 40,

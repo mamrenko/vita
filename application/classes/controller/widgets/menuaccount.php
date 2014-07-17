@@ -11,9 +11,10 @@ class Controller_Widgets_Menuaccount extends Controller_Widgets {
         $select = Request::initial()->action();
 
         $menu = array(
-            '<i class="icon-home"></i>Личный кабинет' => array('index'),
-            '<i class="icon-cloud"></i>Заказы' => array('orders'),
-            '<i class="icon-gear"></i>Профиль' => array('profile'),
+            '<i class="fa fa-user"></i> &nbsp; Личный кабинет' => array('index'),
+            '<i class="fa fa-list"></i> &nbsp; Заказы' => array('orders'),
+            '<i class="fa fa-paperclip"></i> &nbsp; Профиль' => array('profile'),
+            '<i class="fa fa-truck"></i> &nbsp; Адреса' => array('adress'),
         );
 
         // Вывод в шаблон

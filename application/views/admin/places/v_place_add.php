@@ -90,6 +90,28 @@
             </div>
            
            
+      
+      
+       <div class="col-sm-6">
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="input-group">
+                                    <div class="form-control">
+                                        <i class="fa fa-file fileupload-exists"></i> <span class="fileupload-preview"></span>
+                                    </div>
+                                    <div class="input-group-btn">
+										<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+										<span class="btn btn-default btn-file">
+											<span class="fileupload-new">Select file</span>
+											<span class="fileupload-exists">Change</span>
+											<input type="file" />
+										</span>
+									</div>
+                                </div>
+                            </div>  
+                        </div>
+      
+      
+      
           <div class="form-group">
                     
                       <?=Form::button('submit', 'Сохранить', array(

@@ -1,16 +1,12 @@
-<br />
-<div class="breadcrumbs">
-    <div class="container">
-<h3 class="pull-right">
-Настройка регистрационных данных
-</h3>
-</div></div>
+
 
 <div class="row">
-    
+    <h3>
+Настройка регистрационных данных
+</h3>
    
 
-<div class="col-md-6 col-md-offset-2">
+<div class="col-md-9">
   <br/>
 <?if($errors):?>
 <?foreach ($errors as $error):?>
@@ -41,11 +37,11 @@
                <?=Form::label('phonenumber', 'Ваш Телефон')?>
                <?=Form::input('phonenumber', $user->phonenumber, array(
                    'data-type' => 'phone',
-                   'placeholder' => '(XXX) XXXX XXX',
+                   'placeholder' => 'XXX-XXX-XXXX',
                    'class' => 'form-control',
                    'parsley-type' => 'phone',
-                   //'id' => 'parsley-phone',
-                  'data-required' => 'true',
+                   'id' => 'phone2',
+                   'data-required' => 'true',
                    ))?>
                       </div>
                         

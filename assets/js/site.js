@@ -1,7 +1,25 @@
+$(function () {
+$('#dpStart').datepicker ({
+            todayBtn: "linked",
+              language: "ru",
+              //startDate: "<?=date('d/m/Y')?>",
+              startDate: Date(),
+              
+        }
+        ).on ('changeDate', function (e) {
+		$('#dpEnd').datepicker ('setStartDate', e.date);
+	})
 
-var $sentDialog = $("#sentDialog");
-
-  $("#contactForm").on("submit", function () {
-    $sentDialog.modal('show');
-    return false;
-  });
+	$('#dpEnd').datepicker (
+            {
+              todayBtn: "linked",
+              language: "ru",
+               startDate:   Date(),
+              
+            }
+            
+            ).on ('changeDate', function (e) {
+		$('#dpStart').datepicker ('setEndDate', e.date)
+	})
+        
+})

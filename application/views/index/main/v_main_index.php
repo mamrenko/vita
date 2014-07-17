@@ -3,41 +3,31 @@
             
             <br />
          <ul class="list-unstyled">
-                <li class="col-md-3">
+             <?foreach ($events as $event):?>
+
+                <li class="col-md-4">
                 <div class="thumbnail ">
-                <img src="http://placehold.it/300x200" alt="" class="img-responsive">
+                    <a href="event/one/<?=$event->playbill->id;?>">
+ <?=HTML::image('media/uploads/playplaces/'.$event->playbill->image, array(
+                  'class' => 'img-responsive',  
+                ));?>   
+                    </a>  
+               
                 <div class=" caption">
-                <h3>RRRRRRRnnn</h3>
-                <p>Описание и текст…</p>
+                    <?=HTML::anchor('places/place/'. $event->place_id,'<h4>'. Text::limit_chars($event->playbill->place->title, 20).'</h4>');?>
+                <h4><?=HTML::anchor('event/one/'.$event->playbill->id,Text::limit_chars($event->playbill->title, 20));?></h4>
+                <p><?=  Text::limit_chars($event->playbill->subtitle, 25 );?></p>
+                <p>
+                    <?=HTML::anchor('event/one/'.$event->playbill->id, 'Подробнее', array(
+                         'class' => 'btn btn-success',
+                        'role' => 'button',
+                    ));?>
+                </p>
+                
                 </div>
                 </div>
-                </li>
-                <li class="col-md-3">
-                <div class="thumbnail">
-                <img src="http://placehold.it/300x200" alt="">
-                <div class="caption">
-                <h3>Заголовок</h3>
-                <p>Описание и текст…</p>
-                </div>
-                </div>
-                </li>
-                <li class="col-md-3">
-                <div class="thumbnail">
-                <img src="http://placehold.it/300x200" alt="">
-                <div class="caption">
-                <h3>Заголовок</h3>
-                <p>Описание и текст…</p>
-                </div>
-                </div>
-                </li>
-                <li class="col-md-3">
-                <div class="thumbnail">
-                <img src="http://placehold.it/300x200" alt="">
-                <div class="caption">
-                <h3>Заголовок</h3>
-                <p>Описание и текст…</p>
-                </div>
-                </div>
-                </li>
+                    <br />
+            <?endforeach;?>    
+
             </ul>
         </div>

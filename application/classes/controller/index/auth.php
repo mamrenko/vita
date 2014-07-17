@@ -6,6 +6,13 @@ class Controller_Index_Auth extends Controller_Index {
     public function before() {
         parent::before();
         
+        
+        $this->template->scripts[] = 'media/js/plugins/mascedinput/jquery-2.0.2.min.js';
+         $this->template->scripts[] = 'media/js/plugins/mascedinput/jquery.maskedinput.min.js';
+         $this->template->scripts[] = 'media/js/plugins/mascedinput/phonescr.js';
+         $this->template->scripts[] = 'media/js/plugins/maxlength/jquery.maxlength.js';
+         $this->template->scripts[] = 'media/js/plugins/maxlength/maxlength.js';
+        
     }
 
     public function action_index() {

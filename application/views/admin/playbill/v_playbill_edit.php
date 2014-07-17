@@ -39,7 +39,9 @@
     
 </tr>
 </thead>
-    
+        
+
+
     
     
        <?if(count($playbill->costs->find_all()) > 0):?> 
@@ -58,14 +60,18 @@
       
             <?=HTML::anchor('admin/costs/edit/'.$cost->id, '<button class="btn btn-secondary" type="button">
 								<i class="fa fa-pencil"></i></button>')?>
-       <?if(count($playbill->costs->find_all()) >1):?> 
+        
+        
+        <?//if(count($playbill->events->find_all()) = 0):?>
+       <?if(count($playbill->costs->find_all()) >1)  :?> 
+        <?//if(count($playbill->events->find_all()) = 0):?>
             <?=HTML::anchor('admin/costs/delete/'.$cost->id, '<button class="btn btn-danger" type="button">
 								<i class="fa fa-times"></i></button>')?>
          <?endif?>
     </td>
 </tr>
     <?endforeach?>
-
+  
      
 </table> 
     <?else:?>
@@ -81,7 +87,7 @@
       <?=HTML::anchor('admin/costs/add/'.$playbill->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить Цены</button>')?>
       <?=HTML::anchor('admin/costs/add/'.$playbill->id, 'Цены')?>
         <?endif?>
- 
+
         </div>
      
     </div>
@@ -91,7 +97,7 @@
          
         <?if(count($playbill->events->find_all()) > 0):?> 
          <?$events = $playbill->events->find_all()?>
-       
+      
         
       
 
@@ -105,6 +111,7 @@
                 <?=HTML::anchor('admin/events/add/'.$playbill->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить События</button>')?>
                 </p>
                 <h3>События</h3>
+                <a id="list"></a>
               </div>
             <div class="portlet-content">
 <table id="placetb" class="table table-bordered table-highlight">
@@ -114,7 +121,8 @@
     <th>Дата</th>
     <th>На Главной</th>
     <th>Жанры</th>
-    
+    <th>Начало</th>
+    <th>Сцена</th>
     <th>Функции</th>
     
 </tr>
@@ -142,13 +150,15 @@
          <?endforeach;?>
 
      </td>
-   
+     
+     <td><?=$event->start;?></td>
+     <td><?=$event->scene->title;?></td>
     <td>
       
             <?=HTML::anchor('admin/events/edit/'.$event->id, '<button class="btn btn-secondary" type="button">
 								<i class="fa fa-pencil"></i></button>')?>
        
-            <?=HTML::anchor('admin/events/delete/'.$event->id, '<button class="btn btn-danger" type="button">
+            <?=HTML::anchor('admin/events/delete/'.$event->id.'#list', '<button class="btn btn-danger" type="button">
 								<i class="fa fa-times"></i></button>')?>
      
     </td>
@@ -179,4 +189,5 @@
         </div>
         </div>
     </div>
+ 
 </div>

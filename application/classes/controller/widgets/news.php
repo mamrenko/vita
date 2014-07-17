@@ -9,7 +9,10 @@ class Controller_Widgets_News extends Controller_Widgets {
     public function action_index()
     {
         // Получаем список категорий
-        $all_news = ORM::factory('new')->limit(3)->find_all();
+        $all_news = ORM::factory('new')
+                ->where('day','>=', date('Y-m-d'))
+                ->limit(3)
+                ->find_all();
         $this->template->all_news = $all_news;
     }
 

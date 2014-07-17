@@ -6,8 +6,10 @@
 <h3>Сообщения</h3>
 
 </div>
-
-            <div class="portlet-content">
+            
+             <div class="portlet-content">
+<?if(count($messages) > 0):?>
+           
 
 <table id="placetb" class="table table-bordered table-highlight" data-paginate="TRUE">
     <thead>
@@ -20,7 +22,7 @@
     <th>Функции</th>
 </tr>
 </thead>
-<?foreach ($messages as $message):?><?foreach ($messages as $message):?>
+<?foreach ($messages as $message):?>
 <tr>
     <td><?=$message->name?></td>
      <td><?=$message->email?></td>
@@ -33,7 +35,14 @@
 		<i class="fa fa-times"></i></button>')?>
        </td>
 </tr>
-<?endforeach;?><?endforeach;?>
+<?endforeach;?>
 </table>
+
+           
+     <?else:?>
+            <p>Сообщений нет</p>
+        <?endif?>    
 </div>
         </div>
+        </div>
+    </div>

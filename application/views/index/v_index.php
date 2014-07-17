@@ -93,7 +93,7 @@ URL::base()?>media/images/logo.png" alt="Агентство Аплодисмен
               
         
         <? if (isset($block_center)):?>
-        <section id="main" class="col-md-9">
+        <section id="main" class="col-md-7">
 				<?foreach($block_center as $cblock):?>
             
                         <?=$cblock?>
@@ -104,7 +104,7 @@ URL::base()?>media/images/logo.png" alt="Агентство Аплодисмен
         
               
                  <? if (isset($block_right)):?>
-		<section id="sidebar" class="col-md-3">
+		<section id="sidebar" class="col-md-5">
 			<?foreach($block_right as $rblock):?>
                         <?=$rblock?>
                     <?endforeach?>

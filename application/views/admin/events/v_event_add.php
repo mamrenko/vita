@@ -18,7 +18,7 @@
  
 <p>
   
-      <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Вернуться </button>')?>
+      <?=HTML::anchor('admin/playbill/edit/'.$playbill->id.'#list', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Вернуться </button>')?>
      
 </p>
 
@@ -39,7 +39,7 @@
      <div class="row">
          <div class="col-md-4">
      <h4>Выберите дату</h4>
-                            <div id="dp-ex-3"
+                                 <div id="dp-ex-3"
                                  class="input-group date" 
                                  data-auto-close="true" 
                                  data-date=<?=date('d-m-Y');?>
@@ -61,8 +61,10 @@
                             <span class="help-block">dd-mm-yyyy</span>
      
  
-     
+         
      </div>
+         
+         
          </div>
      <div class="row">
          <div class="col-md-8">
@@ -83,6 +85,32 @@
                   
                   
           </div>
+             <div class="form-group">
+                  <?=Form::label('scene_id', 'Сцена')?>:
+               <br />
+               <?=Form::select('scene_id', 
+                  $scene, $data['scene_id'],
+                  array(
+                     'class' => 'form-control select2-input', 
+                  ))?>
+                                 
+                                 
+             </div>
+             <div class="form-group"> 
+                         <?=Form::label('start', 'Начало мероприятия')?>
+                        <br />
+                        
+                        
+                         
+                      
+                        <?=Form::select('start', $start,'19:00',array(
+                            'class' => 'form-control select2-input',
+                          
+                        )
+                           , $data['start']     )?>
+
+                        
+                    </div>
          </div>
      </div>
            
@@ -99,10 +127,7 @@
               
               <?=Form::hidden('place_id', $playbill->place_id)?>
             </div>
-           <div class="form-group">
-              
-              <?=Form::hidden('scene_id', $playbill->scene_id)?>
-            </div>
+           
           
           <div class="form-group">
                     

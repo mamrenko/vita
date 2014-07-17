@@ -1,22 +1,33 @@
 
-   <div class="tab-v3">
+ <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                    Категории
+                    </h2>
+              </div>
+                <div class="panel-body">
+ 
                 
                 
-                    <ul class="nav nav-pills nav-stacked">
-                            <?foreach( $events as $cats):?>
-  <?$categories =$cats->categories         
-           ->group_by('id')
-           ->order_by('title')
-           ->limit(5)
-           ->find_all()
-          
-          ;?>
-                         <?foreach( $categories as $cater):?>
-                        <li><?=HTML::anchor('#', $cater->title);?></li>
-                        <? endforeach; ?>
-                           <? endforeach; ?>
-                    </ul>     
+  <ul class="nav nav-pills nav-stacked">
+              
+       
+      <?foreach($cats as $cat):?>
+      
+    
+      
+      <li><?=HTML::anchor('categories/index/' . $cat['id'], $cat['title']);?></li>
+   
+      <?endforeach?>
+   
+ </ul>
+                </div> 
+    </div>
   
-             
-        </div>
-<br />
+
+
+ 
+ 
+
+
+ 

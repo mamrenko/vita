@@ -25,7 +25,7 @@
       <?=HTML::anchor('admin/playplaces/add/'.$place->id, '<button class="btn btn-success" type="button"><i class="fa fa-plus"></i> Добавить Мероприятие</button>')?>
 </p>
 </div>
-
+<?if(count($playbills) >0):?>
              <div class="portlet-content">
 <table 
     id="placetb"
@@ -42,7 +42,8 @@
         <th data-sortable="true">Под_Название</th>
          <th data-sortable="true">Сцена </th>
          <th data-sortable="true">Начало </th>
-         <th data-sortable="false">Картика</th>
+         <th data-sortable="true">Начало onset</th>
+         <th data-sortable="false">Картинка</th>
         <th data-sortable="false" >Функции </th>
 
     </tr>
@@ -64,6 +65,18 @@
         <?=$playbill->starts->start?>
     </td>
     <td>
+        <?$onset = $playbill->onset;
+                       
+                      $row = explode(",", $onset);
+                     $arr[] = $row;
+                     
+                    
+                      foreach ($row as $ons )
+                            echo "<p>$ons</p>";
+                       
+                       ?>  
+    </td>
+    <td>
         <?if($playbill->image == NULL):?>
                             <?=HTML::image('media/images/placeoff.jpg', array(
                                     'class' => 'img-thumbnail',
@@ -81,7 +94,7 @@
     <td>
             <?=HTML::anchor('admin/playplaces/edit/'.$playbill->id, '<button class="btn btn-secondary" type="button">
 								<i class="fa fa-pencil"></i></button>')?>
-         <?if(count($playbill->events->find_all()) > 0):?>
+         <?if(count($playbill->events->find_all()) > 0 ):?>
      
         <ul class="portlet-tools pull-right">
 								
@@ -90,6 +103,11 @@
              
                 </li>
                 </ul>
+       
+         
+         
+       
+       
           <?else:?>
             <?=HTML::anchor('admin/playplaces/delete/'.$playbill->id, '<button class="btn btn-danger" type="button">
 								<i class="fa fa-times"></i></button>')?>
@@ -107,6 +125,21 @@
 </p>
 </div>
  </div>
+            <?else :?>
+            
+            <div class="portlet-toolbar">
+<p>
+  
+   Пока нет мероприятий
+      
+</p>
+</div>
+            
+            
+          
+<? endif;?>
+
        </div>
         </div>
          </div>
+

@@ -114,13 +114,13 @@ var App = function () {
                 animation: "slide",
                 easing: "swing",
                 animationLoop: true,
-                itemWidth: 1,
+                itemWidth:1,
                 itemMargin: 1,
                 minItems: 2,
-                maxItems: 9,
+                maxItems: 4,
                 controlNav: false,
                 directionNav: false,
-                move: 2
+                move: 5
             });
             
             $('#clients-flexslider1').flexslider({

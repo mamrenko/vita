@@ -45,8 +45,9 @@
                <?=Form::label('phonenumber', 'Ваш Телефон')?>
                <?=Form::input('phonenumber', $data['phonenumber'], array(
                    'data-type' =>'phone',
-                   'placeholder' => '(XXX) XXXX XXX',
+                   //'placeholder' => 'X(XXX)- XXXX XXX',
                    'class' => 'form-control',
+                    'id' => 'phone2',
                    'data-required' => 'true',
                    
                    ))?>

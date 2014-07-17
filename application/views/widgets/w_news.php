@@ -1,4 +1,4 @@
-
+<?if(count($all_news)>0):?>
     <div class="panel panel-info">
                 <div class="panel-heading">
                     <h2 class="panel-title">
@@ -15,13 +15,14 @@
                 <div class="panel-footer">
                  <a href="<?=URL::base()?>news">
  
-                <button class="btn btn-success">    
+                <button class="btn btn-info">    
                   Все новости
                 </button>
                  </a>    
                 </div>
         </div>
     
-
+<?
+endif;?>
 
    

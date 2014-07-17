@@ -1,0 +1,24 @@
+/* TEAM */
+	
+        Web designer:Alex Mamrenko
+	UI developer: Alex Mamrenko
+	Twitter: @clapout
+	From:Moscow, Russia
+
+	
+
+/* THANKS */
+
+	
+	
+	RU Translator: Igor Borisov
+	Twitter: 
+	Location: Moscow, Russia
+	
+		
+
+/* SITE */
+	Last update:2014/05/29
+	Language: Russian 
+	Doctype:HTML5
+	IDE: NetBeans

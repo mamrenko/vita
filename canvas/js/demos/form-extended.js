@@ -7,20 +7,45 @@ $(function () {
 	$('#dp-ex-3').datepicker (
            {
               todayBtn: "linked",
-               language: "ru",
-               daysOfWeekDisabled: "1"
+              language: "ru",
+              //startDate: "<?=date('d/m/Y')?>",
+              startDate: '0d',
             }
         )
 	$('#dp-ex-4').datepicker ()
 	$('#dp-ex-5').datepicker ()
 
-	$('#dpStart').datepicker ().on ('changeDate', function (e) {
+	$('#dpStart').datepicker ({
+            todayBtn: "linked",
+              language: "ru",
+              //startDate: "<?=date('d/m/Y')?>",
+              startDate: new Date(),
+        }
+        ).on ('changeDate', function (e) {
 		$('#dpEnd').datepicker ('setStartDate', e.date);
 	})
 
-	$('#dpEnd').datepicker ().on ('changeDate', function (e) {
+	$('#dpEnd').datepicker (
+            {
+              todayBtn: "linked",
+              language: "ru",
+            }
+            
+            ).on ('changeDate', function (e) {
 		$('#dpStart').datepicker ('setEndDate', e.date)
 	})
+
+      
+    $('#dp-ex-55').datepicker({
+    todayBtn: "linked",
+    language: "ru",
+    multidate: true,
+    todayHighlight: true,
+    startDate: '0d',})
+
+
+
+
 
 	$('#tp-ex-1').timepicker ()
 	$('#tp-ex-2').timepicker({ template: 'modal' })

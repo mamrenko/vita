@@ -11,10 +11,21 @@
                         <span class="label label-primary">Всего событий : <?=count($events);?></span>
                 </li>
                 </ul>
+                <p>
 <?=HTML::anchor('admin/events/', '<button type="button" 
                             class="btn btn-success"> Все события</button>')?>
+                </p>
+               <?if(count($events) > 0){?>  
+                <p>
+<?=HTML::anchor('admin/events/all_delete', '<button type="button" 
+                            class="btn btn-danger"> Удалить все прошедшие события</button>')?>
+                </p>
             </div>
+            
+            
+           
             <div class="portlet-content">
+                
 <table id="placetb" class="table table-bordered table-highlight">
     
     <thead>
@@ -57,6 +68,12 @@
 </tr>
     <? endforeach; ?>  
 </table>
+                 <?}else{?>
+                
+                <div class="alert alert-danger"> <p>Нет прошедших событий, они удалены</p></div>
+               
+                
+                 <?}?>
 </div>
         </div>
 </div>

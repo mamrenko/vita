@@ -1,5 +1,8 @@
 $(function () {
-             $('#usStates').listnav();
+             $('#usStates').listnav({
+               includeNums: false,
+             }
+        );
          });
 
 

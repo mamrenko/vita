@@ -11,6 +11,11 @@ class Model_Place extends ORM {
 			'model' => 'scene',
 			'foreign_key' => 'place_id',
 		),
+            
+                'artists' => array(
+			'model' => 'artist',
+			'foreign_key' => 'place_id',
+		),
 	);
    
    
@@ -90,6 +95,19 @@ class Model_Place extends ORM {
             
         );
     }
-//        
+//  
+    
+    public function all_events(){
+         $query = DB::select()
+                    ->from('events')
+                    ->join('places')
+                    ->on('events.place_id', '=', 'places.id')
+                    ->group_by('place_id')
+                    
+                    ;
+            return $query->execute();
+        
+        
+} 
      
 }

@@ -25,13 +25,19 @@ class Model_Playbill extends ORM {
     
     protected $_has_many = array(
 		'costs' => array(
-			'model' => 'cost',
-			'foreign_key' => 'playbill_id',
-		),
+                'model' => 'cost',
+                'foreign_key' => 'playbill_id',
+        ),
                 'events' => array(
 			'model' => 'event',
 			'foreign_key' => 'playbill_id',
 		),
+        'artists' => array(
+            'model' => 'artist',
+            'foreign_key' => 'playbill_id',
+            'through' => 'artist_playbill',
+            'far_key' => 'artist_id',
+        ),
                 
 	);
    
@@ -42,33 +48,34 @@ class Model_Playbill extends ORM {
             'title' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 3)),
-                array('max_length', array(':value', 150)),
+                array('max_length', array(':value', 300)),
                 
             ),
              
             'description' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 20)),
+                array('max_length', array(':value', 1500)),
             ),
             'meta_title' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 10)),
-                array('max_length', array(':value', 150)),
+                array('max_length', array(':value', 300)),
                 
             ),
             'meta_keywords' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 10)),
-                array('max_length', array(':value', 150)),
+                array('max_length', array(':value', 300)),
                 
             ),
             'meta_description' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 10)),
-                array('max_length', array(':value', 150)),
+                array('max_length', array(':value', 300)),
                 
             ),
-            
+           
         );
 
 
@@ -107,6 +114,22 @@ class Model_Playbill extends ORM {
                 array('strip_tags'),
             ),
         );
+    }
+    public function get_sets(){
+        
+        $table_name = "playbills";
+        $column_name = "onset";
+        
+       
+         $result = mysql_query("SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_NAME = '$table_name' AND COLUMN_NAME = '$column_name'")
+or die (mysql_error());
+
+$row = mysql_fetch_array($result);
+$enumList2 = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
+return $enumList2;
+
+
     }
 } 
 

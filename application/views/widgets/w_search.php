@@ -1,10 +1,6 @@
-
-<h2>Поиск по каталогу</h2>
-<br/>
-<form action="search" method="post">
-    <input value="" name="login" type="text" size="70">
-    <input value="Поиск"  type="submit">
-</form>
-<a href="">Расширенный поиск</a>
-<br/>
-<br/>
+ <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Поиск">
+        </div>
+        <button type="submit" class="btn btn-default">Искать!</button>
+      </form>

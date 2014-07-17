@@ -25,7 +25,7 @@ class Controller_Admin_Users extends Controller_Admin {
     }
     
     public function action_delete(){
-        $id = (int) $this->request->param('id');
+        $id = abs((int) $this->request->param('id'));
         $user = ORM::factory('user', $id);
         $roles = ORM::factory('role')->find_all()->as_array();
        

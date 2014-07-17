@@ -19,6 +19,12 @@
     <th>Емейл</th>
    
     <th>Роли</th>
+    <th>
+        Последний вход
+    </th>
+    <th>
+        Заходы
+    </th>
     <th>Функции</th>
     
 </tr>
@@ -47,6 +53,12 @@
 
    
    
+   </td>
+   <td>
+       <?=date('d-m-Y', $user->last_login)?>
+   </td>
+   <td>
+       <?=$user->logins?>
    </td>
     <td>
         

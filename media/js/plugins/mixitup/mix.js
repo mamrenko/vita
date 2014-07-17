@@ -1,0 +1,9 @@
+$(function(){
+     
+    $('.sorting-grid').mixitup(
+        {
+  
+        }
+        );
+     
+});

@@ -51,6 +51,7 @@ class Controller_Admin_News extends Controller_Admin {
         if (isset($_POST['submit'])) {
             $_POST['content'] = Security::xss_clean( $_POST['content']);
             $_POST['title'] = Security::xss_clean( $_POST['title']);
+             $_POST['title'] = mb_convert_case($_POST['title'], MB_CASE_TITLE);
             $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
             $data = Arr::extract($_POST, array('title', 'content', 'day'));
             
@@ -106,6 +107,7 @@ class Controller_Admin_News extends Controller_Admin {
        if (isset($_POST['submit'])) {
             $_POST['content'] = Security::xss_clean( $_POST['content']);
             $_POST['title'] = Security::xss_clean( $_POST['title']);
+             $_POST['title'] = mb_convert_case($_POST['title'], MB_CASE_TITLE);
             $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
             $data = Arr::extract($_POST, array('title',  'content', 'day'));
             $news = ORM::factory('new');

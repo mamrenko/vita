@@ -32,18 +32,19 @@ class Controller_Admin_Areas extends Controller_Admin {
     
     public function action_add(){
        
-       
+      //$db = new PDO('mysql:host=localhost;dbname=vitas', 'admin', '1234');
+      //$db = Database::instance('alternate');
         
         if (isset($_POST['submit']))
         {
             $_POST['title'] = Security::xss_clean( $_POST['title']);
             
-            
-            
+            //$_POST['title'] = $db->quote($_POST['title']);
+        
             $data = Arr::extract($_POST, array('title'));
             $area = ORM::factory('area');
             $area->values($data);
-        
+            //var_dump($_POST['title']);
 
          try {
                 $area->save();
@@ -71,7 +72,7 @@ class Controller_Admin_Areas extends Controller_Admin {
         
           
        
-         $id = (int) $this->request->param('id');
+         $id = abs((int) $this->request->param('id'));
 
         $area = ORM::factory('area', $id);
         if(!$area->loaded()){

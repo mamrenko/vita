@@ -21,19 +21,22 @@
                 
             </div>
              <div class="item">
-                 <img src="media/uploads/carousels/custom2.jpg" alt="3" class="img-responsive"/>
+                 <img src="media/uploads/carousels/custom2.jpg" alt="3" 
+                      class="img-responsive"/>
                  
              </div>
              <div class="item">
-                 <img src="media/uploads/carousels/custom3.jpg" alt="2" class="img-responsive"/>
+                 <img src="media/uploads/carousels/custom3.jpg" alt="2" 
+                      class="img-responsive"/>
                  
              </div>
              <div class="item">
-                 <img src="media/uploads/carousels/custom4.jpg" alt="4" class="img-responsive"/>
+                 <img src="media/uploads/carousels/custom4.jpg" alt="4" 
+                      class="img-responsive"/>
                 
              </div>
             </div>
-        <a href="#theCarousel" class="carousel-control left" data-slide="prev"><span class="icon-prev"></span></a>
+            <a href="#theCarousel" class="carousel-control left" data-slide="prev"><span class="icon-prev"></span></a>
             <a href="#theCarousel" class="carousel-control right" data-slide="next"><span class="icon-next"></span></a>
         </div>
     </div> 
@@ -94,3 +97,18 @@
  </div>
 
 <?endif;?>
+
+
+
+
+
+    <div id="owl-demo">
+    <div class="item"><img src="media/uploads/carousels/custom.jpg" alt="Owl Image"></div>
+    <div class="item"><img src="media/uploads/carousels/custom2.jpg"></div>
+    <div class="item"><img src="media/uploads/carousels/custom3.jpg"></div>
+    <div class="item"><img src="media/uploads/carousels/custom4.jpg"></div>
+    
+     
+    </div>
+
+

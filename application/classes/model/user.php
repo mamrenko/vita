@@ -9,7 +9,7 @@ class Model_User extends Model_Auth_User {
                         'username'         => 'Ваше Имя',
                         'email'            => 'Ваш email Адрес',
                         'password'         => 'Пароль',
-                       'phonenumber' => 'Ваш Телефонный номер',
+                        'phonenumber' => 'Ваш Телефонный номер',
                         'password_confirm' => 'Повторить Пароль',
                     );
                 }
@@ -26,10 +26,13 @@ class Model_User extends Model_Auth_User {
 				array(array($this, 'username_available'), array(':validation', ':field')),
 			),
 			'password' => array(
-				array('not_empty'),
+				array('not_empty'), 
+                                
+                                //array('min_length', array(':value', 17)),
 			),
                         'phonenumber' => array(
 				array('not_empty'),
+                            array('regex', array(':value', '/^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/')),
                                 
 			),
 			'email' => array(

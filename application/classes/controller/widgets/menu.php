@@ -7,14 +7,16 @@ class Controller_Widgets_Menu extends Controller_Widgets
 
     public function action_index()
 	{
-          $events = ORM::factory('event')
-                  ->find_all();
         
-           
-          $this->template-> events =  $events;
+        
+        $cats  = Model::factory('category')->get_cats();
+         
+        $this->template->cats = $cats;
+        
+        
 	}
          
         
 } 
- 
+
        

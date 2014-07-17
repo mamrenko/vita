@@ -20,6 +20,7 @@ class Controller_Widgets_Adminmenuproducts extends Controller_Widgets {
              'Категории' =>  array('categories'),
              'Карусель' =>  array('carousels'),
              'Билеты' =>  array('tickets'),
+             'Артисты' =>  array('artists'),
         );
         $this->template->menu = $menu;
         $this->template->select = $select;

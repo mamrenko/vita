@@ -5,28 +5,37 @@
         });
     </script>  
 
+<h1>Наши Контакты</h1>
+<ol class="breadcrumb">
+    <li><a href="<?=URL::base();?>">Главная</a></li>
+  
+  <li class="active">Контакты</li>
+</ol>
 
-<!--=== Breadcrumbs ===-->
-<div class="breadcrumbs margin-bottom-40">
-    <div class="container">
-        <h1>Наши Контакты</h1>
-        <ul class="breadcrumb">
-            <li><a href=".">Главная</a></li>
- 
-            <li class="active">Контакты</li>
-        </ul>
-    </div>
-</div><!--/breadcrumbs-->
-<!--=== End Breadcrumbs ===-->
 
 
 <!--=== Content Part ===-->
-<div class="container">     
+    
     <div class="row margin-bottom-30">
         <div class="col-md-9 mb-margin-bottom-30">
-           <div class="panel panel-blue margin-bottom-40">
+            
+            
+            
+         <?if($errors):?>
+<?foreach ($errors as $error):?>
+        <div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-repeat"></span>  
+    
+    <?=$error?></div>
+              
+<?endforeach?>
+<?endif?>
+            
+            
+            
+           <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="icon-tasks"></i> Для связи с нами заполните форму ниже.</h3>
+                    <h3 class="panel-title"><i class="fa fa-tasks"></i> Для связи с нами заполните форму ниже.</h3>
                     <span class="label label-success"> Все поля обязательны для заполнения.</span>
                 </div>
                 <div class="panel-body">
@@ -38,7 +47,7 @@
                 'data-validate' => 'parsley',
           ));?>
                 <div class="form-group">
-                <label for="name">Имя <span class="color-red">*</span></label>
+                <label for="name">Имя <i class="fa fa-check-square"></i></label>
                 <div class="row margin-bottom-20">
                     <div class="col-md-7 col-md-offset-0">
                      
@@ -57,7 +66,7 @@
                 
                 </div>
                 <div class="form-group"> 
-                <label>Email <span class="color-red">*</span></label>
+                <label>Email <i class="fa fa-check-square"></i></label>
                 <div class="row margin-bottom-20">
                     <div class="col-md-7 col-md-offset-0">
                         
@@ -73,7 +82,7 @@
                 </div>
                 
                     <div class="form-group">
-                         <label> Телефон <span class="color-red">*</span></label>
+                         <label> Телефон <i class="fa fa-check-square"></i></label>
                           <div class="row margin-bottom-20">
                           <div class="col-md-5 col-md-offset-0">
                      <?=Form::input('phone', $data['phone'], array(
@@ -92,7 +101,7 @@
                     </div>
                     
                         <div class="form-group">
-                            <label>Сообщение <span class="color-red">*</span></label>
+                            <label>Сообщение <i class="fa fa-check-square"></i></label>
                              Можно отправить 300 символов: <span id="numCharactersLeft">300</span>
                            <div class="row margin-bottom-20">
                           <div class="col-md-11 col-md-offset-0">
@@ -127,73 +136,92 @@
             <?=FORM::close();?>
                 </div>
            </div>
+           
         </div><!--/col-md-9-->
         
         <div class="col-md-3">
             <!-- Contacts -->
-            <div class="headline"><h2>Контакты</h2></div>
-            <ul class="list-unstyled who margin-bottom-30">
-                <li><i class="icon-home"></i>Юридический Адрес: Москва, ул. 8 марта, 12</a></li>
-                <li><i class="icon-envelope-alt"></i>5097703@aplodismenty.ru</a></li>
-                <li><i class="icon-phone-sign"></i>+7 495 5097703</a></li>
-                <li><i class="icon-phone-sign"></i>+7 905 5892848</a></li>
-                <li><i class="icon-skype"></i>aplodis</a></li>
-                <li><a href="."><i class="icon-globe"></i>http://www.aplodismenty.ru</a></li>
-            </ul>
+            
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Контакты</h3>
+  </div>
+  <div class="panel-body">
+      <p><i class="fa fa-envelope-o"></i>  Юридический Адрес: </p>
+      <p>Москва, ул. 8 марта, 12</p>
+      <p><i class="fa fa-envelope"></i>  5097703@aplodismenty.ru</p>
+      <p><i class="fa fa-phone"></i>  +7 495 5097703</p>
+      <p><i class="fa fa-phone"></i>  +7 905 5892848</p>
+      <p><i class="fa fa-skype"></i>  aplodis</p>
+      <a href="<?=URL::base();?>"><i class="fa fa-globe"></i>  http://www.aplodismenty.ru</a>
+      
+  </div>
+</div>
 
-            <!-- Business Hours -->
-            <div class="headline"><h2>Часы Работы</h2></div>
-            <ul class="list-unstyled margin-bottom-30">
-                <li><strong>Понедельник - Воскресенье:</strong> </li>
-                <li>10.00 до 22.00</li>
-                
-            </ul>
+            
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Часы Работы</h3>
+        </div>
+        <div class="panel-body">
+            <p><i class="fa fa-power-off"></i>   Понедельник - Воскресенье:</p>
+            <p>10.00 до 22.00</p>
 
-            <!-- Why we are? -->
-            <div class="headline"><h2>Почему МЫ?</h2></div>
-            <p>Преимущества работы с нами.</p>
-            <ul class="list-unstyled">
-                <li><i class="icon-ok color-green"></i> Заказ билетов в день спектакля</li>
-                <li><i class="icon-ok color-green"></i> Большой выбор лучших мест</li>
-                <li><i class="icon-ok color-green"></i> Быстрая Доставка</li>
-            </ul>
+
+        </div>
+   </div>   
+            
+            
+            <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Почему МЫ?</h3>
+        </div>
+        <div class="panel-body">
+            <p><i class="fa fa-thumbs-o-up"></i>  Заказ билетов в день спектакля</p>
+            <p><i class="fa fa-thumbs-o-up"></i>  Большой выбор лучших мест</p>
+            <p><i class="fa fa-thumbs-o-up"></i>  Быстрая Доставка</p>
+
+        </div>
+   </div>   
+            
+       
         </div><!--/col-md-3-->
     </div><!--/row-->        
 
-    <!-- Our Clients -->
-    <div id="clients-flexslider" class="flexslider home clients">
-        <div class="headline"><h2>Площадки</h2></div>    
-        <ul class="slides">
-            <?foreach ($places as $place):?>
-                        
+    
+    <h2>Площадки</h2>  
+    
+   
+    
+    <div class="flexslider">
+        
+  <ul class="slides">
+     <?foreach ($events as $event):?>
+            
             <li>
-                <a href="#">
-                    <img src="media/uploads/places/small_<?=$place->image?>" alt="" /> 
-                    
-                </a>
-            </li>
-          <?endforeach?>
-        </ul>
-    </div><!--/flexslider-->
-    <!-- End Our Clients -->
-</div><!--/container-->     
-<!--=== End Content Part ===-->
-<div class="modal" id="sentDialog" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <a href="#" class="close" data-dismiss="modal">&times;</a>
-                <h3>Спасибо за Сообщение!</h3>
+                       <?=HTML::anchor('places/one/'.$event->playbill->place->id,
+                        HTML::image('media/uploads/places/small_'.$event->playbill->place->image, array(
+                            'class' => 'img-thumbnail'
+                        )));?>
                 
-            </div>
-            <div class="modal-body">
-                <p>В ближайшее время с Вами свяжемся</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal">Закрыть</button>
-            </div>
-        </div>
-    </div>    
+            </li> 
+            
+             <?endforeach;?>
+  </ul>
 </div>
+    
+    <!--/flexslider-->
+    <!-- End Our Clients -->
 
-       
+
+ 
+
+    
+   
+
+
+
+
+
+
+      

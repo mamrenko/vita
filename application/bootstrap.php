@@ -72,6 +72,7 @@ if (isset($_SERVER['KOHANA_ENV']))
 }
         Cookie::$salt = 'Narwhals can triforce';
         Cookie::$expiration = Date::WEEK;
+       //  Session::$default = 'cookie';
 /**
  * Initialize Kohana, setting the default options.
  *
@@ -105,7 +106,7 @@ Kohana::$config->attach(new Config_File);
  */
 Kohana::modules(array(
 	 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+	 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 	'database'   => MODPATH.'database',   // Database access
 	'image'      => MODPATH.'image',      // Image manipulation
@@ -113,7 +114,11 @@ Kohana::modules(array(
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	'pagination'  => MODPATH.'pagination',  // Pagination Листалка  https://github.com/kohana/pagination
-    'purifier'  => MODPATH.'purifier',  //http://htmlpurifier.org/ HTML Purifier is a standards-compliant HTML filter library written in PHP. HTML Purifier will not only remove all malicious code (better known as XSS) with a thoroughly audited,
+        'purifier'  => MODPATH.'purifier',  //http://htmlpurifier.org/ HTML Purifier 
+        //is a standards-compliant HTML filter library written in PHP. 
+        //HTML Purifier will not only remove all 
+        //malicious code (better known as XSS) with a thoroughly audited,
+         'email'        => MODPATH.'email',        // Swiftmailer
 	));
 
 /**
@@ -122,6 +127,8 @@ Kohana::modules(array(
  */
 
 //if ( ! Route::cache()) {
+
+
 
 Route::set('widgets', 'widgets(/<controller>(/<param>))', array('param' => '.+'))
 	->defaults(array(
@@ -148,7 +155,12 @@ Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
             'action'     => 'index',
 	));
 
-
+Route::set('artists', 'artists(/<id>)')
+        ->defaults(array(
+            'directory'  => 'index',
+            'controller' => 'artists',
+            'action'     => 'index',		
+    ));
 
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')

@@ -82,7 +82,7 @@
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
-                   'data-maxlength' => '150',
+                   'data-maxlength' => '300',
                    'cols' => 10, 
                    'rows' => 3, 
                     'id' => 'testTextarea2',
@@ -96,7 +96,7 @@
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
-                   'data-maxlength' => '150',
+                   'data-maxlength' => '300',
                    'cols' => 10, 
                    'rows' => 3,
                    'id' => 'testTextarea22',
@@ -116,7 +116,7 @@
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
-                   'data-maxlength' => '250',
+                   'data-maxlength' => '300',
                    'cols' => 10, 
                    'rows' => 3,
                     'id' => 'testTextarea222',
@@ -153,7 +153,7 @@
 
                     </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         
                         
                         <div class="form-group"> 
@@ -164,10 +164,85 @@
 
           </div>
                     </div>
+                    <div class="col-md-3">
+                          <div class="form-group">
+                          <?=Form::label('onset', 'Начало мероприятия2')?>
+                        <br />
+                        
+                       <?
+                       
+//                             $table_name = "playbills";
+//                             $column_name = "onset";
+//
+//                            echo "<select name=\"$column_name\">";
+//                            $result = mysql_query("SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS
+//                                WHERE TABLE_NAME = '$table_name' AND COLUMN_NAME = '$column_name'")
+//                            or die (mysql_error());
+//
+//                            $row = mysql_fetch_array($result);
+//                            $enumList = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
+//
+//                            foreach($enumList as $value)
+//                                echo "<option value=\"$value\">$value</option>";
+//
+//                            echo "</select>";
+
+
+                       ?>
+                        <?//$allsets = (explode(',', $playbill->onset));
+
+
+                        ?>
+                        
+                         <?$onset = $playbill->onset;
+                       
+                      $row = explode(",", $onset);
+                     $arr[] = $row;
+                     
+                    
+                      foreach ($row as $ons )
+                            echo "<h2>$ons</h2>";
+                       
+                       ?>  
+                        
+                        
+                        <?=Form::select('onset[]', $gets, $row, array(
+           
+                  'id' => 's3_multi_value',
+                  'class' => 'form-control',
+                   'multiple',
+                  
+                  ))?>
+   
+                       <?//= //    Form::select(
+//                               'onset[]',  $enumList,  array(1,2,3),
+//                             
+//                               array(
+//                                   
+//                                   'id' => 'e1',
+//                                   'class' => 'form-control',
+//                                   'multiple',
+//                                   ));
+           
+                                   
+                 
+                  
+              //  ?>
+                        
+                        
+                       
+                        
+                          </div>
+                        
+                      <?//=Form::select('color', array('black', 'white', 'green', 'blue'), array(2,3), array('id' => 'select'));
+                        ?>  
+                       
+                        
+                    </div>
            </div>
            
-          
-            
+                <div class="row">
+                <div class="col-md-4">
            <div class="form-group">
                     <?=HTML::image('media/uploads/playplaces/'.'small_'.$playbill->image,array(
                         'class' => 'img-circle',
@@ -178,6 +253,40 @@
                      <span class="help-block">Файл размером 300 на 200 пикселей</span>
                      <?=Form::file('image', array('id' => 'multi'))?>
               </div>
+                    
+               </div>  
+                <div class="col-md-8">
+                  
+                     <div class="form-group"> 
+                         <?if(count($arts) > 0){?>
+                             
+                             
+                       
+                  <?=Form::label('artist', 'Артисты')?>:
+              
+             
+               
+              <?=Form::select('art[]', $arts, $data['art'], array(
+           
+                  'id' => 's4_multi_value',
+                  'class' => 'form-control',
+                   'multiple',
+                  
+                  ))?>
+           
+                         <?} else
+                             
+                         {?>
+                             
+                  <h3>Нет артистов</h3>
+               
+                    <?=HTML::anchor('admin/artists/add/'. $playbill->place_id, '<button class="btn btn-info" type="button"><i class="fa fa-user"></i>  Добавить в труппу  '.$playbill->place->title.'</button>')?>          
+                        <? }?>
+                  
+                  
+          </div>
+                </div>
+                </div>   
          <div class="form-group"> 
               <?=Form::button('submit', 'Сохранить', array(
                           'type' => 'submit',
@@ -185,7 +294,7 @@
                           ));?>
           </div>
      <?=Form::close()?>
-</div>
-                </div>
+
+            </div>      </div>
          </div>
      </div>

@@ -19,7 +19,7 @@
 <p>
   
       
-      <?=HTML::anchor('admin/playbill/edit/'.$playbill->id, '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Вернуться</button>')?>
+      <?=HTML::anchor('admin/playbill/edit/'.$playbill->id.'#list', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Вернуться</button>')?>
 </p>
 <span class="">
   
@@ -87,6 +87,26 @@
                   
                   
           </div>
+             <div class="form-group"> 
+               
+               <?=Form::label('scene_id', 'Сцена')?>:
+               <br />
+               <?=Form::select('scene_id', 
+                  $scene, $data['scene_id'],
+                  array(
+                     'class' => 'form-control select2-input', 
+                  ))?>
+               </div>
+             <div class="form-group"> 
+                         <?=Form::label('start', 'Начало мероприятия')?>
+                        <br />
+                        <?=Form::select('start', $start, $data['start'],array(
+                            'class' => 'form-control select2-input',
+                           
+                        ))?>
+
+
+                    </div>
          </div>
      </div>
            
@@ -103,10 +123,7 @@
               
               <?=Form::hidden('place_id', $playbill->place_id)?>
             </div>
-           <div class="form-group">
-              
-              <?=Form::hidden('scene_id', $playbill->scene_id)?>
-            </div>
+           
           
           <div class="form-group">
                     

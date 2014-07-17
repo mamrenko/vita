@@ -23,7 +23,14 @@ class Model_Event extends ORM {
             'model' => 'playbill',
             'foreign_key' => 'playbill_id',
         ),
-        
+        'scene' => array(
+            'model' => 'scene',
+            'foreign_key' => 'scene_id',
+        ),
+         'tart' => array(
+            'model' => 'start',
+            'foreign_key' => 'start',
+        ),
         
     );
 
@@ -59,5 +66,19 @@ class Model_Event extends ORM {
                ),
            );
     }
-} 
-
+//    public function  get_events(){
+////       $query = DB::query(DATABASE::SELECT, 'CALL GetEvents()');
+////       // $query = DB::expr('CALL GetEvents()');
+////       $query->as_assoc();
+////       $query->execute();
+//       $query = "CALL GetEvents();";
+//       DB::query(Database::SELECT, $query);
+//      
+//    }
+    
+    public function get_events(){
+       
+        
+        
+    }
+}

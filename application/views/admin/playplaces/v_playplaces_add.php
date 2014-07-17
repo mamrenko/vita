@@ -1,3 +1,8 @@
+
+
+
+
+
 <div class="row">
     <div class="col-md-9">
         <div class="portlet">
@@ -80,13 +85,13 @@
                             <div class="form-group"> 
                 <?=Form::label('meta_title', 'meta_title для Сео оптимизации')?>
                   <span class="help-block">
-                      От 10 до 150 символов можно ввести
+                      От 10 до 300 символов можно ввести
                   </span>
                <?=Form::textarea('meta_title', $data['meta_title'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
-                   'data-maxlength' => '150',
+                   'data-maxlength' => '300',
                    'id' => 'testTextarea2',
                    'rows' => '3',
                    ))?>
@@ -100,13 +105,13 @@
                              <div class="form-group"> 
                 <?=Form::label('meta_keywords', 'Ключевые слова для Сео оптимизации')?>
                                    <span class="help-block">
-                      От 10 до 150 символов можно ввести
+                      От 10 до 300 символов можно ввести
                   </span>
                <?=Form::textarea('meta_keywords', $data['meta_keywords'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
-                   'data-maxlength' => '150',
+                   'data-maxlength' => '300',
                    'id' => 'testTextarea22',
                    'rows' => '3',
                    ))?>
@@ -127,13 +132,13 @@
                     <div class="form-group"> 
                <?=Form::label('meta_description', 'meta_description Описание страницы')?>
                           <span class="help-block">
-                      От 10 до 250 символов можно ввести
+                      От 10 до 300 символов можно ввести
                   </span>
                <?=Form::textarea('meta_description', $data['meta_description'], array(
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '10',
-                   'data-maxlength' => '150',
+                   'data-maxlength' => '300',
                    'id' => 'testTextarea222',
                    'rows' => '3',
                    ))?>
@@ -173,19 +178,32 @@
                 </div>
                 
                     
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <div class="form-group"> 
               <?=Form::label('pl', 'Площадка')?>
               <br />
               <h2><?=$place->title?></h2>
               <?=Form::hidden('place_id', $place->id)?>
 
-          </div>
-                    
+          </div></div>
+                 <div class="col-sm-3">
+                    <div class="form-group"> 
+              <?=Form::label('onset', 'Начало мероприятия2')?>
+              <?=Form::select('onset[]', $gets, $data['onset'], array(
+           
+                  'id' => 's3_multi_value',
+                  'class' => 'form-control',
+                   'multiple',
+                  
+                  ))?>
+
+          </div>   
                     
                 </div>
+            
             </div>
-           
+                <div class="row">
+                    <div class ="col-md-4">
                  <div class="form-group">
                     <?=Form::label('image', 'Загрузить изображение:')?>
              <span class="help-block">Файл размером 300 на 200 пикселей</span>
@@ -198,7 +216,44 @@
                           'id' =>'multi',
                           ));?>
                  </div>
-                 
+                 </div>
+                    
+                    <div class ="col-md-8">
+                        
+                        
+                        
+                        <div class="form-group"> 
+                         <?if(count($arts) > 0){?>
+                             
+                             
+                       
+                  <?=Form::label('artist', 'Артисты')?>:
+              
+             
+               
+              <?=Form::select('art[]', $arts, $data['art'], array(
+           
+                  'id' => 's4_multi_value',
+                  'class' => 'form-control',
+                   'multiple',
+                  
+                  ))?>
+           
+                         <?} else
+                             
+                         {?>
+                             
+                  <h3>Нет артистов</h3>
+               
+                    <?=HTML::anchor('admin/artists/add/'. $place->id, '<button class="btn btn-info" type="button"><i class="fa fa-user"></i>  Добавить в труппу  '.$place->title.'</button>')?>          
+                        <? }?>
+                  
+                  
+          </div>
+                        
+                    </div>
+                    </div>
+                    <div class="col-sm-3">
          <div class="form-group"> 
               <?=Form::button('submit', 'Сохранить', array(
                           'type' => 'submit',
@@ -207,7 +262,7 @@
           </div>
      <?=Form::close()?>
                 
-        
+      
                 
 </div>
             

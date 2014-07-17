@@ -12,8 +12,9 @@ class Controller_Widgets_Adminmenuusers extends Controller_Widgets {
         $menu = array(
              'Пользователи' =>  array('users'),
              'Покупатели' =>  array('bayers'),
+             'Коллеги' => array('colleges'),
              'Рассылка' =>  array('subscribe'),
-            'Сообщения' => array('messages'),
+             'Сообщения' => array('messages'),
              
         );
         $this->template->menu = $menu;
