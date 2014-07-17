@@ -51,8 +51,7 @@
     </th>
     <td>
         
-    </td>
-        </tr>
+   
         </thead>
         
         <tbody>

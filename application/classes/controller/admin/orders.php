@@ -12,7 +12,7 @@ class Controller_Admin_Orders extends Controller_Admin {
 
         // Вывод в шаблон
         $this->template->page_title = 'Заказы';
-        $this->template->scripts = array('media/js/css/menuorders.js');
+        //$this->template->scripts = array('media/js/css/menuorders.js');
         $this->template->block_center = array($content);
         $this->template->block_left = array($submenu);
     }

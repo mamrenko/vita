@@ -38,7 +38,7 @@
            
      <div class="row">
          <div class="col-md-4">
-     <h4>Выберите дату</h4>
+     <h4>Выберите дату, когда брали билеты</h4>
                                  <div id="dp-ex-3"
                                  class="input-group date" 
                                  data-auto-close="true" 

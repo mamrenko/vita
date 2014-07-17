@@ -12,7 +12,22 @@ $(function () {
               startDate: '0d',
             }
         )
-	$('#dp-ex-4').datepicker ()
+	$('#dp-ex-43').datepicker ()
+        
+        
+        
+        
+                $('#sanbox .input-group.date').datepicker({
+                     format: "dd/mm/yyyy",
+    todayBtn: "linked",
+    language: "ru",
+    orientation: "bottom auto",
+    multidate: true,
+    calendarWeeks: true,
+    todayHighlight: true
+    });
+    
+    
 	$('#dp-ex-5').datepicker ()
 
 	$('#dpStart').datepicker ({
@@ -90,9 +105,15 @@ $(function () {
 
 	$('#as-ex-1').autosize ()
 	$('#as-ex-2').autosize ().addClass ('autosize-animate')
-			
+	
+            
+            
+            
+            
 })
 $("#e1").select2({
 placeholder: "Выберите категорию. Можно выбрать несколько"
 });
-
+$("#colleges").select2({
+placeholder: "Выберите Коллегу, у кого билеты брали. Можно выбрать несколько"
+});

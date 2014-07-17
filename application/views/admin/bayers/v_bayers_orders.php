@@ -34,6 +34,8 @@
                         <th>
                              Дата Заказа
                         </th>
+                       
+                         
                  </tr>
              </thead>
              <tbody>
@@ -53,6 +55,7 @@
                       <td>
                           <h4><?=date('d-m-Y H:i:s', strtotime($customer->dt))?></h4>
                      </td>
+                     
                  </tr>
                  
              </tbody>
@@ -87,6 +90,11 @@
                      <th>
                          Ценовая Категория
                      </th>
+                      <th>
+                            
+                            Какие билеты
+                        </th>
+                     
                      
                  </tr>
              </thead>
@@ -119,7 +127,9 @@ foreach ($orders as $order):?>
                      <td>
                          <?=$order->cost?>
                      </td>
-                     
+                     <td>
+                           <?=HTML::anchor('admin/bayers/tickets/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?>
+                     </td>
                     
                  </tr>
                  <?
