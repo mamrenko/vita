@@ -348,11 +348,15 @@ return $den;
             
             $admin_email = Kohana::config('settings.admin_email');
             $site_name = Kohana::config('settings.site_name');
+            $order_email = Kohana::config('settings.order_email');
+            
+            
             $myorders = ORM::factory('order')
                     ->where('custom_id', '=', $сostom_id)
                     ->find_all();
 //            
             $letter =  View::factory('index/order/v_letter')
+                    ->bind('name', $data['name'])
                     ->bind('adress', $data['adress'])
                     ->bind('phone', $data['phone'])
                     ->bind('сostom_id', $сostom_id)
@@ -370,6 +374,18 @@ return $den;
                     ->to($data['email'], $data['name'])
                     ->from($admin_email, $site_name)
                     ->send();    
+            
+            $lettome = View::factory('index/order/v_lettertome')
+                      ->bind('name', $data['name'])
+                    ->bind('adress', $data['adress'])
+                    ->bind('phone', $data['phone'])
+                    ->bind('сostom_id', $сostom_id)
+                    ->bind('myorders', $myorders)
+                    ;
+            $emailtome = Email::factory('Заказ на сайте', $lettome, 'text/html')
+                    ->to($order_email, $site_name)
+                    ->from($admin_email, $site_name)
+                    ->send();
             
               $this->request->redirect('order/get_order');
             

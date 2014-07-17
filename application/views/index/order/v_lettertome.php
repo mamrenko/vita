@@ -23,7 +23,7 @@
         <div class="row">
     <h2></i>Заказ Билетов на сайте Аплодисменты</h2>
     
-    <h3><?=$name?>, Вы заказали:</h3>
+    <p>Сделан Заказ <?= $сostom_id?> на имя <?=$name?></p>
     <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -46,6 +46,12 @@
     <th>
         Категория Билетов
     </th>
+    <th>
+        Время Заказа 
+    </th>
+    <td>
+        
+    </td>
         </tr>
         </thead>
         
@@ -61,8 +67,7 @@ foreach ($myorders as $order):?>
                 </td>
                 
                 <td>
-                  
-  <?=date('d-m-Y', strtotime($order->dt)); ?> в <?= $order->tm?>
+                    <?= $order->dt?> в <?= $order->tm?>
                 </td>
                 <td>
                     <?= $order->amt?>
@@ -70,6 +75,10 @@ foreach ($myorders as $order):?>
                 <td>
                      <?= $order->cost?>
                 </td>
+                <td>
+                     <?=date('d-m-Y', strtotime($order->actdt)); ?>
+                </td>
+                 
             </tr>
             
            <? endforeach;?>  
@@ -80,23 +89,14 @@ foreach ($myorders as $order):?>
     <div class="bs-callout bs-callout-warning">
     <blockquote>
     
-    <p class="bg-success"> Номер Вашего Заказа:  <?= $сostom_id?></p>
-        
+    <p class="bg-success"> Номер Заказа <?= $сostom_id?></p>
+    <p class="bg-success">Имя клиента: <?=$name?></p>
     <p class="bg-success">Заказ сделан на адрес: <?=$adress?></p>
-    <p class="bg-success">Наш менеджер свяжется с Вами по Указанному телефону: <?=$phone?></p>
+    <p class="bg-success">Телефон клиента: <?=$phone?></p>
+     
     </blockquote>
     </div>
-    <div class="bs-callout bs-callout-info">
-    
-    <blockquote class="blockquote-reverse">
-   <p class="bg-primary">Если у Вас имеются какие-либо вопросы, позвоните по телефлну: 8-495-509-77-03</p>
-    <p class="bg-primary>Наш сайт www.aplodismenty.ru</p>
-    
-   <p class="bg-primary>Желаем Вам приятно провести время! </p>
-</blockquote>
    
-    
-    </div>
     </div>
     </div>
     

@@ -10,6 +10,7 @@ return array(
     'author' =>'Сайт сделан clapout.ru',
     'keywords' => 'Билеты в театр, ',
     'admin_email' => 'admin@aplodismenty.ru',
+    'order_email' =>'mindrich@yandex.ru',
     
     );
 
