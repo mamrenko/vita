@@ -23,7 +23,7 @@
         <div class="row">
     <h2></i>Заказ Билетов на сайте Аплодисменты</h2>
     
-    <p>Сделан Заказ <?= $сostom_id?> на имя <?=$name?></p>
+    <p>Сделан Заказ № <?= $сostom_id?> на имя <?=$name?></p>
     <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -89,7 +89,7 @@ foreach ($myorders as $order):?>
     <div class="bs-callout bs-callout-warning">
     <blockquote>
     
-    <p class="bg-success"> Номер Заказа <?= $сostom_id?></p>
+    <p class="bg-success"> Номер Заказа № <?= $сostom_id?></p>
     <p class="bg-success">Имя клиента: <?=$name?></p>
     <p class="bg-success">Заказ сделан на адрес: <?=$adress?></p>
     <p class="bg-success">Телефон клиента: <?=$phone?></p>
