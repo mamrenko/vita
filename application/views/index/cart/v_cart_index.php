@@ -71,18 +71,7 @@ foreach ($products as $product):?>
         
         </tr>
         <?endforeach;?>
-        <tr>
-            
-            <td>
-                Итого
-            </td>
-            
-            
-            <td>
-               <?=$sum?> 
-            </td>
-            
-        </tr>
+       
     </tbody>
     
 </table>
@@ -544,12 +533,15 @@ default:
             </td>
             <td>
               
-                
              
                  <?=$amt_s[$order->id]?>
-               
+              <?$_SESSION['user_id'] = $order->id?>
+                <?
+var_dump($_SESSION['user_id'])?>
+
                <?=Form::open('cart/edit/'.$order->id, array(
                    'id' =>'amt',
+                   'enctype' => 'multipart/form-data',
                    
        ));?>
                 

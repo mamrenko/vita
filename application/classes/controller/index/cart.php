@@ -69,13 +69,10 @@ class Controller_Index_Cart extends Controller_Index {
                 ->bind('data', $data)
                 ->bind('orders', $orders)
                 ->bind('products', $products)
-                ->bind('products_s', $products_s)
-                ->bind('orders', $orders)
-                ->bind('sum', $cart['sum'])
+                ->bind('products_s', $products_s)         
                 ->bind('cost_s', $cost_s)
                 ->bind('amt_s', $amt_s)
-                //->bind('amt', $amt)
-               // ->bind('den', $den)
+               
                 ;
 
        
@@ -148,7 +145,8 @@ public function action_del(){
 
             public function action_edit(){
 
-                  $nomer = abs((int) $this->request->param('id'));
+                  //$nomer = abs((int) $this->request->param('id'));
+               
                  $amt_s = $this->session->get('amts');
                  
                  
@@ -158,9 +156,10 @@ public function action_del(){
                    //var_dump($_POST['inputid']) ;
                   echo $_POST['inputid'] .'  это'.$_POST['input'];
                   echo '<br>';
-                  echo 'А это '.$nomer;
+                  //echo 'А это '. $fers;
                    $id = $_POST['inputid'];
                   // $amt = $_POST['input'];
+                  //  $fers = $_SESSION['user_id'];
                }
         if (isset($amt_s[$id]))
         {
@@ -415,13 +414,5 @@ return $den;
             
         }
         
-        public function _array_pluck($toPluck, $arr){
-            $ret = array();
-            foreach ($arr as $key => $value) {
-                    $ret[] = $value[$toPluck];
-
-            }
-            return($ret);
-
-            }
+       
 }
