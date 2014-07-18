@@ -201,18 +201,30 @@ default:
                     
                         
                 </td> 
+                <?if(isset($arr[$dat->id])):?>
+                   
+                     <td>
+                         
+                                   
+                    <?=HTML::anchor('cart', 'В Заказе', array(
+                         'class' => 'btn btn-danger',
+                        'role' => 'button',
+                    ));?>
+                        
+                    </td>
+    
+             <?else:?>
                   <td>
                       
-                       <?//=HTML::anchor('order/index/'.$dat->id, 'Заказать', array(
-                         //'class' => 'btn btn-success',
-                        //'role' => 'button',
-                   // ));?> 
+                     
                       <?=HTML::anchor('order/index/'.$dat->id, 'Заказать', array(
                          'class' => 'btn btn-success',
                         'role' => 'button',
                     ));?> 
                       
-                  </td>       
+                  </td>  
+                     <?
+endif;?>
                 </tr>       
             <?endforeach;?>
                  

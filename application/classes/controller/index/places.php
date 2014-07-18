@@ -106,6 +106,25 @@ class Controller_Index_Places extends Controller_Index
             unset($_POST['endday']);
             
         }
+        
+        
+        
+        ///Проверяем находится ли товар в корзине
+         $cost_s = $this->session->get('costs');
+         
+           if ($cost_s != NULL)
+        {
+            
+               $arr = array();
+            foreach($cost_s as $key => $value)
+            {
+                $arr[$key] = $key;
+            }
+
+        
+        }
+       // var_dump( $arr);
+         ///---------
              $events = ORM::factory('event')
                      ->where('place_id', '=', $id)
                      ->and_where('day' ,'>=', date('Y-m-d'))
@@ -128,7 +147,7 @@ class Controller_Index_Places extends Controller_Index
          $menu = Widget::load('menu');
          $calendar = Widget::load('calendar');
          
-             
+        
             $content = View::factory('index/place/v_place')
                   ->bind('events', $events)
                   ->bind('id', $id)
@@ -136,6 +155,7 @@ class Controller_Index_Places extends Controller_Index
                   ->bind('scenes', $scenes)
                   ->bind('data', $data)
                   ->bind('interval', $interval)
+                  ->bind('arr', $arr)
                    
                   ;
                 

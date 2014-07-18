@@ -313,6 +313,7 @@
 	    </thead>
             <tbody>
                   <?foreach($events as $event):?>
+             
                 <tr>
                     <td>
                         
@@ -482,7 +483,21 @@ default:
                
                         
                     </td>
-                    <td>
+                    <?if(isset($arr[$event->id])):?>
+                   
+                     <td>
+                         
+                                   
+                    <?=HTML::anchor('cart', 'В Заказе', array(
+                         'class' => 'btn btn-danger',
+                        'role' => 'button',
+                    ));?>
+                        
+                    </td>
+    
+             <?else:?>
+                    
+                     <td>
                                    
                     <?=HTML::anchor('order/index/'.$event->id, 'Заказать', array(
                          'class' => 'btn btn-success',
@@ -490,6 +505,9 @@ default:
                     ));?>
                         
                     </td>
+                    
+                    <?
+endif;?>
                 </tr>
                 <?endforeach;?>
                 

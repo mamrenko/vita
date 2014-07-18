@@ -61,14 +61,7 @@ foreach ($products as $product):?>
                 <?=$products_s[$product->id]?>
                 
             </td>
-            <td>
-                
-                
-            </td>
-            <td>
-                
-                
-            </td> 
+             
             <td>
                
                 <?=HTML::anchor('cart/del/'.$products_s[$product->id], '<button class="btn btn-danger" type="button">
@@ -549,24 +542,50 @@ default:
       в <?=$order->start?>
      
             </td>
-            <td id="amt">
+            <td>
               
                 
              
                  <?=$amt_s[$order->id]?>
                
-               <form>
+               <?=Form::open('cart/edit/'.$order->id, array(
+                   'id' =>'amt',
+                   
+       ));?>
+                
+             <?=
+                    Form::input('amt', $amt_s[$order->id], array(
+                        'type' =>'text',
+                       'id' =>'amy',
+                      'class' => 'form-control bfh-number',
+                      'data-min' => '1',
+                     'data-max' => '25'
+                        
+                  ))?>
+                
+               
+                <?=Form::hidden('hidval', $order->id, array(
+                   
+                   'id' => 'hidval',
+                    
+                ))?>
+                    
+               <!---  <form id ="amt" action="cart/edit/id=<?//=$order->id?>" method="post">
                    <input type = "text" 
                           id='amy'
                           name ="amt"
                           class="form-control bfh-number" 
-                          value="<?=$amt_s[$order->id]?>"
+                          value="<?//=$amt_s[$order->id]?>"
                           data-min="1"
                           data-max="25">
-                   <input name="hidval" id ="hidval" type="hidden" value="<?=$order->id?>" />
+                   <input name="hidval" id ="hidval" type="hidden" value="<?//=$order->id?>" />
                   
                    
                </form> 
+                
+               --!>
+                   
+               <?=Form::close()?>
                 
                
                <!---

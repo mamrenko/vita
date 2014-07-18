@@ -148,16 +148,17 @@ public function action_del(){
 
             public function action_edit(){
 
-                
+                  $nomer = abs((int) $this->request->param('id'));
                  $amt_s = $this->session->get('amts');
                  
                  
-               if(isset($_POST['input']) and isset($_POST['inputid'])){
+              if(isset($_POST['input']) and isset($_POST['inputid'])){
                    
                   
                    //var_dump($_POST['inputid']) ;
                   echo $_POST['inputid'] .'  это'.$_POST['input'];
-                   
+                  echo '<br>';
+                  echo 'А это '.$nomer;
                    $id = $_POST['inputid'];
                   // $amt = $_POST['input'];
                }

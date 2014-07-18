@@ -46,11 +46,20 @@ class Controller_Index_Event extends Controller_Index
         $calendar = Widget::load('calendar');
         
      
-//$get_events  = Model::factory('event')->get_events();
-//var_dump($get_events);
-//         
-//        $this->template->get_events = $get_events;
+///Проверяем находится ли товар в корзине
+         $cost_s = $this->session->get('costs');
+         
+           if ($cost_s != NULL)
+        {
+            
+               $arr = array();
+            foreach($cost_s as $key => $value)
+            {
+                $arr[$key] = $key;
+            }
+
         
+        }
                 
       
         
@@ -60,6 +69,7 @@ class Controller_Index_Event extends Controller_Index
                   ->bind('id', $id)
                   ->bind('playbill', $playbill)
                   ->bind('artists', $artists)
+                 ->bind('arr', $arr)
             
             ; 
              $this->template->page_title = $playbill->place->title .' | ' . $playbill->title;
