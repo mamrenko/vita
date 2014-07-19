@@ -7,6 +7,14 @@ class Controller_Index_Cart extends Controller_Index {
         parent::before();
         
          $this->template->scripts[] = 'media/BootstrapFormHelpers/ajax.js';
+         
+         
+         $this->template->styles[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.css';
+         $this->template->scripts[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.js';
+         $this->template->scripts[] = 'media/js/plugins/bootstrap-touchspin/src/mytouch.js';
+         
+      
+        
     }
     
 

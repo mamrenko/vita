@@ -545,13 +545,12 @@ var_dump($_SESSION['user_id'])?>
                    
        ));?>
                 
-             <?=
+             <?=  
                     Form::input('amt', $amt_s[$order->id], array(
+                        'name' =>'amt',
                         'type' =>'text',
                        'id' =>'amy',
-                      'class' => 'form-control bfh-number',
-                      'data-min' => '1',
-                     'data-max' => '25'
+                      
                         
                   ))?>
                 
@@ -590,8 +589,8 @@ var_dump($_SESSION['user_id'])?>
                 </div>
                 --->
                
-                    
-               
+                   
+        
                    
                
             </td>
@@ -599,9 +598,12 @@ var_dump($_SESSION['user_id'])?>
                  <?=$cost_s[$order->id]?>
               
             </td>
-            <td>
-                <?=HTML::anchor('cart/del/'.$order->id, '<button class="btn btn-danger" type="button">
-								<i class="fa fa-times"></i></button>')?>
+            
+            <td class="text-center">
+                
+                    
+                <?=HTML::anchor('cart/del/'.$order->id, '<i class="glyphicon glyphicon-trash fa-1x"></i>')?>
+               
             </td>
             
         
@@ -615,12 +617,15 @@ var_dump($_SESSION['user_id'])?>
 
 <div id="feedback"></div>
 <div class="cont"></div>
-          <?=HTML::anchor('cart/order', '<button class="btn btn-success" id ="btnGet" >Оформить Заказ</button>', array(
+          <?=HTML::anchor('/', '<button class="btn btn-success" id ="btnGet" ><i class="fa fa-arrow-circle-left"></i>  Продолжить заказы</button>', array(
               //'id' =>'',
           ))?>
 
 
 
+ <?=HTML::anchor('cart/order', '<button class="btn btn-success" id ="btnGet" >Оформить Заказ</button>', array(
+              //'id' =>'',
+          ))?>
 
 
 
