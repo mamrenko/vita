@@ -9,9 +9,9 @@ class Controller_Index_Cart extends Controller_Index {
          $this->template->scripts[] = 'media/BootstrapFormHelpers/ajax.js';
          
          
-         $this->template->styles[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.css';
-         $this->template->scripts[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.js';
-         $this->template->scripts[] = 'media/js/plugins/bootstrap-touchspin/src/mytouch.js';
+        // $this->template->styles[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.css';
+        // $this->template->scripts[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.js';
+         //$this->template->scripts[] = 'media/js/plugins/bootstrap-touchspin/src/mytouch.js';
          
       
         
@@ -153,21 +153,15 @@ public function action_del(){
 
             public function action_edit(){
 
-                  //$nomer = abs((int) $this->request->param('id'));
+                  $id = abs((int) $this->request->param('id'));
                
                  $amt_s = $this->session->get('amts');
                  
                  
-              if(isset($_POST['input']) and isset($_POST['inputid'])){
+              if(isset($_POST['input'])){
                    
                   
-                   //var_dump($_POST['inputid']) ;
-                  echo $_POST['inputid'] .'  это'.$_POST['input'];
-                  echo '<br>';
-                  //echo 'А это '. $fers;
-                   $id = $_POST['inputid'];
-                  // $amt = $_POST['input'];
-                  //  $fers = $_SESSION['user_id'];
+                   
                }
         if (isset($amt_s[$id]))
         {
@@ -180,6 +174,7 @@ public function action_del(){
             $amt_s[$id] = Arr::get($_POST, 'input');
              
         }
+        var_dump($amt_s[$id]);
         $this->session->set('amts', $amt_s);
         //$this->request->redirect('cart');
              
@@ -265,14 +260,50 @@ return $den;
         
         
         public function action_order(){
-            
+            // Для Зарегистрированных
             if (!$this->auth->logged_in())
         {
                 $this->request->redirect('cart/orders');
            
         }
+          $adresses = ORM::factory('adress')
+                ->where('user_id', '=', $this->user->id)
+                 ->find_all();
+          
+           
+             $products_s = $this->session->get('products');
+             $cost_s = $this->session->get('costs');
+         
+             $amt_s = $this->session->get('amts');
+
+        
+        
+         
+         if ($cost_s != NULL  and $amt_s!= NULL)
+        {
+            $orders = ORM::factory('event');
+
+            foreach($cost_s as $id =>$count)
+            {
+                $orders->or_where('id', '=', $id);
+            }
+
+            $orders = $orders->find_all();
+           
+          
+            
+         }else {
+         $orders = NULL;
+
+         }
+         
+        
             $content = View::factory('index/cart/v_cart_order')
-               //  ->bind('amt', $amt)
+                    ->bind('adresses', $adresses)
+                    ->bind('orders', $orders)
+                    ->bind('amt_s', $amt_s)
+                    ->bind('cost_s', $cost_s)
+                      ->bind('data', $data)
                     
                     ;
             // Выводим в шаблон
@@ -284,7 +315,7 @@ return $den;
         }
         
         public function action_orders(){
-            
+            //Для НЕ зарагистрированных
              
              $products_s = $this->session->get('products');
              $cost_s = $this->session->get('costs');

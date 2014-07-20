@@ -1,15 +1,25 @@
 <?if(!$auth->logged_in('login')):?>
-      <li><a href="<?=URL::base()?>login">Вход / Регистрация</a></li> 
+    <a href="<?=URL::base()?>login">
+        
+        <button type="button" class="btn btn-primary">Вход / Регистрация</button>
+
+        
+    
+    </a>
       <?else:?>
-      <li><a><?=$user->email?> <i class="fa fa-smile-o"></i></a></li> 
+
+     
+          
+          
+<p> <?=$user->email?> <i class="fa fa-smile-o"></i></p>
       
     <?if ($auth->logged_in('admin')):?>
-      <li><?=html::anchor('admin', 'Панель администратора')?></li>
-       <li class="devider"></li>   
+     <?=html::anchor('admin', '<button type="button" class="btn btn-primary">Панель администратора</button>')?>
+     <?=html::anchor('account', '<button type="button" class="btn btn-primary">Личный кабинет</button>')?>
     <?else:?>
-      <li><?=html::anchor('account', 'Личный кабинет')?></li>
-       <li class="devider"></li>   
+      <?=html::anchor('account', '<button type="button" class="btn btn-primary">Личный кабинет</button>')?>
+      
     <?endif?>
     
-      <li><?=html::anchor('logout', 'Выйти')?></li>
+      <?=html::anchor('logout', '<button type="button" class="btn btn-warning">Выйти</button>')?>
       <? endif; ?>

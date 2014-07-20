@@ -6,10 +6,10 @@ $(function(){
 //
 $('#amy').change(function(){
     var $amt = $('#amy').val();
-    var $hidval = $('#hidval').val();
+   // var $hidval = $('#hidval').val();
 ////   // alert($amt);
-    $.post('cart/edit',{input: $amt, inputid:$hidval },function(data){
-     //$('#feedback').text(data);
+    $.post('cart/edit',{input: $amt},function(data){
+     $('#feedback').text(data);
   });
   });
 //$('#amy').change(function(){

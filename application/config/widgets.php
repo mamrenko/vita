@@ -20,10 +20,13 @@ return array(
         'account' => array('all_actions'),
     ),
     'login' => array(
-        'cart' => array('index'),
+        //'cart' => array('index'),
         'auth' => array('login', 'register'),
         'account' => array('all_actions'),
     ),
+    'cart' =>array(
+        'cart' => array('index'),
+    )
 );
 
 ?>

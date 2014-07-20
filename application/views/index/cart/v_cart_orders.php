@@ -1,13 +1,26 @@
 <div class="row">
-      <?=HTML::anchor('cart', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Корзина</button>')?>
-
-    <h3>Заказ без регистрации</h3>
+    <div class="col-md-3 text-center">
+        
+          <?=HTML::anchor('cart', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Изменить Заказ</button>')?>
+        
+    </div>
+    
+    <div class="col-md-5 ">
+        
+    <h3 class="text-info">Заказ без регистрации<small> Вы заказываете: </small></h3>
+    
+ 
+   
+    </div>
+    <div class="col-md-4 text-center">
     <?=HTML::anchor('login', '<button class="btn btn-primary" id ="btnGet" >Войти или зарегистироваться</button>', array(
               //'id' =>'',
           ))?>
-   
-   
-    <hr>
+   </div>
+</div>
+
+<div class="row">
+    
     <?  if ($orders != NULL) :?>   
 <table class="table table-bordered table-hover">
     <thead>
@@ -153,11 +166,13 @@ default:
     
     </tbody>
 </table>
+</div>
     <?
     endif;?>
-    <hr>
+    
      
          <?if($errors):?>
+<div class="row">
 <?foreach ($errors as $error):?>
         <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-repeat"></span>  
@@ -165,9 +180,16 @@ default:
     <?=$error?></div>
               
 <?endforeach?>
+    </div>
 <?endif?>
-
+<div class="row">
+    <blockquote>
+  <p>Для оформления заказа заполните форму:</p>
+  
+</blockquote>
     
+</div>
+<div class="row">
     <div class="panel panel-info">
        
     

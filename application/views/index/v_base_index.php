@@ -33,26 +33,31 @@
                   
                   
                   
-              </div> 
+              
           <header class="container">
              <div class="row">
-                 <div class="col-md-6">
-                      <ul class="pagination">
- 
-  <li><?=$cart;?></li>
-  <?=$login;?>
-</ul>
+                 <div class="col-md-3 text-center">
+                   
+<?=$cart;?>
 
-                     </div>
-                 <div class="col-md-3 col-md-offset-3">
-                     <div class="well well-sm">
-                         <p class="bg-primary">8-903-509-77-03</p> 
-                     </div>
+
+          </div>
+                 <div class="col-md-6 text-info">
+                     <blockquote>
+                      <?=$login;?>
+                     </blockquote>
+                 </div>
+                 <div class="col-md-3">
+                     <blockquote>
+  <p>8-903-509-77-03</p>
+  <footer>Звоните с 10 до 22 часов</footer>
+</blockquote>
+                     
                      
                  </div>
                       
                   </div>
-              
+            
              
               <div class="row">
                   
