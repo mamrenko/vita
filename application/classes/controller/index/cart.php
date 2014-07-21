@@ -6,7 +6,7 @@ class Controller_Index_Cart extends Controller_Index {
     public function before() {
         parent::before();
         
-         $this->template->scripts[] = 'media/BootstrapFormHelpers/ajax.js';
+        // $this->template->scripts[] = 'media/BootstrapFormHelpers/ajax.js';
          
          
         // $this->template->styles[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.css';
@@ -60,12 +60,8 @@ class Controller_Index_Cart extends Controller_Index {
             }
 
             $orders = $orders->find_all();
-//            foreach ( $orders as $order) {
-//                
-//            }
-//                 $month = $this->_getmonth(date('m', strtotime($order->day))) ;  
-//                $den = $this->_getday(date('N',strtotime($order->day)));
             
+           
          }else {
          $orders = NULL;
 
@@ -80,6 +76,7 @@ class Controller_Index_Cart extends Controller_Index {
                 ->bind('products_s', $products_s)         
                 ->bind('cost_s', $cost_s)
                 ->bind('amt_s', $amt_s)
+              
                
                 ;
 
@@ -152,18 +149,16 @@ public function action_del(){
 
 
             public function action_edit(){
-
-                  $id = abs((int) $this->request->param('id'));
-               
+//Изменение количества и качества билетов в корзине
+                  
+                 $id = abs((int)$_POST['id']);
+                 $_POST['input'] = abs((int)$_POST['input']);
                  $amt_s = $this->session->get('amts');
                  
                  
-              if(isset($_POST['input'])){
+              if(isset($id) and isset($_POST['input'])){
                    
-                  
-                   
-               }
-        if (isset($amt_s[$id]))
+                  if (isset($amt_s[$id]))
         {
              
               $amt_s[$id] = Arr::get($_POST, 'input');
@@ -174,9 +169,32 @@ public function action_del(){
             $amt_s[$id] = Arr::get($_POST, 'input');
              
         }
-        var_dump($amt_s[$id]);
+                   
+               }
+//                $id_cost = abs((int)$_POST['id_cost']);
+//                $_POST['cost'] = Security::xss_clean( $_POST['cost']);
+//                $cost_s = $this->session->get('costs');
+//        
+//                
+//                if(isset($id_cost) and isset($_POST['cost'])){
+//                   
+//                  if (isset($cost_s[$id_cost]))
+//        {
+//             
+//              $cost_s[$id_cost] = Arr::get($_POST, 'cost');
+//            
+//        }
+//        else
+//        {
+//            $cost_s[$id_cost] = Arr::get($_POST, 'cost');
+//             
+//        }
+//                   
+//               }
+       
         $this->session->set('amts', $amt_s);
-        //$this->request->redirect('cart');
+       // $this->session->set('costs', $cost_s);
+        $this->request->redirect('cart');
              
             }
 

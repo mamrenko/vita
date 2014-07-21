@@ -34,7 +34,7 @@ class Controller_Index_Event extends Controller_Index
 
     public function action_one()
 	{
-       $id = (int) $this->request->param('id');
+       $id = abs((int) $this->request->param('id'));
         $events = ORM::factory('event')
                  ->where('playbill_id', '=', $id)
                  ->where('day', '>=', date('Y-m-d'))

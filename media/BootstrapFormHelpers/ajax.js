@@ -4,6 +4,9 @@ $(function(){
 //console.log($amt)
 //;
 //
+
+
+
 $('#amy').change(function(){
     var $amt = $('#amy').val();
    // var $hidval = $('#hidval').val();

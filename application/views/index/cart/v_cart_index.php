@@ -132,60 +132,87 @@ default:
             <td>
               
              
-                 <?=$amt_s[$order->id]?>
+                 <?//=$amt_s[$order->id]?>
              
 
-               <?=Form::open('cart/edit/'.$order->id, array(
-                  
-                   
-       ));?>
-                
+               
             
-                
-               <?=HTML::anchor('cart/edit/'. $order->id, '')?>
+                <form>
+              
                  <input type = "text" 
-                          id="amy"
-                          name ="amt"
+                          id="<?=$order->id?>"
+                          name ="<?=$order->id?>"
                           class="form-control bfh-number" 
-                          value="'. $amt_s[$order->id]. '"
+                          value="<?= $amt_s[$order->id]?> '"
                           data-min="1"
                           data-max="25">
-               
-               <!---  <form id ="amt" action="cart/edit/id=<?//=$order->id?>" method="post">
-                   <input type = "text" 
-                          id='amy'
-                          name ="amt"
-                          class="form-control bfh-number" 
-                          value="<?//=$amt_s[$order->id]?>"
-                          data-min="1"
-                          data-max="25">
-                   <input name="hidval" id ="hidval" type="hidden" value="<?//=$order->id?>" />
+                 </form> 
+                
+                <script>
+    
+    $(function(){
+    //$('#<?//=$order->id?>').css({'border': '3px solid red'});
+     //var $amt = $('#<?//=$order->id?>').val();
+     $('#<?=$order->id?>').change(function(){
+    var $amt = $('#<?=$order->id?>').val();
+    var id =$(this).attr('id');
+    //console.log(id);
+   // var $hidval = $('#hidval').val();
+////   // alert($amt);
+    $.post('cart/edit',{input: $amt, id: id},function(data){
+    // $('#feedback').text(data);
+     
+    
+  });
+  });
+
+    });
+    
+    </script>
                   
-                   
-               </form> 
-                
-               --!>
-                   
-               <?=Form::close()?>
-                
-               
-               <!---
-               <div class="bfh-slider"
-                    data-name="slider3"
-                   data-value="<?//=$amt_s[$order->id]?>"
-                    
-                    data-min="1" 
-                    data-max="25">
-                </div>
-                --->
-               
-                   
-        
-                   
                
             </td>
             <td>
-                 <?=$cost_s[$order->id]?>
+                
+                <?$costs = ORM::factory('cost')
+                        ->where('playbill_id', '=', $order->playbill->id)
+                        ->find_all();?>
+                
+                
+                <div   class="bfh-selectbox" data-name="selectbox2"  data-value="<?=$order->id?>">
+                  
+                   
+  
+                    <? foreach ($costs as $cos):?>
+   <div id="cost<?=$order->id?>"  data-value="<?=$cos->area->title?> <?=$cos->price?>"><?=$cos->area->title?> <?=$cos->price?></div>
+ 
+               
+    <script>
+//    
+//    $(function(){
+//     $('#cost<?=$order->id?>').css({'border': '3px solid red'});
+//     //alert($('.bfh-selectbox').val()) ;
+//     
+//     $('#cost<?=$order->id?>').change(function(){
+//    var $cost = $('#cost<?=$order->id?>').val();
+//    var id_cost =$(this).attr('id');
+//    
+//    $.post('cart/edit',{cost: $cost, id_cost: id_cost},function(data){
+//   //$('#feedback').text(data);
+//     
+//    
+//  });
+//  });
+//
+//    });
+    
+    </script>
+  
+  
+  <?  endforeach;?>
+</div>
+               <?=$cost_s[$order->id]?>
+                 
               
             </td>
             
@@ -206,7 +233,15 @@ default:
 </table>
 
 <div id="feedback"></div>
-<div class="cont"></div>
+<div class="cont">
+    
+    
+    
+</div>
+
+    
+   
+    
           <?=HTML::anchor('/', '<button class="btn btn-info" id ="btnGet" ><i class="fa fa-arrow-circle-left"></i>  Продолжить заказы</button>', array(
               //'id' =>'',
           ))?>
