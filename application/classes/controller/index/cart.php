@@ -171,9 +171,9 @@ public function action_del(){
         }
                    
                }
-//                $id_cost = abs((int)$_POST['id_cost']);
-//                $_POST['cost'] = Security::xss_clean( $_POST['cost']);
-//                $cost_s = $this->session->get('costs');
+        //     $id_cost = abs((int)$_POST['id_cost']);
+        //       $_POST['cost'] = Security::xss_clean( $_POST['cost']);
+           //   $cost_s = $this->session->get('costs');
 //        
 //                
 //                if(isset($id_cost) and isset($_POST['cost'])){
@@ -197,8 +197,39 @@ public function action_del(){
         $this->request->redirect('cart');
              
             }
+            
+            
+            public function action_edit_cost(){
+                
+                
+                
+                if(isset($_POST['id_cost']) and isset($_POST['cost'])){
+                    
+                    $id_cost = abs((int)$_POST['id_cost']);
+                $_POST['cost'] = Security::xss_clean( $_POST['cost']);
+                $cost_s = $this->session->get('costs');
+                   
+                  if (isset($cost_s[$id_cost]))
+        {
+             
+              $cost_s[$id_cost] = Arr::get($_POST, 'cost');
+           
+        }
+        else
+        {            $cost_s[$id_cost] = Arr::get($_POST, 'cost');
+             
+       }
+                   
+               }
+       
+        
+        $this->session->set('costs', $cost_s);
+        $this->request->redirect('cart');
+             
+                
+            }
 
-public function _getmonth($month){
+            public function _getmonth($month){
             
             
             

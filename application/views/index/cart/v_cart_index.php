@@ -4,7 +4,8 @@
 
 
 
-   <?  if ($orders != NULL) :?>   
+   <?  if ($orders != NULL) :?>  
+<div class="table-responsive">
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -168,50 +169,50 @@ default:
 
     });
     
-    </script>
-                  
-               
+    </script>     
             </td>
             <td>
-                
                 <?$costs = ORM::factory('cost')
                         ->where('playbill_id', '=', $order->playbill->id)
-                        ->find_all();?>
-                
-                
-                <div   class="bfh-selectbox" data-name="selectbox2"  data-value="<?=$order->id?>">
-                  
-                   
-  
-                    <? foreach ($costs as $cos):?>
-   <div id="cost<?=$order->id?>"  data-value="<?=$cos->area->title?> <?=$cos->price?>"><?=$cos->area->title?> <?=$cos->price?></div>
- 
+                      ->find_all();?>
+                      
+             <select id="cost<?=$order->id?>" class="form-control" >
+                  <option selected value=" <?=$cost_s[$order->id]?>"> <?=$cost_s[$order->id]?></option>
+                 <?
+                                  foreach ($costs as $cos):?>
+<option value="<?=$cos->area->title?> <?=$cos->price?> рублей"><?=$cos->area->title?> <?=$cos->price?> рублей</option>
+
+<?endforeach;?>
+
+</select>
                
     <script>
-//    
-//    $(function(){
-//     $('#cost<?=$order->id?>').css({'border': '3px solid red'});
-//     //alert($('.bfh-selectbox').val()) ;
-//     
-//     $('#cost<?=$order->id?>').change(function(){
-//    var $cost = $('#cost<?=$order->id?>').val();
-//    var id_cost =$(this).attr('id');
-//    
-//    $.post('cart/edit',{cost: $cost, id_cost: id_cost},function(data){
-//   //$('#feedback').text(data);
-//     
-//    
-//  });
-//  });
-//
-//    });
+    
+    $(function(){
+     $('#cost<?=$order->id?>').css({'border': '3px solid green'});
+    //alert($('#cost<?=$order->id?>').val()) ;
+    //alert($('#cost<?=$order->id?>').attr('id'));
+     
+     $('#cost<?=$order->id?>').change(function(){
+    var $cost = $('#cost<?=$order->id?>').val();
+    var id_cost =$('#cost<?=$order->id?>').attr('id');
+    alert($('#cost<?=$order->id?>').val()) ;
+    alert($('#cost<?=$order->id?>').attr('id'));
+   //$.post('cart/edit_cost',{cost: $cost, id_cost: id_cost},function(data){
+  // $('#feedback').text(data);
+     
+    
+  //});
+  });
+
+    });
     
     </script>
   
   
-  <?  endforeach;?>
-</div>
-               <?=$cost_s[$order->id]?>
+  <? // endforeach;?>
+
+              <?=$cost_s[$order->id]?>
                  
               
             </td>
@@ -231,7 +232,7 @@ default:
     
     </tbody>
 </table>
-
+</div>
 <div id="feedback"></div>
 <div class="cont">
     
