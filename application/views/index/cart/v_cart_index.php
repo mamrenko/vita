@@ -5,7 +5,7 @@
 
 
    <?  if ($orders != NULL) :?>  
-<div class="table-responsive">
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -19,14 +19,14 @@
     </th>
      <th>
         
-       Дата | Время
+       Дата и Время
     </th>
     <th>
        Кол-во билетов
         
     </th>
     <th>
-        Цена
+       Качество билетов
         
     </th>
     
@@ -130,7 +130,7 @@ default:
       в <?=$order->start?>
      
             </td>
-            <td>
+            <td class="text-center">
               
              
                  <?//=$amt_s[$order->id]?>
@@ -171,7 +171,7 @@ default:
     
     </script>     
             </td>
-            <td>
+            <td class="text-center">
                 <?$costs = ORM::factory('cost')
                         ->where('playbill_id', '=', $order->playbill->id)
                       ->find_all();?>
@@ -249,12 +249,12 @@ default:
 </div>
 
        <?else:?>
-
+<div class="row">
 <p>В корзине нет товаров</p>
-
+</div>
 <?
 endif;?>
 
-</div>
+
 
 
