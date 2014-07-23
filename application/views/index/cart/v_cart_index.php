@@ -189,31 +189,26 @@ default:
     <script>
     
     $(function(){
-     $('#cost<?=$order->id?>').css({'border': '3px solid green'});
-    //alert($('#cost<?=$order->id?>').val()) ;
-    //alert($('#cost<?=$order->id?>').attr('id'));
+     //$('#cost<?//=$order->id?>').css({'border': '3px solid green'});
+    //alert($('#cost<?//=$order->id?>').val()) ;
+    //alert($('#cost<?//=$order->id?>').attr('id'));
      
      $('#cost<?=$order->id?>').change(function(){
     var $cost = $('#cost<?=$order->id?>').val();
     var id_cost =$('#cost<?=$order->id?>').attr('id');
-    alert($('#cost<?=$order->id?>').val()) ;
-    alert($('#cost<?=$order->id?>').attr('id'));
-   //$.post('cart/edit_cost',{cost: $cost, id_cost: id_cost},function(data){
+   // alert($('#cost<?//=$order->id?>').val()) ;
+    //alert($('#cost<?//=$order->id?>').attr('id'));
+   $.post('cart/edit_cost',{cost: $cost, id_cost: id_cost},function(data){
   // $('#feedback').text(data);
      
     
-  //});
+  });
   });
 
     });
     
     </script>
-  
-  
-  <? // endforeach;?>
-
-              <?=$cost_s[$order->id]?>
-                 
+         
               
             </td>
             
@@ -233,27 +228,25 @@ default:
     </tbody>
 </table>
 </div>
-<div id="feedback"></div>
-<div class="cont">
+
+<div class="row">
     
-    
-    
-</div>
 
     
-   
+    <div class="col-md-6 text-left">
+        
     
           <?=HTML::anchor('/', '<button class="btn btn-info" id ="btnGet" ><i class="fa fa-arrow-circle-left"></i>  Продолжить заказы</button>', array(
               //'id' =>'',
           ))?>
 
-
-
+    </div>
+    <div class="col-md-6 text-center">
  <?=HTML::anchor('cart/order', '<button class="btn btn-success" id ="btnGet" >Оформить Заказ</button>', array(
               //'id' =>'',
           ))?>
-
-
+</div>
+</div>
 
        <?else:?>
 

@@ -205,7 +205,11 @@ public function action_del(){
                 
                 if(isset($_POST['id_cost']) and isset($_POST['cost'])){
                     
-                    $id_cost = abs((int)$_POST['id_cost']);
+                    $id_cost = $_POST['id_cost'];
+                  $id_cost = UTF8::substr_replace($id_cost, '',0,4);
+                  $id_cost =  abs((int)$id_cost);
+                    //echo '<h1>'.$id_cost.'</h1>';
+                   // echo '<h1>'.$_POST['cost'].'</h1>';
                 $_POST['cost'] = Security::xss_clean( $_POST['cost']);
                 $cost_s = $this->session->get('costs');
                    
