@@ -71,7 +71,7 @@ class Controller_Index_Contact extends Controller_Index
                
                
             
-                $this->request->redirect('contact/add');
+                //$this->request->redirect('contact/add');
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -87,6 +87,7 @@ class Controller_Index_Contact extends Controller_Index
                       ->bind('errors', $errors)
                       ->bind('data', $data)
                       ->bind('events', $events)
+                     ->bind('email', $email)
                      
              ; 
              $this->template->page_title = 'Контакт';

@@ -16,10 +16,20 @@
 
 <!--=== Content Part ===-->
     
+
     <div class="row margin-bottom-30">
         <div class="col-md-9 mb-margin-bottom-30">
             
-            
+      <?if(isset($email)):?>
+<div class="jumbotron">
+  <h1>Спасибо за сообщение</h1>
+  <p>В ближайшее время с Вами свяжутся</p>
+  <p><a href="../." class="btn btn-primary btn-lg" role="button">На Главную страницу</a></p>
+</div>
+
+
+
+<?else :?>      
             
          <?if($errors):?>
 <?foreach ($errors as $error):?>
@@ -136,7 +146,8 @@
             <?=FORM::close();?>
                 </div>
            </div>
-           
+           <?endif;?>
+
         </div><!--/col-md-9-->
         
         <div class="col-md-3">
