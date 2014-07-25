@@ -1,9 +1,9 @@
 <div class="row">
-
+    
 <h2 class="text-primary"><i class="fa fa-shopping-cart fa-2x"></i>  Корзина покупателя</h2>
 
-
-
+</div>
+<div class="row">
    <?  if ($orders != NULL) :?>  
 
 <table class="table table-bordered table-hover">
@@ -16,6 +16,9 @@
     <th>
         Мероприятие
        
+    </th>
+    <th>
+        Сцена
     </th>
      <th>
         
@@ -50,6 +53,9 @@ foreach ($orders as $order):?>
                 <?=HTML::anchor('event/one/'.$order->playbill->id, $order->playbill->title)  ?> 
             </td>
             <td>
+                <?=$order->scene->title?>
+            </td>
+              <td>
                
               
         <?=date('d',strtotime($order->day))?>
@@ -130,23 +136,24 @@ default:
       в <?=$order->start?>
      
             </td>
-            <td class="text-center">
+            <td>
               
-             
+           
                  <?//=$amt_s[$order->id]?>
-             
-
-               
             
+               
+               
                 <form>
-              
+                  
+                       
                  <input type = "text" 
                           id="<?=$order->id?>"
                           name ="<?=$order->id?>"
-                          class="form-control bfh-number" 
+                          class="input-mini form-control bfh-number" 
                           value="<?= $amt_s[$order->id]?> '"
                           data-min="1"
                           data-max="25">
+                   
                  </form> 
                 
                 <script>
@@ -171,11 +178,13 @@ default:
     
     </script>     
             </td>
-            <td class="text-center">
+            <td>
+                 
                 <?$costs = ORM::factory('cost')
                         ->where('playbill_id', '=', $order->playbill->id)
                       ->find_all();?>
-                      
+              
+                
              <select id="cost<?=$order->id?>" class="form-control" >
                   <option selected value=" <?=$cost_s[$order->id]?>"> <?=$cost_s[$order->id]?></option>
                  <?
@@ -185,7 +194,7 @@ default:
 <?endforeach;?>
 
 </select>
-               
+          
     <script>
     
     $(function(){
@@ -208,8 +217,7 @@ default:
     });
     
     </script>
-         
-              
+                   
             </td>
             
             <td class="text-center">
@@ -229,6 +237,7 @@ default:
 </table>
 </div>
 
+
 <div class="row">
     
 
@@ -236,7 +245,7 @@ default:
     <div class="col-md-6 text-left">
         
     
-          <?=HTML::anchor('/', '<button class="btn btn-info" id ="btnGet" ><i class="fa fa-arrow-circle-left"></i>  Продолжить заказы</button>', array(
+          <?=HTML::anchor('/places', '<button class="btn btn-info" id ="btnGet" ><i class="fa fa-arrow-circle-left"></i>  Продолжить заказы</button>', array(
               //'id' =>'',
           ))?>
 

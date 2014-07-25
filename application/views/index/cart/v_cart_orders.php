@@ -33,6 +33,9 @@
         Мероприятие
        
     </th>
+    <th>
+        Сцена
+    </th>
      <th>
         
        Дата | Время
@@ -62,6 +65,9 @@ foreach ($orders as $order):?>
 
 
                 <?=HTML::anchor('event/one/'.$order->playbill->id, $order->playbill->title)  ?> 
+            </td>
+            <td>
+                 <?=$order->scene->title?>
             </td>
             <td>
                

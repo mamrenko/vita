@@ -35,6 +35,9 @@
         Мероприятие
        
     </th>
+    <th>
+        Сцена
+    </th>
      <th>
         
        Дата | Время
@@ -63,6 +66,9 @@ foreach ($myorders as $order):?>
                 </td>
                 <td>
                    <?= $order->playbill?> 
+                </td>
+                <td>
+                    <?=$order->scene?>
                 </td>
                 
                 <td>

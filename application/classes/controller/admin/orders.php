@@ -49,7 +49,7 @@ class Controller_Admin_Orders extends Controller_Admin {
           $orders = ORM::factory('order')
                 ->where('custom_id', '=', $id)
                 ->find_all();
-          
+      
         $submenu = Widget::load('adminmenuorders');
         $content = View::factory('admin/orders/v_orders_orders')
                 ->bind('customer', $customer)

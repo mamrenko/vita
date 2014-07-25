@@ -58,13 +58,18 @@ class Controller_Index_Contact extends Controller_Index
                 $site_name = Kohana::config('settings.site_name');
             
             
-               $email = Email::factory('Контакты', $data['text'] )
+                   $email = Email::factory('Контакты', $data['text'] )
                     ->to($data['email'], $data['name'])
                     ->from($admin_email, $site_name)
                     ->send();
-            
-               
-               
+                   
+                   
+                   //Отсылаем сообщение себе
+                   
+                   $emailtome = Email::factory('Сообщение из контактов', $data['text'])
+                           ->to($admin_email, $site_name)
+                           ->from($data['email'], $data['name'])
+                           ->send();
                
                
                

@@ -265,7 +265,21 @@ return $den;
             $news = Widget::load('news');
             $menu = Widget::load('menu');
            $calendar = Widget::load('calendar');
+           
+           
+             $costom_s = $this->session->get('costomers');
+              if ($costom_s != NULL)
+        {
+             $orders = ORM::factory('order')
+                     ->where('custom_id', '=', $costom_s)
+                    ->find_all();
+                    
+                    $customer = ORM::factory('customer', $costom_s);
+        } 
+             
          $content = View::factory('index/order/v_get_order')
+                 ->bind('customer', $customer)
+                 ->bind('orders', $orders)
                   ->bind('errors', $errors);
                  
                    

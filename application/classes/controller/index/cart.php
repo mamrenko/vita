@@ -370,7 +370,11 @@ return $den;
         public function action_orders(){
             //Для НЕ зарагистрированных
              
-             $products_s = $this->session->get('products');
+             $costomers_s = $this->session->get('costomers');
+             if ($costomers_s != NULL ) {
+                 $this->session->delete('costomers');
+                 
+            }
              $cost_s = $this->session->get('costs');
          
              $amt_s = $this->session->get('amts');
@@ -428,6 +432,7 @@ return $den;
         $addorder->custom_id = $сostom_id;
         $addorder->place = $order->playbill->place->title;
         $addorder->playbill = $order->playbill->title;
+        $addorder->scene = $order->scene->title;
         $addorder->dt = $order->day;
         $addorder->tm = $order->start;
         $addorder->amt = $amt_s[$order->id];
@@ -478,6 +483,14 @@ return $den;
                     ->to($order_email, $site_name)
                     ->from($admin_email, $site_name)
                     ->send();
+            
+            
+            
+            // Удалить товары из корзины
+        $this->session->delete('costs');
+        $this->session->delete('amts');
+        
+           $this->session->set('costomers', $сostom_id);
             
               $this->request->redirect('order/get_order');
             

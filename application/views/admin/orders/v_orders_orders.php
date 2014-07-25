@@ -81,6 +81,9 @@
                          Мероприятие
                      </th>
                      <th>
+                         Сцена
+                     </th>
+                     <th>
                          Дата, время
                      </th>
                      <th>
@@ -99,10 +102,11 @@
                  </tr>
              </thead>
              <tbody>
-                 <?
-foreach ($orders as $order):?>
+                 
+                 <?foreach ($orders as $order):?>
+
                  <tr>
-                   <td class="checkbox-column">
+                    <td class="checkbox-column">
 				<input type="checkbox" class="icheck-input" />
 			</td>
                         <td>
@@ -116,6 +120,9 @@ foreach ($orders as $order):?>
                      </td>
                       <td>
                          <?=$order->playbill?>
+                     </td>
+                     <td>
+                         <?=$order->scene?>
                      </td>
                       <td>
                           
