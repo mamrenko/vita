@@ -23,7 +23,7 @@ class Controller_Index_Cart extends Controller_Index {
          
          
          
-         $products_s = $this->session->get('products');
+        // $products_s = $this->session->get('products');
          
          
          
@@ -34,20 +34,20 @@ class Controller_Index_Cart extends Controller_Index {
          
          
 
-        if ($products_s != NULL)
-        {
-            $products = ORM::factory('event');
-
-            foreach($products_s as $id =>$count)
-            {
-                $products->or_where('id', '=', $id);
-            }
-
-            $products = $products->find_all();
-         }else {
-         $products = NULL;
-
-         }
+//        if ($products_s != NULL)
+//        {
+//            $products = ORM::factory('event');
+//
+//            foreach($products_s as $id =>$count)
+//            {
+//                $products->or_where('id', '=', $id);
+//            }
+//
+//            $products = $products->find_all();
+//         }else {
+//         $products = NULL;
+//
+//         }
         
          
          if ($cost_s != NULL  and $amt_s!= NULL)
@@ -64,6 +64,7 @@ class Controller_Index_Cart extends Controller_Index {
            
          }else {
          $orders = NULL;
+         $this->request->redirect('places');
 
          }
          
@@ -392,12 +393,13 @@ return $den;
             }
 
             $orders = $orders->find_all();
-           // $orders3 = $orders->as_array();
+          
+            //$metros = ORM::factory('adress');
           
             
          }else {
          $orders = NULL;
-
+         $this->request->redirect('places');
          }
          
             
@@ -458,6 +460,7 @@ return $den;
                     ->bind('phone', $data['phone'])
                     ->bind('сostom_id', $сostom_id)
                     ->bind('myorders', $myorders)
+                   // ->bind('metros', $metros)
                     ;
             
             $this->template->page_title = 'Уведомление о Заказе';

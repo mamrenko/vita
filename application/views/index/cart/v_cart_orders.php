@@ -196,6 +196,7 @@ default:
     
 </div>
 <div class="row">
+    <div class='col-md-8 col-md-offset-2'>
     <div class="panel panel-info">
        
     
@@ -223,7 +224,7 @@ default:
         
         
         
-    ))?><i class="fa fa-check-square"></i>
+    ))?><i class="fa fa-asterisk"></i>
     <div class="col-sm-10">
            <?=Form::input('email', $data['email'], array(
                    'class' => 'form-control',
@@ -243,7 +244,7 @@ default:
         
         
         
-    ))?><i class="fa fa-check-square"></i>
+    ))?><i class="fa fa-asterisk"></i>
     <div class="col-sm-10">
            <?=Form::input('name', $data['name'], array(
                    'class' => 'form-control',
@@ -261,7 +262,7 @@ default:
         
         
         
-    ))?><i class="fa fa-check-square"></i>
+    ))?><i class="fa fa-asterisk"></i>
     <div class="col-sm-10">
            <?=Form::input('phone', $data['phone'], array(
                'type' => "text",
@@ -285,25 +286,27 @@ default:
         
         
         
-    ))?><i class="fa fa-check-square"></i>
+    ))?><i class="fa fa-asterisk"></i>
     <div class="col-sm-10">
            <?=Form::textarea('adress', $data['adress'], array(
                    'class' => 'form-control',
                    'type' => 'text',
-                   'placeholder' => 'Адрес Доставки'
+                    'rows' =>2,
+                   'placeholder' => 'Адрес Доставки  в Москве'
                    ))?>
     
     </div>
   </div>
   
+  
  <div class="well">
       
-      
+     <i class="fa fa-asterisk"></i> 
       <div class="form-group">
              
           <?=Form::checkbox('status', 1, (bool) $data['status'])?>
           
-         Я принимаю   <button class="btn btn-primary" data-toggle="modal" data-target="#oferts">
+          Я принимаю   <button class="btn btn-primary" data-toggle="modal" data-target="#oferts">
   условия договора-оферты
 </button>   
          продажи и возврата заказанных билетов
@@ -455,9 +458,9 @@ Email: info@aplodismenty.ru
   </div>
       <?=Form::close()?>
   
-  
+      <p><i class="fa fa-asterisk"></i>  Все поля обязательны для заполнения</p>
 
   </div>
 </div>
-    
+ </div>   
 </div>

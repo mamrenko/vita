@@ -81,7 +81,7 @@ foreach ($myorders as $order):?>
                      <?= $order->cost?>
                 </td>
                 <td>
-                     <?=date('d-m-Y', strtotime($order->actdt)); ?>
+                     <?=date('d-m-Y H:i:s', strtotime($order->actdt)); ?>
                 </td>
                  
             </tr>

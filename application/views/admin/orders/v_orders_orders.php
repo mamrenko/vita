@@ -15,7 +15,7 @@
 </div>
 
      <div class="portlet-content">
-         <h2>Заказ Покупателя</h2>
+         <h2>Заказ Незарегистрированного Покупателя</h2>
          <table class="table table-bordered table-highlight"> 
              <thead>
                  <tr>
@@ -63,7 +63,7 @@
          </table>
        
          <br>
-         
+         <?if(count($orders) >0 ):?>
        <table id="checktb" class="table table-striped table-bordered table-hover table-checkable">
              <thead>
                  <tr>
@@ -145,7 +145,10 @@ endforeach;?>
              
              
          </table>
-      
+      <?else:?>
+         <p>У этого нет ничего заказанного</p>
+         <?
+endif;?>
          
      </div>
 </div>
