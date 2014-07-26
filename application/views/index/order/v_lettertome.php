@@ -97,7 +97,9 @@ foreach ($myorders as $order):?>
     <p class="bg-success"> Номер Заказа № <?= $сostom_id?></p>
     <p class="bg-success">Имя клиента: <?=$name?></p>
     <p class="bg-success">Заказ сделан на адрес: <?=$adress?></p>
+      <p class="bg-success">Метро: <?=$metro?></p>
     <p class="bg-success">Телефон клиента: <?=$phone?></p>
+     <p class="bg-success">Email: <?=$email?></p>
      
     </blockquote>
     </div>

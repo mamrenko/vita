@@ -43,6 +43,11 @@
                  array('min_length', array(':value', 10)),
                  array('max_length', array(':value', 300)),
             ),
+            'metro' =>array(
+               array('not_empty'),
+//                 array('min_length', array(':value', 10)),
+//                 array('max_length', array(':value', 300)),
+            ),
             'status' => array(
                 array('not_empty'),
                 array('digit'),
@@ -59,6 +64,7 @@
                      'name' => 'Поле Ваше имя',
                      'phone' => 'Поле Ваш телефон',
                       'adress' => 'Поле Адрес Доставки',
+                       'metro' =>'Поле выбора метро',
                       'status'=>'Вы должны согласиться с условиями, оно ',
            
                   );

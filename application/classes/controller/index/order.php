@@ -276,7 +276,7 @@ return $den;
                     
                     $customer = ORM::factory('customer', $costom_s);
         } 
-             
+              $this->session->delete('costomers');
          $content = View::factory('index/order/v_get_order')
                  ->bind('customer', $customer)
                  ->bind('orders', $orders)

@@ -220,12 +220,12 @@ default:
       
   <div class="form-group">
     <?=Form::label('email', 'Электронная почта', array(
-        'class' =>'col-sm-2 control-label',
+        'class' =>'col-sm-3 control-label',
         
         
         
     ))?><i class="fa fa-asterisk"></i>
-    <div class="col-sm-10">
+    <div class="col-sm-9">
            <?=Form::input('email', $data['email'], array(
                    'class' => 'form-control',
                    'type' => 'email',
@@ -240,12 +240,12 @@ default:
       
       <div class="form-group">
     <?=Form::label('name', 'Ваше имя', array(
-        'class' =>'col-sm-2 control-label',
+        'class' =>'col-sm-3 control-label',
         
         
         
     ))?><i class="fa fa-asterisk"></i>
-    <div class="col-sm-10">
+    <div class="col-sm-9">
            <?=Form::input('name', $data['name'], array(
                    'class' => 'form-control',
                    'type' => 'text',
@@ -258,12 +258,12 @@ default:
       
       <div class="form-group">
     <?=Form::label('phone', 'Ваш телефон', array(
-         'class' =>'col-sm-2 control-label',
+         'class' =>'col-sm-3 control-label',
         
         
         
     ))?><i class="fa fa-asterisk"></i>
-    <div class="col-sm-10">
+    <div class="col-sm-9">
            <?=Form::input('phone', $data['phone'], array(
                'type' => "text",
         'class' =>'form-control bfh-phone',
@@ -282,12 +282,12 @@ default:
       
       <div class="form-group">
     <?=Form::label('adress', 'Адрес Доставки', array(
-        'class' =>'col-sm-2 control-label',
+        'class' =>'col-sm-3 control-label',
         
         
         
     ))?><i class="fa fa-asterisk"></i>
-    <div class="col-sm-10">
+    <div class="col-sm-9">
            <?=Form::textarea('adress', $data['adress'], array(
                    'class' => 'form-control',
                    'type' => 'text',
@@ -297,7 +297,21 @@ default:
     
     </div>
   </div>
-  
+    <div class="form-group"> 
+      
+              <?=Form::label('metro', 'Выбор метро', array(
+                   'class' =>'col-sm-3 control-label',
+              ))?>
+          <div class="col-sm-5">
+              <?=Form::select('metro', $gets, $data['metro'], array(
+           
+                 
+                  'class' => 'form-control',
+                   
+                  
+                  ))?>
+</div>
+          </div>   
   
  <div class="well">
       
@@ -447,7 +461,7 @@ Email: info@aplodismenty.ru
           </div>
   </div>
     <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class=" col-sm-9 col-sm-offset-3">
         
         <?=Form::button('submit', 'Заказать', array(
                           'type' => 'submit',

@@ -357,7 +357,7 @@ return $den;
                     ->bind('orders', $orders)
                     ->bind('amt_s', $amt_s)
                     ->bind('cost_s', $cost_s)
-                      ->bind('data', $data)
+                    ->bind('data', $data)
                     
                     ;
             // Выводим в шаблон
@@ -402,6 +402,12 @@ return $den;
          $this->request->redirect('places');
          }
          
+         
+         $get_sets = Model::factory('adress')->get_sets();
+          $gets = array();
+          foreach ($get_sets as $key => $value) {
+            $gets[$value] = $value;
+            }
             
             if (isset($_POST['submit']))
         {
@@ -411,8 +417,9 @@ return $den;
            $_POST['name'] = Security::xss_clean( $_POST['name']);
            $_POST['phone'] = Security::xss_clean( $_POST['phone']);
            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
+            $_POST['metro'] = Security::xss_clean($_POST['metro']); 
            
-           $data = Arr::extract($_POST, array('email','name','phone','adress' ,'status'));
+           $data = Arr::extract($_POST, array('email','name','phone','adress' ,'metro','status'));
            
             $customer = ORM::factory('customer');
             $customer->values($data);
@@ -460,7 +467,7 @@ return $den;
                     ->bind('phone', $data['phone'])
                     ->bind('сostom_id', $сostom_id)
                     ->bind('myorders', $myorders)
-                   // ->bind('metros', $metros)
+                   
                     ;
             
             $this->template->page_title = 'Уведомление о Заказе';
@@ -479,6 +486,8 @@ return $den;
                       ->bind('name', $data['name'])
                     ->bind('adress', $data['adress'])
                     ->bind('phone', $data['phone'])
+                     ->bind('metro', $data['metro'])
+                     ->bind('email', $data['email'])
                     ->bind('сostom_id', $сostom_id)
                     ->bind('myorders', $myorders)
                     ;
@@ -512,6 +521,7 @@ return $den;
                   ->bind('cost_s', $cost_s)
                   ->bind('amt_s', $amt_s)
                   ->bind('errors', $errors)
+                     ->bind('gets', $gets)
                  ;
             
             // Выводим в шаблон
