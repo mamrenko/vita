@@ -323,9 +323,12 @@ return $den;
           $adresses = ORM::factory('adress')
                 ->where('user_id', '=', $this->user->id)
                  ->find_all();
-          
+         $arr_adresses = array();
+foreach ($adresses as $key) {
+         $arr_adresses[$key->id] = $key->adress.'  '.$key->metro;
+}
            
-             $products_s = $this->session->get('products');
+           // $products_s = $this->session->get('products');
              $cost_s = $this->session->get('costs');
          
              $amt_s = $this->session->get('amts');
@@ -347,17 +350,50 @@ return $den;
           
             
          }else {
-         $orders = NULL;
+          $orders = NULL;
+          $this->request->redirect('places');
 
          }
-         
+          if (isset($_POST['submit']))
+        {
+               $_POST['seladr'] = Security::xss_clean( $_POST['seladr']); 
+                  $data = Arr::extract($_POST, array('seladr','status'));
+                  
+                  
+                  var_dump($data);
+                  try {
+              foreach ($orders as $order) {
+                
+        $addorder = ORM::factory('booking');
+        $addorder->user_id = $this->user->id;
+        $addorder->adress_id = $data['seladr'];
+        $addorder->place = $order->playbill->place->title;
+        $addorder->playbill = $order->playbill->title;
+        $addorder->scene = $order->scene->title;
+        $addorder->dt = $order->day;
+        $addorder->tm = $order->start;
+        $addorder->amt = $amt_s[$order->id];
+        $addorder->cost = $cost_s[$order->id];
+        $addorder->save();
+      
+            }
+             $this->request->redirect('account/orders');
+            
+        }  catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('validation');
+            }
+              
+        }
         
-            $content = View::factory('index/cart/v_cart_order')
-                    ->bind('adresses', $adresses)
+
+
+        $content = View::factory('index/cart/v_cart_order')
+                    ->bind('arr_adresses',  $arr_adresses)
                     ->bind('orders', $orders)
                     ->bind('amt_s', $amt_s)
                     ->bind('cost_s', $cost_s)
                     ->bind('data', $data)
+                  ->bind('errors', $errors)
                     
                     ;
             // Выводим в шаблон

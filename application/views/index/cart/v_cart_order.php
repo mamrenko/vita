@@ -176,16 +176,21 @@ default:
            'role' => 'form',
            ));?>
        
-<?
-foreach ($adresses as $adress):?>
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="<?=$adress->id?>">
-    Доставка на <?=$adress->adress?> | Метро: <?=$adress->metro?>
-  </label>
+       <div class="form-group"> 
+      
+              <?=Form::label('seladr', 'Выбор Адреса', array(
+                  
+              ))?>
+          <div class="col-sm-9">
+              <?=Form::select('seladr', $arr_adresses, $data['seladr'], array(
+           
+                 
+                  'class' => 'form-control',
+                   
+                  
+                  ))?>
 </div>
-
-<? endforeach; ?>
+          </div> 
         
          <div class="well">
       
