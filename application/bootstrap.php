@@ -70,9 +70,9 @@ if (isset($_SERVER['KOHANA_ENV']))
       
 
 }
-        Cookie::$salt = 'Narwhals can triforce';
-        Cookie::$expiration = Date::WEEK;
-       //  Session::$default = 'cookie';
+       Cookie::$salt = 'Narwhals can triforce';
+       Cookie::$expiration = Date::WEEK;
+        Session::$default = 'cookie';
 /**
  * Initialize Kohana, setting the default options.
  *

@@ -43,8 +43,11 @@ class Controller_Index_Account extends Controller_Index {
     }
 
     public function action_orders() {
-        
-        $content = View::factory('index/account/v_account_orders');
+        $orders = ORM::factory('orderuser')
+                ->where('user_id', '=', $this->user->id)
+                ->find_all();
+        $content = View::factory('index/account/v_account_orders')
+                ->bind('orders', $orders);
         
         // Выводим в шаблон
         $this->template->page_title = 'Заказы';

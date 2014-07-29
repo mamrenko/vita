@@ -162,7 +162,17 @@ default:
 
     <?
     endif;?>
-   
+    <?if($errors):?>
+<div class="row">
+<?foreach ($errors as $error):?>
+        <div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-repeat"></span>  
+    
+    <?=$error?></div>
+              
+<?endforeach?>
+    </div>
+<?endif?>
 
 <div class="row">
     <div class="col-md-8">

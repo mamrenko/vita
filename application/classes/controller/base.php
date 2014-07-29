@@ -14,8 +14,8 @@ class Controller_Base extends Controller_Template {
     public function before() {
         parent::before();
         $settings = Kohana::config('settings');
-       // Cookie::$salt = 'da4321hh';
-        Session::$default = 'cookie';
+         //Cookie::$salt = 'da4321hh';
+      //  Session::$default = 'cookie';
        // Cookie::$httponly = TRUE;
         //Cookie::$expiration = Date::WEEK;
         
