@@ -384,7 +384,39 @@ foreach ($adresses as $key) {
         $addorder->save();
       
             }
-             $this->request->redirect('account/orders');
+            
+            $myorders = ORM::factory('booking')
+                    ->where('orderuser_id', '=', $orderuser_id)
+                    ->find_all();
+            
+            $admin_email = Kohana::config('settings.admin_email');
+            $site_name = Kohana::config('settings.site_name');
+            $order_email = Kohana::config('settings.order_email');
+            
+            
+                $phone =$this->user->phonenumber;
+                $name = $this->user->username;
+                $email = $this->user->email;
+        
+            $lettome = View::factory('index/order/v_lettertomefromuser')
+                    ->bind('orderuser_id', $orderuser_id)
+                    ->bind('name',$name )
+                    ->bind('adress', $data['seladr'])
+                    ->bind('phone',  $phone)
+                    ->bind('email',$email )
+                    ->bind('myorders', $myorders)
+                    ;
+            $emailtome = Email::factory('Заказ на сайте от зарегистрированного '.$name, $lettome, 'text/html')
+                    ->to($order_email, $site_name)
+                    ->from($admin_email, $site_name)
+                    ->send();
+            
+                // Удалить товары из корзины
+                $this->session->delete('costs');
+                $this->session->delete('amts');
+                
+                
+                $this->request->redirect('account/orders');
             
         }  catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');

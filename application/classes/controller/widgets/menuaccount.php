@@ -12,7 +12,7 @@ class Controller_Widgets_Menuaccount extends Controller_Widgets {
 
         $menu = array(
             '<i class="fa fa-user"></i> &nbsp; Личный кабинет' => array('index'),
-            '<i class="fa fa-list"></i> &nbsp; Заказы' => array('orders'),
+            '<i class="fa fa-list"></i> &nbsp; Заказы' => array('orders','order'),
             '<i class="fa fa-paperclip"></i> &nbsp; Профиль' => array('profile'),
             '<i class="fa fa-truck"></i> &nbsp; Адреса' => array('adress'),
         );

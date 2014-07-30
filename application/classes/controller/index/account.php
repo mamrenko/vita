@@ -11,6 +11,12 @@ class Controller_Index_Account extends Controller_Index {
          $this->template->scripts[] = 'media/js/plugins/mascedinput/phonescr.js';
          $this->template->scripts[] = 'media/js/plugins/maxlength/jquery.maxlength.js';
          $this->template->scripts[] = 'media/js/plugins/maxlength/maxlength.js';
+         $this->template->styles[] ='http://cdn.datatables.net/1.10.1/css/jquery.dataTables.css';
+         
+          $this->template->scripts[] = 'http://cdn.datatables.net/1.10.1/js/jquery.dataTables.js';
+        
+        $this->template->scripts[] = 'canvas/js/plugins/datatables/placetb.js';
+        
          
          
          if (!$this->auth->logged_in()) {
@@ -49,6 +55,29 @@ class Controller_Index_Account extends Controller_Index {
         $content = View::factory('index/account/v_account_orders')
                 ->bind('orders', $orders);
         
+        // Выводим в шаблон
+        $this->template->page_title = 'Заказы';
+        $this->template->content_title ='Заказы';
+        $this->template->block_center = array($content);
+    }
+
+    
+    public function action_order(){
+       $id = abs((int) $this->request->param('id'));
+
+        $bookings = ORM::factory('booking')
+                ->where('orderuser_id','=', $id)
+                ->find_all();
+        
+        $order = ORM::factory('orderuser', $id);
+                
+        if(!$order->loaded()){
+            $this->request->redirect('account/orders');
+        }
+        $content = View::factory('index/account/v_account_order')
+                ->bind('bookings', $bookings)
+                ->bind('id', $id)
+                ->bind('order', $order);
         // Выводим в шаблон
         $this->template->page_title = 'Заказы';
         $this->template->content_title ='Заказы';

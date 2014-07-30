@@ -162,6 +162,9 @@ default:
 
     <?
     endif;?>
+
+
+<?if(count( $arr_adresses) > 0):?>
     <?if($errors):?>
 <div class="row">
 <?foreach ($errors as $error):?>
@@ -371,3 +374,10 @@ Form::close()?>
 <?=HTML::anchor('account/adress', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i>  Изменить адрес доставки</button>')?>
 </div>
 </div>
+<?else:?>
+<div class="row">
+    <p>Надо адрес добавить</p>
+    
+    
+</div>
+<? endif; ?>
