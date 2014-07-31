@@ -376,7 +376,61 @@ Form::close()?>
 </div>
 <?else:?>
 <div class="row">
-    <p>Надо адрес добавить</p>
+    <?if($errors):?>
+<div class="row">
+<?foreach ($errors as $error):?>
+        <div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-repeat"></span>  
+    
+    <?=$error?></div>
+              
+<?endforeach?>
+    </div>
+<?endif?>
+  <div class="portlet-content">
+      
+        <?=Form::open('cart/order/', array(
+           
+          ));?>
+      
+      <div class="form-group">
+               <?=Form::label('adress', 'Адрес')?>
+               <?=Form::input('adress', $data['adress'], array(
+                   'type' =>'text',
+                   'placeholder' => 'Введите адрес доставки',
+                   'class' => 'form-control',
+                   'data-required' => 'true',
+                   'data-minlength' => '10',
+                   'data-maxlength' => '255',
+                   ))?>
+          </div>
+      
+      
+      <div class="form-group"> 
+              <?=Form::label('metro', 'Выбор метро')?>
+              <?=Form::select('metro', $gets, $data['metro'], array(
+           
+                 
+                  'class' => 'form-control',
+                   
+                  
+                  ))?>
+
+          </div>   
+      
+       <div class="form-group">
+                    
+                      <?=Form::button('submit2', 'Добавить адрес', array(
+                          'type' => 'submit',
+                          'class' => 'btn btn-primary',
+                          ));?>
+                    
+                  </div>
+      
+      <?=Form::close()?>
+      
+  </div>
+
     
     
 </div>

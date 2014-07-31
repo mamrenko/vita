@@ -323,11 +323,62 @@ return $den;
           $adresses = ORM::factory('adress')
                 ->where('user_id', '=', $this->user->id)
                  ->find_all();
-         $arr_adresses = array();
-foreach ($adresses as $key) {
-         $arr_adresses[$key->adress.'. Метро:   '.$key->metro] = $key->adress.'  '.$key->metro;
-}
-           
+         if (count($adresses) > 0){
+             
+         
+            $arr_adresses = array();
+            foreach ($adresses as $key) {
+                     $arr_adresses[$key->adress.'. Метро:   '.$key->metro] = $key->adress.'  '.$key->metro;
+            }
+           }
+            else {
+                $get_sets = Model::factory('adress')->get_sets();
+                $gets = array();
+                foreach ($get_sets as $key => $value) {
+                  $gets[$value] = $value;
+            }
+            
+             $user = $this->user->id;
+             
+              if (isset($_POST['submit2']))
+        {
+            
+           // $adress = $db->quote($_POST['adress']);
+         
+            //$metro = $db->quote($_POST['metro']);
+             $_POST['adress'] = Security::xss_clean($_POST['adress']);  
+            $_POST['metro'] = Security::xss_clean($_POST['metro']); 
+            
+            
+            $val = array('user_id' => $user);
+            $data =Arr::extract($_POST,array('adress', 'metro'));
+            $data = Arr::merge($data, $val);
+//            $data = array(
+//                'adress' =>$adress,
+//                'metro' => $metro,
+//                'user_id ' => $user,
+//            );
+            $adress = ORM::factory('adress');
+            $adress->values($data);
+//            $sql = "INSERT INTO adresses (adress, metro, user_id)
+//                VALUES (
+//                $adress,
+//                 $metro, 
+//                 $user
+//                )";
+//               
+               try {
+                 //$adress =  $db->query(Database::INSERT, $sql);
+                  $adress->save();
+                $this->request->redirect('cart/order');
+            }
+            catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('validation');
+            }
+            
+        }
+
+            }
            // $products_s = $this->session->get('products');
              $cost_s = $this->session->get('costs');
          
@@ -432,7 +483,8 @@ foreach ($adresses as $key) {
                     ->bind('amt_s', $amt_s)
                     ->bind('cost_s', $cost_s)
                     ->bind('data', $data)
-                     ->bind('errors', $errors)
+                    ->bind('errors', $errors)
+                    ->bind('gets', $gets)
                     
                     ;
             // Выводим в шаблон

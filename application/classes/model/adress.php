@@ -33,7 +33,7 @@
 
     public function labels(){
        return array(
-                      'adress' => 'Адрес доставки',
+                      'adress' => 'Поле Адрес доставки',
                      
            
                   );
