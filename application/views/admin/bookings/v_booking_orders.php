@@ -9,13 +9,13 @@
 
  <p>
   
-      <?=HTML::anchor('admin/orders', '<button class="btn btn-success " type="button"><i class="fa fa-reply"></i>  Вернуться на список покупателей</button>')?>
+      <?=HTML::anchor('admin/bookings', '<button class="btn btn-success " type="button"><i class="fa fa-reply"></i>  Вернуться на список покупателей</button>')?>
       
 </p>
 </div>
 
      <div class="portlet-content">
-         <h2>Заказ Незарегистрированного Покупателя</h2>
+         <h2>Заказ зарегистрированного Покупателя</h2>
          <table class="table table-bordered table-highlight"> 
              <thead>
                  <tr>
@@ -41,19 +41,19 @@
              <tbody>
                  <tr>
                      <td>
-                         <h4><?=$customer->name?></h4>
+                         <h4><?=$customer->user->username?></h4>
                      </td>
                       <td>
-                          <h4><?=$customer->email?></h4>
+                          <h4><?=$customer->user->email?></h4>
                      </td>
                       <td>
-                          <h4><?=$customer->phone?></h4>
+                          <h4><?=$customer->user->phonenumber?></h4>
                      </td>
                       <td>
-                          <h4><?=$customer->adress?></h4>
+                          <h4><?=$customer->seladr?></h4>
                      </td>
                       <td>
-                          <h4><?=date('d-m-Y H:i:s', strtotime($customer->dt))?></h4>
+                          <h4><?=date('d-m-Y H:i:s', strtotime($customer->actdt))?></h4>
                      </td>
                      
                  </tr>
@@ -153,4 +153,5 @@ endif;?>
      </div>
 </div>
     </div></div>
+
 

@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Admin_Orders extends Controller_Admin {
+class Controller_Admin_Bookings extends Controller_Admin {
      public function before() {
         parent::before();
          $this->template->scripts[] = 'canvas/js/plugins/datatables/jquery.dataTables.min.js';
@@ -22,15 +22,17 @@ class Controller_Admin_Orders extends Controller_Admin {
         
         $submenu = Widget::load('adminmenuorders');
         
-         $customers = ORM::factory('customer')
-                 ->order_by('id', 'DESC')
+         $orderusers = ORM::factory('orderuser')
+                 ->order_by('actdt', 'DESC')
                  ->find_all();
-        $content = View::factory('admin/orders/v_orders_index')
-                ->bind('customers', $customers);
+         
+         
+        $content = View::factory('admin/bookings/v_booking_index')
+                ->bind('orderusers', $orderusers);
                 
 
         // Вывод в шаблон
-        $this->template->page_title = 'Заказы';
+        $this->template->page_title = 'Заказы от зарегистрированных пользователей';
         
         $this->template->block_center = array($content);
         $this->template->block_left = array($submenu);
@@ -38,20 +40,20 @@ class Controller_Admin_Orders extends Controller_Admin {
     public function action_orders(){
     
         $id = abs((int) $this->request->param('id'));
-         $customer  = ORM::factory('customer', $id);
+         $customer  = ORM::factory('orderuser', $id);
         
         //$customer
         
         
        if(!$customer->loaded()) {
-            $this->request->redirect('admin/orders');
+            $this->request->redirect('admin/bookings');
         }
-          $orders = ORM::factory('order')
-                ->where('custom_id', '=', $id)
+          $orders = ORM::factory('booking')
+                ->where('orderuser_id', '=', $id)
                 ->find_all();
       
         $submenu = Widget::load('adminmenuorders');
-        $content = View::factory('admin/orders/v_orders_orders')
+        $content = View::factory('admin/bookings/v_booking_orders')
                 ->bind('customer', $customer)
                 ->bind('orders', $orders);
         
@@ -84,42 +86,6 @@ public function action_tickets(){
         }
         $submenu = Widget::load('adminmenuorders');
         $content = View::factory('admin/orders/v_orders_ticket')
-                ->bind('order', $order)
-                ->bind('colleges', $colleges)
-                ->bind('customer', $customer)
-                ->bind('data', $data)
-                ->bind('college_arr', $college_arr);
-        
-        // Вывод в шаблон
-        $this->template->page_title = 'У кого брали билеты и какие';
-        $this->template->block_center = array($content);
-        $this->template->block_left = array($submenu); 
-    
-}
-
-public function action_ticket(){
-         $id = abs((int) $this->request->param('id'));
-         $order  = ORM::factory('booking', $id);
-        
-        $customer =  ORM::factory('orderuser')
-                ->where('id', '=', $order->orderuser_id)
-               ->find();
-        
-        
-       if(!$order->loaded()) {
-            $this->request->redirect('admin/bookings/orders');
-        }
-          $colleges = ORM::factory('associate')
-                ->find_all()
-                  ->as_array();
-          
-          
-           $college_arr = array();
-        foreach ($colleges as $college){
-            $college_arr[$college->id] = $college->name;
-        }
-        $submenu = Widget::load('adminmenuorders');
-        $content = View::factory('admin/orders/v_bookings_ticket')
                 ->bind('order', $order)
                 ->bind('colleges', $colleges)
                 ->bind('customer', $customer)
