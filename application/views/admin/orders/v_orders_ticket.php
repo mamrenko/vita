@@ -85,6 +85,18 @@
           
           <div class="portlet">
           <div class="portlet-header">
+              
+              <?if($errors):?>
+<?foreach ($errors as $error):?>
+<ul class="portlet-tools pull-right">
+								
+                  <li>
+                      <span style="font-size: 18px"><span class="label label-primary"><?=$error?></span>
+                        </span>
+		  </li>
+		</ul>
+<?endforeach?>
+<?endif?>
 	<h3>
 		<i class="fa fa-reorder"></i>
                 У кого билеты брали и какие
@@ -93,7 +105,7 @@
 						</div>
               <div class="portlet-content">
                   
-                   <?=Form::open('admin/orders/ticket_add', array(
+                   <?=Form::open('admin/taketickets/add', array(
          'id' => 'validate-basic',
            'class' => 'form parsley-form',
            'data-validate' => 'parsley',
@@ -109,7 +121,8 @@
                   'id' => 'colleges',
                   'class' => 'form-control',
                    'multiple',
-                  
+                  'data-required' => 'true',
+                  'data-minlength' => '1',
                   ))?>
            
                
@@ -149,17 +162,18 @@
          </div>
            
            <div class="form-group">
-               <?=Form::label('addition', 'Дополнение, Комментарии')?>
-               <?=Form::textarea('addition', $data['addition'], array(
+               <?=Form::label('comment', 'Дополнение, Комментарии Какие билеты и почем')?>
+               <?=Form::textarea('comment', $data['comment'], array(
                    'type' =>'text',
-                   'placeholder' => 'Минимум 3 буквы, максимум 255',
+                   'placeholder' => 'Минимум 3 буквы, максимум 600',
                    'class' => 'form-control',
                    'data-required' => 'true',
                    'data-minlength' => '3',
-                   'data-maxlength' => '150',
+                   'data-maxlength' => '600',
                    ))?>
           </div>
-           
+           <?=Form::hidden('customer_id', $customer->id)?>
+            <?=Form::hidden('order_id', $order->id)?>
            
                <div class="form-group">
                     

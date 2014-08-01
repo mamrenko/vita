@@ -6,9 +6,15 @@
     class Model_Associate extends ORM{
         protected $_table_name = 'associates';
         
-        
+         protected $_has_many = array(
+        'taketickets' => array(
+        'model'   => 'taketicket',
+        'foreign_key' => 'associate_id',
+        'through' => 'associates_taketickets',
+        'far_key' => 'taketicket_id',
+    ),
          
-         
+    );     
          
           public function rules()
     {

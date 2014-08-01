@@ -135,7 +135,7 @@
                          <?=$order->cost?>
                      </td>
                      <td>
-                           <?=HTML::anchor('admin/orders/ticket/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?>
+                           <?=HTML::anchor('admin/bookings/tickets/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?>
                      </td>
                     
                  </tr>

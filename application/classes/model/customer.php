@@ -80,6 +80,7 @@
                 array('strip_tags'),
             ),
             
+            
         );
     }  
 

@@ -11,10 +11,10 @@ class Controller_Widgets_Adminmenuorders extends Controller_Widgets {
         $select = Request::initial()->controller();
         
         $menu = array(
-             'Заказы незарегенные' =>  array('orders'),
-            'Заказы зарегенные' => array('bookings'),
+             'Заказы незарегенные' =>  array('orders','orders/tickets'),
+            'Заказы зарегенные' => array('bookings','orders/ticket'),
             
-             'Выполненные Заказы' =>  array(''),
+             'Выполненные Заказы' =>  array('taketickets'),
              'Статистика Заказов' =>  array(''),
              'Список Емейлов' => array(''),
            

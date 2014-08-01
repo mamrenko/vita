@@ -64,16 +64,16 @@ class Controller_Admin_Bookings extends Controller_Admin {
     
 }
 public function action_tickets(){
-     $id = abs((int) $this->request->param('id'));
-         $order  = ORM::factory('order', $id);
+         $id = abs((int) $this->request->param('id'));
+         $order  = ORM::factory('booking', $id);
         
-        $customer =  ORM::factory('customer')
-                ->where('id', '=', $order->custom_id)
+        $customer =  ORM::factory('orderuser')
+                ->where('id', '=', $order->orderuser_id)
                ->find();
         
         
        if(!$order->loaded()) {
-            $this->request->redirect('admin/orders/orders');
+            $this->request->redirect('admin/bookings/orders');
         }
           $colleges = ORM::factory('associate')
                 ->find_all()
@@ -85,7 +85,7 @@ public function action_tickets(){
             $college_arr[$college->id] = $college->name;
         }
         $submenu = Widget::load('adminmenuorders');
-        $content = View::factory('admin/orders/v_orders_ticket')
+        $content = View::factory('admin/orders/v_bookings_ticket')
                 ->bind('order', $order)
                 ->bind('colleges', $colleges)
                 ->bind('customer', $customer)

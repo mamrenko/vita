@@ -83,12 +83,17 @@ public function action_tickets(){
             $college_arr[$college->id] = $college->name;
         }
         $submenu = Widget::load('adminmenuorders');
+        
+     
+        
         $content = View::factory('admin/orders/v_orders_ticket')
                 ->bind('order', $order)
                 ->bind('colleges', $colleges)
                 ->bind('customer', $customer)
                 ->bind('data', $data)
-                ->bind('college_arr', $college_arr);
+                ->bind('college_arr', $college_arr)
+                ->bind('errors', $errors)
+                ;
         
         // Вывод в шаблон
         $this->template->page_title = 'У кого брали билеты и какие';
@@ -97,39 +102,5 @@ public function action_tickets(){
     
 }
 
-public function action_ticket(){
-         $id = abs((int) $this->request->param('id'));
-         $order  = ORM::factory('booking', $id);
-        
-        $customer =  ORM::factory('orderuser')
-                ->where('id', '=', $order->orderuser_id)
-               ->find();
-        
-        
-       if(!$order->loaded()) {
-            $this->request->redirect('admin/bookings/orders');
-        }
-          $colleges = ORM::factory('associate')
-                ->find_all()
-                  ->as_array();
-          
-          
-           $college_arr = array();
-        foreach ($colleges as $college){
-            $college_arr[$college->id] = $college->name;
-        }
-        $submenu = Widget::load('adminmenuorders');
-        $content = View::factory('admin/orders/v_bookings_ticket')
-                ->bind('order', $order)
-                ->bind('colleges', $colleges)
-                ->bind('customer', $customer)
-                ->bind('data', $data)
-                ->bind('college_arr', $college_arr);
-        
-        // Вывод в шаблон
-        $this->template->page_title = 'У кого брали билеты и какие';
-        $this->template->block_center = array($content);
-        $this->template->block_left = array($submenu); 
-    
-}
+
 }
