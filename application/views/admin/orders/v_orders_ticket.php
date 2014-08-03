@@ -81,6 +81,7 @@
           
       </div>
  </div>
+      <?if(count($college_arr) >0 ):?>
       <div class="col-md-8">
           
           <div class="portlet">
@@ -189,6 +190,13 @@
           
       </div>
       
-  </div>
+  </div><?else:?>
+      <div class="col-md-8">
+          
+          <p>Нужно добавить сначала того, у кого билеты брали</p>
+          <?=HTML::anchor('admin/colleges', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Добавить Коллегу </button>')?>
+      </div>
+      <?
+endif;?>
        </div>
 

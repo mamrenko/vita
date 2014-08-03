@@ -63,7 +63,7 @@ class Controller_Admin_Orders extends Controller_Admin {
 }
 public function action_tickets(){
      $id = abs((int) $this->request->param('id'));
-         $order  = ORM::factory('order', $id);
+     $order  = ORM::factory('order', $id);
         
         $customer =  ORM::factory('customer')
                 ->where('id', '=', $order->custom_id)
