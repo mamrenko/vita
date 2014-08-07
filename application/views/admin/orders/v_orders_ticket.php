@@ -83,21 +83,21 @@
  </div>
       <?if(count($college_arr) >0 ):?>
       <div class="col-md-8">
-          
+         
           <div class="portlet">
           <div class="portlet-header">
-              
               <?if($errors):?>
 <?foreach ($errors as $error):?>
-<ul class="portlet-tools pull-right">
+              <dl>
 								
-                  <li>
+                  <dt>
                       <span style="font-size: 18px"><span class="label label-primary"><?=$error?></span>
                         </span>
-		  </li>
-		</ul>
+		  </dt>
+		</dl>
 <?endforeach?>
 <?endif?>
+              
 	<h3>
 		<i class="fa fa-reorder"></i>
                 У кого билеты брали и какие
@@ -106,7 +106,7 @@
 						</div>
               <div class="portlet-content">
                   
-                   <?=Form::open('admin/taketickets/add', array(
+                   <?=Form::open('admin/orders/tickets/'.$id, array(
          'id' => 'validate-basic',
            'class' => 'form parsley-form',
            'data-validate' => 'parsley',

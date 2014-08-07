@@ -41,8 +41,12 @@
       public function rules()
     {
         return array(
-           
-           
+           'college' => array(
+                array('not_empty'),
+           ),
+           'day' => array(
+                array('not_empty'),
+           ),
             'comment' =>array(
                  array('not_empty'),
                  array('min_length', array(':value', 3)),
@@ -56,9 +60,9 @@
 
     public function labels(){
        return array(
-                    
-                    // 'huckster' => 'Коллега у которого брали билеты',
-                     'comment' => 'Введите какие билеты и почем брали',
+                    'day' => 'Поле День когда брали билеты',
+                     'college' => 'Коллега у которого брали билеты',
+                     'comment' => 'Дополнение, Комментарии Какие билеты и почем',
                     
            
                   );

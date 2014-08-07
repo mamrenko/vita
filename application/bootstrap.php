@@ -89,6 +89,9 @@ if (isset($_SERVER['KOHANA_ENV']))
 Kohana::init(array(
 	'base_url'   => '/vita/',
         'index_file' => FALSE,
+//     'errors'        => TRUE,
+//    'profile'       => (Kohana::$environment == Kohana::DEVELOPMENT),
+//    'caching'       => (Kohana::$environment == Kohana::PRODUCTION)
 ));
 
 /**

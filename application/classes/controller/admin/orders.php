@@ -84,6 +84,42 @@ public function action_tickets(){
         }
         $submenu = Widget::load('adminmenuorders');
         
+        
+        if (isset($_POST['submit']))
+        {
+         
+            $_POST['comment'] = Security::xss_clean( $_POST['comment']);
+            $_POST['day'] = Security::xss_clean( $_POST['day']);
+            $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
+            $_POST['customer_id'] = Security::xss_clean( $_POST['customer_id']);
+            $_POST['order_id'] = Security::xss_clean( $_POST['order_id']);
+        
+            $data = Arr::extract($_POST, array(
+                'day', 
+                'comment',
+                'college',
+                'customer_id',
+                'order_id'
+                ));
+            $data2 = array(
+                'booking_id' => '0',
+                'orderuser_id' => '0',
+            );
+            $data = Arr::merge($data2, $data);
+            $taketicket = ORM::factory('taketicket');
+             $taketicket->values($data);
+            
+
+         try {
+                $taketicket->save();
+                $taketicket->add('associates', $data['college']);
+                $this->request->redirect('admin/taketickets');
+            }
+            catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('validation');
+             
+                }
+            }
      
         
         $content = View::factory('admin/orders/v_orders_ticket')
@@ -93,6 +129,7 @@ public function action_tickets(){
                 ->bind('data', $data)
                 ->bind('college_arr', $college_arr)
                 ->bind('errors', $errors)
+                ->bind('id', $id)
                 ;
         
         // Вывод в шаблон
