@@ -12,7 +12,7 @@
      protected $_belongs_to = array(
         'customer' => array(
             'model' => 'customer',
-            'foreign_key' => 'custom_id',
+            'foreign_key' => 'customer_id',
         ),
          'order' => array(
             'model' => 'order',
@@ -41,15 +41,16 @@
       public function rules()
     {
         return array(
-           'college' => array(
-                array('not_empty'),
-           ),
-           'day' => array(
+//           'college'  => array(
+//                array('not_empty'),
+//            
+//           ),
+           'dmy' => array(
                 array('not_empty'),
            ),
             'comment' =>array(
                  array('not_empty'),
-                 array('min_length', array(':value', 3)),
+                 array('min_length', array(':value', 10)),
                  array('max_length', array(':value', 600)),
             ),
            
@@ -60,7 +61,7 @@
 
     public function labels(){
        return array(
-                    'day' => 'Поле День когда брали билеты',
+                    'dmy' => 'Поле День когда брали билеты',
                      'college' => 'Коллега у которого брали билеты',
                      'comment' => 'Дополнение, Комментарии Какие билеты и почем',
                     

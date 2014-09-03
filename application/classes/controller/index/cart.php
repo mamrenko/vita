@@ -64,7 +64,7 @@ class Controller_Index_Cart extends Controller_Index {
            
          }else {
          $orders = NULL;
-         $this->request->redirect('places');
+         //$this->request->redirect('places');
 
          }
          

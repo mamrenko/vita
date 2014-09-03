@@ -123,7 +123,7 @@
                   'class' => 'form-control',
                    'multiple',
                   'data-required' => 'true',
-                  'data-minlength' => '1',
+                  
                   ))?>
            
                
@@ -134,23 +134,23 @@
                    <div class="row">
          <div class="col-md-4 ">
      <h4>Выберите дату, когда брали билеты</h4>
-     <div id="sanbox">
-      <div class="input-group date">
-             <?=Form::input('day', $data['day'], array(
+    
+     <div id="dp-ex-4" class="input-group date"
+          data-auto-close="true"
+          data-date="<?=date('d-m-Y');?>" 
+          data-date-format="dd-mm-yyyy"
+          data-date-autoclose="true">
+                                <?=Form::input('dmy', $data['dmy'], array(
                                     'class' => 'form-control',
                                     'type' => 'text',
-                                     'data-required' => 'true',
-                                    
+                                    'data-required' => 'true',
+                                   
                                     
                   ))?>
-    
-    
-    
-    
-    <span class="input-group-addon">
-        <i class="glyphicon glyphicon-th"></i>
-    </span>
-    </div>
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                            <span class="help-block">dd-mm-yyyy</span>
+                        </div>
           </div>                   
                                
 				
@@ -166,10 +166,10 @@
                <?=Form::label('comment', 'Дополнение, Комментарии Какие билеты и почем')?>
                <?=Form::textarea('comment', $data['comment'], array(
                    'type' =>'text',
-                   'placeholder' => 'Минимум 3 буквы, максимум 600',
+                   'placeholder' => 'Минимум 10 букв, максимум 600',
                    'class' => 'form-control',
                    'data-required' => 'true',
-                   'data-minlength' => '3',
+                   'data-minlength' => '10',
                    'data-maxlength' => '600',
                    ))?>
           </div>

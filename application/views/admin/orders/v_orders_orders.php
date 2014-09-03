@@ -67,12 +67,7 @@
        <table id="checktb" class="table table-striped table-bordered table-hover table-checkable">
              <thead>
                  <tr>
-                   <th class="checkbox-column">
-				<input type="checkbox" class="icheck-input" />
-			</th>
-                        <th>
-                         Взяли или нет
-                     </th>
+                  
                      <th>
                          Площадка
                      </th>
@@ -106,12 +101,7 @@
                  <?foreach ($orders as $order):?>
 
                  <tr>
-                    <td class="checkbox-column">
-				<input type="checkbox" class="icheck-input" />
-			</td>
-                        <td>
-                          <span class="label label-primary">Если взял билеты - Отметить флажок</span>
-                     </td>
+                    
                         <td>
                             
                             <?=$order->place?>
@@ -134,8 +124,13 @@
                      <td>
                          <?=$order->cost?>
                      </td>
-                     <td>
+                     <td><? $tacketickets = $order->taketickets->find_all()->as_array();?>
+                         <?if(count($tacketickets)>0):?>
+                         <p>Чего то есть</p>
+                         <?  else :?>
                            <?=HTML::anchor('admin/orders/tickets/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?>
+                         <? 
+endif;?>
                      </td>
                     
                  </tr>

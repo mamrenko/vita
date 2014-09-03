@@ -152,11 +152,11 @@
                <?=Form::label('addition', 'Дополнение, Комментарии')?>
                <?=Form::textarea('addition', $data['addition'], array(
                    'type' =>'text',
-                   'placeholder' => 'Минимум 3 буквы, максимум 255',
+                   'placeholder' => 'Минимум 10 букв, максимум 600',
                    'class' => 'form-control',
                    'data-required' => 'true',
-                   'data-minlength' => '3',
-                   'data-maxlength' => '150',
+                   'data-minlength' => '10',
+                   'data-maxlength' => '600',
                    ))?>
           </div>
            

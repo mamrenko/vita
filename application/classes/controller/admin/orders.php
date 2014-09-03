@@ -49,6 +49,8 @@ class Controller_Admin_Orders extends Controller_Admin {
           $orders = ORM::factory('order')
                 ->where('custom_id', '=', $id)
                 ->find_all();
+          
+         
       
         $submenu = Widget::load('adminmenuorders');
         $content = View::factory('admin/orders/v_orders_orders')
@@ -89,13 +91,19 @@ public function action_tickets(){
         {
          
             $_POST['comment'] = Security::xss_clean( $_POST['comment']);
-            $_POST['day'] = Security::xss_clean( $_POST['day']);
-            $_POST['day'] = date('Y-m-d', strtotime( $_POST['day']));
+            $_POST['dmy'] = Security::xss_clean( $_POST['dmy']);
+            $_POST['dmy'] = date('Y-m-d', strtotime( $_POST['dmy']));
             $_POST['customer_id'] = Security::xss_clean( $_POST['customer_id']);
             $_POST['order_id'] = Security::xss_clean( $_POST['order_id']);
-        
+            if(!isset($_POST['college'])){
+               $_POST['college'] =''; 
+            }
+// else {
+//               $_POST['college'] = implode(",", $_POST['college']);
+//            }
+        //   var_dump($_POST['day']);
             $data = Arr::extract($_POST, array(
-                'day', 
+                'dmy', 
                 'comment',
                 'college',
                 'customer_id',

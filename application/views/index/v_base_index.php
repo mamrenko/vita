@@ -36,22 +36,26 @@
               
           <header class="container">
              <div class="row">
-                 <div class="col-md-3 text-center">
-                   
-<?=$cart;?>
-
-
+                 <div class="col-md-4">
+                     <h3>Агентство Аплодисменты</h3>
+                 </div>
+                 <div class="col-md-2">
+                    
+                     <br> 
+                      <?=$cart;?>
+             
           </div>
-                 <div class="col-md-6 text-info">
-                     <blockquote>
+                 <div class="col-md-3">
+                     <br>
+                     
                       <?=$login;?>
-                     </blockquote>
+                     
                  </div>
                  <div class="col-md-3">
-                     <blockquote>
-  <p>8-903-509-77-03</p>
-  <footer>Звоните с 10 до 22 часов</footer>
-</blockquote>
+                    
+  <h3>8-903-509-77-03</h3>
+  <p>С 10 до 22 часов</p>
+
                      
                      
                  </div>

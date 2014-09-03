@@ -12,21 +12,24 @@ $(function () {
               startDate: '0d',
             }
         )
-	$('#dp-ex-43').datepicker ()
+	$('#dp-ex-4').datepicker (
+           {
+       todayBtn: "linked",
+       language: "ru",
+   
+           } 
+        )
         
         
         
         
-                $('#sanbox .input-group.date').datepicker({
-                     format: "dd/mm/yyyy",
+                     $('#sandbox .input-group.date').datepicker({
     todayBtn: "linked",
     language: "ru",
-    orientation: "bottom auto",
-    multidate: true,
-    calendarWeeks: true,
+    orientation: "top auto",
+    autoclose: true,
     todayHighlight: true
     });
-    
     
 	$('#dp-ex-5').datepicker ()
 

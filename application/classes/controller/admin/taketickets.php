@@ -23,7 +23,7 @@ class Controller_Admin_Taketickets extends Controller_Admin {
         $submenu = Widget::load('adminmenuorders');
         
          $taketickets = ORM::factory('taketicket')
-                 
+                 ->order_by('dmy','DESC')
                  ->find_all();
         $content = View::factory('admin/taketickets/v_taketickets_index')
                 ->bind('taketickets', $taketickets);
