@@ -9,8 +9,8 @@ class Model_Order extends ORM {
         ),
     );
      
-         protected $_has_many = array(
-		'taketickets' => array(
+         protected $_has_one = array(
+		'taketicket' => array(
 			'model' => 'taketicket',
 			'foreign_key' => 'order_id',
 		),

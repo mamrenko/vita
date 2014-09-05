@@ -124,9 +124,18 @@
                      <td>
                          <?=$order->cost?>
                      </td>
-                     <td><? $tacketickets = $order->taketickets->find_all()->as_array();?>
-                         <?if(count($tacketickets)>0):?>
-                         <p>Чего то есть</p>
+                     <td><?;?>
+                         
+                         <?if($order->taketicket != ''):?>
+                         <p><?=$order->taketicket->comment?></p>
+                         <?$barygs = $order->taketicket->associates->find_all()->as_array();?>
+                         <?  foreach ($barygs as $baryg):?>
+                         <p>Брали у <?=$baryg->name?></p>
+                         <p><?=$baryg->phone?></p>
+                         <p><?=date('d-m-Y',  strtotime($order->taketicket->dmy))?></p>
+                         <?  endforeach;?>
+                         
+                         <?=HTML::anchor('admin/orders/edit_ticket/'.$order->id, '<button class="btn btn-warning" type="button"><i class="fa fa-dollar"></i>  Изменить информацию</button>')?>
                          <?  else :?>
                            <?=HTML::anchor('admin/orders/tickets/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?>
                          <? 

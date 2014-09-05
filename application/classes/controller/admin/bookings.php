@@ -85,6 +85,7 @@ public function action_tickets(){
             $college_arr[$college->id] = $college->name;
         }
         $submenu = Widget::load('adminmenuorders');
+        
         $content = View::factory('admin/orders/v_bookings_ticket')
                 ->bind('order', $order)
                 ->bind('colleges', $colleges)

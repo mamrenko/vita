@@ -18,7 +18,9 @@
                         <th>
                            Когда
                         </th>
-                        
+                        <th>
+                            Изменить
+                        </th>
                         
                         
                     </tr>
@@ -65,7 +67,9 @@
                             </p>   
                              
                           </td>
-                        
+                          <td>
+                               <?=HTML::anchor('admin/orders/edit_ticket/'.$teke->order->id, '<button class="btn btn-warning" type="button"><i class="fa fa-dollar"></i>  Изменить информацию</button>')?>
+                          </td>
                             
                     </tr>
 <? endforeach;?>

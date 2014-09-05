@@ -8,20 +8,25 @@
          
     protected $_table_name = 'taketickets';
     
+         protected $_has_one = array(
+		
+                
+	);
     
      protected $_belongs_to = array(
         'customer' => array(
             'model' => 'customer',
             'foreign_key' => 'customer_id',
         ),
-         'order' => array(
-            'model' => 'order',
-            'foreign_key' => 'order_id',
-        ),
+        
          'booking' => array(
 			'model' => 'booking',
 			'foreign_key' => 'booking_id',
 		),
+          'order' => array(
+            'model' => 'order',
+            'foreign_key' => 'order_id',
+        ),
          'orderuser' => array(
             'model' => 'orderuser',
             'foreign_key' => 'orderuser_id',
