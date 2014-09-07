@@ -7,6 +7,9 @@
                 <thead>
                     <tr>
                         <th>
+                            № Заказа
+                        </th>
+                        <th>
                           Заказ
                         </th>
                         <th>
@@ -35,6 +38,9 @@
 
       <?foreach($taketickets as $teke):?>
                      <tr>
+                         <td>
+                             <?=$teke->order->id?>
+                         </td>
                         <td>
                             <p>
           <?=$teke->order->place?> - <?=$teke->order->scene?>
@@ -68,7 +74,7 @@
                              
                           </td>
                           <td>
-                               <?=HTML::anchor('admin/orders/edit_ticket/'.$teke->order->id, '<button class="btn btn-warning" type="button"><i class="fa fa-dollar"></i>  Изменить информацию</button>')?>
+                               <?=HTML::anchor('admin/orders/ticket_edit/'.$teke->id, '<button class="btn btn-warning" type="button"><i class="fa fa-dollar"></i>  Изменить информацию</button>')?>
                           </td>
                             
                     </tr>

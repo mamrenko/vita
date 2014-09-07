@@ -1,6 +1,6 @@
 <div class="row">
     
-    <div class="col-md-9">
+    <div class="col-md-10">
 
 
  <div class="portlet">
@@ -67,7 +67,10 @@
        <table id="checktb" class="table table-striped table-bordered table-hover table-checkable">
              <thead>
                  <tr>
-                  
+                     <th>
+                        № Заказа
+                     </th>
+                      
                      <th>
                          Площадка
                      </th>
@@ -92,7 +95,9 @@
                             
                             Какие билеты
                         </th>
-                     
+                        <th>
+                            Функции
+                        </th>
                      
                  </tr>
              </thead>
@@ -101,6 +106,9 @@
                  <?foreach ($orders as $order):?>
 
                  <tr>
+                     <td>
+                         <?=$order->id?>
+                     </td>
                     
                         <td>
                             
@@ -124,24 +132,38 @@
                      <td>
                          <?=$order->cost?>
                      </td>
-                     <td><?;?>
+                    
                          
                          <?if($order->taketicket != ''):?>
+                      <td>
                          <p><?=$order->taketicket->comment?></p>
                          <?$barygs = $order->taketicket->associates->find_all()->as_array();?>
+                         Брали у 
                          <?  foreach ($barygs as $baryg):?>
-                         <p>Брали у <?=$baryg->name?></p>
+                         <p><?=$baryg->name?></p>
                          <p><?=$baryg->phone?></p>
                          <p><?=date('d-m-Y',  strtotime($order->taketicket->dmy))?></p>
                          <?  endforeach;?>
                          
-                         <?=HTML::anchor('admin/orders/edit_ticket/'.$order->id, '<button class="btn btn-warning" type="button"><i class="fa fa-dollar"></i>  Изменить информацию</button>')?>
+                        
+                     </td>
+                     <td>
+                         <p> <?=HTML::anchor('admin/orders/ticket_edit/'.$order->taketicket->id, '<button class="btn btn-warning" type="button">Изменить информацию</button>')?>
+                         </p>
+                         <p>
+                         <?=HTML::anchor('admin/orders/ticket_delete/'.$order->taketicket->id, '<button class="btn btn-danger" type="button">Удалить информацию</button>')?>
+                             </p>
                          <?  else :?>
-                           <?=HTML::anchor('admin/orders/tickets/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?>
+                     <td>
+                         Пока нет ничего
+                     </td>
+                     <td>
+                        <?=HTML::anchor('admin/orders/tickets/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?> 
+                     </td>
+                           
                          <? 
 endif;?>
                      </td>
-                    
                  </tr>
                  <?
 endforeach;?>

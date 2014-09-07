@@ -2,11 +2,15 @@
     <div class="row">
        
         
-        <div class="col-md-9">
+        <div class="col-md-10">
                <h3>Незарегистированные покупатели</h3>
            <table id="placetb" class="table table-bordered table-highlight">
                 <thead>
                     <tr>
+                        
+                        <th>
+                            Номер Заказа
+                        </th>
                         <th>
                           Имя  
                         </th>
@@ -34,6 +38,10 @@
                 <tbody>
                     <?foreach($customers as $customer):?>
                     <tr>
+                       
+                        <td>
+                            <?=$customer->order->id?>
+                        </td>
                         <td>
                             <?=HTML::anchor('admin/orders/orders/'.$customer->id,$customer->name)?>
                             
@@ -52,7 +60,18 @@
                               <?=date('d-m-Y H:i:s', strtotime($customer->dt))?>
                         </td>
                         <td>
-                             <?=HTML::anchor('admin/orders/orders/'.$customer->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Заказ</button>')?>
+                             <?if ($customer->order->taketicket != ''):?>
+
+ <?=HTML::anchor('admin/orders/orders/'.$customer->id, '<button class="btn btn-success" type="button"><i class="fa fa-thumbs-o-up"></i> Заказ № '.$customer->order->id .'</button>')?>
+
+
+                            
+                            <?else :?>
+
+ <?=HTML::anchor('admin/orders/orders/'.$customer->id, '<button class="btn btn-danger" type="button"><i class="fa fa-thumbs-o-down"></i> Заказ № '.$customer->order->id .'</button>')?>
+
+
+                            <?endif;?>
                         </td>
                     </tr>
                     <?

@@ -9,8 +9,8 @@
     protected $_table_name = 'customers';
     
     
-    protected $_has_many = array(
-		'orders' => array(
+    protected $_has_one = array(
+		'order' => array(
 			'model' => 'order',
 			'foreign_key' => 'custom_id',
 		),

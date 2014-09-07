@@ -98,10 +98,7 @@ public function action_tickets(){
             if(!isset($_POST['college'])){
                $_POST['college'] =''; 
             }
-// else {
-//               $_POST['college'] = implode(",", $_POST['college']);
-//            }
-        //   var_dump($_POST['day']);
+
             $data = Arr::extract($_POST, array(
                 'dmy', 
                 'comment',
@@ -147,5 +144,89 @@ public function action_tickets(){
     
 }
 
+        public function action_ticket_edit(){
+       $id = abs((int) $this->request->param('id'));
+       $taketicket = ORM::factory('taketicket', $id);
+      
+        
+        
+       if(!$taketicket->loaded()) {
+            $this->request->redirect('admin/orders/orders');
+        }
+        
+        $colleges = ORM::factory('associate')
+                ->find_all()
+                  ->as_array();
+          
+          
+           $college_arr = array();
+        foreach ($colleges as $college){
+            $college_arr[$college->id] = $college->name;
+        }
+        
+        
+         $data = $taketicket->as_array();
+          $data['college'] = $taketicket->associates->find_all()->as_array();
+          $data['dmy'] = date('d-m-Y', strtotime($data['dmy']));
+     $submenu = Widget::load('adminmenuorders');
+     
+     
+     if (isset($_POST['submit']))
+        {
+         
+            $_POST['comment'] = Security::xss_clean( $_POST['comment']);
+            $_POST['dmy'] = Security::xss_clean( $_POST['dmy']);
+            $_POST['dmy'] = date('Y-m-d', strtotime( $_POST['dmy']));
+            $_POST['customer_id'] = Security::xss_clean( $_POST['customer_id']);
+            $_POST['order_id'] = Security::xss_clean( $_POST['order_id']);
+            if(!isset($_POST['college'])){
+               $_POST['college'] =''; 
+            }
 
+            $data = Arr::extract($_POST, array(
+                'dmy', 
+                'comment',
+                'college',
+                'customer_id',
+                'order_id'
+                ));
+            $data2 = array(
+                'booking_id' => '0',
+                'orderuser_id' => '0',
+            );
+            $data = Arr::merge($data2, $data);
+            ///$taketicket = ORM::factory('taketicket');
+             $taketicket->values($data);
+            
+
+         try {
+                
+                
+             $taketicket->save(); 
+             $taketicket->remove('associates');
+             $taketicket->add('associates', $data['college']);
+            $this->request->redirect('admin/orders/orders/'.$data['order_id']);
+            }
+            catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('validation');
+             
+                }
+            }
+     
+     
+     $content = View::factory('admin/orders/v_orders_ticket_edit')
+                
+                ->bind('taketicket', $taketicket)
+                ->bind('data', $data)
+                ->bind('college_arr', $college_arr)
+                ->bind('errors', $errors)
+                ->bind('id', $id);
+     
+     
+        // Вывод в шаблон
+        $this->template->page_title = 'Редактируем У кого брали билеты и какие';
+        $this->template->block_center = array($content);
+        $this->template->block_left = array($submenu); 
+
+        }
 }
