@@ -229,4 +229,18 @@ public function action_tickets(){
         $this->template->block_left = array($submenu); 
 
         }
+        public function action_ticket_delete(){
+       $id = abs((int) $this->request->param('id'));
+       $taketicket = ORM::factory('taketicket', $id);
+       $order = $taketicket->order_id;
+       
+        if(!$taketicket->loaded()) {
+            $this->request->redirect('admin/orders');
+        }
+
+        
+         $taketicket->remove('associates');
+        $taketicket->delete();
+        $this->request->redirect('admin/orders/orders/'.$order);
+        }
 }
