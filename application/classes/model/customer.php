@@ -9,12 +9,15 @@
     protected $_table_name = 'customers';
     
     
-    protected $_has_one = array(
+    protected $_has_many = array(
 		'order' => array(
 			'model' => 'order',
 			'foreign_key' => 'custom_id',
 		),
-                
+                'taketickets' => array(
+			'model' => 'taketicket',
+			'foreign_key' => 'customer_id',
+		),
 	);
    
     

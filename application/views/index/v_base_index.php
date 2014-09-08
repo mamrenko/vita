@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?=$site_name;?> | <?=$page_title?></title>
+    <title><?=$site_name;?> | <?=$page_title?> | <?=$meta_title?></title>
 	<meta name="keywords" content="<?=$keywords;?>" />
 	<meta name="description" content="<?=$site_description;?>" />
-        
+        <meta name="description" content="<?=$meta_description;?>">
 
         <?foreach($styles as $style) :?>
             <?=HTML::style($style)?>
@@ -36,29 +36,34 @@
               
           <header class="container">
              <div class="row">
-                 <div class="col-md-4">
-                     <h3>Агентство Аплодисменты</h3>
+            <div class="col-md-2" style="padding: 5px">
+                <a href="<?=URL::base()?>">
+                    <image src="<?=URL::base()?>media/images/logo_a.png" alt="Агентство Аплодисменты"/>
+                </a> 
+                   
                  </div>
-                 <div class="col-md-2">
+                
+                     
+                 <div class="col-md-3">
+                     <p>
+               Заказ и доставка билетов в театр
+           </p> 
+            <h2>8-495-509-77-03</h2>
+  <p>С 10 до 22 часов</p>
+                 </div>
+              
+                 <div class="col-md-3" style="padding-top: 30px">
                     
-                     <br> 
                       <?=$cart;?>
              
           </div>
-                 <div class="col-md-3">
-                     <br>
-                     
-                      <?=$login;?>
-                     
-                 </div>
-                 <div class="col-md-3">
+                 <div class="col-md-4" style="padding-top: 30px">
                     
-  <h3>8-903-509-77-03</h3>
-  <p>С 10 до 22 часов</p>
-
+                   <?=$login?>
                      
                      
                  </div>
+                 
                       
                   </div>
             
@@ -77,7 +82,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?=URL::base()?>">Агентство  Аплодисменты</a>
+      <a class="navbar-brand" href="<?=URL::base()?>">Агентство  Аплодисменты
+    </a>
       
     </div>
 

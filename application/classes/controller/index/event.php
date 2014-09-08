@@ -72,6 +72,10 @@ class Controller_Index_Event extends Controller_Index
                  ->bind('arr', $arr)
             
             ; 
+             $this->template->keywords = $playbill->meta_keywords;
+             $this->template->meta_description = $playbill->meta_description;
+             $this->template->meta_title = $playbill->meta_title;
+            
              $this->template->page_title = $playbill->place->title .' | ' . $playbill->title;
              $this->template->content_title ='';
              $this->template->block_center = array($content,);
@@ -105,6 +109,8 @@ class Controller_Index_Event extends Controller_Index
                  
             )
             );
+         
+          
              $this->template->page_title = '';
              $this->template->content_title ='Каталог';
              $this->template->block_center = array($content,);

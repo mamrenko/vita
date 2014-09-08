@@ -107,7 +107,7 @@
 
                  <tr>
                      <td>
-                         <?=$order->id?>
+                         <?=$order->customer->id?>
                      </td>
                     
                         <td>

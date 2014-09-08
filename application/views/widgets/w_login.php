@@ -18,12 +18,16 @@
       
     <?if ($auth->logged_in('admin')):?>
 
-     <?=html::anchor('admin', '<button type="button" class="btn btn-primary">Панель администратора</button>')?>
-     <?=html::anchor('account', '<button type="button" class="btn btn-primary">Личный кабинет</button>')?>
+     <?=html::anchor('admin', '<button type="button" class="btn btn-primary"> 
+ Панель администратора <i class="fa fa-cogs"></i></button>')?>
+     <?=html::anchor('account', '<button type="button" class="btn btn-primary">Личный кабинет <i class="fa fa-user"></i>
+</button>')?>
     <?else:?>
-      <?=html::anchor('account', '<button type="button" class="btn btn-primary">Личный кабинет</button>')?>
+      <?=html::anchor('account', '<button type="button" class="btn btn-primary">Личный кабинет <i class="fa fa-user"></i>
+</button>')?>
       
     <?endif?>
     
-      <?=html::anchor('logout', '<button type="button" class="btn btn-warning">Выйти</button>')?>
+      <?=html::anchor('logout', '<button type="button" class="btn btn-warning">Выйти <i class="fa fa-arrow-up"></i>
+</button>')?>
       <? endif; ?>

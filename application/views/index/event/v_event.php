@@ -12,8 +12,8 @@
             
                 <div class="row">
                     
-                  
-                        <h2><?=$playbill->title;?></h2>
+                
+                        <h2><?=$playbill->title;?> <small><?=$playbill->subtitle;?></small></h2>
                         
                          <img class="img-responsive img-thumbnail pull-right" src="<?=URL::base();?>media/uploads/playplaces/<?=$playbill->image;?>"
                               alt="<?=$playbill->title;?>">

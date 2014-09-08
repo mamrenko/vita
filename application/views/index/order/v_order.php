@@ -17,7 +17,88 @@
                    </h3>
                     <h3><?=HTML::anchor('event/one/'.$event->playbill->id, $event->playbill->title);?></h3>
                     <h4><?=$event->playbill->subtitle;?></h4>
-                    <h4><?=date('d-m-Y', strtotime($event->day));?></h4>
+                    <h4>
+                        <?=date('d',strtotime($event->day))?>
+                        
+                       <?$month = (date('m',strtotime($event->day))); ?>
+                
+                
+                   
+                    <? switch ($month) {
+case 1:
+    echo "января";
+    break;
+case 2:
+    echo "февраля";
+    break;
+case 3:
+    echo "марта";
+    break;
+case 4:
+    echo "апреля";
+    break;
+case 5:
+    echo "мая";
+    break;
+case 6:
+    echo "июня";
+    break;
+case 7:
+    echo "июля";
+    break;
+case 8:
+    echo "августа";
+    break;
+case 9:
+    echo "сентября";
+    break;
+case 10:
+    echo "октября";
+    break;
+case 11:
+    echo "ноября";
+    break;
+case 12:
+    echo "декабря";
+    break;
+default:
+    echo "????";
+}
+   ?>                 
+       <?=date('Y ',strtotime($event->day));?>            
+                    <?$den = (date('N',strtotime($event->day)));?> 
+                     <? switch ($den) {
+case 1:
+    echo "Понедельник";
+    break;
+case 2:
+    echo "Вторник";
+    break;
+case 3:
+    echo "Среда";
+    break;
+case 4:
+    echo "Четверг";
+    break;
+case 5:
+    echo "Пятница";
+    break;
+case 6:
+    echo "Суббота";
+    break;
+case 7:
+    echo "Воскресенье";
+    break;
+default:
+    echo "????";
+}
+  ?>  
+                        
+                        
+                    
+                       
+                    в <?=$event->start?>  
+                    </h4>
                     
      
 </div></div></div>

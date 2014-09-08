@@ -39,7 +39,7 @@
       <?foreach($taketickets as $teke):?>
                      <tr>
                          <td>
-                             <?=$teke->order->id?>
+                             <?=$teke->customer_id?>
                          </td>
                         <td>
                             <p>

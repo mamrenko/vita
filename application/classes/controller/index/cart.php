@@ -6,11 +6,14 @@ class Controller_Index_Cart extends Controller_Index {
     public function before() {
         parent::before();
         
-        // $this->template->scripts[] = 'media/BootstrapFormHelpers/ajax.js';
-         
-         
+       // $this->template->scripts[] = 'http://code.jquery.com/jquery-1.11.0.min.js';
+       // $this->template->scripts[] = 'http://code.jquery.com/jquery-migrate-1.2.1.min.js';
+       // $this->template->scripts[] = 'media/js/plugins/parsley_validation/parsley.js';
+        //$this->template->scripts[] = 'media/js/plugins/parsley_validation/my_parsley.js';
+        //$this->template->scripts[] = 'media/BootstrapFormHelpers/dist/js/bootstrap-formhelpers.js';
+       // $this->template->styles[] = 'media/BootstrapFormHelpers/dist/css/bootstrap-formhelpers.css';
         // $this->template->styles[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.css';
-        // $this->template->scripts[] = 'media/js/plugins/bootstrap-touchspin/src/jquery.bootstrap-touchspin.js';
+    
          //$this->template->scripts[] = 'media/js/plugins/bootstrap-touchspin/src/mytouch.js';
          
       

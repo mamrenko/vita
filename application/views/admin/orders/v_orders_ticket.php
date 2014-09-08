@@ -173,6 +173,8 @@
                    'data-maxlength' => '600',
                    ))?>
           </div>
+          <p>Косттомер ид<?= $customer->id?></p> 
+          <p><?=$order->id?></p>
            <?=Form::hidden('customer_id', $customer->id)?>
             <?=Form::hidden('order_id', $order->id)?>
            

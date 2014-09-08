@@ -8,6 +8,9 @@
                 <thead>
                     <tr>
                         <th>
+                            Номер Заказа
+                        </th>
+                        <th>
                           Имя  
                         </th>
                         <th>
@@ -36,6 +39,9 @@
                     <?foreach($orderusers as $customer):?>
                     
                     <tr>
+                        <td>
+                            <?=$customer->id?>
+                        </td>
                         <td>
                             <?=HTML::anchor('admin/bookings/orders/'.$customer->id,$customer->user->username)?>
                             

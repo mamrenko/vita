@@ -158,10 +158,17 @@ class Controller_Index_Places extends Controller_Index
                   ->bind('arr', $arr)
                    
                   ;
-                
-           
+//                 foreach ($events as $event) {
+//                 $play = $event->playbill->title. ' ';
+//            }  
+             $this->template->keywords = 'Билеты в '. $place->title ;
+                  
+                    
+            
+             $this->template->meta_description = $place->title;
+             $this->template->meta_title = $place->title;
                  
-             $this->template->page_title = 'События | '.$place->title. ' |  Заказать билеты';
+             $this->template->page_title = 'События | '.$place->title. ' |  Заказать билеты ';
              $this->template->content_title ='Каталог';
              $this->template->block_center = array($content,);
              $this->template->block_left = array($calendar, $menu,$news,); 

@@ -43,6 +43,9 @@ class Controller_Base extends Controller_Template {
         $this->template->author = $settings->author;
         $this->template->page_title = null;
         $this->template->keywords = null;
+        $this->template->meta_description = null;
+        $this->template->meta_title = null;
+       
 
         // Подключаем стили и скрипты
         $this->template->styles = array();

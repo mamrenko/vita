@@ -25,9 +25,13 @@ class Controller_Admin_Orders extends Controller_Admin {
          $customers = ORM::factory('customer')
                  ->order_by('id', 'DESC')
                  ->find_all();
+               
+         
         $content = View::factory('admin/orders/v_orders_index')
-                ->bind('customers', $customers);
+                ->bind('customers', $customers)
                 
+                ;
+            
 
         // Вывод в шаблон
         $this->template->page_title = 'Заказы';
@@ -40,7 +44,7 @@ class Controller_Admin_Orders extends Controller_Admin {
         $id = abs((int) $this->request->param('id'));
          $customer  = ORM::factory('customer', $id);
         
-        //$customer
+      
         
         
        if(!$customer->loaded()) {
@@ -55,7 +59,8 @@ class Controller_Admin_Orders extends Controller_Admin {
         $submenu = Widget::load('adminmenuorders');
         $content = View::factory('admin/orders/v_orders_orders')
                 ->bind('customer', $customer)
-                ->bind('orders', $orders);
+                ->bind('orders', $orders)
+                ;
         
         // Вывод в шаблон
         $this->template->page_title = 'Заказ Покупателя';
@@ -118,7 +123,7 @@ public function action_tickets(){
          try {
                 $taketicket->save();
                 $taketicket->add('associates', $data['college']);
-                $this->request->redirect('admin/taketickets');
+                $this->request->redirect('admin/orders/orders/'.$data['customer_id']);
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -205,7 +210,7 @@ public function action_tickets(){
              $taketicket->save(); 
              $taketicket->remove('associates');
              $taketicket->add('associates', $data['college']);
-            $this->request->redirect('admin/orders/orders/'.$data['order_id']);
+            $this->request->redirect('admin/orders/orders/'.$data['customer_id']);
             }
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
@@ -232,7 +237,7 @@ public function action_tickets(){
         public function action_ticket_delete(){
        $id = abs((int) $this->request->param('id'));
        $taketicket = ORM::factory('taketicket', $id);
-       $order = $taketicket->order_id;
+       $order = $taketicket->customer_id;
        
         if(!$taketicket->loaded()) {
             $this->request->redirect('admin/orders');

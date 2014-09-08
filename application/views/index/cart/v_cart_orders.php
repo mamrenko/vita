@@ -210,7 +210,8 @@ default:
        
        <?=Form::open('cart/orders/', array(
             'enctype' => 'multipart/form-data',
-            
+            //'id' =>'validateform',
+           'data-validate' => 'parsley',
            'class' => 'form-horizontal',
            'role' => 'form',
            ));?>
@@ -229,15 +230,13 @@ default:
            <?=Form::input('email', $data['email'], array(
                    'class' => 'form-control',
                    'type' => 'email',
-                   'placeholder' => 'Ваш Емейл'
+                   'placeholder' => 'Ваш Емейл',
+                  'data-required' => 'true',
                    ))?>
     
     </div>
   </div>
-      
-      
-  
-      
+    
       <div class="form-group">
     <?=Form::label('name', 'Ваше имя', array(
         'class' =>'col-sm-3 control-label',
@@ -249,13 +248,14 @@ default:
            <?=Form::input('name', $data['name'], array(
                    'class' => 'form-control',
                    'type' => 'text',
-                   'placeholder' => 'Ваше имя'
+                   'placeholder' => 'Ваше имя',
+                 'data-required' => 'true',
                    ))?>
     
     </div>
   </div>
      
-      
+    
       <div class="form-group">
     <?=Form::label('phone', 'Ваш телефон', array(
          'class' =>'col-sm-3 control-label',
@@ -266,15 +266,17 @@ default:
     <div class="col-sm-9">
            <?=Form::input('phone', $data['phone'], array(
                'type' => "text",
-        'class' =>'form-control bfh-phone',
-        'data-format' => "+7 (ddd) ddd-dddd",
-                  
-                  
+                'class' => 'form-control bfh-phone',
+                'data-format' => "+7 (ddd) ddd-dddd",
+                'data-required' => 'true',
+                  'data-parsley-minlength' => '8',
+                  'data-parsley-maxlength' => '8',
                    'placeholder' => 'Ваш телефон',
-                   'id' => 'phone',
+                   //'id' => 'phone',
                    ))?>
     
     </div>
+    
   </div>
     
       
@@ -292,7 +294,8 @@ default:
                    'class' => 'form-control',
                    'type' => 'text',
                     'rows' =>2,
-                   'placeholder' => 'Адрес Доставки  в Москве'
+                   'placeholder' => 'Адрес Доставки  в Москве',
+                   'data-required' => 'true',
                    ))?>
     
     </div>
@@ -318,7 +321,9 @@ default:
      <i class="fa fa-asterisk"></i> 
       <div class="form-group">
              
-          <?=Form::checkbox('status', 1, (bool) $data['status'])?>
+          <?=Form::checkbox('status', 1, (bool) $data['status'],array(
+              'data-required' => 'true',
+          ))?>
           
           Я принимаю   <button class="btn btn-primary" data-toggle="modal" data-target="#oferts">
   условия договора-оферты
@@ -473,7 +478,7 @@ Email: info@aplodismenty.ru
       <?=Form::close()?>
   
       <p><i class="fa fa-asterisk"></i>  Все поля обязательны для заполнения</p>
-
+  
   </div>
 </div>
  </div>   

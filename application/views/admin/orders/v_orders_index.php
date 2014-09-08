@@ -40,7 +40,7 @@
                     <tr>
                        
                         <td>
-                            <?=$customer->order->id?>
+                            <?=$customer->id?>
                         </td>
                         <td>
                             <?=HTML::anchor('admin/orders/orders/'.$customer->id,$customer->name)?>
@@ -60,15 +60,18 @@
                               <?=date('d-m-Y H:i:s', strtotime($customer->dt))?>
                         </td>
                         <td>
-                             <?if ($customer->order->taketicket != ''):?>
+                            
+                            <?$tts = $customer->taketickets->find_all();?>
+                           
+                             <?if (count($tts) > 0):?>
 
- <?=HTML::anchor('admin/orders/orders/'.$customer->id, '<button class="btn btn-success" type="button"><i class="fa fa-thumbs-o-up"></i> Заказ № '.$customer->order->id .'</button>')?>
+ <?=HTML::anchor('admin/orders/orders/'.$customer->id, '<button class="btn btn-success" type="button"><i class="fa fa-thumbs-o-up"></i> Заказ № '.$customer->id .'</button>')?>
 
 
                             
                             <?else :?>
 
- <?=HTML::anchor('admin/orders/orders/'.$customer->id, '<button class="btn btn-danger" type="button"><i class="fa fa-thumbs-o-down"></i> Заказ № '.$customer->order->id .'</button>')?>
+ <?=HTML::anchor('admin/orders/orders/'.$customer->id, '<button class="btn btn-danger" type="button"><i class="fa fa-thumbs-o-down"></i> Заказ № '.$customer->id .'</button>')?>
 
 
                             <?endif;?>
