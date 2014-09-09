@@ -25,7 +25,7 @@
               <ul class="icons-list">
 	   <li>
            <i class="icon-li fa fa-cloud"></i>
-           Площадка: <strong><?=$order->place?> </strong>   
+           Площадка: <strong><?=$order->place?> </strong>   - <?=$order->scene?>
              </li>
             <li>
                 <i class="icon-li fa fa-tasks"></i>
@@ -81,6 +81,7 @@
           
       </div>
  </div>
+        <?if(count($college_arr) >0 ):?>
       <div class="col-md-8">
           
           <div class="portlet">
@@ -93,7 +94,7 @@
 						</div>
               <div class="portlet-content">
                   
-                   <?=Form::open('admin/orders/ticket_add', array(
+                   <?=Form::open('admin/bookings/tickets/'.$id, array(
          'id' => 'validate-basic',
            'class' => 'form parsley-form',
            'data-validate' => 'parsley',
@@ -117,40 +118,30 @@
                   
           </div>
                   
-                   <div class="row">
+          <div class="row">
          <div class="col-md-4 ">
      <h4>Выберите дату, когда брали билеты</h4>
-     <div id="sanbox">
-      <div class="input-group date">
-             <?=Form::input('day', $data['day'], array(
+    
+     <div id="dp-ex-4" class="input-group date"
+          data-auto-close="true"
+          data-date="<?=date('d-m-Y');?>" 
+          data-date-format="dd-mm-yyyy"
+          data-date-autoclose="true">
+                                <?=Form::input('dmy', $data['dmy'], array(
                                     'class' => 'form-control',
                                     'type' => 'text',
-                                     'data-required' => 'true',
-                                    
+                                    'data-required' => 'true',
+                                   
                                     
                   ))?>
-    
-    
-    
-    
-    <span class="input-group-addon">
-        <i class="glyphicon glyphicon-th"></i>
-    </span>
-    </div>
-          </div>                   
-                               
-				
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                             </div>
-                            
-     
-                      
-        
-         
-         </div>
-           
+                            <span class="help-block">dd-mm-yyyy</span>
+                        </div>
+          </div>     
            <div class="form-group">
-               <?=Form::label('addition', 'Дополнение, Комментарии')?>
-               <?=Form::textarea('addition', $data['addition'], array(
+               <?=Form::label('comment', 'Дополнение, Комментарии Какие билеты и почем')?>
+               <?=Form::textarea('comment', $data['comment'], array(
                    'type' =>'text',
                    'placeholder' => 'Минимум 10 букв, максимум 600',
                    'class' => 'form-control',
@@ -159,8 +150,11 @@
                    'data-maxlength' => '600',
                    ))?>
           </div>
-           
-           
+                  <h3>$id <?=$id?></h3>  
+                  <h3>$booking_id <?=$order->id?></h3>  
+                   <h3>$orderuser_id <?=$order->orderuser_id?></h3>  
+           <?=Form::hidden('booking_id', $order->id)?>
+            <?=Form::hidden('orderuser_id', $order->orderuser_id)?>
                <div class="form-group">
                     
                       <?=Form::button('submit', 'Сохранить', array(
@@ -175,7 +169,14 @@
           
       </div>
       
-  </div>
+  </div><?else:?>
+      <div class="col-md-8">
+          
+          <p>Нужно добавить сначала того, у кого билеты брали</p>
+          <?=HTML::anchor('admin/colleges', '<button class="btn btn-info" type="button"><i class="fa fa-reply"></i> Добавить Коллегу </button>')?>
+      </div>
+      <?
+endif;?>
        </div>
 
 

@@ -40,6 +40,7 @@
              </thead>
              <tbody>
                  <tr>
+                     
                      <td>
                          <h4><?=$customer->user->username?></h4>
                      </td>
@@ -67,7 +68,9 @@
        <table id="checktb" class="table table-striped table-bordered table-hover table-checkable">
              <thead>
                  <tr>
-                  
+                     <th>
+                         Номер Заказа
+                     </th>
                      <th>
                          Площадка
                      </th>
@@ -92,6 +95,9 @@
                             
                             Какие билеты
                         </th>
+                        <th>
+                            Функции
+                        </th>
                      
                      
                  </tr>
@@ -101,7 +107,9 @@
                  <?foreach ($orders as $order):?>
 
                  <tr>
-                    
+                     <td>
+                          <?=$order->orderuser_id?>
+                     </td>
                         
                         <td>
                             
@@ -125,10 +133,24 @@
                      <td>
                          <?=$order->cost?>
                      </td>
+                   <?$taketickets = $order->taketickets->find_all()?>
+                         <?if(count($taketickets) > 0):?>
                      <td>
-                           <?=HTML::anchor('admin/bookings/tickets/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?>
+                          Чего то есть 
                      </td>
-                    
+                     <td>
+                         Здесь функции
+                     </td>
+                      <?  else :?>
+                     <td>
+                         Пока нет ничего
+                     </td>
+                        
+                     <td>
+                         <?=HTML::anchor('admin/bookings/tickets/'.$order->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Какие билеты</button>')?>
+                     </td>
+                     <? 
+endif;?>
                  </tr>
                  <?
 endforeach;?>

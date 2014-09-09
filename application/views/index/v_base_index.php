@@ -38,16 +38,18 @@
              <div class="row">
             <div class="col-md-2" style="padding: 5px">
                 <a href="<?=URL::base()?>">
-                    <image src="<?=URL::base()?>media/images/logo_a.png" alt="Агентство Аплодисменты"/>
+                    <img src="<?=URL::base()?>media/images/logo_a.png" alt="Агентство Аплодисменты" class="img-responsive">
+                    
                 </a> 
                    
                  </div>
                 
                      
                  <div class="col-md-3">
-                     <p>
-               Заказ и доставка билетов в театр
-           </p> 
+                 
+                     <p>Заказ и доставка билетов в театр</p>
+               
+            
             <h2>8-495-509-77-03</h2>
   <p>С 10 до 22 часов</p>
                  </div>

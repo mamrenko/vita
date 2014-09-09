@@ -25,7 +25,7 @@
               <ul class="icons-list">
 	   <li>
            <i class="icon-li fa fa-cloud"></i>
-           Площадка: <strong><?=$order->place?> </strong>   
+           Площадка: <strong><?=$order->place?> </strong> - <?=$order->scene?>  
              </li>
             <li>
                 <i class="icon-li fa fa-tasks"></i>
@@ -154,13 +154,13 @@
           </div>                   
                                
 				
-                            </div>
+                            
                             
      
                       
         
          
-         </div>
+         
            
            <div class="form-group">
                <?=Form::label('comment', 'Дополнение, Комментарии Какие билеты и почем')?>
@@ -173,8 +173,7 @@
                    'data-maxlength' => '600',
                    ))?>
           </div>
-          <p>Косттомер ид<?= $customer->id?></p> 
-          <p><?=$order->id?></p>
+          
            <?=Form::hidden('customer_id', $customer->id)?>
             <?=Form::hidden('order_id', $order->id)?>
            
@@ -189,10 +188,10 @@
    <?=Form::close()?> 
                   
               </div>
-          
-      </div>
+           </div>
+    </div>
       
-  </div><?else:?>
+<?else:?>
       <div class="col-md-8">
           
           <p>Нужно добавить сначала того, у кого билеты брали</p>

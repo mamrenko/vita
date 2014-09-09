@@ -86,7 +86,50 @@ public function action_tickets(){
         }
         $submenu = Widget::load('adminmenuorders');
         
-        $content = View::factory('admin/orders/v_bookings_ticket')
+        if (isset($_POST['submit']))
+        {
+         
+            $_POST['comment'] = Security::xss_clean( $_POST['comment']);
+            $_POST['dmy'] = Security::xss_clean( $_POST['dmy']);
+            $_POST['dmy'] = date('Y-m-d', strtotime( $_POST['dmy']));
+            $_POST['booking_id'] = Security::xss_clean( $_POST['booking_id']);
+            $_POST['orderuser_id'] = Security::xss_clean( $_POST['orderuser_id']);
+            if(!isset($_POST['college'])){
+               $_POST['college'] =''; 
+            }
+
+            $data = Arr::extract($_POST, array(
+                'dmy', 
+                'comment',
+                'college',
+                'booking_id',
+                'orderuser_id',
+                ));
+            $data2 = array(
+              
+                'customer_id' => '0',
+                 'order_id' => '0',
+            );
+            $data = Arr::merge($data2, $data);
+            $taketicket = ORM::factory('taketicket');
+             $taketicket->values($data);
+            
+
+         try {
+                $taketicket->save();
+                $taketicket->add('associates', $data['college']);
+                $this->request->redirect('admin/bookings/orders/'.$data['orderuser_id']);
+            }
+            catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('validation');
+             
+                }
+            }
+        
+        
+        
+        $content = View::factory('admin/bookings/v_bookings_ticket')
+                ->bind('id', $id)
                 ->bind('order', $order)
                 ->bind('colleges', $colleges)
                 ->bind('customer', $customer)

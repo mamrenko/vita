@@ -7,8 +7,16 @@ class Model_Booking extends ORM {
             'model' => 'orderuser',
             'foreign_key' => 'orderuser_id',
         ),
+               
+            
     );
-     
+      protected $_has_many = array(
+		'taketickets' => array(
+			'model' => 'taketicket',
+			'foreign_key' => 'booking_id',
+		),
+                
+	);
     
      
     }
