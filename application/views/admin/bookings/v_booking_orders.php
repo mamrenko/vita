@@ -136,11 +136,20 @@
                    <?$taketickets = $order->taketickets->find_all()?>
                          <?if(count($taketickets) > 0):?>
                      <td>
-                          Чего то есть 
+                         <?
+foreach ($taketickets as $taketicet):?>
+                         <p><?=$taketicet->comment?></p>
+                         
                      </td>
                      <td>
-                         Здесь функции
+                        <p> <?=HTML::anchor('admin/bookings/ticket_edit/'.$taketicet->id, '<button class="btn btn-warning" type="button">Изменить информацию</button>')?>
+                         </p>
+                         <p>
+                         <?=HTML::anchor('admin/bookings/ticket_delete/'.$taketicet->id, '<button class="btn btn-danger" type="button">Удалить информацию</button>')?>
+                             </p>
                      </td>
+                     <?
+endforeach;?>
                       <?  else :?>
                      <td>
                          Пока нет ничего

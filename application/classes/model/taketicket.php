@@ -46,9 +46,15 @@
       public function rules()
     {
         return array(
+//            'college' => array(
+//           array(array($this, 'my_function'), array(':validation', ':field')),
+//       ),'use_ssl', 'in_array', array(array('yes', 'no'))
 //           'college'  => array(
-//                array('not_empty'),
+//                array($this, 'in_array', array(':value', array('10', '11'))),
 //            
+//           ),
+//            'college' => array(
+//                array('not_empty'),
 //           ),
            'dmy' => array(
                 array('not_empty'),

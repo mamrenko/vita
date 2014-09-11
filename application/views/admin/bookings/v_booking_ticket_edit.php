@@ -94,7 +94,7 @@
 						</div>
               <div class="portlet-content">
                   
-                   <?=Form::open('admin/bookings/tickets/'.$id, array(
+                   <?=Form::open('admin/bookings/ticket_edit/'.$taketicket->id, array(
          'id' => 'validate-basic',
            'class' => 'form parsley-form',
            'data-validate' => 'parsley',
@@ -119,7 +119,7 @@
                   
           </div>
                   
-         <div class="row">
+          <div class="row">
          <div class="col-md-4 ">
      <h4>Выберите дату, когда брали билеты</h4>
     
@@ -139,7 +139,7 @@
                             </div>
                             <span class="help-block">dd-mm-yyyy</span>
                         </div>
-          </div>           
+          </div>     
            <div class="form-group">
                <?=Form::label('comment', 'Дополнение, Комментарии Какие билеты и почем')?>
                <?=Form::textarea('comment', $data['comment'], array(
@@ -151,7 +151,7 @@
                    'data-maxlength' => '600',
                    ))?>
           </div>
-                 
+                   
            <?=Form::hidden('booking_id', $order->id)?>
             <?=Form::hidden('orderuser_id', $order->orderuser_id)?>
                <div class="form-group">
@@ -177,5 +177,6 @@
       <?
 endif;?>
        </div>
+
 
 

@@ -61,7 +61,23 @@
                               <?=date('d-m-Y H:i:s', strtotime($customer->actdt))?>
                         </td>
                         <td>
-                             <?=HTML::anchor('admin/bookings/orders/'.$customer->id, '<button class="btn btn-success" type="button"><i class="fa fa-dollar"></i> Заказ</button>')?>
+                               <?$tts = $customer->taketickets->find_all();?>
+                           
+                             <?if (count($tts) > 0):?>
+
+ <?=HTML::anchor('admin/bookings/orders/'.$customer->id, '<button class="btn btn-success" type="button"><i class="fa fa-thumbs-o-up"></i> Заказ № '.$customer->id .'</button>')?>
+
+
+                            
+                            <?else :?>
+
+ <?=HTML::anchor('admin/bookings/orders/'.$customer->id, '<button class="btn btn-danger" type="button"><i class="fa fa-thumbs-o-down"></i> Заказ № '.$customer->id .'</button>')?>
+
+
+                            <?endif;?>
+                            
+                            
+                          
                         </td>
                     </tr>
                     <?

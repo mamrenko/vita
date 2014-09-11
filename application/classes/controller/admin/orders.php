@@ -170,7 +170,7 @@ public function action_tickets(){
         }
         
         
-         $data = $taketicket->as_array();
+           $data = $taketicket->as_array();
           $data['college'] = $taketicket->associates->find_all()->as_array();
           $data['dmy'] = date('d-m-Y', strtotime($data['dmy']));
      $submenu = Widget::load('adminmenuorders');

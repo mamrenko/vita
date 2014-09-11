@@ -11,6 +11,10 @@
 			'model' => 'booking',
 			'foreign_key' => 'orderuser_id',
 		),
+             'taketickets' => array(
+			'model' => 'taketicket',
+			'foreign_key' => 'orderuser_id',
+		),
                 
 	);
          
