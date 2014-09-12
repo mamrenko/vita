@@ -89,9 +89,9 @@ if (isset($_SERVER['KOHANA_ENV']))
 Kohana::init(array(
 	'base_url'   => '/vita/',
         'index_file' => FALSE,
-//     'errors'        => TRUE,
-//    'profile'       => (Kohana::$environment == Kohana::DEVELOPMENT),
-//    'caching'       => (Kohana::$environment == Kohana::PRODUCTION)
+     //'errors'        => TRUE,
+    //'profile'       => (Kohana::$environment == Kohana::DEVELOPMENT),
+    //'caching'       => (Kohana::$environment == Kohana::PRODUCTION)
 ));
 
 /**
@@ -130,6 +130,17 @@ Kohana::modules(array(
  */
 
 //if ( ! Route::cache()) {
+
+
+	
+/**
+ * Error router
+ */
+
+//Route::set('error', 'error/(/)', array('action' => '[0-9]++', 'message' => '.+'))
+//        ->defaults(array(
+//                'controller' => 'error',
+//));
 
 
 
