@@ -106,5 +106,68 @@ class Controller_Index_Auth extends Controller_Index {
         $this->request->redirect();
         }
     }
+    
+    public function action_remembermepass(){
+        
+        
+         if (isset($_POST['submit'])){
+            $data = Arr::extract($_POST, array(
+                'email'
+                ));
+                    $email = $data['email'];
+                    $pass = ORM::factory('user')
+                   ->where('email', '=', $email)
+                            ->find()
+                   ;
+                    
+                    if(!$pass->loaded()){
+                        unset($pass);
+                        $message = 'Нет такого емейла, попробуйте другой.';
+                       
+                         //return FALSE;
+        }
+ else {
+     $message = 'Проверьте свой почтовый ящик';
+ }
+                try {
+                  
+                    
+                     $emailuser = $pass->email;
+                     $nameuser = $pass->username;
+                    
+                     $admin_email = Kohana::config('settings.admin_email');
+                     $site_name = Kohana::config('settings.site_name');
+                     
+                     $letter_for_user = View::factory('index/auth/v_letterforuser')
+                             ->bind('site_name', $site_name)
+                            
+                             ->bind('emailuser', $emailuser)
+                             ->bind('nameuser', $nameuser);
+                     
+                      $email = Email::factory('Восстановление пароля на сайте Аплодисменты', $letter_for_user,'text/html')
+                    
+                    ->to($emailuser, $nameuser)
+                    ->from($admin_email, $site_name)
+                    ->send();    
+                    
+                }
+                catch (ORM_Validation_Exception $e) {
+                $errors = $e->errors('auth');
+            }
+         }
+                $content = View::factory('index/auth/v_remembermepass')
+                ->bind('errors', $errors)
+                ->bind('data', $data)
+                ->bind('email', $email)
+                 ->bind('message', $message)
+                        ->bind('pass', $pass)
+            ;
+        
+        
+        // Выводим в шаблон
+        $this->template->title = 'Восстановление пароля';
+        $this->template->page_title = 'Восстановление пароля';
+        $this->template->block_header = array($content);
+    }
 
 }

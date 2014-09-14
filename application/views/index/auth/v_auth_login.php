@@ -67,6 +67,11 @@
      
  
                     </div>
+        
+        <p>
+            <a href="<?=URL::base()?>remembermepass"><button class="btn btn-warning" type="button"> Забыли пароль?</button></a>
+            
+           </p>
     </div>
 
     

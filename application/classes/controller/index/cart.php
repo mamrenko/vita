@@ -591,7 +591,7 @@ return $den;
                     ->where('custom_id', '=', $сostom_id)
                     ->find_all();
 //            
-            $letter =  View::factory('index/order/v_letter')
+                    $letter =  View::factory('index/order/v_letter')
                     ->bind('name', $data['name'])
                     ->bind('adress', $data['adress'])
                     ->bind('phone', $data['phone'])
