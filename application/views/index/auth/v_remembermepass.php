@@ -16,18 +16,18 @@
 <?endforeach?>
 <?endif?> 
         
-        <?if(isset($pass)):?>
+        <?if($pass != ''):?>
         
      <div class="alert alert-success" role="alert">
          <p>Ваш емейл <?=$email?> отправлено письмо с восстановлением пароля</p>
-         <p><?=$message?></p>  
+       
      
      </div>
         <?
 else :?>
-      
+        <?  if (isset($message)):?>
     <div class="alert alert-danger" role="alert"> <p><?=$message?></p>  </div>
-          
+      <?endif;?>
          <?=Form::open('remembermepass', array(
                              'id' => 'validate-basic',
                              'class' => 'form parsley-form',
@@ -58,8 +58,8 @@ else :?>
                     
                   </div>
                            <?=Form::close()?>
-         <?
-                endif;?>
+          <?
+                endif;?>   
     </div>
     
     <div class="col-md-6 ">

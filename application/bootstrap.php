@@ -150,7 +150,7 @@ Route::set('widgets', 'widgets(/<controller>(/<param>))', array('param' => '.+')
             'action'     => 'index',
 	));
 
-Route::set('auth', '<action>', array('action' => 'login|logout|register|remembermepass'))
+Route::set('auth', '<action>', array('action' => 'login|logout|register|remembermepass|hrefpass'))
 	->defaults(array(
                 'directory'  => 'index',
 		'controller' => 'auth',
