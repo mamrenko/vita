@@ -1,17 +1,29 @@
-<h1><strong>500 Error:</strong> Internal server error</h1>
+<div class="row">
+      <div class="col-md-4">
+        
+     
+        
+    </div>
+    <div class="col-md-8">
+
+<h1><strong>500 Ошибка:</strong> Внутренняя ошибка сервера</h1>
  
-<p>Something went wrong while we are processing your request. You can try the following:</p>
+<p>Что пошло не так в то время как обрабатывается ваш запрос. Вы можете попробовать следующее:</p>
  
 <ul>
-    <li>Reload / refresh the page.</li>
-    <li>Go back to the previous page.</li>
+    <li>Перезагрузить / обновите страницу.</li>
+    <li>
+Вернуться на предыдущую страницу.</li>
 </ul>
  
-<p>This incident is logged and we are already notified about this problem. 
-We will trace the cause of this problem.</p>
+<p>
+Этот инцидент регистрируется, и мы работаем над этой проблемой.
+Мы будем отслеживать причину этой проблемы.</p>
  
-<p>For the mean time, you may want to go to the main page.</p>
+<p>Вы можете пойти на главную страницу.</p>
  
-<p><a href="<?php echo URL::site('/', true) ?>">If you wanted to go to the main page, click here.</a></p>
-
+<p><a href="<?php echo URL::site('/', true) ?>">Если вы хотите перейти на главную страницу, нажмите здесь.</a></p>
+</div>
+  
+</div>
 
