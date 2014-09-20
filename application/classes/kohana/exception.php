@@ -1,47 +1,40 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-
-class Kohana_Exception extends Kohana_Kohana_Exception {
  
+/**
+ * Custom exception handler for typical 404/500 error
+ *
+ * @author Lysender
+ *
+ */
+class Kohana_Exception extends Kohana_Kohana_Exception
+{
     public static function handler(Exception $e)
     {
-        // Стандартная обработка, если проект на стадии разработки
-        if (Kohana::DEVELOPMENT === Kohana::$environment)
+        // Throw errors when in development mode
+        if (Kohana::$environment === Kohana::DEVELOPMENT)
         {
             parent::handler($e);
         }
         else
         {
-            try
+            Kohana::$log->add(Log::ERROR, Kohana_Exception::text($e));
+             
+            $attributes = array(
+                'action'    => 500,
+                'origuri'   => rawurlencode(Arr::get($_SERVER, 'REQUEST_URI')),
+                'message'   => rawurlencode($e->getMessage())
+            );
+             
+            if ($e instanceof Http_Exception)
             {
-                // Пишем в лог
-                Kohana::$log->add(Log::ERROR, parent::text($e));
-
-                $attributes = array
-                (
-                    'action'  => 500, // Ошибка по умолчанию
-                    'message' => rawurlencode($e->getMessage())
-                );
-
-                // Получаем код ошибки, как название экшена
-                if ($e instanceof HTTP_Exception)
-                {
-                    $attributes['action'] = $e->getCode();
-                }
-
-                // Выполняем запрос, обращаясь к роутеру для обработки ошибок
-                echo Request::factory(Route::get('error')->uri($attributes))
-                    ->execute()
-                    ->send_headers()
-                    ->body();
+                $attributes['action'] = $e->getCode();
             }
-            catch (Exception $e)
-            {
-                // Чистим буфер и выводим текст ошибки
-                ob_get_level() and ob_clean();
-                echo parent::text($e);
-                exit(1);
-            }
+             
+            // Error sub request
+            echo Request::factory(Route::get('error')->uri($attributes))
+                ->execute()
+                ->send_headers()
+                ->body();
         }
     }
 }
-

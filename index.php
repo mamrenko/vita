@@ -117,3 +117,7 @@ echo Request::factory()
  * 
  * 
  */
+ini_set('display_errors', 'On');
+ 
+# Error reporting may look like this but E_ALL is only what we need
+error_reporting(E_ALL | E_STRICT);

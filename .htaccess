@@ -22,4 +22,4 @@ RewriteRule .* index.php/$0 [PT]
 
 #для ошибок 404
 # Set environment
-#SetEnv KOHANA_ENV production
+SetEnv KOHANA_ENV production

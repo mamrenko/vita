@@ -1,10 +1,22 @@
-<h1><strong>404 Error:</strong> Page not found</h1>
+<div class="row">
+      <div class="col-md-4">
+        
+        <img src="<?=URL::site('/media/images/404.png', TRUE)?>">
+        
+    </div>
+    <div class="col-md-8">
+        
+<h1><strong>404 Ошибка:</strong> Страница не найдена</h1>
  
-<p>The requested page <?php echo HTML::anchor($requested_page, $requested_page) ?> is not found.</p>
+<p>Запрашиваемая страница <?php echo HTML::anchor($requested_page, $requested_page) ?> не найдена.</p>
  
-<p>It is either not existing, moved or deleted.
-Make sure the URL is correct. </p>
+<p>Страница либо не существующая, перемещена или удалена.
+Убедитесь, что адрес верен.</p>
  
-<p>To go back to the previous page, click the Back button.</p>
+
  
-<p><a href="<?php echo URL::site('/', true) ?>">If you wanted to go to the main page instead, click here.</a></p>
+<p><a href="<?php echo URL::site('/', true) ?>">Если вы хотите пойти на главную страницу вместо этого, нажмите здесь.</a>
+</p>
+</div>
+  
+</div>
