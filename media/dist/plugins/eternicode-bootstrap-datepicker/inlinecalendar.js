@@ -3,7 +3,8 @@
     todayBtn: "linked",
     language: "ru",
     multidate: true,
-    todayHighlight: true
+    todayHighlight: true,
+   
     });
     
 

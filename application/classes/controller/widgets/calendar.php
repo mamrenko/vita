@@ -8,9 +8,9 @@ class Controller_Widgets_Calendar extends Controller_Widgets
 
     public function action_index()
 	{
-        
-        
-         
+          if(isset($_POST['datavalue'])) {
+              echo $_POST['datavalue']. 'Ну что то получилочь';
+          }
         
 } 
 }

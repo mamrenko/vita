@@ -81,6 +81,7 @@ class Controller_Index_Auth extends Controller_Index {
                 $role = ORM::factory('role')->where('name', '=', 'login')->find();
                 $users->add('roles', $role);
                 
+                
                 $this->action_login();
                 $this->request->redirect('account');
             }
