@@ -75,4 +75,15 @@ class Controller_Error extends Controller_Index
         $this->template->content_title = 'Internal server error occured';
         $this->template->block_center = array($content,);
     }
+    public function action_403()
+    {
+        
+ 
+        $content = View::factory('error/403');
+        
+        $this->template->description = 'Дступ к данной странице запрещен';
+        $this->template->keywords = 'Доступ к данной странице запрещен';
+        $this->template->content_title = 'Доступ к данной странице запрещен';
+        $this->template->block_center = array($content,);
+    }
 }
