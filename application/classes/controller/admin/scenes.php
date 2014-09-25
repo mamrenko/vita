@@ -223,7 +223,7 @@ class Controller_Admin_Scenes extends Controller_Admin {
 
         $im = Image::factory($file);
         $im
-            ->resize(400, 600, Image::AUTO)
+            ->resize(600, 800, Image::AUTO)
             ->watermark($mark,TRUE, TRUE)
             ->save("$directory/$filename.$ext");
        

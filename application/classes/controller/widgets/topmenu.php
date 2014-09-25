@@ -11,7 +11,7 @@ class Controller_Widgets_Topmenu extends Controller_Widgets {
          $select = Request::initial()->controller();
         
           $menu = array(
-             '<i class="fa fa-home fa-fw"></i> Главная' =>  array('main',),
+             '<i class="fa fa-home fa-fw"></i> Главная' =>  array('/',),
              '<i class="fa fa-eye"></i> Площадки' => array('places'),
              '<i class="fa fa-rub"></i>  Способы Оплаты' =>  array('pay'),
              '<i class="fa fa-truck"></i> Доставка' =>  array('deliver'),

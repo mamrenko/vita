@@ -53,7 +53,7 @@ class Controller_Index extends Controller_Base {
             
             //'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
            // 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
-            'media/dist/js/1.11.1-jquery.min.js',
+            //'media/dist/js/1.11.1-jquery.min.js',
 //            'assets/plugins/jquery-1.10.2.min.js',
             'media/dist/js/jquery-2.0.3.js',
             'media/dist/js/bootstrap.js',
@@ -85,7 +85,7 @@ class Controller_Index extends Controller_Base {
           // 'media/dist/plugins/calendar/jquery.datetimepicker.js',
             'media/dist/plugins/eternicode-bootstrap-datepicker/bootstrap-datepicker.js',
             'media/dist/plugins/eternicode-bootstrap-datepicker/bootstrap-datepicker.ru.js',
-             //'canvas/js/demos/form-extended.js',
+            'media/dist/plugins/eternicode-bootstrap-datepicker/inlinecalendar.js',
      
         );   
         

@@ -8,10 +8,11 @@ class Controller_Widgets_Calendar extends Controller_Widgets
 
     public function action_index()
 	{
-          if(isset($_POST['datavalue'])) {
-              echo $_POST['datavalue']. 'Ну что то получилочь';
-          }
-        
+        if (isset($_POST['datavalue'])) {
+            echo $_POST['datavalue']. '000000-kjagfkjgd';
+           // $this->request->redirect('places');
+        }
+       // $this->template->calendar = $calendar;
 } 
 }
 

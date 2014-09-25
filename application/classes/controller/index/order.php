@@ -104,7 +104,7 @@ class Controller_Index_Order extends Controller_Index
             
             ; 
            
-             $this->template->page_title = $event->id .' | ' . $event->playbill->title;
+             $this->template->page_title ='Заказ Билетов '.$event->playbill->place->title .' | '. $event->playbill->title;
              $this->template->content_title ='';
              $this->template->block_center = array($content,);
              $this->template->block_left = array($calendar, $menu,$news,); 

@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?=$site_name;?> | <?=$page_title?> | <?=$meta_title?></title>
+    <title><?=$site_title;?> | <?=$page_title?> | <?=$meta_title?></title>
 	<meta name="keywords" content="<?=$keywords;?>" />
-	<meta name="description" content="<?=$site_description;?>" />
+	
         <meta name="description" content="<?=$meta_description;?>">
 
         <?foreach($styles as $style) :?>

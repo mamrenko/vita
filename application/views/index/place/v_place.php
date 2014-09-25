@@ -184,7 +184,7 @@
                             
                              
                             data-target="#myModals<?=$intervals->playbill->id;?>">
-                          Подробнее
+                          Подробнее888
                         </button> 
                              <div class="modal" id="myModals<?=$intervals->playbill->id;?>" 
      tabindex="-1" role="dialog" 
@@ -220,7 +220,7 @@
                             
                              <button class="btn btn-default btn-sm" data-toggle="modal" 
                                      data-target="#myModal<?=$intervals->scene->id;?>">
-                          Схема: <?=$intervals->scene->title;?> 
+                          Схема: 999<?=$intervals->scene->title;?> 
                             </button> 
                            
                             <div class="modal" id="myModal<?=$intervals->scene->id;?>" 

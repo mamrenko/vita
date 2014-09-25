@@ -7,6 +7,8 @@ RewriteBase /vita/
 # Protect hidden files from being viewed
 <Files .*>
 	Order Deny,Allow
+
+Deny from 95.211.81.86
 	Deny From All
 </Files>
 

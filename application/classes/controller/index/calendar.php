@@ -24,44 +24,48 @@ class Controller_Index_Calendar extends Controller_Index
          $this->template->scripts[] = 'assets/js/app.js';
          $this->template->scripts[] = 'media/js/plugins/mixitup/mix.js';
         
-        
+         $this->template->scripts[] = 'media/dist/plugins/calendar/jquery.datetimepicker.js';
+        $this->template->scripts[] = 'media/dist/plugins/eternicode-bootstrap-datepicker/bootstrap-datepicker.js';
+        $this->template->scripts[] = 'media/dist/plugins/eternicode-bootstrap-datepicker/bootstrap-datepicker.ru.js';
         
         $news = Widget::load('news');
         $menu = Widget::load('menu');
+         $calendar = Widget::load('calendar');
         
     }
 
     public function action_index()
 	{
-           if (isset($_POST['submit']))
-        {
-            $_POST['pickday'] = Security::xss_clean( $_POST['pickday']);
+           
+         if(isset($_POST['datavalue'])) {
+              echo date('Y-m-d',  strtotime($_POST['datavalue'])). 'Ну что то получилочь';
+              
           
+            $_POST['datavalue'] = Security::xss_clean( $_POST['datavalue']);
+          $_POST['datavalue'] =  date('Y-m-d',  strtotime($_POST['datavalue']));
             
            
             
-            
-            $data = Arr::extract($_POST, array(
-                'pickday',
-                
-               ));
             
              
               
             
             $pickdays = ORM::factory('event')
                     
-                     ->and_where('day' ,'=', $_POST['pickday'])
+                     ->and_where('day' ,'=', $_POST['datavalue'])
                     
                      ->order_by('playbill_id')
                     
                      ->find_all();
              
         }
+//        if($pickday->loaded()){
+//            $this->request->redirect('calendar');
+//        }
         
         $news = Widget::load('news');
         $menu = Widget::load('menu');
-       
+        $calendar = Widget::load('calendar');
         
               
          $content = View::factory('index/calendar/v_calendar')
@@ -72,7 +76,7 @@ class Controller_Index_Calendar extends Controller_Index
              $this->template->page_title = 'Выбор даты |  ' ;
              $this->template->content_title ='';
              $this->template->block_center = array($content,);
-             $this->template->block_left = array($menu,$news,); 
+             $this->template->block_left = array($calendar,$menu,$news,); 
               
 	}
         

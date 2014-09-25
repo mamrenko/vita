@@ -89,7 +89,7 @@ if (isset($_SERVER['KOHANA_ENV']))
 Kohana::init(array(
 	'base_url'   => '/vita/',
         'index_file' => FALSE,
-    'errors'        => TRUE,
+  //  'errors'        => TRUE,
     'profile'       => (Kohana::$environment == Kohana::DEVELOPMENT),
     'caching'       => (Kohana::$environment == Kohana::PRODUCTION)
 ));
@@ -155,6 +155,13 @@ Route::set('auth', '<action>', array('action' => 'login|logout|register|remember
                 'directory'  => 'index',
 		'controller' => 'auth',
 	));
+
+//Route::set('calendar', 'calendar')
+//	->defaults(array(
+//                'directory'  => 'index',
+//		'controller' => 'calendar',
+//	));
+
 
 Route::set('search', 'search')
 	->defaults(array(

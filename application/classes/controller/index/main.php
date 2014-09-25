@@ -49,6 +49,7 @@ class Controller_Index_Main extends Controller_Index {
         // Вывод в шаблон
         $this->template->page_title = 'Главная страница';
         $this->template->content_title = 'Главная страница';
+        //$this->template->meta_title = $settings-> site_title; 
         $this->template->block_center = array($carousel,$block_center);
         $this->template->block_left = array($calendar,$menu,$news,);
         $this->template->block_header = array();

@@ -210,7 +210,7 @@
      <?foreach ($events as $event):?>
             
             <li>
-                       <?=HTML::anchor('places/one/'.$event->playbill->place->id,
+                       <?=HTML::anchor('places/place/'.$event->playbill->place->id,
                         HTML::image('media/uploads/places/small_'.$event->playbill->place->image, array(
                             'class' => 'img-thumbnail'
                         )));?>
