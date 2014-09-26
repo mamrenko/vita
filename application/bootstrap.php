@@ -90,8 +90,8 @@ Kohana::init(array(
 	'base_url'   => '/vita/',
         'index_file' => FALSE,
   //  'errors'        => TRUE,
-    'profile'       => (Kohana::$environment == Kohana::DEVELOPMENT),
-    'caching'       => (Kohana::$environment == Kohana::PRODUCTION)
+    //'profile'       => (Kohana::$environment == Kohana::DEVELOPMENT),
+    //'caching'       => (Kohana::$environment == Kohana::PRODUCTION)
 ));
 
 /**
@@ -122,6 +122,8 @@ Kohana::modules(array(
         //HTML Purifier will not only remove all 
         //malicious code (better known as XSS) with a thoroughly audited,
          'email'        => MODPATH.'email',        // Swiftmailer
+    
+         'sitemap'       => MODPATH.'sitemap', //
 	));
 
 /**

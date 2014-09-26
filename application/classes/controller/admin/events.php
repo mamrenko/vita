@@ -98,8 +98,10 @@ class Controller_Admin_Events extends Controller_Admin {
         
 
          try {
+                Sitemap::build();
                 $event->save();
                 $event->add('categories', $data['cat']);
+                
                 $this->request->redirect('admin/events/add/'. $playbill->id);
             }
             catch (ORM_Validation_Exception $e) {
@@ -175,7 +177,7 @@ class Controller_Admin_Events extends Controller_Admin {
             $event->values($data);
             
             try {
-           
+            Sitemap::build();
             $event->save(); 
             $event->remove('categories');
             $event->add('categories', $data['cat']);
@@ -219,6 +221,7 @@ class Controller_Admin_Events extends Controller_Admin {
         
         $event->remove('categories');
         $event->delete();
+        Sitemap::build();
         $this->request->redirect('admin/playbill/edit/'.$playbill->id);
     }
     public function action_old(){

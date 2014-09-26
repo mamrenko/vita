@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary visible-lg">
                 <div class="panel-heading">
                     <h2 class="panel-title">
                     Календарь Событий 
