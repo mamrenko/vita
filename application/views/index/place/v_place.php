@@ -163,7 +163,7 @@
                 <tr>
                         
                         <td>
-                              <?=HTML::anchor('event/one/'.$intervals->playbill->id,HTML::image('media/uploads/playplaces/small_'.$intervals->playbill->image, array(
+                              <?=HTML::anchor('event/'.$intervals->playbill->id,HTML::image('media/uploads/playplaces/small_'.$intervals->playbill->image, array(
                         
                         'class' => 'img-thumbnail',
                         'width' => 150,
@@ -177,7 +177,7 @@
                          <p></p>
                         </td>
                         <td>
-                            <h4><?=HTML::anchor('event/one/'.$intervals->playbill->id, $intervals->playbill->title);?></h4>
+                            <h4><?=HTML::anchor('event/'.$intervals->playbill->id, $intervals->playbill->title);?></h4>
                           <p><?=$intervals->playbill->subtitle;?></p>
                            <button class="btn btn-default btn-xs"
                             data-toggle="modal"
@@ -220,7 +220,7 @@
                             
                              <button class="btn btn-default btn-sm" data-toggle="modal" 
                                      data-target="#myModal<?=$intervals->scene->id;?>">
-                          Схема: 999<?=$intervals->scene->title;?> 
+                          Схема: <?=$intervals->scene->title;?> 
                             </button> 
                            
                             <div class="modal" id="myModal<?=$intervals->scene->id;?>" 
@@ -255,7 +255,7 @@
                              
 
                              
-                    <?=HTML::anchor('order/index/'.$intervals->id, 'Заказать', array(
+                    <?=HTML::anchor('order/'.$intervals->id, 'Заказать', array(
                          'class' => 'btn btn-success',
                         'role' => 'button',
                     ));?>
@@ -317,7 +317,7 @@
                 <tr>
                     <td>
                         
-                        <a href="<?=URL::base()?>event/one/<?=$event->playbill->id;?>">
+                        <a href="<?=URL::base()?>event/<?=$event->playbill->id;?>">
 
                      <?=HTML::image('media/uploads/playplaces/small_'.$event->playbill->image, array(
                         
@@ -406,7 +406,7 @@ default:
                      <p>Начало в <?=$event->start; ?> </p>
                     </td>
                     <td>
-                        <?=HTML::anchor('event/one/'.$event->playbill->id,$event->playbill->title );?>
+                        <?=HTML::anchor('event/'.$event->playbill->id,$event->playbill->title );?>
                       <p><?=$event->playbill->subtitle;?></p>
                        <button class="btn btn-default btn-xs"
                             data-toggle="modal"
@@ -499,7 +499,7 @@ default:
                     
                      <td>
                                    
-                    <?=HTML::anchor('order/index/'.$event->id, 'Заказать', array(
+                    <?=HTML::anchor('order/'.$event->id, 'Заказать', array(
                          'class' => 'btn btn-success',
                         'role' => 'button',
                     ));?>

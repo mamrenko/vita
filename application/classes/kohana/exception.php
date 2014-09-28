@@ -24,7 +24,11 @@ class Kohana_Exception extends Kohana_Kohana_Exception
                 'origuri'   => rawurlencode(Arr::get($_SERVER, 'REQUEST_URI')),
                 'message'   => rawurlencode($e->getMessage())
             );
-             
+             $attributes = array(
+                'action'    => 404,
+                'origuri'   => rawurlencode(Arr::get($_SERVER, 'REQUEST_URI')),
+                'message'   => rawurlencode($e->getMessage())
+            );
             if ($e instanceof Http_Exception)
             {
                 $attributes['action'] = $e->getCode();

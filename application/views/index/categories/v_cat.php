@@ -34,7 +34,7 @@
                 <tr>
                         
                         <td>
-                              <?=HTML::anchor('event/one/'.$event->playbill->id,HTML::image('media/uploads/playplaces/small_'.$event->playbill->image, array(
+                              <?=HTML::anchor('event/'.$event->playbill->id,HTML::image('media/uploads/playplaces/small_'.$event->playbill->image, array(
                         
                         'class' => 'img-thumbnail',
                                  // 'width' => 150,
@@ -49,7 +49,7 @@
                         </td>
                         
                         <td>
-                          <?=HTML::anchor('places/place/'.$event->playbill->place->id,$event->playbill->place->title );?>  
+                          <?=HTML::anchor('place/'.$event->playbill->place->id,$event->playbill->place->title );?>  
                         </td>
                         <td>
                             
@@ -91,7 +91,7 @@
                             
                         </td>
                         <td>
-                          <h4><?=HTML::anchor('event/one/'.$event->playbill->id,$event->playbill->title);?></h4>
+                          <h4><?=HTML::anchor('event/'.$event->playbill->id,$event->playbill->title);?></h4>
                           <p><?=$event->playbill->subtitle;?></p>
                           
                           <button class="btn btn-default btn-xs"

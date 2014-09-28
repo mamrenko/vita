@@ -133,7 +133,7 @@ class Kohana_Sitemap
 	{
 		if (is_numeric($unix) AND $unix <= PHP_INT_MAX)
 		{
-			return date('Y-m-d\TH:i:sP', $unix);
+			return date('Y-m-d', $unix);
 		}
 
 		throw new InvalidArgumentException('Must be a unix timestamp');

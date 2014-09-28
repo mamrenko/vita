@@ -11,7 +11,7 @@
              
               <li class="list-group-item">
                    
-                <a class="list-group-item" href="places/place/<?=$place->place_id;?>"> 
+                <a class="list-group-item" href="place/<?=$place->place_id;?>"> 
                   
                     <h4 class="list-group-item-heading">
                        

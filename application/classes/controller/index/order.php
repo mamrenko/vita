@@ -41,6 +41,12 @@ class Controller_Index_Order extends Controller_Index
        $id = (int) $this->request->param('id');
        
         $event = ORM::factory('event', $id);
+        if(!$event->loaded()){
+            
+            throw new Exception_404('Запрашиваемая страница не найдена');
+            return;
+            
+        }
         
         $news = Widget::load('news');
         $menu = Widget::load('menu');

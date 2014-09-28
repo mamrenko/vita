@@ -7,7 +7,7 @@
     <div class="col-md-8">
         
 <h1><strong>404 Ошибка:</strong> Страница не найдена</h1>
- 
+
 <p>Запрашиваемая страница <?php echo HTML::anchor($requested_page, $requested_page) ?> не найдена.</p>
  
 <p>Страница либо не существующая, перемещена или удалена.

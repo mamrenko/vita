@@ -134,8 +134,19 @@
     <?=Form::input('intime', date('Y-m-d H:i:s'), 
         array(
     'type' => 'hidden'))?>
+                   
+                   
+                    <div class="form-group"> 
+                  <?=$captchaimg?>
+                        <p>Введите буквы (цифры) с картинки</p>
+                        <?=Form::input('captcha', '',array(
+                            'type' => 'text',
+                           'data-required' => 'true',
+                        ))?>
+                        <p><span class="label label-danger"><?=$error_captcha?></span></p> 
+                    </div> 
                     
-                <div class="form-group">
+                <div class="form-group text-center">
                     
                   
                       <?=Form::button('submit', 'Отправить!', array(
@@ -210,7 +221,7 @@
      <?foreach ($events as $event):?>
             
             <li>
-                       <?=HTML::anchor('places/place/'.$event->playbill->place->id,
+                       <?=HTML::anchor('place/'.$event->playbill->place->id,
                         HTML::image('media/uploads/places/small_'.$event->playbill->place->image, array(
                             'class' => 'img-thumbnail'
                         )));?>

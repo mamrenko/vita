@@ -44,13 +44,13 @@ foreach ($orders as $order):?>
         <tr>
            
             <td>
-                <?=HTML::anchor('places/place/'.$order->playbill->place->id, $order->playbill->place->title)?>
+                <?=HTML::anchor('place/'.$order->playbill->place->id, $order->playbill->place->title)?>
             </td>
             <td>
                
 
 
-                <?=HTML::anchor('event/one/'.$order->playbill->id, $order->playbill->title)  ?> 
+                <?=HTML::anchor('event/'.$order->playbill->id, $order->playbill->title)  ?> 
             </td>
             <td>
                 <?=$order->scene->title?>

@@ -2,7 +2,7 @@
 
 <ol class="breadcrumb">
      <li><a href="<?=URL::base()?>places">Площадки</a></li>
-     <li><a href="<?=URL::base()?>places/place/<?=$playbill->place->id;?>"><?=$playbill->place->title;?></a></li>
+     <li><a href="<?=URL::base()?>place/<?=$playbill->place->id;?>"><?=$playbill->place->title;?></a></li>
      <li class="active"><?=$playbill->title;?></li>
   
 </ol>
@@ -217,7 +217,7 @@ default:
                   <td>
                       
                      
-                      <?=HTML::anchor('order/index/'.$dat->id, 'Заказать', array(
+                      <?=HTML::anchor('order/'.$dat->id, 'Заказать', array(
                          'class' => 'btn btn-success',
                         'role' => 'button',
                     ));?> 

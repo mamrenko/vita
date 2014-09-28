@@ -123,7 +123,9 @@ Kohana::modules(array(
         //malicious code (better known as XSS) with a thoroughly audited,
          'email'        => MODPATH.'email',        // Swiftmailer
     
-         'sitemap'       => MODPATH.'sitemap', //
+         'sitemap'       => MODPATH.'sitemap', //https://github.com/ThePixelDeveloper/kohana-sitemap
+         'captcha'       => MODPATH.'captcha', //https://github.com/kolanos/kohana-captcha
+    
 	));
 
 /**
@@ -164,6 +166,44 @@ Route::set('auth', '<action>', array('action' => 'login|logout|register|remember
 //		'controller' => 'calendar',
 //	));
 
+
+
+//Route::set('place', '<controller>/<action>(/<id>)', array('id' => '\d+'))
+//	->defaults(array(
+//                'directory'  => 'index',
+//		'controller' => 'places',
+//                
+//		'action'     => 'place',
+//	));
+
+
+//Route::set('places', 'places')
+//	->defaults(array(
+//                'directory'  => 'index',
+//		'controller' => 'places',
+//	));
+
+
+Route::set('order', 'order(/<id>)', array('id' => '\d+'))
+	->defaults(array(
+                'directory'  => 'index',
+		'controller' => 'order',
+                'action' => 'index'
+	));
+
+Route::set('categories', 'categories(/<id>)', array('id' => '\d+'))
+	->defaults(array(
+                'directory'  => 'index',
+		'controller' => 'categories',
+                'action' => 'index'
+	));
+
+Route::set('event', 'event(/<id>)', array('id' => '\d+'))
+	->defaults(array(
+                'directory'  => 'index',
+		'controller' => 'event',
+                'action' => 'one'
+	));
 
 Route::set('search', 'search')
 	->defaults(array(

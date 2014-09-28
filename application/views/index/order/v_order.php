@@ -13,9 +13,9 @@
                               alt="<?=$event->playbill->title;?>">
                     <h3>Заказ Билетов: </h3>
                  
-                   <h3><?=HTML::anchor('places/place/'.$event->playbill->place->id, $event->playbill->place->title)?>
+                   <h3><?=HTML::anchor('place/'.$event->playbill->place->id, $event->playbill->place->title)?>
                    </h3>
-                    <h3><?=HTML::anchor('event/one/'.$event->playbill->id, $event->playbill->title);?></h3>
+                    <h3><?=HTML::anchor('event/'.$event->playbill->id, $event->playbill->title);?></h3>
                     <h4><?=$event->playbill->subtitle;?></h4>
                     <h4>
                         <?=date('d',strtotime($event->day))?>

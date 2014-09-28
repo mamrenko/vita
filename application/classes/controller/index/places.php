@@ -71,7 +71,7 @@ class Controller_Index_Places extends Controller_Index
 	}
          public function action_place()
 	{
-             $id = (int) $this->request->param('id');
+             $id = abs((int) $this->request->param('id'));
        
              if (isset($_POST['submit']))
         {
@@ -136,6 +136,13 @@ class Controller_Index_Places extends Controller_Index
         $place = ORM::factory('place')
                 ->where('id', '=', $id)
                  ->find();
+        
+        if(!$place->loaded()){
+            
+            throw new Exception_404('Запрашиваемая страница не найдена');
+            return;
+            
+        }
         
                $scenes = ORM::factory('event')
                ->where('place_id', '=', $id)

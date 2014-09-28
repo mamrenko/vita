@@ -35,8 +35,14 @@ class Controller_Index_Categories extends Controller_Index
 
     public function action_index()
 	{
-       $id = (int) $this->request->param('id');
+       $id = abs((int) $this->request->param('id'));
         $cat = ORM::factory('category', $id);
+        if(!$cat->loaded()){
+            
+            throw new Exception_404('Запрашиваемая страница не найдена');
+            return;
+            
+        }
         
         $news = Widget::load('news');
         $menu = Widget::load('menu');

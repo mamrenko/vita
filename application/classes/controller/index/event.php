@@ -39,7 +39,14 @@ class Controller_Index_Event extends Controller_Index
                  ->where('playbill_id', '=', $id)
                  ->where('day', '>=', date('Y-m-d'))
                 ->find_all();
+        
         $playbill = ORM::factory('playbill', $id);
+        if(!$playbill->loaded()){
+            
+            throw new Exception_404('Запрашиваемая страница не найдена');
+            return;
+            
+        }
         $artists = $playbill->artists->find_all();
         $news = Widget::load('news');
         $menu = Widget::load('menu');

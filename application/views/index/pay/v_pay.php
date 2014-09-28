@@ -69,8 +69,8 @@
         <div class="item">
             <div class="thumbnail "> 
          
-  <p><?=$carousel->playbill->title?></p>
-  <a href="event/one/<?=$carousel->playbill->id?>">   
+                <p><?=HTML::anchor('event/'.$carousel->playbill->id, $carousel->playbill->title)?></p>
+  <a href="event/<?=$carousel->playbill->id?>">   
               
                 <img 
                     src="media/uploads/playplaces/<?=$carousel->playbill->image?>" 
@@ -82,7 +82,7 @@
   <div class=" caption">
       
       <p>
-           <?=HTML::anchor('event/one/'.$carousel->playbill->id, 'Подробнее', array(
+           <?=HTML::anchor('event/'.$carousel->playbill->id, 'Подробнее', array(
                          'class' => 'btn btn-primary',
                         'role' => 'button',
                     ));?>

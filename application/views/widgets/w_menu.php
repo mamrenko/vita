@@ -16,7 +16,7 @@
       
     
       
-      <li><?=HTML::anchor('categories/index/' . $cat['id'], $cat['title']);?></li>
+      <li><?=HTML::anchor('categories/' . $cat['id'], $cat['title']);?></li>
    
       <?endforeach?>
    
