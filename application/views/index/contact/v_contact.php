@@ -20,11 +20,12 @@
     <div class="row margin-bottom-30">
         <div class="col-md-9 mb-margin-bottom-30">
             
-      <?if(isset($email)):?>
+      <?if(isset($emails)):?>
 <div class="jumbotron">
   <h1>Спасибо за сообщение</h1>
-  <p>В ближайшее время с Вами свяжутся</p>
+  
   <p><a href="../." class="btn btn-primary btn-lg" role="button">На Главную страницу</a></p>
+ 
 </div>
 
 
@@ -137,12 +138,30 @@
                    
                    
                     <div class="form-group"> 
-                  <?=$captchaimg?>
-                        <p>Введите буквы (цифры) с картинки</p>
+                        
+                        <p><?=$captchaimg?></p>
+                      
+                         <p> 
+
+
+<i class="fa fa-refresh  fa-2x" onclick="reload()" style="cursor:pointer; vertical-align: super;" title="Обновить код"></i>
+
+                     </p>
+                        <script>
+                            function reload(){
+id=Math.floor(Math.random()*1000000);
+$("img.captcha").attr("src","/vita/captcha/default?id="+id);
+}
+
+                            </script>
+                        <p>Введите код указанный на рисунке:</p>
+                        
+                       
                         <?=Form::input('captcha', '',array(
                             'type' => 'text',
                            'data-required' => 'true',
                         ))?>
+                        
                         <p><span class="label label-danger"><?=$error_captcha?></span></p> 
                     </div> 
                     

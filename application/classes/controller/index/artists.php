@@ -36,6 +36,12 @@ class Controller_Index_Artists extends Controller_Index
 	{
        $id = abs((int) $this->request->param('id'));
         $artist = ORM::factory('artist',$id);
+        if(!$artist->loaded()){
+            
+            throw new Exception_404('Запрашиваемая страница не найдена');
+            return;
+            
+        }
                  
         $playbills = $artist->playbills->find_all();
       //  Database::instance('alternate');

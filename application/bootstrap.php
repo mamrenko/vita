@@ -218,7 +218,7 @@ Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
             'action'     => 'index',
 	));
 
-Route::set('artists', 'artists(/<id>)')
+Route::set('artists', 'artists(/<id>)', array('id' => '\d+'))
         ->defaults(array(
             'directory'  => 'index',
             'controller' => 'artists',

@@ -9,7 +9,9 @@ return array(
     'site_description' => 'Билеты в театр, на концерт, в цирк, на мюзикл. Афиша Москвы.',
     'author' =>'Сайт сделан clapout.ru',
     'keywords' => 'Билеты в театр, ',
-    'admin_email' => 'admin@aplodismenty.ru',
+    'admin_email' => 'clapout@yandex.ru',
+    'letter_admin' => 'letter@aplodismenty.ru',
+    
    // 'order_email' =>'mindrich@yandex.ru',
     'order_email' =>'clapout@yandex.ru',
     );

@@ -32,9 +32,16 @@ class Controller_Index_Contact extends Controller_Index
 
     public function action_index()
 	{
-        
+        $emails = $this->session->get('emails');
+//        if (isset($emails)) {
+//            // 
+       // 
+         $this->session->delete('emails');
+       //  $this->request->redirect('contact');
+         //var_dump($email_s);
+        //}
         //$config = Kohana::config('captcha');
-        $captchaimg = Captcha_Riddle::instance();
+        $captchaimg = Captcha_Alpha::instance();
        
        // var_dump($captcha);
          //Captcha::valid($_POST['captcha']);
@@ -47,7 +54,7 @@ class Controller_Index_Contact extends Controller_Index
         {
                  
                  
-             $_POST['captcha'] = Security::xss_clean( $_POST['captcha']);    
+            $_POST['captcha'] = Security::xss_clean( $_POST['captcha']);    
             $_POST['name'] = Security::xss_clean( $_POST['name']);
             $_POST['email'] = Security::xss_clean( $_POST['email']);
             $_POST['phone'] = Security::xss_clean( $_POST['phone']);
@@ -73,11 +80,11 @@ class Controller_Index_Contact extends Controller_Index
                 $message->save();
                 
                 
-                $admin_email = Kohana::config('settings.admin_email');
+                $admin_email = Kohana::config('settings.letter_admin');
                 $site_name = Kohana::config('settings.site_name');
             
             
-                   $email = Email::factory('Контакты', $data['text'] )
+                   $email = Email::factory('Ваше письмо отправленное на сайт Агенства Аплодисменты', $data['text'] )
                     ->to($data['email'], $data['name'])
                     ->from($admin_email, $site_name)
                     ->send();
@@ -89,13 +96,16 @@ class Controller_Index_Contact extends Controller_Index
                            ->to($admin_email, $site_name)
                            ->from($data['email'], $data['name'])
                            ->send();
-               
+                     
+                      
+                     $email_s = $data['email'];
+                     $this->session->set('emails', $email_s);
                
                
                
                
             
-                //$this->request->redirect('contact/add');
+             $this->request->redirect('contact'); 
             } 
             catch (ORM_Validation_Exception $e) {
                
@@ -103,7 +113,7 @@ class Controller_Index_Contact extends Controller_Index
         }
          }
  else {
-    $error_captcha = "Введите символы с картинки правильно";
+    $error_captcha = 'Введите символы с картинки правильно';
 }
                
  }
@@ -121,6 +131,7 @@ class Controller_Index_Contact extends Controller_Index
                       ->bind('email', $email)
                       ->bind('captchaimg', $captchaimg)
                      ->bind('error_captcha', $error_captcha)
+                   ->bind('emails', $emails)
                      
              ; 
              $this->template->page_title = 'Контакт';
@@ -130,22 +141,7 @@ class Controller_Index_Contact extends Controller_Index
              );
             
 	}
-        public function action_add()
-	{
-            
-           
-             $content = View::factory(
-                     'index/contact/add_contact')
-                    
-                   
-            ; 
-             $this->template->page_title = 'Контакт';
-             $this->template->content_title ='Контакт';
-             $this->template->block_header = array(
-                $content, 
-             );
-            
-	}
+       
          
         
         

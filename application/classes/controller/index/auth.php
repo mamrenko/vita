@@ -117,6 +117,8 @@ class Controller_Index_Auth extends Controller_Index {
         }
         
          if (isset($_POST['submit'])){
+             
+              $_POST['email'] = Security::xss_clean( $_POST['email']);
             $data = Arr::extract($_POST, array(
                 'email'
                 ));
@@ -180,7 +182,7 @@ class Controller_Index_Auth extends Controller_Index {
                 ->bind('data', $data)
                 ->bind('email', $email)
                  ->bind('message', $message)
-                        ->bind('pass', $pass)
+                 ->bind('pass', $pass)
             ;
         
         

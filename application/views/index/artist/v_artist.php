@@ -21,7 +21,7 @@
   <?foreach ($playbills as $playbill):?>
        <? $events = ORM::factory ('event')
                 ->where ('playbill_id', '=', $playbill->id)
-                ->distinct('playbill_id')
+                ->group_by('playbill_id')
                 ->and_where('day', '>=', date('Y-m-d'))
                 ->find_all();
 
@@ -32,8 +32,8 @@
  
  
      <p><a class="btn btn-primary btn-lg" 
-        role="button" href="<?=URL::base();?>/event/one/<?=$event->playbill_id?>">
-                <?=$event->playbill->title?></a></p>
+        role="button" <?=HTML::anchor('/event/'.$event->playbill_id,$event->playbill->title )?>
+               </a></p>
     
     <?
 endforeach;?>
