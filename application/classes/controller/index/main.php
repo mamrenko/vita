@@ -29,7 +29,7 @@ class Controller_Index_Main extends Controller_Index {
 
     public function action_index() {
         
-        $search = Widget::load('search');
+       // $search = Widget::load('search');
        
         $news = Widget::load('news');
         $login = Widget::load('login');

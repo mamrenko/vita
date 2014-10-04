@@ -44,6 +44,8 @@ class Controller_Index extends Controller_Base {
             //'assets/css/themes/default.css',
             //'assets/css/themes/headers/default.css',
             'media/dist/plugins/eternicode-bootstrap-datepicker/datepicker3.css',
+             'media/css/site.css',
+            
             
            
             );

@@ -35,8 +35,6 @@
                   
               
           <header class="container">
-              
-              
              <div class="row">
             <div class="col-md-2" style="padding: 5px">
                 <a href="<?=URL::base()?>">
@@ -71,7 +69,8 @@
                       
                   </div>
             
-             <div class="row">
+             
+              <div class="row">
                   
               
               
@@ -102,8 +101,7 @@
   </div><!-- /.container-fluid -->
 </nav>
  
-              </div> 
-                 
+              </div>    
               
               
           </header>

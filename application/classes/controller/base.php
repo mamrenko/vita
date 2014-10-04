@@ -45,6 +45,7 @@ class Controller_Base extends Controller_Template {
         $this->template->keywords = null;
         $this->template->meta_description = null;
         $this->template->meta_title = null;
+       // $this->template->yandex = null;
        
 
         // Подключаем стили и скрипты

@@ -11,6 +11,7 @@
 
  
       <div class="row margin-10">
+         
         <div class="panel-group" id="accordion">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -184,7 +185,7 @@
                             
                              
                             data-target="#myModals<?=$intervals->playbill->id;?>">
-                          Подробнее888
+                          Подробнее
                         </button> 
                              <div class="modal" id="myModals<?=$intervals->playbill->id;?>" 
      tabindex="-1" role="dialog" 

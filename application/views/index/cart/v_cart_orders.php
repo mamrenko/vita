@@ -314,7 +314,37 @@ default:
                   
                   ))?>
 </div>
-          </div>   
+          </div>
+      
+      
+       <div class="form-group"> 
+                       <div class=" col-sm-9 col-sm-offset-3"> 
+                        <p><?=$captchaimg?></p>
+                      
+                         <p> 
+
+
+<i class="fa fa-refresh  fa-2x" onclick="reload()" style="cursor:pointer; vertical-align: super;" title="Обновить код"></i>
+
+                     </p>
+                        <script>
+                            function reload(){
+id=Math.floor(Math.random()*1000000);
+$("img.captcha").attr("src","/vita/captcha/default?id="+id);
+}
+
+                            </script>
+                        <p>Введите код указанный на рисунке:</p>
+                        
+                       
+                        <?=Form::input('captcha', '',array(
+                            'type' => 'text',
+                           'data-required' => 'true',
+                        ))?>
+                        
+                        <p><span class="label label-danger"><?=$error_captcha?></span></p> 
+                    </div> 
+          </div>
   
  <div class="well">
       
@@ -325,7 +355,7 @@ default:
               'data-required' => 'true',
           ))?>
           
-          Я принимаю   <button class="btn btn-primary" data-toggle="modal" data-target="#oferts">
+          Я принимаю   <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#oferts">
   условия договора-оферты
 </button>   
          продажи и возврата заказанных билетов
@@ -444,6 +474,8 @@ Email: info@aplodismenty.ru
        
           </div>
   </div>
+      
+      
     <div class="form-group">
     <div class=" col-sm-9 col-sm-offset-3">
         

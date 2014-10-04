@@ -2,7 +2,7 @@
                 <div class="panel-heading">
                     <h2 class="panel-title">
                     Календарь Событий 
-                      <?=HTML::anchor('calendar', 'tttttt');?>
+                   
                     </h2>
               </div>
                

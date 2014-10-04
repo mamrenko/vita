@@ -539,17 +539,25 @@ return $den;
             $gets[$value] = $value;
             }
             
+            
+              $captchaimg = Captcha_Word::instance();
+              
             if (isset($_POST['submit']))
         {
                 
-               
-            $_POST['email'] = Security::xss_clean( $_POST['email']);
+           $_POST['captcha'] = Security::xss_clean( $_POST['captcha']);
+           $_POST['email'] = Security::xss_clean( $_POST['email']);
            $_POST['name'] = Security::xss_clean( $_POST['name']);
            $_POST['phone'] = Security::xss_clean( $_POST['phone']);
            $_POST['adress'] = Security::xss_clean( $_POST['adress']);
             $_POST['metro'] = Security::xss_clean($_POST['metro']); 
+            
+            
+                
            
            $data = Arr::extract($_POST, array('email','name','phone','adress' ,'metro','status'));
+           
+            if (Captcha::valid($_POST['captcha'])) {
            
             $customer = ORM::factory('customer');
             $customer->values($data);
@@ -642,16 +650,22 @@ return $den;
             catch (ORM_Validation_Exception $e) {
                 $errors = $e->errors('validation');
             }
+            }
+ else {
+    $error_captcha = 'Введите символы с картинки правильно';
+}
             
         }
             
             $content = View::factory('index/cart/v_cart_orders')
-                    ->bind('data', $data)
-                   ->bind('orders', $orders)
+                  ->bind('data', $data)
+                  ->bind('orders', $orders)
                   ->bind('cost_s', $cost_s)
                   ->bind('amt_s', $amt_s)
                   ->bind('errors', $errors)
-                     ->bind('gets', $gets)
+                  ->bind('gets', $gets)
+                  ->bind('captchaimg', $captchaimg)
+                  ->bind('error_captcha', $error_captcha)
                  ;
             
             // Выводим в шаблон

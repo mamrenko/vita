@@ -168,12 +168,12 @@ Route::set('auth', '<action>', array('action' => 'login|logout|register|remember
 
 
 
-//Route::set('place', '<controller>/<action>(/<id>)', array('id' => '\d+'))
+//Route::set('place', '(<controller>(/<action>(/<id>)))', array('id' => '\d+'))
 //	->defaults(array(
 //                'directory'  => 'index',
 //		'controller' => 'places',
 //                
-//		'action'     => 'place',
+//		
 //	));
 
 

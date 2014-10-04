@@ -15,7 +15,8 @@ class Controller_Index_Places extends Controller_Index
        // $this->template->styles[] = 'canvas/js/plugins/datepicker/datepicker.css';
         $this->template->styles[] = 'media/dist/css/bootstrap.css';
         $this->template->styles[] = 'media/js/plugins/listnav/listnav.css';
-        $this->template->styles[] = 'media/dist/css/site.css';
+     $this->template->styles[] = 'media/dist/css/site.css';
+      $this->template->styles[] = 'media/css/site.css';
         
               
         $this->template->scripts[] = 'assets/plugins/bootstrap/js/bootstrap.js';     

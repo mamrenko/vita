@@ -2,12 +2,12 @@
 
 <ol class="breadcrumb">
      <li><a href="<?=URL::base()?>places">Площадки</a></li>
-     <li><a href="<?=URL::base()?>place/<?=$playbill->place->id;?>"><?=$playbill->place->title;?></a></li>
+     <li><a href="<?=URL::base()?>places/place/<?=$playbill->place->id;?>"><?=$playbill->place->title;?></a></li>
      <li class="active"><?=$playbill->title;?></li>
   
 </ol>
 <div class="well">
-<h1 ><?=$playbill->place->title;?></h1>
+<h1><?=$playbill->place->title;?></h1>
 </div>
             
                 <div class="row">
