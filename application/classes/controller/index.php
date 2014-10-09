@@ -8,6 +8,7 @@ class Controller_Index extends Controller_Base {
     public function before() {
         parent::before();
         
+        $downmenu =  Widget::load('downmenu');
         $menu = Widget::load('menu');
         $topmenu = Widget::load('topmenu');
         $login = Widget::load('login');
@@ -44,7 +45,7 @@ class Controller_Index extends Controller_Base {
             //'assets/css/themes/default.css',
             //'assets/css/themes/headers/default.css',
             'media/dist/plugins/eternicode-bootstrap-datepicker/datepicker3.css',
-             'media/css/site.css',
+            'media/dist/css/site.css',
             
             
            
@@ -90,8 +91,8 @@ class Controller_Index extends Controller_Base {
             'media/dist/plugins/eternicode-bootstrap-datepicker/inlinecalendar.js',
      
         );   
-        
-      
+        $this->template->downmenu = $downmenu;
+        $this->template->menu = $menu;
         $this->template->topmenu = $topmenu;
         $this->template->cart = $cart;
         $this->template->login = $login;

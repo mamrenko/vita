@@ -1,4 +1,35 @@
+body{
+	 
+    margin-top:100px;
+	 
+	
+	
+	
+}
+#topleft {
+	position: absolute;
+	top: 100px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background-attachment: scroll;
+	background-image: url(/vita/media/images/clown265.gif);
+	background-repeat: no-repeat;
+	background-position: left center;	
+}
 
+
+#topright{
+	position: absolute;
+	top:100px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background-attachment: scroll;
+	background-image: url(/vita/media/images/clown274.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
 
 .datatable-columnfilter {
   width: 100% !important;

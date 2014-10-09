@@ -31,7 +31,10 @@ class Model_Event extends ORM {
             'model' => 'start',
             'foreign_key' => 'start',
         ),
-        
+         'place' => array(
+            'model' => 'place',
+            'foreign_key' => 'place_id',
+        ),
     );
 
  

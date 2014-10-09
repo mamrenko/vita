@@ -6,17 +6,17 @@ class Controller_Index_Places extends Controller_Index
         parent::before();
         
         
-         $news = Widget::load('news');
-         $menu = Widget::load('menu');
-         $calendar = Widget::load('calendar');
+      $news = Widget::load('news');
+    $menu = Widget::load('menu');
+    $calendar = Widget::load('calendar');
        
        // $this->template->styles[] = 'assets/css/pages/portfolio-v2.css';
         
        // $this->template->styles[] = 'canvas/js/plugins/datepicker/datepicker.css';
         $this->template->styles[] = 'media/dist/css/bootstrap.css';
         $this->template->styles[] = 'media/js/plugins/listnav/listnav.css';
-     $this->template->styles[] = 'media/dist/css/site.css';
-      $this->template->styles[] = 'media/css/site.css';
+    
+      //$this->template->styles[] = 'media/css/site.css';
         
               
         $this->template->scripts[] = 'assets/plugins/bootstrap/js/bootstrap.js';     
@@ -48,19 +48,28 @@ class Controller_Index_Places extends Controller_Index
         $news = Widget::load('news');
         $menu = Widget::load('menu');
         $calendar = Widget::load('calendar');
+       // $search = Widget::load('search');
        
         $places = ORM::factory('event')
+                     //->join('place')
                       ->where('day', '>', date('Y-m-d'))
                       ->group_by('place_id')
                       ->order_by('place_id')
                       ->find_all() 
                 
                 ;
-      
         
-              
+        
+           $eventsplaces = array();
+            foreach ($places as $key) {
+            $eventsplaces[$key->place->id] = $key->place->title;
+}
+        
+asort($eventsplaces);
          $content = View::factory('index/place/v_places', array(
-                 'places' => $places,
+                'places' => $places,
+              'eventsplaces' => $eventsplaces,
+              //  'counrs' => $counrs,
                  
             )
             ); 
@@ -151,10 +160,10 @@ class Controller_Index_Places extends Controller_Index
                ->group_by('scene_id')
                ->find_all();
       
-         $news = Widget::load('news');
-         $menu = Widget::load('menu');
-         $calendar = Widget::load('calendar');
-         
+       $news = Widget::load('news');
+        $menu = Widget::load('menu');
+       $calendar = Widget::load('calendar');
+//         
         
             $content = View::factory('index/place/v_place')
                   ->bind('events', $events)
@@ -172,7 +181,8 @@ class Controller_Index_Places extends Controller_Index
              $this->template->keywords = 'Билеты в '. $place->title ;
                   
                     
-            
+             $site_title ='Афиша';
+             $this->template->site_title = $site_title;
              $this->template->meta_description = $place->title;
              $this->template->meta_title = 'Купить лучшие билеты  в  '.$place->title;
                    

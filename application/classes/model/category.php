@@ -63,6 +63,7 @@
                     ->group_by('category_id')
                     ->join('categories')
                     ->on('categories.id', '=', 'events_categories.category_id')
+                    ->order_by('categories.title')
                     ;
             return $query->execute();
     }

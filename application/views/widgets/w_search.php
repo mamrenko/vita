@@ -19,12 +19,30 @@
     </a>
 
 <div id="feedback">
-    
+   ----- 
     
 </div>
+<select id="cost">
+<option selected value="1">один</option>
+<option selected value="2">Два</option>
+<option selected value="3">Три</option>
+<option selected value="4">Четыре</option>
+</select>
 <script>
     
     $(function(){
+        
+        
+        $('#cost').css({'border': '3px solid green'});
+        //alert($('#cost').val()) ;
+       console.log($('#cost').val());
+        $.post('widgets/search/index',{cost: $cost},function(data){
+            
+        $('#feedback').text(data);
+     
+    
+  });
+        
        $("#typeahead").typeahead({
           // source:["Youtube", "Google", "Aplodismenty"]
          source:function(query, process){

@@ -1,4 +1,4 @@
-
+<div itemscope itemtype="http://schema.org/Event">
 
 <ol class="breadcrumb">
      <li><a href="<?=URL::base()?>places">Площадки</a></li>
@@ -6,18 +6,18 @@
      <li class="active"><?=$playbill->title;?></li>
   
 </ol>
-<div class="well">
-<h1><?=$playbill->place->title;?></h1>
+<div itemprop="location" itemscope itemtype="http://schema.org/Place"  class="well">
+<h1 itemprop="name"><?=$playbill->place->title;?></h1>
 </div>
             
                 <div class="row">
                     
                 
-                        <h2><?=$playbill->title;?> <small><?=$playbill->subtitle;?></small></h2>
+                        <h2 itemprop="name"><?=$playbill->title;?> <small><?=$playbill->subtitle;?></small></h2>
                         
-                         <img class="img-responsive img-thumbnail pull-right" src="<?=URL::base();?>media/uploads/playplaces/<?=$playbill->image;?>"
+                         <img itemprop="image" class="img-responsive img-thumbnail pull-right" src="<?=URL::base();?>media/uploads/playplaces/<?=$playbill->image;?>"
                               alt="<?=$playbill->title;?>">
-                        <?=$playbill->description;?>
+                         <span itemprop="description"> <?=$playbill->description;?></span> 
                         
                     
                 </div>                            
@@ -82,7 +82,8 @@
                         <? foreach ($events as $dat):?>
                  <tr>  
                 <td>
-                    <p><?=date('d',strtotime($dat->day))?>
+                    <p><meta itemprop="startDate" content="<?=date('Y-m-d',strtotime($dat->day))?>T<?=$dat->start;?>">
+                            <?=date('d',strtotime($dat->day))?>
                         
                 <?$month = (date('m',strtotime($dat->day))); ?>
                 
@@ -220,6 +221,7 @@ default:
                       <?=HTML::anchor('order/'.$dat->id, 'Заказать', array(
                          'class' => 'btn btn-success',
                         'role' => 'button',
+                        'itemprop' => 'url',
                     ));?> 
                       
                   </td>  
@@ -234,11 +236,11 @@ endif;?>
     </div>
     <div class="col-md-3">
         
-        <div class="panel panel-danger">
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="panel panel-danger">
   <div class="panel-heading">
     <h3 class="panel-title">Цены</h3>
   </div>
-  <div class="panel-body">
+  <div itemprop="price" class="panel-body">
    <?$costs = $playbill->costs->find_all();?>
         <?foreach ($costs as $cost):?>
         <p><?=$cost->area->title;?> - <?=$cost->price;?> руб.</p>
@@ -250,6 +252,7 @@ endif;?>
     </div>
    
     </div>
+              </div>
               
     
  

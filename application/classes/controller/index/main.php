@@ -41,6 +41,7 @@ class Controller_Index_Main extends Controller_Index {
          $events = ORM::factory('event')
                 ->where('status', '=', 1)
                 ->and_where('day' ,'>', date('Y-m-d'))
+                 ->order_by('day')
                 ->find_all();
         $block_center = View::factory('index/main/v_main_index',
                 array(

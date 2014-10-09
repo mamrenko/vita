@@ -28,6 +28,12 @@
     <![endif]-->
   </head>
   <body>
+      <div id="topleft" class="visible-lg">
+          
+      </div>
+         <div id="topright" class="visible-lg">
+          
+      </div>
       <div id="page" class="container">
           
                   
@@ -75,8 +81,8 @@
                   
               
               
-             <nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container-fluid">
+             <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -95,6 +101,14 @@
       <ul class="nav navbar-nav">
        <?=$topmenu?>    
         
+          
+          
+              <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i>
+ Жанры <span class="caret"></span></a>
+          
+           <?=$menu?>   
+              </li> 
       </ul>
      <?=$search;?>
       
@@ -155,10 +169,10 @@
           <hr />
           <footer class="container">
               <div class="row">
-                    <div class="col-md-4">
-
+                    <div class="col-md-6">
+<?=$downmenu?>
                     </div> 
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         
                     </div> 
                     <div class="col-md-4">

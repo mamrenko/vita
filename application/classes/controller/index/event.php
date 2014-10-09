@@ -79,6 +79,9 @@ class Controller_Index_Event extends Controller_Index
                  ->bind('arr', $arr)
             
             ; 
+         
+             $site_title ='';
+             $this->template->site_title = $site_title;
              $this->template->keywords = $playbill->meta_keywords;
              $this->template->meta_description = $playbill->meta_description;
              $this->template->meta_title = $playbill->meta_title;
