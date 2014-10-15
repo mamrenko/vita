@@ -232,7 +232,7 @@ class Controller_Admin_carousels extends Controller_Admin {
 
         $im = Image::factory($file);
         $im
-            ->resize(600, 300, IMAGE::NONE)
+            ->resize(1052, 526, IMAGE::NONE)
             ->watermark($mark,TRUE, TRUE)
             ->save("$directory/$filename.$ext");
        

@@ -7,17 +7,22 @@
   
 </ol>
       <div class="panel panel-default">
-                    <div class="panel-body">
-                 <img class="img-responsive img-thumbnail pull-right" 
+                    <div itemscope itemtype="http://schema.org/Event" class="panel-body">
+                 <img itemprop="image" class="img-responsive img-thumbnail pull-right" 
                        src="<?=URL::base();?>media/uploads/playplaces/<?=$event->playbill->image;?>" 
                               alt="<?=$event->playbill->title;?>">
                     <h3>Заказ Билетов: </h3>
                  
-                   <h3><?=HTML::anchor('place/'.$event->playbill->place->id, $event->playbill->place->title)?>
+                   <h3 itemprop="location" itemscope itemtype="http://schema.org/Place"><?=HTML::anchor('place/'.$event->playbill->place->id, 
+                           
+                           '<span itemprop="name">'.
+                           
+                           $event->playbill->place->title
+                           .'</span>')?>
                    </h3>
-                    <h3><?=HTML::anchor('event/'.$event->playbill->id, $event->playbill->title);?></h3>
-                    <h4><?=$event->playbill->subtitle;?></h4>
-                    <h4>
+                    <h3><?=HTML::anchor('event/'.$event->playbill->id,'<span itemprop="name">'. $event->playbill->title.'</span>');?></h3>
+                    <h4 itemprop="description" ><?=$event->playbill->subtitle;?></h4>
+                    <h4  itemprop="startDate" content="<?=date('Y-m-d',strtotime($event->day))?>T<?=$event->start?>  ">
                         <?=date('d',strtotime($event->day))?>
                         
                        <?$month = (date('m',strtotime($event->day))); ?>

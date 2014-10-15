@@ -44,7 +44,7 @@
                         </td>
                         <td>
                          <p><?=date('d-m-Y',strtotime($event->day));?></p>
-                           <p>Начало в <?=$event->tart->start; ?> </p>
+                           <p>Начало в <?=$event->start; ?> </p>
                          
                         </td>
                         

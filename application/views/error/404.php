@@ -1,10 +1,10 @@
 <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 col-md-offset-2">
         
         <img src="<?=URL::site('/media/images/404.png', TRUE)?>">
         
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
         
 <h1><strong>404 Ошибка:</strong> Страница не найдена</h1>
 
